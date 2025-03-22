@@ -58,9 +58,10 @@ public class InputManager : MonoBehaviour
     public void onMovePressed(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+        Debug.Log("Movement: " + move.x + ", " + move.y);
     }
 
-    public void onAttackPressoed(InputAction.CallbackContext context)
+    public void onAttackPressed(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
