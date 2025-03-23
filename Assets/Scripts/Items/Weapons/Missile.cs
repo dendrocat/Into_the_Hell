@@ -35,7 +35,7 @@ public class Missile : MonoBehaviour
             Person person = null;
             if (parent.TryGetComponent<Person>(out person))
             {
-                person.TakeDamage(damage);
+                person.TakeDamage(damage, DamageType.None);
             }
         }
         Destroy(this);

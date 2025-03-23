@@ -25,11 +25,11 @@ public class MovementController : MonoBehaviour
 
             if (inputManager.Attack)
             {
-                player.Attack(0);
+                player.Attack();
             }
             if (inputManager.AltAttack)
             {
-                player.Attack(0);
+                player.Attack();
             }
         }
     }
