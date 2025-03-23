@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a958c9071ad2749bc847cd88dcef6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1704427796}
+  player: {fileID: 1704427799}
   enemy: {fileID: 2013444091}
   playerHPText: {fileID: 1224911041}
   enemyHPText: {fileID: 485102031}
@@ -1393,7 +1393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1704427794}
-  - component: {fileID: 1704427796}
+  - component: {fileID: 1704427799}
   - component: {fileID: 1704427795}
   - component: {fileID: 1704427798}
   - component: {fileID: 1704427797}
@@ -1437,8 +1437,8 @@ MonoBehaviour:
   level: 5
   maxLevel: 5
   weaponTexture: {fileID: 2800000, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  owner: {fileID: 1704427796}
-  damage: 20
+  owner: {fileID: 1704427799}
+  damage: 7
   baseReloadTime: 1
   basePrepareAttackTime: 0
   baseEndAttackTime: 0
@@ -1450,23 +1450,6 @@ MonoBehaviour:
   altReloading: 0
   range: 2
   angle: 30
---- !u!114 &1704427796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704427793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713415255e5d4db448375a1ab2cf1f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1704427795}
-  weaponObject: {fileID: 197651800}
-  isMoving: 0
-  currentDirection: {x: 0, y: 0}
 --- !u!114 &1704427797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,7 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66243f1efd47aad4e88052aab0e6620c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1704427796}
+  player: {fileID: 1704427799}
 --- !u!61 &1704427798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1526,6 +1509,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1704427799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704427793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2428deaf0dfa24f44b73f9f1681783dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  weaponObject: {fileID: 197651800}
+  isMoving: 0
+  currentDirection: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
+  playerWeapon: {fileID: 1704427795}
+  ShiftCount: 3
 --- !u!1 &1862446814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1705,7 @@ MonoBehaviour:
   maxLevel: 5
   weaponTexture: {fileID: 2800000, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
   owner: {fileID: 2013444091}
-  damage: 10
+  damage: 7
   baseReloadTime: 1
   basePrepareAttackTime: 0
   baseEndAttackTime: 0
@@ -1732,6 +1734,7 @@ MonoBehaviour:
   weaponObject: {fileID: 1343649009}
   isMoving: 0
   currentDirection: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
 --- !u!61 &2013444092
 BoxCollider2D:
   m_ObjectHideFlags: 0

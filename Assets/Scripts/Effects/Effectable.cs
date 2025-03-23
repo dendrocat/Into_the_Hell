@@ -11,12 +11,13 @@ public enum EffectNames {
     FrostResistance = 6, //морозостойкость
     ExplosionResistance = 7, //взрывостойкость
     IceDrifting = 8, //скольжение по льду
-    ShieldBlock = 9 //блок щитом
+    ShieldBlock = 9, //блок щитом
+    Shift = 10 //рывок
 };
 //Класс сущностей, на которые можно наложить эффект
 public class Effectable: MonoBehaviour
 {
-    private const int EFFECT_COUNT = 10; //общее количество типов эффектов
+    private const int EFFECT_COUNT = 11; //общее количество типов эффектов
 
     protected List<int> effectCount = new List<int>(); //количество эффектов на сущности
     protected List<float> effectRemainingTime = new List<float>(); //оставшееся время действия эффекта
@@ -49,14 +50,13 @@ public class Effectable: MonoBehaviour
         maxEffectCount[7] = 1;
         maxEffectCount[8] = 1;
         maxEffectCount[9] = 5;
+        maxEffectCount[10] = 1;
 
         effectDuration[0] = 3f;
         effectDuration[1] = 1.5f;
         effectDuration[2] = 0.25f;
         effectDuration[3] = 5f;
-
-        Debug.Log(gameObject.name + " - Initializing effects: " + effectCount.Count +
-            ", " + effectRemainingTime.Count);
+        effectDuration[10] = 0.25f;
     }
 
     public void AddEffect(int effectId, int diff = 1, bool resetRemainingTime = true)

@@ -10,8 +10,8 @@ public class RangedWeapon : AlternateAttackWeapon
     private void OnDrawGizmos()
     {
         Vector2 ownerPosition = owner.transform.position;
-        Vector2 leftAngle = Quaternion.Euler(0f, 0f, angle / 2) * owner.facingDirection.normalized;
-        Vector2 rightAngle = Quaternion.Euler(0f, 0f, -angle / 2) * owner.facingDirection.normalized;
+        Vector2 leftAngle = Quaternion.Euler(0f, 0f, angle / 2) * owner.weaponDirection.normalized;
+        Vector2 rightAngle = Quaternion.Euler(0f, 0f, -angle / 2) * owner.weaponDirection.normalized;
         Debug.DrawRay(ownerPosition, leftAngle * range, Color.yellow);
         Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
     }
@@ -29,7 +29,7 @@ public class RangedWeapon : AlternateAttackWeapon
 
             if (candidateDirection.magnitude <= range)
             {
-                float candidateAngle = Vector2.Angle(candidateDirection, owner.facingDirection);
+                float candidateAngle = Vector2.Angle(candidateDirection, owner.weaponDirection);
                 if (candidateAngle <= angle / 2)
                 {
                     targets.Add(candidate);

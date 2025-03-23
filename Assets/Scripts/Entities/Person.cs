@@ -16,6 +16,7 @@ public class Person : Effectable, IDamagable
     public bool isMoving = false;
     public Vector2 currentDirection;
     public Vector2 facingDirection;
+    public Vector2 weaponDirection;
     Animator anim = null; //компонент аниматор
 
     public float getHP()
@@ -36,6 +37,19 @@ public class Person : Effectable, IDamagable
         }
     }
 
+    protected virtual void ChangeWeaponPosition()
+    {
+        weaponDirection = facingDirection;
+        Vector2 normalizedDirection = weaponDirection.normalized;
+        if (normalizedDirection == Vector2.zero)
+        {
+            normalizedDirection = Vector2.right;
+        }
+        Vector2 weaponPosition = normalizedDirection / 2;
+        weaponObject.localPosition = weaponPosition;
+        weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
+    }
+
     void Update()
     {
         if (isAlive)
@@ -50,14 +64,7 @@ public class Person : Effectable, IDamagable
             }
 
             // обновление позиции оружия
-            Vector2 normalizedDirection = facingDirection.normalized;
-            if (normalizedDirection == Vector2.zero)
-            {
-                normalizedDirection = Vector2.right;
-            }
-            Vector2 weaponPosition = normalizedDirection / 2;
-            weaponObject.localPosition = weaponPosition;
-            weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
+            ChangeWeaponPosition();
 
             //движение персонажа
             if (!hasEffect(EffectNames.Stun) && isMoving) //если нет оглушения и персонаж двигается
@@ -94,12 +101,12 @@ public class Person : Effectable, IDamagable
                 resultDamage *= ExplosionResistDamageReduction;
             }
 
-            Debug.Log(gameObject.name +
+            /*Debug.Log(gameObject.name +
                 " - Reductions: shield=" + ShieldDamageReduction +
                 ", expres=" + ExplosionResistDamageReduction +
                 ", minigolem=" + MiniGolemDamageReduction +
                 ", fireres=" + FireResistDamageReduction +
-                ". Result damage: " + resultDamage);
+                ". Result damage: " + resultDamage);*/
 
             health -= resultDamage;
             if (health <= 0)
@@ -117,19 +124,38 @@ public class Person : Effectable, IDamagable
         //применение эффекта заморозки
         if (hasEffect(EffectNames.Freezing))
         {
-            speedCoeff = 0.5f + 0.25f * (getEffectCount(EffectNames.FrostResistance));
+            speedCoeff *= 0.5f + 0.25f * (getEffectCount(EffectNames.FrostResistance));
+        }
+
+        //применение эффекта блока щитом
+        if (hasEffect(EffectNames.ShieldBlock))
+        {
+            speedCoeff *= 0.5f;
+        }
+
+        if (hasEffect(EffectNames.Shift))
+        {
+            speedCoeff = 5f;
         }
 
         //расчет итоговой скорости
         currentSpeed *= speedCoeff;
 
         //передвижение персонажа
-        Vector2 movement = currentDirection.normalized * currentSpeed * Time.deltaTime;
-        transform.position = transform.position + (Vector3) movement;
+        if (!hasEffect(EffectNames.Shift))
+        {
+            Vector2 movement = currentDirection.normalized * currentSpeed * Time.deltaTime;
+            transform.position = transform.position + (Vector3)movement;
 
-        //обновление последнего ненулевого передвижения
-        if (currentDirection != Vector2.zero)
-            facingDirection = currentDirection;
+            //обновление последнего ненулевого передвижения
+            if (currentDirection != Vector2.zero)
+                facingDirection = currentDirection;
+        }
+        else
+        {
+            Vector2 movement = facingDirection.normalized * currentSpeed * Time.deltaTime;
+            transform.position = transform.position + (Vector3)movement;
+        }
     }
 
     public void Attack(int weaponIndex = -1) //функция атаки. В аргументах может стоять индекс

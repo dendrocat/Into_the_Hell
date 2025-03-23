@@ -16,6 +16,8 @@ public class Sword : RangedWeapon
         baseAltEndAttackTime = 1f;
         baseAltReloadTime = 0f;
         scaleCoeff = 1f;
+        range = 2f;
+        angle = 60f;
     }
 
     protected override void Attack() //реализация метода атаки
@@ -49,9 +51,9 @@ public class Sword : RangedWeapon
         }
     }
 
-    public void LaunchAltAttack(bool state) //Активирует или деактивирует альт. атаку
+    public override void LaunchAltAttack() //Активирует или деактивирует альт. атаку
     {
-        altAttackActive = state;
+        altAttackActive = !altAttackActive;
         if (altAttackActive) AltAttack();
         else
         {
@@ -67,5 +69,10 @@ public class Sword : RangedWeapon
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
+    }
+
+    public bool altAttackIsActive()
+    {
+        return altAttackActive;
     }
 }

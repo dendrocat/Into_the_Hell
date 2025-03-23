@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public enum InputMap
 {
@@ -55,10 +56,11 @@ public class InputManager : MonoBehaviour
     private bool _cancel = false;
     public bool Cancel => _cancel ? (!(_cancel = false)) : false;
 
+    public bool HoldRightButton = false;
+
     public void onMovePressed(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
-        Debug.Log("Movement: " + move.x + ", " + move.y);
     }
 
     public void onAttackPressed(InputAction.CallbackContext context)
@@ -72,9 +74,24 @@ public class InputManager : MonoBehaviour
 
     public void onAltAttackPressed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.interaction is HoldInteraction)
         {
-            _altAttack = true;
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    HoldRightButton = true;
+                    break;
+                case InputActionPhase.Canceled:
+                    HoldRightButton = false;
+                    break;
+            }
+        }
+        else
+        {
+            if (context.performed)
+            {
+                _altAttack = true;
+            }
         }
     }
 
@@ -120,6 +137,7 @@ public class InputManager : MonoBehaviour
             _cancel = true;
         }
     }
+
     public void SwitchInputMap(InputMap map)
     {
         _playerInput.SwitchCurrentActionMap(Enum.GetName(typeof(InputMap), map));

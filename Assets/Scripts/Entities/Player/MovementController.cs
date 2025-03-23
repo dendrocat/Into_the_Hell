@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public Person player;
+    public Player player;
     InputManager inputManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,9 +27,24 @@ public class MovementController : MonoBehaviour
             {
                 player.Attack();
             }
-            if (inputManager.AltAttack)
+            if (player.playerWeapon is Sword)
             {
-                player.Attack();
+                if (inputManager.HoldRightButton != ((Sword) player.playerWeapon).altAttackIsActive())
+                {
+                    player.AltAttack();
+                }
+            }
+            else
+            {
+                if (inputManager.AltAttack)
+                {
+                    Debug.Log("Alt attack requested");
+                    player.AltAttack();
+                }
+            }
+            if (inputManager.Dash)
+            {
+                player.PerformShift();
             }
         }
     }

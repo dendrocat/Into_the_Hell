@@ -8,7 +8,7 @@ public class AlternateAttackWeapon : BaseWeapon
     public float baseAltPrepareAttackTime;
     public float baseAltEndAttackTime;
     public bool altReloading = false;
-    public void LaunchAltAttack()
+    public virtual void LaunchAltAttack()
     {
         if (!altReloading && CheckAltAttackConditions())
         {

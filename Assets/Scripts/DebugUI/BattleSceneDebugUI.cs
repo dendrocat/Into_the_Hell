@@ -27,7 +27,7 @@ public class BattleSceneDebugUI : MonoBehaviour
 
         string playerEffects = "Player Effects:\n";
         string enemyEffects = "Enemy Effects:\n";
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
             playerEffects += player.getEffectCount(i);
             enemyEffects += enemy.getEffectCount(i);
