@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3908927963362692049}
   - component: {fileID: 1756559507882290187}
   - component: {fileID: 1923466873531304938}
+  - component: {fileID: 1911771511455513607}
   m_Layer: 0
   m_Name: Holes
   m_TagString: Untagged
@@ -628,6 +629,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &1911771511455513607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058064062802937469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c055da7a6ca3bcb4ea6e81cc9830d5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hole: {fileID: 11400000, guid: b8975a8ea223b2c4fa6704873980563a, type: 2}
 --- !u!1 &3062602456591181082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,6 +4509,7 @@ GameObject:
   - component: {fileID: 8535560878450844754}
   - component: {fileID: 3495050454880645097}
   - component: {fileID: 6206083038121147142}
+  - component: {fileID: -5285021820694591522}
   m_Layer: 0
   m_Name: CaveRoom3
   m_TagString: Untagged
@@ -4554,6 +4569,9 @@ MonoBehaviour:
   - {fileID: 2783861557907961422}
   - {fileID: 5943260476919634273}
   _floor: {fileID: 2199648177659724092}
+  _additional:
+    _enabled: 0
+    _value: {fileID: 0}
   _hole:
     _enabled: 1
     _value: {fileID: 3908927963362692049}
@@ -4563,6 +4581,18 @@ MonoBehaviour:
   DestroySpawns:
     _enabled: 0
     _value: {fileID: 0}
+--- !u!114 &-5285021820694591522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684130179282919871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b38e125e7bd5d4992660d85ea3e4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8916901267683322783
 GameObject:
   m_ObjectHideFlags: 0

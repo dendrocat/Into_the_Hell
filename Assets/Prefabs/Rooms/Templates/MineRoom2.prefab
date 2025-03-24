@@ -7245,6 +7245,7 @@ GameObject:
   - component: {fileID: 2004581316492029789}
   - component: {fileID: 3992978523916581078}
   - component: {fileID: 5163614457766205138}
+  - component: {fileID: -4508326848261175639}
   m_Layer: 0
   m_Name: MineRoom2
   m_TagString: Untagged
@@ -7303,6 +7304,9 @@ MonoBehaviour:
   - {fileID: 6412369324296313348}
   - {fileID: 3176039810709706710}
   _floor: {fileID: 7355352974386896855}
+  _additional:
+    _enabled: 0
+    _value: {fileID: 0}
   _hole:
     _enabled: 0
     _value: {fileID: 0}
@@ -7312,6 +7316,18 @@ MonoBehaviour:
   DestroySpawns:
     _enabled: 0
     _value: {fileID: 0}
+--- !u!114 &-4508326848261175639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294035795001149154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b38e125e7bd5d4992660d85ea3e4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3489850499749603161
 GameObject:
   m_ObjectHideFlags: 0

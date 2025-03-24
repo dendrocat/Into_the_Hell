@@ -9,6 +9,7 @@ public class TilesContainer : ScriptableObject
     [SerializeField] TileBase _wallDownOuter;
     [SerializeField] TileBase _floor;
     [SerializeField] TileBase _hole;
+    [SerializeField] TileBase _additional;
     [SerializeField] GameObject _trap;
     [SerializeField] GameObject _destroys;
 
@@ -18,6 +19,7 @@ public class TilesContainer : ScriptableObject
     public TileBase WallDownOuter => _wallDownOuter;
     public TileBase Floor => _floor;
     public TileBase Hole => _hole;
+    public TileBase Additional => _additional;
     public GameObject Trap => _trap;
     public GameObject Destroys => _destroys;
 }

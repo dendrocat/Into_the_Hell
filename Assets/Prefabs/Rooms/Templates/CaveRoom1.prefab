@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3756755916279664464}
   - component: {fileID: 204579780887507493}
   - component: {fileID: 3596621016140010080}
+  - component: {fileID: 3868235772742155802}
   m_Layer: 0
   m_Name: Holes
   m_TagString: Untagged
@@ -618,6 +619,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &3868235772742155802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032113706942685591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c055da7a6ca3bcb4ea6e81cc9830d5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hole: {fileID: 11400000, guid: b8975a8ea223b2c4fa6704873980563a, type: 2}
 --- !u!1 &1131803145648347102
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,9 +7274,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 2
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -7270,9 +7284,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 2
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -7471,11 +7485,11 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
+  - m_RefCount: 2
     m_Data: {fileID: 0}
   - m_RefCount: 18
     m_Data: {fileID: 1107953493, guid: 072420d81636a8c488a2a3e3025c8ad6, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 18
     m_Data: {fileID: 1527532285, guid: 072420d81636a8c488a2a3e3025c8ad6, type: 3}
@@ -7501,10 +7515,10 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 36
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 0
-    m_Data: {r: 1.81908e-40, g: 1.81908e-40, b: 1.81908e-40, a: 1.81908e-40}
   - m_RefCount: 2
-    m_Data: {r: 0.90214336, g: 0.4315484, b: 0.56994736, a: 1}
+    m_Data: {r: 0.933344, g: 0.39830583, b: 0.4035252, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 1.65762e-40, g: 1.65762e-40, b: 1.65762e-40, a: 1.65762e-40}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7592,6 +7606,7 @@ GameObject:
   - component: {fileID: 8933996500600070636}
   - component: {fileID: 5889720541877227220}
   - component: {fileID: 1172455449660515105}
+  - component: {fileID: -1807623636614827546}
   m_Layer: 0
   m_Name: CaveRoom1
   m_TagString: Untagged
@@ -7651,6 +7666,9 @@ MonoBehaviour:
   - {fileID: 1780883931716687465}
   - {fileID: 2963681023641857737}
   _floor: {fileID: 2838911714529739175}
+  _additional:
+    _enabled: 0
+    _value: {fileID: 0}
   _hole:
     _enabled: 1
     _value: {fileID: 3756755916279664464}
@@ -7660,6 +7678,18 @@ MonoBehaviour:
   DestroySpawns:
     _enabled: 0
     _value: {fileID: 0}
+--- !u!114 &-1807623636614827546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990937908028791114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b38e125e7bd5d4992660d85ea3e4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &671303605776867490
 PrefabInstance:
   m_ObjectHideFlags: 0
