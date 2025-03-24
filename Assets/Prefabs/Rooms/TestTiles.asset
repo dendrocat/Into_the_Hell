@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
   m_Name: TestTiles
   m_EditorClassIdentifier: 
-  _wallUp: {fileID: 11400000, guid: 6644daf96b8c8bc4281a89e0f671587d, type: 2}
-  _wallDownInner: {fileID: 11400000, guid: 7e97eca18d934854ea4274f0a78c8eb0, type: 2}
-  _wallDownOuter: {fileID: 11400000, guid: 255dd22b9bb82a24fab955d189a1a858, type: 2}
-  _floor: {fileID: 11400000, guid: d69f2b230ff8370479ead85717748637, type: 2}
+  _wallUp: {fileID: 11400000, guid: 420aba98851afaa489910a8750470984, type: 2}
+  _wallDownInner: {fileID: 11400000, guid: f9f0b191194d3dd408f27e4186e2d152, type: 2}
+  _wallDownOuter: {fileID: 11400000, guid: 0214dc09fd5eab445acf10b4397e8532, type: 2}
+  _floor: {fileID: 11400000, guid: ef30cdc4d9a7f8647b39dc0b8b4774ad, type: 2}
   _hole: {fileID: 11400000, guid: ed58919e8f74af441bd49e7f08184c2f, type: 2}
+  _trap: {fileID: 7163500113360968259, guid: e60a96ef4b2349c43920b95460bd2bec, type: 3}
+  _destroys: {fileID: 8298101166922554600, guid: 4277e6d0ceabef5428c07c93a7208975, type: 3}
