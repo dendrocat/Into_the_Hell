@@ -12,7 +12,7 @@ public enum EffectNames {
     ExplosionResistance = 7, //взрывостойкость
     IceDrifting = 8, //скольжение по льду
     ShieldBlock = 9, //блок щитом
-    Shift = 10 //рывок
+    Shift = 10, //рывок
 };
 //Класс сущностей, на которые можно наложить эффект
 public class Effectable: MonoBehaviour

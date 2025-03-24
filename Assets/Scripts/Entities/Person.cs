@@ -5,18 +5,21 @@ using System.Collections;
 //Базовый класс персонажа
 public class Person : Effectable, IDamagable
 {
-    bool isAlive = true;
+    bool alive = true;
 
     protected float maxHealth = 100f; //максимальное здоровье
     protected float health = 100f; //текущее здоровье
     protected float speed = 2f; //скорость передвижения персонажа
     public List<BaseWeapon> weapons; //список оружий персонажа
     public Transform weaponObject;
+    public List<string> targetTags; //список тегов возможных целей
 
     public bool isMoving = false;
     public Vector2 currentDirection;
     public Vector2 facingDirection;
     public Vector2 weaponDirection;
+
+    Rigidbody2D rb = null;
     Animator anim = null; //компонент аниматор
 
     public float getHP()
@@ -24,12 +27,25 @@ public class Person : Effectable, IDamagable
         return health;
     }
 
-    void Start()
+    public bool isAlive()
+    {
+        return alive;
+    }
+
+    protected void Start()
     {
         facingDirection = Vector2.right;
         if (!TryGetComponent<Animator>(out anim)) //получаем ссылку на компонент аниматора
         {
             Debug.LogError(gameObject.name + ": Missing animator component");
+        }
+        if (!TryGetComponent<Rigidbody2D>(out rb))
+        {
+            Debug.LogError(gameObject.name + ": Missing rigidbody2d component");
+        }
+        else
+        {
+            rb.freezeRotation = true;
         }
         if (weaponObject == null)
         {
@@ -52,7 +68,7 @@ public class Person : Effectable, IDamagable
 
     void Update()
     {
-        if (isAlive)
+        if (alive)
         {
             // обновление и применение действий от эффектов
             UpdateEffectRemainingTime();
@@ -67,7 +83,8 @@ public class Person : Effectable, IDamagable
             ChangeWeaponPosition();
 
             //движение персонажа
-            if (!hasEffect(EffectNames.Stun) && isMoving) //если нет оглушения и персонаж двигается
+            if ((!hasEffect(EffectNames.Stun) && isMoving) || hasEffect(EffectNames.Shift)) 
+                //если нет оглушения и персонаж двигается, или на нем есть эффект рывка
             {
                 Move();
             }
@@ -76,7 +93,7 @@ public class Person : Effectable, IDamagable
 
     public void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
     {
-        if (isAlive)
+        if (alive)
         {
             float resultDamage = damage; //изначальный урон
 
@@ -116,7 +133,7 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    public void Move() //функция передвижения в заданном направлении
+    public float getSpeed()
     {
         float currentSpeed = speed;
         float speedCoeff = 1.0f;
@@ -140,6 +157,13 @@ public class Person : Effectable, IDamagable
 
         //расчет итоговой скорости
         currentSpeed *= speedCoeff;
+
+        return currentSpeed;
+    }
+
+    public void Move() //функция передвижения в заданном направлении
+    {
+        float currentSpeed = getSpeed();
 
         //передвижение персонажа
         if (!hasEffect(EffectNames.Shift))
@@ -185,13 +209,13 @@ public class Person : Effectable, IDamagable
 
     void Die() //функция смерти персонажа
     {
-        isAlive = false;
+        alive = false;
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         OnDeath(); //вызов событий при смерти персонажа
     }
 
-    public void OnDeath() //Метод, вызывающий события при смерти персонажа.
+    protected virtual void OnDeath() //Метод, вызывающий события при смерти персонажа.
                           //Переопределяется в классах-наследниках при необходимости
     {
         Debug.Log(gameObject.name + ": dead");

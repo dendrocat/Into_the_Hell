@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    public List<string> targetTags;
     public float damage;
     public float speed;
     public float damageRadius = 0.5f;
@@ -31,11 +32,11 @@ public class Missile : MonoBehaviour
         List<Collider2D> colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius).ToList<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
-            GameObject parent = collider.gameObject;
-            Person person = null;
-            if (parent.TryGetComponent<Person>(out person))
+            IDamagable damagable = collider.GetComponent<IDamagable>();
+            if (!targetTags.Contains(collider.gameObject.tag)) continue;
+            if (damagable != null)
             {
-                person.TakeDamage(damage, DamageType.None);
+                damagable.TakeDamage(damage, DamageType.None);
             }
         }
         Destroy(this);

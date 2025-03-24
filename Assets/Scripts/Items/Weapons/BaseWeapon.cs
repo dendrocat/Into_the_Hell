@@ -33,9 +33,13 @@ public class BaseWeapon : UpgradableItem
 
     private IEnumerator PerformAttack()
     {
+        OnPrepareAttackStart();
         yield return new WaitForSeconds(CalcScaleDescending(basePrepareAttackTime));
+        OnPrepareAttackEnd();
         Attack();
+        OnEndAttackStart();
         yield return new WaitForSeconds(CalcScaleDescending(baseEndAttackTime));
+        OnEndAttackEnd();
         StartCoroutine(ReloadWeapon(CalcScaleDescending(baseReloadTime)));
     }
 
@@ -45,6 +49,26 @@ public class BaseWeapon : UpgradableItem
     }
 
     protected virtual void Attack() //метод для атаки. Переопределяется в классах-наследниках
+    {
+
+    }
+
+    protected virtual void OnPrepareAttackStart() //действия, выполняемые перед началом подготовки атаки
+    {
+
+    }
+
+    protected virtual void OnPrepareAttackEnd() //действия, выполняемые после окончания подготовки атаки
+    {
+
+    }
+
+    protected virtual void OnEndAttackStart() //действия, выполняемые перед началом окончания атаки
+    {
+
+    }
+
+    protected virtual void OnEndAttackEnd() //действия, выполняемые после окончания окончания атаки
     {
 
     }

@@ -27,16 +27,16 @@ public class MovementController : MonoBehaviour
             {
                 player.Attack();
             }
-            if (player.playerWeapon is Sword)
+            if (player.playerWeapon is Sword sword)
             {
-                if (inputManager.HoldRightButton != ((Sword) player.playerWeapon).altAttackIsActive())
+                if (inputManager.HoldRightButton != sword.altAttackIsActive())
                 {
                     player.AltAttack();
                 }
             }
             else
             {
-                if (inputManager.AltAttack)
+                if (inputManager.HoldRightButton) //todo понять, почему не работает обычное нажатие ПКМ
                 {
                     Debug.Log("Alt attack requested");
                     player.AltAttack();

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Person
 {
@@ -16,7 +18,8 @@ public class Player : Person
             Vector2 nearestDirection = new Vector2(15f, 0f);
             foreach(Collider2D enemyCollider in enemyColliders)
             {
-                if (enemyCollider.gameObject == gameObject) continue;
+                if (enemyCollider.gameObject.tag != "Enemy") continue;
+                if (!enemyCollider.gameObject.GetComponent<Person>().isAlive()) continue;
                 Vector2 dir = enemyCollider.gameObject.transform.position - transform.position;
                 if (dir.magnitude < nearestDirection.magnitude)
                 {
@@ -24,6 +27,11 @@ public class Player : Person
                 }
             }
             weaponDirection = nearestDirection.normalized;
+
+            if (nearestDirection == new Vector2(15f, 0f))
+            {
+                weaponDirection = facingDirection.normalized;
+            }
         }
         else
         {
@@ -88,5 +96,11 @@ public class Player : Person
             ShiftCount++;
             StartCoroutine(Timer2Coroutine());
         }
+    }
+
+    protected override void OnDeath()
+    {
+        Debug.Log("You died. Game over!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

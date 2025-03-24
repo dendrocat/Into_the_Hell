@@ -22,32 +22,16 @@ public class Sword : RangedWeapon
 
     protected override void Attack() //реализация метода атаки
     {
-        List<Person> targets = new List<Person>(); //поиск целей для атаки
-        Person[] possibleTargets = FindObjectsByType<Person>(FindObjectsSortMode.None);
-
-        foreach (Person candidate in possibleTargets)
-        { // перебор возможных целей
-            if (candidate == owner) continue; //на себя не реагируем
-
-            Vector2 candidatePosition = candidate.transform.position;
-            Vector2 candidateDirection = candidatePosition - (Vector2)transform.position;
-
-            if (candidateDirection.magnitude <= range)
-            {
-                float candidateAngle = Vector2.Angle(candidateDirection, owner.currentDirection);
-                if (candidateAngle <= angle / 2)
-                {
-                    targets.Add(candidate);
-                }
-            }
-        }
+        List<IDamagable> targets = FindTargetsForAttack();
 
         //нанесение урона всем целям
-        foreach (Person target in targets)
+        foreach (IDamagable target in targets)
         {
             target.TakeDamage(getScaledDamage(), DamageType.None);
-            target.AddEffect(EffectNames.Burning);
-            target.AddEffect(EffectNames.Freezing);
+            /*if (target is Effectable effectableTarget)
+            {
+                effectableTarget.AddEffect(EffectNames.Freezing);
+            }*/
         }
     }
 

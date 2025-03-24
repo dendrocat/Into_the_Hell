@@ -4,7 +4,9 @@ using UnityEngine;
 public class UpgradableItem : MonoBehaviour
 {
     protected float scaleCoeff = 0.2f; //Коэффициент масштабирования.
-                             //Задается в классах-наследниках в методе Start
+                                       //Задается в классах-наследниках в методе Start
+    protected float minValueDescending = 0.5f; //Доля, которая остается при уменьшающем масштабировании
+                                               //на максимальном уровне.
     public byte level; //Текущий уровень предмета
     public byte maxLevel; //Максимальный уровень предмета
 
@@ -23,7 +25,7 @@ public class UpgradableItem : MonoBehaviour
     public float CalcScaleDescending(float scalable) //Возвращает значение scalable, уменьшенное
                                                      //согласно текущему уровню предмета
     {
-        float coeff = 0.5f / (maxLevel - 1);
+        float coeff = minValueDescending / (maxLevel - 1);
         return scalable * (1f - (level - 1) * coeff);
     }
 

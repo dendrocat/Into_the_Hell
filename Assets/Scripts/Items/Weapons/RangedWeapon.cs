@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //Класс оружия ближнего боя
@@ -16,29 +17,40 @@ public class RangedWeapon : AlternateAttackWeapon
         Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
     }
 
-    protected override void Attack() //реализация метода атаки
+    protected List<IDamagable> FindTargetsForAttack()
     {
-        List<Person> targets = new List<Person>(); //поиск целей для атаки
-        Person[] possibleTargets = FindObjectsByType<Person>(FindObjectsSortMode.None);
-        
-        foreach(Person candidate in possibleTargets) { // перебор возможных целей
-            if (candidate == owner) continue; //на себя не реагируем
+        List<IDamagable> targets = new List<IDamagable>(); //поиск целей для атаки
+        //Person[] possibleTargets = FindObjectsByType<Person>(FindObjectsSortMode.None);
+
+        List<Collider2D> possibleTargets = Physics2D.OverlapCircleAll(owner.transform.position, range).ToList<Collider2D>();
+
+        foreach (Collider2D candidate in possibleTargets)
+        { // перебор возможных целей
+            IDamagable damagable = candidate.GetComponent<IDamagable>();
+            if (!owner.targetTags.Contains(candidate.gameObject.tag)) continue; //не реагируем на цели, не соответствующие тегу
 
             Vector2 candidatePosition = candidate.transform.position;
-            Vector2 candidateDirection = candidatePosition - (Vector2) transform.position;
+            Vector2 candidateDirection = candidatePosition - (Vector2)transform.position;
 
             if (candidateDirection.magnitude <= range)
             {
                 float candidateAngle = Vector2.Angle(candidateDirection, owner.weaponDirection);
                 if (candidateAngle <= angle / 2)
                 {
-                    targets.Add(candidate);
+                    targets.Add(damagable);
                 }
             }
         }
 
+        return targets;
+    }
+
+    protected override void Attack() //реализация метода атаки
+    {
+        List<IDamagable> targets = FindTargetsForAttack();
+
         //нанесение урона всем целям
-        foreach(Person target in targets)
+        foreach(IDamagable target in targets)
         {
             target.TakeDamage(getScaledDamage(), DamageType.None);
         }
