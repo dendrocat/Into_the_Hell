@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+/// <summary>
+/// Container for tiles in each location. 
+/// Should be used in level generation for swapping tiles in template
+/// </summary>
 [CreateAssetMenu(fileName = "TilesContainer", menuName = "Scriptable Objects/TilesContainer")]
 public class TilesContainer : ScriptableObject
 {

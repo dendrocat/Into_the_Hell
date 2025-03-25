@@ -1,7 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Controller for room tilemap.
+/// Can manage DoorTilemapContoller and set some additional tile and gameObjects
+/// Must be removed from gameObject after level generation
+/// </summary>
 public class RoomTilemapController : TilemapController
 {
     [SerializeField] Optional<Tilemap> _additional;
@@ -9,9 +15,17 @@ public class RoomTilemapController : TilemapController
     [SerializeField] Optional<Transform> TrapSpawns;
     [SerializeField] Optional<Transform> DestroySpawns;
 
+    DoorTilemapController _doorTilemap;
+
+    void Start()
+    {
+        _doorTilemap = GetComponentInChildren<DoorTilemapController>();
+    }
+
     public override void SwapTiles(TilesContainer container)
     {
         base.SwapTiles(container);
+        _doorTilemap.SwapTiles(container);
 
         if (_hole.Enabled)
         {
@@ -59,6 +73,25 @@ public class RoomTilemapController : TilemapController
     {
         _additional.Value.SetTile(pos, tile);
         _additional.Value.RefreshAllTiles();
+    }
+
+    public void ActivateDoor(DoorDirection door)
+    {
+        _doorTilemap.ActivateDoor(door);
+    }
+
+    public override void DestroyUnused()
+    {
+        _doorTilemap.DestroyUnused();
+
+        base.DestroyUnused();
+    }
+
+
+
+    public void SetAdditionalEffects()
+    {
+        throw new NotImplementedException("Not implemented setting effects like lava and ice");
     }
 
 }

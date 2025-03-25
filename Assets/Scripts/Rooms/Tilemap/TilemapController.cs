@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// BaseController for tilemaps.
+/// Can swap wall and floor tiles
+/// After level generation must be removed from gameobject
+/// </summary>
 public class TilemapController : MonoBehaviour
 {
-    [Header("For sizing")]
-    [SerializeField] bool showGizmos;
-
-    [SerializeField] Vector2 size;
-
-    [Header("For tiles swapping")]
+    [Header("Tiles swapping")]
     [SerializeField] protected TilesContainer _templateContainer;
 
     [SerializeField] protected List<Tilemap> _walls;
@@ -19,21 +19,28 @@ public class TilemapController : MonoBehaviour
 
     public virtual void SwapTiles(TilesContainer container)
     {
+        SwapWallTiles(container);
+        SwapFloorTiles(container);
+    }
+
+    protected void SwapWallTiles(TilesContainer container)
+    {
         foreach (var wall in _walls)
         {
             wall.SwapTile(_templateContainer.WallUp, container.WallUp);
             wall.SwapTile(_templateContainer.WallDownInner, container.WallDownInner);
             wall.SwapTile(_templateContainer.WallDownOuter, container.WallDownOuter);
         }
+    }
+
+    protected void SwapFloorTiles(TilesContainer container)
+    {
         _floor.SwapTile(_templateContainer.Floor, container.Floor);
         _floor.RefreshAllTiles();
     }
 
-
-    private void OnDrawGizmos()
+    public virtual void DestroyUnused()
     {
-        if (!showGizmos) return;
-        Gizmos.color = new Color(0.5f, 0.5f, 0.5f, 0.1f);
-        Gizmos.DrawCube(transform.position, size);
+        Destroy(this);
     }
 }
