@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class BattleSceneDebugUI : MonoBehaviour
 {
-    public Person player;
-    public Person enemy;
+    public Player player;
 
     public TMP_Text playerHPText;
-    public TMP_Text enemyHPText;
+    public TMP_Text dashCount;
     public TMP_Text playerEffectsText;
-    public TMP_Text enemyEffectsText;
 
     void Start()
     {
@@ -20,25 +18,20 @@ public class BattleSceneDebugUI : MonoBehaviour
     void Update()
     {
         float playerHP = player.getHP();
-        float enemyHP = enemy.getHP();
 
         playerHPText.SetText("Player HP: " + playerHP);
-        enemyHPText.SetText("Enemy HP: " + enemyHP);
+        dashCount.SetText("Shift count: " + player.ShiftCount);
 
         string playerEffects = "Player Effects:\n";
-        string enemyEffects = "Enemy Effects:\n";
         for (int i = 0; i < 11; i++)
         {
             playerEffects += player.getEffectCount(i);
-            enemyEffects += enemy.getEffectCount(i);
             if (i < 9)
             {
                 playerEffects += ",";
-                enemyEffects += ",";
             }
         }
 
         playerEffectsText.SetText(playerEffects);
-        enemyEffectsText.SetText(enemyEffects);
     }
 }

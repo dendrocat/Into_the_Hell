@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviour
                     break;
             }
         }
-        else
+        else if (context.interaction is PressInteraction)
         {
             if (context.performed)
             {

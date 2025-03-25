@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TwoHandedSword : RangedWeapon
@@ -14,7 +15,8 @@ public class TwoHandedSword : RangedWeapon
         baseAltPrepareAttackTime = 0f;
         baseAltEndAttackTime = 1f;
         baseAltReloadTime = 6f;
-        scaleCoeff = 5f / 6f;
+        scaleCoeff = 1f;
+        minValueDescending = 5f / 6f;
         range = 3f;
         angle = 90f;
     }
@@ -28,5 +30,15 @@ public class TwoHandedSword : RangedWeapon
     {
         owner.facingDirection = owner.weaponDirection;
         owner.AddEffect(EffectNames.Shift, 1);
+    }
+
+    protected override void AltAttack()
+    {
+        List<IDamagable> targets = FindTargetsForAttack();
+
+        foreach(IDamagable target in targets)
+        {
+            target.TakeDamage(altDamage, DamageType.None);
+        }
     }
 }

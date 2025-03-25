@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : Person
 {
-    public AlternateAttackWeapon playerWeapon;
+    public PlayerInventory inventory;
     public int ShiftCount = 3;
 
     protected override void ChangeWeaponPosition()
@@ -50,14 +49,14 @@ public class Player : Person
 
     public void Attack()
     {
-        if (playerWeapon.reloading) return;
-        playerWeapon.LaunchAttack();
+        if (inventory.GetPlayerWeapon().reloading) return;
+        inventory.GetPlayerWeapon().LaunchAttack();
     }
 
     public void AltAttack()
     {
-        if (playerWeapon.altReloading) return;
-        playerWeapon.LaunchAltAttack();
+        if (inventory.GetPlayerWeapon().altReloading) return;
+        inventory.GetPlayerWeapon().LaunchAltAttack();
     }
 
     public void PerformShift()

@@ -88,6 +88,10 @@ public class Person : Effectable, IDamagable
             {
                 Move();
             }
+            else if (!isMoving)
+            {
+                rb.linearVelocity = new Vector2(0, 0);
+            }
         }
     }
 
@@ -168,8 +172,8 @@ public class Person : Effectable, IDamagable
         //передвижение персонажа
         if (!hasEffect(EffectNames.Shift))
         {
-            Vector2 movement = currentDirection.normalized * currentSpeed * Time.deltaTime;
-            transform.position = transform.position + (Vector3)movement;
+            Vector2 movement = currentDirection.normalized * currentSpeed;
+            rb.linearVelocity = movement;
 
             //обновление последнего ненулевого передвижения
             if (currentDirection != Vector2.zero)
@@ -177,8 +181,8 @@ public class Person : Effectable, IDamagable
         }
         else
         {
-            Vector2 movement = facingDirection.normalized * currentSpeed * Time.deltaTime;
-            transform.position = transform.position + (Vector3)movement;
+            Vector2 movement = facingDirection.normalized * currentSpeed;
+            rb.linearVelocity = movement;
         }
     }
 
