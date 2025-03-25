@@ -1,15 +1,18 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Controller for tilemaps of walls with doors.
 /// Can delete some walls and set doors instead
-/// Must be removed from gameObject after level generation
+/// Must be removed from gameObject after level generation via DestroyUnused
 /// </summary>
 public class DoorTilemapController : TilemapController
 {
+    public UnityEvent<List<GameObject>> OnDeletedUnusedDoors;
     List<GameObject> _doors;
 
     void Awake()
@@ -39,19 +42,27 @@ public class DoorTilemapController : TilemapController
 
     public override void DestroyUnused()
     {
-        _doors.ForEach((el) =>
+        _doors.RemoveAll((el) =>
         {
             if (!el.activeSelf)
+            {
                 Destroy(el);
+                return true;
+            }
+            return false;
         });
-        _doors.RemoveAll((el) => el.IsDestroyed());
 
-        _walls.ForEach((el) =>
-        {
-            if (!el.isActiveAndEnabled)
-                Destroy(el.gameObject);
-        });
-        _walls.RemoveAll((el) => el.IsDestroyed());
+        //base.DestroyUnused();
+        StartCoroutine(DestroySelf());
+    }
+
+    IEnumerator DestroySelf()
+    {
+        yield return null;
+
+        OnDeletedUnusedDoors.Invoke(_doors);
+        OnDeletedUnusedDoors.RemoveAllListeners();
+        OnDeletedUnusedDoors = null;
 
         base.DestroyUnused();
     }

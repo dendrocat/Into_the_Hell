@@ -14,27 +14,12 @@ public class DoorController : MonoBehaviour
 
     void Start()
     {
-        _doors = new List<GameObject>();
+        GetComponent<DoorTilemapController>().OnDeletedUnusedDoors.AddListener(GetDoors);
     }
 
-    void LateUpdate()
+    void GetDoors(List<GameObject> doors)
     {
-        if (_doors.Count == 0)
-        {
-            GetDoors();
-        }
-    }
-
-    void GetDoors()
-    {
-        for (int i = 0; i < transform.childCount; ++i)
-        {
-            var d = transform.GetChild(i);
-            if (d.GetComponent<Tilemap>() != null || d.IsDestroyed())
-                continue;
-            _doors.Add(d.gameObject);
-        }
-
+        _doors = doors;
     }
 
     public void OpenDoors()

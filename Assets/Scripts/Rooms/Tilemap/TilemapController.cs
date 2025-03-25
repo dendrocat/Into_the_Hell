@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// BaseController for tilemaps.
 /// Can swap wall and floor tiles
-/// After level generation must be removed from gameobject
+/// Must be removed from gameObject after level generation via DestroyUnused
 /// </summary>
 public class TilemapController : MonoBehaviour
 {

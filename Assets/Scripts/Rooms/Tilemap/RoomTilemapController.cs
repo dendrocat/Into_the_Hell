@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// Controller for room tilemap.
 /// Can manage DoorTilemapContoller and set some additional tile and gameObjects
-/// Must be removed from gameObject after level generation
+/// Must be removed from gameObject after level generation via DestroyUnused
 /// </summary>
 public class RoomTilemapController : TilemapController
 {
