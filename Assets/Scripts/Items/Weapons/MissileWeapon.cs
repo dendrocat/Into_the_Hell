@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//Класс оружия дальнего боя
+//РљР»Р°СЃСЃ РѕСЂСѓР¶РёСЏ РґР°Р»СЊРЅРµРіРѕ Р±РѕСЏ
 public class MissileWeapon : AlternateAttackWeapon
 {
     public GameObject missilePrefab;

@@ -98,7 +98,7 @@ namespace Pathfinding {
 					}
 				} else if (hIndex != currentHierarchicalNodeIndex && !currentConnections.Contains(hIndex)) {
 					// The Contains call can in theory be very slow as an hierarchical node may be adjacent to an arbitrary number of nodes.
-					// However in practice due to how the nodes are constructed they will only be adjacent to a smallish (≈4-6) number of other nodes.
+					// However in practice due to how the nodes are constructed they will only be adjacent to a smallish (â‰ˆ4-6) number of other nodes.
 					// So a Contains call will be much faster than say a Set lookup.
 					currentConnections.Add(hIndex);
 				}

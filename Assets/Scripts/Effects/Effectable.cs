@@ -2,28 +2,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EffectNames { 
-    Burning = 0, //горение
-    Freezing = 1, //заморозка
-    Stun = 2, //оглушение
-    AttackChain = 3, //серия атак
-    MiniGolem = 4, //мини-голем
-    FireResistance = 5, //огнестойкость
-    FrostResistance = 6, //морозостойкость
-    ExplosionResistance = 7, //взрывостойкость
-    IceDrifting = 8, //скольжение по льду
-    ShieldBlock = 9, //блок щитом
-    Shift = 10, //рывок
+    Burning = 0, //РіРѕСЂРµРЅРёРµ
+    Freezing = 1, //Р·Р°РјРѕСЂРѕР·РєР°
+    Stun = 2, //РѕРіР»СѓС€РµРЅРёРµ
+    AttackChain = 3, //СЃРµСЂРёСЏ Р°С‚Р°Рє
+    MiniGolem = 4, //РјРёРЅРё-РіРѕР»РµРј
+    FireResistance = 5, //РѕРіРЅРµСЃС‚РѕР№РєРѕСЃС‚СЊ
+    FrostResistance = 6, //РјРѕСЂРѕР·РѕСЃС‚РѕР№РєРѕСЃС‚СЊ
+    ExplosionResistance = 7, //РІР·СЂС‹РІРѕСЃС‚РѕР№РєРѕСЃС‚СЊ
+    IceDrifting = 8, //СЃРєРѕР»СЊР¶РµРЅРёРµ РїРѕ Р»СЊРґСѓ
+    ShieldBlock = 9, //Р±Р»РѕРє С‰РёС‚РѕРј
+    Shift = 10, //СЂС‹РІРѕРє
 };
-//Класс сущностей, на которые можно наложить эффект
+//РљР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚РµР№, РЅР° РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РЅРѕ РЅР°Р»РѕР¶РёС‚СЊ СЌС„С„РµРєС‚
 public class Effectable: MonoBehaviour
 {
-    private const int EFFECT_COUNT = 11; //общее количество типов эффектов
+    private const int EFFECT_COUNT = 11; //РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РёРїРѕРІ СЌС„С„РµРєС‚РѕРІ
 
-    protected List<int> effectCount = new List<int>(); //количество эффектов на сущности
-    protected List<float> effectRemainingTime = new List<float>(); //оставшееся время действия эффекта
+    protected List<int> effectCount = new List<int>(); //РєРѕР»РёС‡РµСЃС‚РІРѕ СЌС„С„РµРєС‚РѕРІ РЅР° СЃСѓС‰РЅРѕСЃС‚Рё
+    protected List<float> effectRemainingTime = new List<float>(); //РѕСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ СЌС„С„РµРєС‚Р°
 
-    private static List<float> effectDuration = new List<float>(); //длительность эффекта (-inf для постоянных эффектов)
-    private static List<int> maxEffectCount = new List<int>(); //макс. количество эффектов
+    private static List<float> effectDuration = new List<float>(); //РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЌС„С„РµРєС‚Р° (-inf РґР»СЏ РїРѕСЃС‚РѕСЏРЅРЅС‹С… СЌС„С„РµРєС‚РѕРІ)
+    private static List<int> maxEffectCount = new List<int>(); //РјР°РєСЃ. РєРѕР»РёС‡РµСЃС‚РІРѕ СЌС„С„РµРєС‚РѕРІ
 
     void Awake()
     {
@@ -130,18 +130,18 @@ public class Effectable: MonoBehaviour
         }
     }
 
-    protected void UpdateEffectRemainingTime() //обновление оставшегося времени действия эффектов
+    protected void UpdateEffectRemainingTime() //РѕР±РЅРѕРІР»РµРЅРёРµ РѕСЃС‚Р°РІС€РµРіРѕСЃСЏ РІСЂРµРјРµРЅРё РґРµР№СЃС‚РІРёСЏ СЌС„С„РµРєС‚РѕРІ
     {
-        for (int i = 0; i < EFFECT_COUNT; i++) //проверяем каждый тип эффекта
+        for (int i = 0; i < EFFECT_COUNT; i++) //РїСЂРѕРІРµСЂСЏРµРј РєР°Р¶РґС‹Р№ С‚РёРї СЌС„С„РµРєС‚Р°
         {
-            if (effectCount[i] > 0) //если он наложен
+            if (effectCount[i] > 0) //РµСЃР»Рё РѕРЅ РЅР°Р»РѕР¶РµРЅ
             {
-                if (effectDuration[i] != Mathf.NegativeInfinity) //если эффект имеет время действия
+                if (effectDuration[i] != Mathf.NegativeInfinity) //РµСЃР»Рё СЌС„С„РµРєС‚ РёРјРµРµС‚ РІСЂРµРјСЏ РґРµР№СЃС‚РІРёСЏ
                 {
                     effectRemainingTime[i] -= Time.deltaTime;
-                    if (effectRemainingTime[i] < 0.0f) //если эффект закончился
+                    if (effectRemainingTime[i] < 0.0f) //РµСЃР»Рё СЌС„С„РµРєС‚ Р·Р°РєРѕРЅС‡РёР»СЃСЏ
                     {
-                        RemoveEffect(i, 1); //убираем 1 эффект
+                        RemoveEffect(i, 1); //СѓР±РёСЂР°РµРј 1 СЌС„С„РµРєС‚
                     }
                 }
             }

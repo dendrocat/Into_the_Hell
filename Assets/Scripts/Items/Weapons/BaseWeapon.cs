@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-//Базовый класс оружия
+//Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РѕСЂСѓР¶РёСЏ
 public class BaseWeapon : UpgradableItem
 {
     public Texture2D weaponTexture;
@@ -43,32 +43,32 @@ public class BaseWeapon : UpgradableItem
         StartCoroutine(ReloadWeapon(CalcScaleDescending(baseReloadTime)));
     }
 
-    protected virtual bool CheckAttackConditions() //метод для проверки, возможна ли атака. Переопределяется в классах-наследниках
+    protected virtual bool CheckAttackConditions() //РјРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё, РІРѕР·РјРѕР¶РЅР° Р»Рё Р°С‚Р°РєР°. РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С…
     {
         return true;
     }
 
-    protected virtual void Attack() //метод для атаки. Переопределяется в классах-наследниках
+    protected virtual void Attack() //РјРµС‚РѕРґ РґР»СЏ Р°С‚Р°РєРё. РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С…
     {
 
     }
 
-    protected virtual void OnPrepareAttackStart() //действия, выполняемые перед началом подготовки атаки
+    protected virtual void OnPrepareAttackStart() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РїРѕРґРіРѕС‚РѕРІРєРё Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnPrepareAttackEnd() //действия, выполняемые после окончания подготовки атаки
+    protected virtual void OnPrepareAttackEnd() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕРґРіРѕС‚РѕРІРєРё Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnEndAttackStart() //действия, выполняемые перед началом окончания атаки
+    protected virtual void OnEndAttackStart() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РѕРєРѕРЅС‡Р°РЅРёСЏ Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnEndAttackEnd() //действия, выполняемые после окончания окончания атаки
+    protected virtual void OnEndAttackEnd() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ Р°С‚Р°РєРё
     {
 
     }

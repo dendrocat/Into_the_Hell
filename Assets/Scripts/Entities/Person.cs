@@ -2,18 +2,18 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-//Базовый класс персонажа
+//Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РїРµСЂСЃРѕРЅР°Р¶Р°
 public class Person : Effectable, IDamagable
 {
     bool alive = true;
 
     protected float destructionDelay = 1f;
-    protected float maxHealth = 100f; //максимальное здоровье
-    protected float health = 100f; //текущее здоровье
-    protected float speed = 2f; //скорость передвижения персонажа
-    public List<BaseWeapon> weapons; //список оружий персонажа
+    protected float maxHealth = 100f; //РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РґРѕСЂРѕРІСЊРµ
+    protected float health = 100f; //С‚РµРєСѓС‰РµРµ Р·РґРѕСЂРѕРІСЊРµ
+    protected float speed = 2f; //СЃРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РїРµСЂСЃРѕРЅР°Р¶Р°
+    public List<BaseWeapon> weapons; //СЃРїРёСЃРѕРє РѕСЂСѓР¶РёР№ РїРµСЂСЃРѕРЅР°Р¶Р°
     public Transform weaponObject;
-    public List<string> targetTags; //список тегов возможных целей
+    public List<string> targetTags; //СЃРїРёСЃРѕРє С‚РµРіРѕРІ РІРѕР·РјРѕР¶РЅС‹С… С†РµР»РµР№
 
     public bool isMoving = false;
     public Vector2 currentDirection;
@@ -21,7 +21,7 @@ public class Person : Effectable, IDamagable
     public Vector2 weaponDirection;
 
     Rigidbody2D rb = null;
-    Animator anim = null; //компонент аниматор
+    Animator anim = null; //РєРѕРјРїРѕРЅРµРЅС‚ Р°РЅРёРјР°С‚РѕСЂ
 
     public float getHP()
     {
@@ -36,7 +36,7 @@ public class Person : Effectable, IDamagable
     protected void Start()
     {
         facingDirection = Vector2.right;
-        if (!TryGetComponent<Animator>(out anim)) //получаем ссылку на компонент аниматора
+        if (!TryGetComponent<Animator>(out anim)) //РїРѕР»СѓС‡Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° РєРѕРјРїРѕРЅРµРЅС‚ Р°РЅРёРјР°С‚РѕСЂР°
         {
             Debug.LogError(gameObject.name + ": Missing animator component");
         }
@@ -71,21 +71,21 @@ public class Person : Effectable, IDamagable
     {
         if (alive)
         {
-            // обновление и применение действий от эффектов
+            // РѕР±РЅРѕРІР»РµРЅРёРµ Рё РїСЂРёРјРµРЅРµРЅРёРµ РґРµР№СЃС‚РІРёР№ РѕС‚ СЌС„С„РµРєС‚РѕРІ
             UpdateEffectRemainingTime();
 
-            //применение эффекта горения
+            //РїСЂРёРјРµРЅРµРЅРёРµ СЌС„С„РµРєС‚Р° РіРѕСЂРµРЅРёСЏ
             if (hasEffect(EffectNames.Burning))
             {
                 TakeDamage(10f * Time.deltaTime, DamageType.Fire);
             }
 
-            // обновление позиции оружия
+            // РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕР·РёС†РёРё РѕСЂСѓР¶РёСЏ
             ChangeWeaponPosition();
 
-            //движение персонажа
+            //РґРІРёР¶РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶Р°
             if ((!hasEffect(EffectNames.Stun) && isMoving) || hasEffect(EffectNames.Shift)) 
-                //если нет оглушения и персонаж двигается, или на нем есть эффект рывка
+                //РµСЃР»Рё РЅРµС‚ РѕРіР»СѓС€РµРЅРёСЏ Рё РїРµСЂСЃРѕРЅР°Р¶ РґРІРёРіР°РµС‚СЃСЏ, РёР»Рё РЅР° РЅРµРј РµСЃС‚СЊ СЌС„С„РµРєС‚ СЂС‹РІРєР°
             {
                 Move();
             }
@@ -96,19 +96,19 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    public void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
+    public void TakeDamage(float damage, DamageType type) //СЂРµР°Р»РёР·Р°С†РёСЏ С„СѓРЅРєС†РёРё TakeDamage РёР· IDamagable
     {
         if (alive)
         {
-            float resultDamage = damage; //изначальный урон
+            float resultDamage = damage; //РёР·РЅР°С‡Р°Р»СЊРЅС‹Р№ СѓСЂРѕРЅ
 
-            //расчет снижения урона от эффектов
+            //СЂР°СЃС‡РµС‚ СЃРЅРёР¶РµРЅРёСЏ СѓСЂРѕРЅР° РѕС‚ СЌС„С„РµРєС‚РѕРІ
             float ShieldDamageReduction = 1f - getEffectCount(EffectNames.ShieldBlock) * 0.1f;
             float ExplosionResistDamageReduction = 1f - getEffectCount(EffectNames.ExplosionResistance) * 0.5f;
             float MiniGolemDamageReduction = Mathf.Pow(0.2f, getEffectCount(EffectNames.MiniGolem));
             float FireResistDamageReduction = 1f - getEffectCount(EffectNames.FireResistance) * 0.5f;
 
-            //снижение урона от эффектов
+            //СЃРЅРёР¶РµРЅРёРµ СѓСЂРѕРЅР° РѕС‚ СЌС„С„РµРєС‚РѕРІ
             if (type == DamageType.None)
             {
                 resultDamage *= ShieldDamageReduction;
@@ -143,13 +143,13 @@ public class Person : Effectable, IDamagable
         float currentSpeed = speed;
         float speedCoeff = 1.0f;
 
-        //применение эффекта заморозки
+        //РїСЂРёРјРµРЅРµРЅРёРµ СЌС„С„РµРєС‚Р° Р·Р°РјРѕСЂРѕР·РєРё
         if (hasEffect(EffectNames.Freezing))
         {
             speedCoeff *= 0.5f + 0.25f * (getEffectCount(EffectNames.FrostResistance));
         }
 
-        //применение эффекта блока щитом
+        //РїСЂРёРјРµРЅРµРЅРёРµ СЌС„С„РµРєС‚Р° Р±Р»РѕРєР° С‰РёС‚РѕРј
         if (hasEffect(EffectNames.ShieldBlock))
         {
             speedCoeff *= 0.5f;
@@ -160,23 +160,23 @@ public class Person : Effectable, IDamagable
             speedCoeff = 5f;
         }
 
-        //расчет итоговой скорости
+        //СЂР°СЃС‡РµС‚ РёС‚РѕРіРѕРІРѕР№ СЃРєРѕСЂРѕСЃС‚Рё
         currentSpeed *= speedCoeff;
 
         return currentSpeed;
     }
 
-    public void Move() //функция передвижения в заданном направлении
+    public void Move() //С„СѓРЅРєС†РёСЏ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РІ Р·Р°РґР°РЅРЅРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
     {
         float currentSpeed = getSpeed();
 
-        //передвижение персонажа
+        //РїРµСЂРµРґРІРёР¶РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶Р°
         if (!hasEffect(EffectNames.Shift))
         {
             Vector2 movement = currentDirection.normalized * currentSpeed;
             rb.linearVelocity = movement;
 
-            //обновление последнего ненулевого передвижения
+            //РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕСЃР»РµРґРЅРµРіРѕ РЅРµРЅСѓР»РµРІРѕРіРѕ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ
             if (currentDirection != Vector2.zero)
                 facingDirection = currentDirection;
         }
@@ -187,42 +187,42 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    public void Attack(int weaponIndex = -1) //функция атаки. В аргументах может стоять индекс
-                                             //оружия, которым нужно бить (если оно не указано, то -1).
+    public void Attack(int weaponIndex = -1) //С„СѓРЅРєС†РёСЏ Р°С‚Р°РєРё. Р’ Р°СЂРіСѓРјРµРЅС‚Р°С… РјРѕР¶РµС‚ СЃС‚РѕСЏС‚СЊ РёРЅРґРµРєСЃ
+                                             //РѕСЂСѓР¶РёСЏ, РєРѕС‚РѕСЂС‹Рј РЅСѓР¶РЅРѕ Р±РёС‚СЊ (РµСЃР»Рё РѕРЅРѕ РЅРµ СѓРєР°Р·Р°РЅРѕ, С‚Рѕ -1).
     {
-        BaseWeapon currentWeapon = (weaponIndex != -1) ? weapons[weaponIndex] : null; //получаем ссылку на оружие
-        if ((currentWeapon != null) && currentWeapon.reloading) //если выбранное оружие перезаряжается, то выходим
+        BaseWeapon currentWeapon = (weaponIndex != -1) ? weapons[weaponIndex] : null; //РїРѕР»СѓС‡Р°РµРј СЃСЃС‹Р»РєСѓ РЅР° РѕСЂСѓР¶РёРµ
+        if ((currentWeapon != null) && currentWeapon.reloading) //РµСЃР»Рё РІС‹Р±СЂР°РЅРЅРѕРµ РѕСЂСѓР¶РёРµ РїРµСЂРµР·Р°СЂСЏР¶Р°РµС‚СЃСЏ, С‚Рѕ РІС‹С…РѕРґРёРј
         {
             return;
         }
 
-        if (currentWeapon == null) //если оружие не указано
+        if (currentWeapon == null) //РµСЃР»Рё РѕСЂСѓР¶РёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ
         {
-            for (int i = weapons.Count - 1; i >= 0; i--) //перебираем все оружия с конца
+            for (int i = weapons.Count - 1; i >= 0; i--) //РїРµСЂРµР±РёСЂР°РµРј РІСЃРµ РѕСЂСѓР¶РёСЏ СЃ РєРѕРЅС†Р°
             {
-                if (!weapons[i].reloading) //если оружие готово к атаке
+                if (!weapons[i].reloading) //РµСЃР»Рё РѕСЂСѓР¶РёРµ РіРѕС‚РѕРІРѕ Рє Р°С‚Р°РєРµ
                 {
-                    currentWeapon = weapons[i]; //выбираем его
+                    currentWeapon = weapons[i]; //РІС‹Р±РёСЂР°РµРј РµРіРѕ
                     break;
                 }
             }
         }
-        if (currentWeapon == null) return; //если нет доступного оружия, то выходим
+        if (currentWeapon == null) return; //РµСЃР»Рё РЅРµС‚ РґРѕСЃС‚СѓРїРЅРѕРіРѕ РѕСЂСѓР¶РёСЏ, С‚Рѕ РІС‹С…РѕРґРёРј
 
         currentWeapon.LaunchAttack();
     }
 
-    protected void Die() //функция смерти персонажа
+    protected void Die() //С„СѓРЅРєС†РёСЏ СЃРјРµСЂС‚Рё РїРµСЂСЃРѕРЅР°Р¶Р°
     {
         alive = false;
-        if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
-        weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
-        OnDeath(); //вызов событий при смерти персонажа
+        if (anim) anim.SetBool("dead", true); //РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р°РЅРёРјР°С†РёРё СЃРјРµСЂС‚Рё
+        weaponObject.gameObject.SetActive(false); //СЃРєСЂС‹С‚СЊ РѕСЂСѓР¶РёРµ РїРµСЂСЃРѕРЅР°Р¶Р°
+        OnDeath(); //РІС‹Р·РѕРІ СЃРѕР±С‹С‚РёР№ РїСЂРё СЃРјРµСЂС‚Рё РїРµСЂСЃРѕРЅР°Р¶Р°
         StartCoroutine(DestructionDelayCoroutine());
     }
 
-    protected virtual void OnDeath() //Метод, вызывающий события при смерти персонажа.
-                          //Переопределяется в классах-наследниках при необходимости
+    protected virtual void OnDeath() //РњРµС‚РѕРґ, РІС‹Р·С‹РІР°СЋС‰РёР№ СЃРѕР±С‹С‚РёСЏ РїСЂРё СЃРјРµСЂС‚Рё РїРµСЂСЃРѕРЅР°Р¶Р°.
+                          //РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С… РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё
     {
         Debug.Log(gameObject.name + ": dead");
     }

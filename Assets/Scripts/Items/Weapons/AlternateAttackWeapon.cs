@@ -29,33 +29,33 @@ public class AlternateAttackWeapon : BaseWeapon
         StartCoroutine(ReloadAltWeapon(CalcScaleDescending(baseAltReloadTime)));
     }
 
-    protected virtual bool CheckAltAttackConditions() //метод для проверки, возможна ли альтернативаная атака.
-                                                      //Переопределяется в классах-наследниках
+    protected virtual bool CheckAltAttackConditions() //РјРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё, РІРѕР·РјРѕР¶РЅР° Р»Рё Р°Р»СЊС‚РµСЂРЅР°С‚РёРІР°РЅР°СЏ Р°С‚Р°РєР°.
+                                                      //РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С…
     {
         return false;
     }
 
-    protected virtual void AltAttack() //метод для альтернативной атаки. Переопределяется в классах-наследниках
+    protected virtual void AltAttack() //РјРµС‚РѕРґ РґР»СЏ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅРѕР№ Р°С‚Р°РєРё. РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С…
     {
 
     }
 
-    protected virtual void OnPrepareAltAttackStart() //действия, выполняемые перед началом подготовки альт атаки
+    protected virtual void OnPrepareAltAttackStart() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РїРѕРґРіРѕС‚РѕРІРєРё Р°Р»СЊС‚ Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnPrepareAltAttackEnd() //действия, выполняемые после окончания подготовки альт атаки
+    protected virtual void OnPrepareAltAttackEnd() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕРґРіРѕС‚РѕРІРєРё Р°Р»СЊС‚ Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnEndAltAttackStart() //действия, выполняемые перед началом окончания альт атаки
+    protected virtual void OnEndAltAttackStart() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј РѕРєРѕРЅС‡Р°РЅРёСЏ Р°Р»СЊС‚ Р°С‚Р°РєРё
     {
 
     }
 
-    protected virtual void OnEndAltAttackEnd() //действия, выполняемые после окончания окончания альт атаки
+    protected virtual void OnEndAltAttackEnd() //РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ Р°Р»СЊС‚ Р°С‚Р°РєРё
     {
 
     }

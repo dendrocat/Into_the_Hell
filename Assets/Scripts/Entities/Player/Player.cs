@@ -91,15 +91,15 @@ public class Player : Person, IDamagable
     {
         if (isAlive())
         {
-            float resultDamage = damage; //изначальный урон
+            float resultDamage = damage; //РёР·РЅР°С‡Р°Р»СЊРЅС‹Р№ СѓСЂРѕРЅ
 
-            //расчет снижения урона от эффектов
+            //СЂР°СЃС‡РµС‚ СЃРЅРёР¶РµРЅРёСЏ СѓСЂРѕРЅР° РѕС‚ СЌС„С„РµРєС‚РѕРІ
             float ShieldDamageReduction = 1f - getEffectCount(EffectNames.ShieldBlock) * 0.1f;
             float ExplosionResistDamageReduction = 1f - getEffectCount(EffectNames.ExplosionResistance) * 0.5f;
             float MiniGolemDamageReduction = Mathf.Pow(0.2f, getEffectCount(EffectNames.MiniGolem));
             float FireResistDamageReduction = 1f - getEffectCount(EffectNames.FireResistance) * 0.5f;
 
-            //снижение урона от эффектов
+            //СЃРЅРёР¶РµРЅРёРµ СѓСЂРѕРЅР° РѕС‚ СЌС„С„РµРєС‚РѕРІ
             if (type == DamageType.None)
             {
                 resultDamage *= ShieldDamageReduction;
@@ -114,7 +114,7 @@ public class Player : Person, IDamagable
                 resultDamage *= ExplosionResistDamageReduction;
             }
 
-            //снижение урона от брони
+            //СЃРЅРёР¶РµРЅРёРµ СѓСЂРѕРЅР° РѕС‚ Р±СЂРѕРЅРё
             float armorDamageReduction = 1f - inventory.GetPlayerArmor().getDamageReduction();
             resultDamage *= armorDamageReduction;
 

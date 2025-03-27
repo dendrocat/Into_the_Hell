@@ -6,7 +6,7 @@ public enum DamageType
     Fire = 1,
     Explosion = 2
 };
-// Интерфейс IDamagable для реализации получения урона объектом
+// РРЅС‚РµСЂС„РµР№СЃ IDamagable РґР»СЏ СЂРµР°Р»РёР·Р°С†РёРё РїРѕР»СѓС‡РµРЅРёСЏ СѓСЂРѕРЅР° РѕР±СЉРµРєС‚РѕРј
 public interface IDamagable
 {
     public abstract void TakeDamage(float damage, DamageType type);

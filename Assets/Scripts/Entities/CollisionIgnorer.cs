@@ -8,7 +8,7 @@ public class CollisionIgnorer : MonoBehaviour
 
     void Start()
     {
-        // Игнорирование коллизий при старте для существующих объектов
+        // РРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ РєРѕР»Р»РёР·РёР№ РїСЂРё СЃС‚Р°СЂС‚Рµ РґР»СЏ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… РѕР±СЉРµРєС‚РѕРІ
         foreach (var tag in ignoredTags)
         {
             GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
@@ -21,7 +21,7 @@ public class CollisionIgnorer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Динамическое игнорирование для новых объектов
+        // Р”РёРЅР°РјРёС‡РµСЃРєРѕРµ РёРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ РґР»СЏ РЅРѕРІС‹С… РѕР±СЉРµРєС‚РѕРІ
         if (ignoredTags.Contains(collision.gameObject.tag))
         {
             IgnoreCollisionsWithObject(collision.gameObject);

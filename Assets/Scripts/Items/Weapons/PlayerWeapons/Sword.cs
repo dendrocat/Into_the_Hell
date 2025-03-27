@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Класс оружия игрока "Меч"
+//РљР»Р°СЃСЃ РѕСЂСѓР¶РёСЏ РёРіСЂРѕРєР° "РњРµС‡"
 public class Sword : RangedWeapon
 {
     bool altAttackActive = false;
@@ -20,11 +20,11 @@ public class Sword : RangedWeapon
         angle = 60f;
     }
 
-    protected override void Attack() //реализация метода атаки
+    protected override void Attack() //СЂРµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° Р°С‚Р°РєРё
     {
         List<IDamagable> targets = FindTargetsForAttack();
 
-        //нанесение урона всем целям
+        //РЅР°РЅРµСЃРµРЅРёРµ СѓСЂРѕРЅР° РІСЃРµРј С†РµР»СЏРј
         foreach (IDamagable target in targets)
         {
             target.TakeDamage(getScaledDamage(), DamageType.None);
@@ -35,7 +35,7 @@ public class Sword : RangedWeapon
         }
     }
 
-    public override void LaunchAltAttack() //Активирует или деактивирует альт. атаку
+    public override void LaunchAltAttack() //РђРєС‚РёРІРёСЂСѓРµС‚ РёР»Рё РґРµР°РєС‚РёРІРёСЂСѓРµС‚ Р°Р»СЊС‚. Р°С‚Р°РєСѓ
     {
         altAttackActive = !altAttackActive;
         if (altAttackActive) AltAttack();

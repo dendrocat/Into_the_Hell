@@ -67,19 +67,19 @@ public class BaseEnemy : Person
     {
         if (isAlive())
         {
-            // обновление и применение действий от эффектов
+            // РѕР±РЅРѕРІР»РµРЅРёРµ Рё РїСЂРёРјРµРЅРµРЅРёРµ РґРµР№СЃС‚РІРёР№ РѕС‚ СЌС„С„РµРєС‚РѕРІ
             UpdateEffectRemainingTime();
 
-            //применение эффекта горения
+            //РїСЂРёРјРµРЅРµРЅРёРµ СЌС„С„РµРєС‚Р° РіРѕСЂРµРЅРёСЏ
             if (hasEffect(EffectNames.Burning))
             {
                 TakeDamage(10f * Time.deltaTime, DamageType.Fire);
             }
 
-            // обновление позиции оружия
+            // РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕР·РёС†РёРё РѕСЂСѓР¶РёСЏ
             ChangeWeaponPosition();
 
-            //движение персонажа
+            //РґРІРёР¶РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶Р°
             if (hasEffect(EffectNames.Stun))
             {
                 aipath.canMove = false;

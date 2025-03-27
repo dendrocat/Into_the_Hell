@@ -24,10 +24,10 @@ public class ExplosiveArrow : Missile
             IDamagable damagable = collider.GetComponent<IDamagable>();
             if (!targetTags.Contains(collider.gameObject.tag)) continue;
 
-            //рассчитать направление к цели
+            //СЂР°СЃСЃС‡РёС‚Р°С‚СЊ РЅР°РїСЂР°РІР»РµРЅРёРµ Рє С†РµР»Рё
             Vector2 targetDirection = collider.gameObject.transform.position - transform.position;
 
-            //рассчитать силу отталкивания
+            //СЂР°СЃСЃС‡РёС‚Р°С‚СЊ СЃРёР»Сѓ РѕС‚С‚Р°Р»РєРёРІР°РЅРёСЏ
             float force = calculateForce(targetDirection.magnitude, damageRadius);
 
             if (damagable != null)

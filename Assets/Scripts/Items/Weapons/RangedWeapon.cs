@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-//Класс оружия ближнего боя
+//РљР»Р°СЃСЃ РѕСЂСѓР¶РёСЏ Р±Р»РёР¶РЅРµРіРѕ Р±РѕСЏ
 public class RangedWeapon : AlternateAttackWeapon
 {
     public float range;
@@ -19,15 +19,15 @@ public class RangedWeapon : AlternateAttackWeapon
 
     protected List<IDamagable> FindTargetsForAttack()
     {
-        List<IDamagable> targets = new List<IDamagable>(); //поиск целей для атаки
+        List<IDamagable> targets = new List<IDamagable>(); //РїРѕРёСЃРє С†РµР»РµР№ РґР»СЏ Р°С‚Р°РєРё
         //Person[] possibleTargets = FindObjectsByType<Person>(FindObjectsSortMode.None);
 
         List<Collider2D> possibleTargets = Physics2D.OverlapCircleAll(owner.transform.position, range).ToList<Collider2D>();
 
         foreach (Collider2D candidate in possibleTargets)
-        { // перебор возможных целей
+        { // РїРµСЂРµР±РѕСЂ РІРѕР·РјРѕР¶РЅС‹С… С†РµР»РµР№
             IDamagable damagable = candidate.GetComponent<IDamagable>();
-            if (!owner.targetTags.Contains(candidate.gameObject.tag)) continue; //не реагируем на цели, не соответствующие тегу
+            if (!owner.targetTags.Contains(candidate.gameObject.tag)) continue; //РЅРµ СЂРµР°РіРёСЂСѓРµРј РЅР° С†РµР»Рё, РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ С‚РµРіСѓ
 
             Vector2 candidatePosition = candidate.transform.position;
             Vector2 candidateDirection = candidatePosition - (Vector2)transform.position;
@@ -45,11 +45,11 @@ public class RangedWeapon : AlternateAttackWeapon
         return targets;
     }
 
-    protected override void Attack() //реализация метода атаки
+    protected override void Attack() //СЂРµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° Р°С‚Р°РєРё
     {
         List<IDamagable> targets = FindTargetsForAttack();
 
-        //нанесение урона всем целям
+        //РЅР°РЅРµСЃРµРЅРёРµ СѓСЂРѕРЅР° РІСЃРµРј С†РµР»СЏРј
         foreach(IDamagable target in targets)
         {
             target.TakeDamage(getScaledDamage(), DamageType.None);

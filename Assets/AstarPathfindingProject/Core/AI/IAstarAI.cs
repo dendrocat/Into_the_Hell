@@ -89,7 +89,7 @@ namespace Pathfinding {
 		/// True if the ai has reached the <see cref="destination"/>.
 		/// This is a best effort calculation to see if the <see cref="destination"/> has been reached.
 		/// For the AIPath/RichAI scripts, this is when the character is within <see cref="AIPath.endReachedDistance"/> world units from the <see cref="destination"/>.
-		/// For the AILerp script it is when the character is at the destination (±a very small margin).
+		/// For the AILerp script it is when the character is at the destination (Â±a very small margin).
 		///
 		/// This value will be updated immediately when the <see cref="destination"/> is changed (in contrast to <see cref="reachedEndOfPath)"/>, however since path requests are asynchronous
 		/// it will use an approximation until it sees the real path result. What this property does is to check the distance to the end of the current path, and add to that the distance
