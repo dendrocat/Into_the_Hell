@@ -5,9 +5,9 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] PlayerArmor armor;
     [SerializeField] Potion potion;
     [SerializeField] AlternateAttackWeapon playerWeapon;
-    byte potionsCount = 0;
+    [SerializeField] byte potionsCount = 0;
     byte maxPotionsCount = 12;
-    byte explosiveArrowCount = 0;
+    [SerializeField] byte explosiveArrowCount = 0;
     byte maxExplosiveArrowCount = 99;
     int money = 0;
 
@@ -19,6 +19,16 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetPotionCount(int count)
+    {
+        potionsCount = (byte)count;
+    }
+
+    public int GetPotionCount()
+    {
+        return potionsCount;
     }
 
     public bool UsePotion()
@@ -39,6 +49,16 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetExplosiveArrowCount(int count)
+    {
+        explosiveArrowCount = (byte) count;
+    }
+
+    public int GetExplosiveArrowCount()
+    {
+        return explosiveArrowCount;
     }
 
     public bool UseExplosiveArrow()
@@ -69,5 +89,20 @@ public class PlayerInventory : MonoBehaviour
     public Potion GetPotion()
     {
         return potion;
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
+    public bool ModifyMoneyCount(int diff)
+    {
+        if (money - diff > 0)
+        {
+            money -= diff;
+            return true;
+        }
+        return false;
     }
 }

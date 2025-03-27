@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bow : MissileWeapon
@@ -19,5 +20,25 @@ public class Bow : MissileWeapon
         baseAltReloadTime = 5f;
     }
 
-    
+    protected override bool CheckAltAttackConditions()
+    {
+        if (owner is Player player)
+        {
+            return player.inventory.GetExplosiveArrowCount() > 0;
+        }
+        else return false;
+    }
+
+    protected override void AltAttack()
+    {
+        if (owner is Player player)
+        {
+            player.inventory.UseExplosiveArrow();
+        }
+        GameObject missile = GameObject.Instantiate(altMissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
+        Missile missileComponent = missile.GetComponent<Missile>();
+        missileComponent.speed = altMissileSpeed;
+        missileComponent.damage = CalcScale(altDamage);
+        missileComponent.direction = owner.weaponObject.localPosition;
+    }
 }

@@ -7,6 +7,7 @@ public class Person : Effectable, IDamagable
 {
     bool alive = true;
 
+    protected float destructionDelay = 1f;
     protected float maxHealth = 100f; //максимальное здоровье
     protected float health = 100f; //текущее здоровье
     protected float speed = 2f; //скорость передвижения персонажа
@@ -211,17 +212,24 @@ public class Person : Effectable, IDamagable
         currentWeapon.LaunchAttack();
     }
 
-    void Die() //функция смерти персонажа
+    protected void Die() //функция смерти персонажа
     {
         alive = false;
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         OnDeath(); //вызов событий при смерти персонажа
+        StartCoroutine(DestructionDelayCoroutine());
     }
 
     protected virtual void OnDeath() //Метод, вызывающий события при смерти персонажа.
                           //Переопределяется в классах-наследниках при необходимости
     {
         Debug.Log(gameObject.name + ": dead");
+    }
+
+    private IEnumerator DestructionDelayCoroutine()
+    {
+        yield return new WaitForSeconds(destructionDelay);
+        Destroy(gameObject);
     }
 }

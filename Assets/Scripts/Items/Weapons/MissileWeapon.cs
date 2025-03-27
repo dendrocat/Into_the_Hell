@@ -8,10 +8,10 @@ public class MissileWeapon : AlternateAttackWeapon
 
     protected override void Attack()
     {
-        GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position, Quaternion.Euler(owner.weaponDirection));
+        GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
         missileComponent.speed = missileSpeed;
         missileComponent.damage = getScaledDamage();
-        missileComponent.direction = transform.localPosition;
+        missileComponent.direction = owner.weaponObject.localPosition;
     }
 }

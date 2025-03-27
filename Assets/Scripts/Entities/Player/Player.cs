@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
-public class Player : Person
+public class Player : Person, IDamagable
 {
     public PlayerInventory inventory;
     public int ShiftCount = 3;
@@ -66,6 +67,70 @@ public class Player : Person
             StopAllCoroutines();
 
             StartCoroutine(ShiftCoroutine());
+        }
+    }
+
+    public void UsePotion()
+    {
+        if (health < maxHealth)
+        {
+            if (inventory.UsePotion())
+            {
+                Potion potion = inventory.GetPotion();
+                float heal = potion.getTotalHeal();
+                health += heal;
+                if (health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+            }
+        }
+    }
+
+    public new void TakeDamage(float damage, DamageType type)
+    {
+        if (isAlive())
+        {
+            float resultDamage = damage; //изначальный урон
+
+            //расчет снижения урона от эффектов
+            float ShieldDamageReduction = 1f - getEffectCount(EffectNames.ShieldBlock) * 0.1f;
+            float ExplosionResistDamageReduction = 1f - getEffectCount(EffectNames.ExplosionResistance) * 0.5f;
+            float MiniGolemDamageReduction = Mathf.Pow(0.2f, getEffectCount(EffectNames.MiniGolem));
+            float FireResistDamageReduction = 1f - getEffectCount(EffectNames.FireResistance) * 0.5f;
+
+            //снижение урона от эффектов
+            if (type == DamageType.None)
+            {
+                resultDamage *= ShieldDamageReduction;
+                resultDamage *= MiniGolemDamageReduction;
+            }
+            else if (type == DamageType.Fire)
+            {
+                resultDamage *= FireResistDamageReduction;
+            }
+            else if (type == DamageType.Explosion)
+            {
+                resultDamage *= ExplosionResistDamageReduction;
+            }
+
+            //снижение урона от брони
+            float armorDamageReduction = 1f - inventory.GetPlayerArmor().getDamageReduction();
+            resultDamage *= armorDamageReduction;
+
+            Debug.Log(gameObject.name +
+                " - Reductions: shield=" + ShieldDamageReduction +
+                ", expres=" + ExplosionResistDamageReduction +
+                ", minigolem=" + MiniGolemDamageReduction +
+                ", fireres=" + FireResistDamageReduction +
+                ", armor=" + armorDamageReduction + 
+                ". Result damage: " + resultDamage);
+
+            health -= resultDamage;
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
 

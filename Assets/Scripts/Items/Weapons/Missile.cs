@@ -8,12 +8,13 @@ public class Missile : MonoBehaviour
     public float damage;
     public float speed;
     public float damageRadius = 0.5f;
+    protected Rigidbody2D rb;
     public Vector2 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class Missile : MonoBehaviour
 
     void Move()
     {
-        transform.position = transform.position + (Vector3) direction.normalized * speed * Time.deltaTime;
+        rb.linearVelocity = (Vector3)direction.normalized * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +40,6 @@ public class Missile : MonoBehaviour
                 damagable.TakeDamage(damage, DamageType.None);
             }
         }
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

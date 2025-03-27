@@ -36,7 +36,7 @@ public class MovementController : MonoBehaviour
             }
             else
             {
-                if (inputManager.AltAttack) //todo понять, почему не работает обычное нажатие ПКМ
+                if (inputManager.AltAttack)
                 {
                     Debug.Log("Alt attack requested");
                     player.AltAttack();
@@ -45,6 +45,11 @@ public class MovementController : MonoBehaviour
             if (inputManager.Dash)
             {
                 player.PerformShift();
+            }
+            if (inputManager.Heal)
+            {
+                Debug.Log("Heal requested");
+                player.UsePotion();
             }
         }
     }
