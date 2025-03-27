@@ -2377,10 +2377,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossSpawn:
     _enabled: 1
-    _value: {fileID: 7038066772095727593}
+    _value: {fileID: 2165395127352911481}
   EnemySpawns:
     _enabled: 1
-    _value: {fileID: 4793768003093417879}
+    _value: {fileID: 7242846295587208783}
 --- !u!1 &3708896968324783793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,7 +2471,7 @@ GameObject:
   - component: {fileID: 4132804733240140011}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Floor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11752,11 +11752,6 @@ PrefabInstance:
 --- !u!4 &2165395127352911481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 52326691298940462, guid: d033645bc67ab6b46b91420df398e67d, type: 3}
-  m_PrefabInstance: {fileID: 2212641516447232087}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7038066772095727593 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9158313714043094974, guid: d033645bc67ab6b46b91420df398e67d, type: 3}
   m_PrefabInstance: {fileID: 2212641516447232087}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2424749044557286153

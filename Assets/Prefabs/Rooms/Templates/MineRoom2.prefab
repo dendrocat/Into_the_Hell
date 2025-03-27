@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 3477744282926712021}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Floor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7415,7 +7415,7 @@ MonoBehaviour:
     _value: {fileID: 0}
   EnemySpawns:
     _enabled: 1
-    _value: {fileID: 6910764775356460784}
+    _value: {fileID: 4973826156683012788}
 --- !u!1 &3489850499749603161
 GameObject:
   m_ObjectHideFlags: 0

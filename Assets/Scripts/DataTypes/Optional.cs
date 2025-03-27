@@ -1,15 +1,32 @@
 using System;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 
+/// <summary>
+/// A serializable structure that represents an optional value.
+/// </summary>
+/// <typeparam name="T">The type of the optional value.</typeparam>
 [Serializable]
 public struct Optional<T>
 {
+    /// <summary>
+    /// Indicates whether the optional value is enabled.
+    /// </summary>
     [SerializeField] bool _enabled;
-    [SerializeField] T _value;
 
+    /// <summary>
+    /// The value of the optional field.
+    /// </summary>
+    [SerializeField] private T _value;
+
+    /// <summary>
+    /// Gets a value indicating whether the optional value is enabled.
+    /// </summary>
     public bool Enabled => _enabled;
+
+    /// <summary>
+    /// Gets the value of the optional field.
+    /// </summary>
     public T Value => _value;
 }
 
