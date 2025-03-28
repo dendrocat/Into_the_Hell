@@ -13,7 +13,7 @@ public interface IRoomTilemapController : ITilemapController
     /// <value>
     /// An <see cref="IDoorTilemapController"/> instance responsible for door-related tilemap operations.
     /// </value>
-    public IDoorTilemapController doorTilemap { get; }
+    public IDoorTilemapController DoorTilemap { get; }
 
     /// <summary>
     /// Retrieves all free positions on the additional tilemap.

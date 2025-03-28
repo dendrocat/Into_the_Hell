@@ -1,29 +1,24 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 /// <summary>
 /// Interface for controlling doors.
 /// </summary>
 public interface IDoorController
 {
     /// <summary>
-    /// Finds all doors tagged with "Door" in the children of this GameObject.
+    /// Finds all doors tagged with "Door" in the children of this <see cref="GameObject"/>.
     /// </summary>
-    /// <remarks>
-    /// This method is typically used during generation to locate door objects in the scene.
-    /// </remarks>
-    public void FindDoors();
+    /// <param name="doors">A list of <see cref="GameObject"/> instances representing the doors to be managed.</param>
+    public void SetDoors(List<GameObject> doors);
 
     /// <summary>
     /// Opens all doors managed by this controller.
     /// </summary>
-    /// <remarks>
-    /// The implementation should handle the logic for visually and functionally opening the doors.
-    /// </remarks>
     public void OpenDoors();
 
     /// <summary>
     /// Closes all doors managed by this controller.
     /// </summary>
-    /// <remarks>
-    /// The implementation should handle the logic for visually and functionally closing the doors.
-    /// </remarks>
     public void CloseDoors();
 }

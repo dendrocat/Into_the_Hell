@@ -12,11 +12,16 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     /// </summary>
     List<GameObject> _doors;
 
+    /// <inheritdoc />
+    public List<GameObject> ActiveDoors { get; private set; }
+
     /// <summary>
     /// Initializes the controller by gathering all tilemaps and door game objects in the children of this component.
     /// </summary>
     void Awake()
     {
+        ActiveDoors = new List<GameObject>();
+
         _walls = new List<Tilemap>(GetComponentsInChildren<Tilemap>());
         _doors = new List<GameObject>();
         for (int i = 0; i < transform.childCount; ++i)
@@ -38,6 +43,8 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     public void ActivateDoor(DoorDirection door)
     {
         _doors[(int)door].SetActive(true);
+        ActiveDoors.Add(_doors[(int)door]);
+
         _walls[(int)door].gameObject.SetActive(false);
     }
 
@@ -48,7 +55,7 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     {
         _doors.RemoveAll((el) =>
             {
-                if (!el.activeSelf)
+                if (!el.activeInHierarchy)
                 {
                     Destroy(el);
                     return true;

@@ -27,7 +27,7 @@ public class TestLevelGenerator : MonoBehaviour
 
         DoDoors(rooms);
         DoTilemap(controllers);
-        rooms.ForEach((r) => (r as MonoBehaviour).GetComponent<IRoomController>().DoorController.FindDoors());
+        rooms.ForEach((r) => (r as MonoBehaviour).GetComponent<IRoomController>().DoorController.SetDoors(r.DoorTilemap.ActiveDoors));
         rooms.ForEach((r) => Destroy(r as MonoBehaviour));
     }
 
@@ -35,8 +35,8 @@ public class TestLevelGenerator : MonoBehaviour
     {
         foreach (var room in rooms)
         {
-            room.doorTilemap.ActivateDoor(DoorDirection.Down);
-            room.doorTilemap.ActivateDoor(DoorDirection.Right);
+            room.DoorTilemap.ActivateDoor(DoorDirection.Down);
+            room.DoorTilemap.ActivateDoor(DoorDirection.Right);
         }
     }
 

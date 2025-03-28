@@ -14,15 +14,9 @@ public class DoorController : MonoBehaviour, IDoorController
     List<GameObject> _doors;
 
     /// <inheritdoc />
-    public void FindDoors()
+    public void SetDoors(List<GameObject> doors)
     {
-        _doors = new List<GameObject>();
-        var objs = GetComponentsInChildren<Transform>();
-        for (int i = 1; i < objs.Length; ++i)
-        {
-            if (objs[i].CompareTag("Door"))
-                _doors.Add(objs[i].gameObject);
-        }
+        _doors = doors;
     }
 
     /// <inheritdoc />

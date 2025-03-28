@@ -4,7 +4,8 @@ using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Controller for managing a room's tilemap. Implements the <see cref="IRoomTilemapController"/> interface.
-/// This component must be removed from the game object after level generation via Destroy.
+/// This component must be removed from the game object after level generation via <see cref="Destroy"/>.
+/// Also, it destroys the associated <see cref="IDoorTilemapController"/> instance.
 /// </summary>
 public class RoomTilemapController : TilemapController, IRoomTilemapController
 {
@@ -29,14 +30,14 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     [SerializeField] Optional<Transform> DestroySpawns;
 
     /// <inheritdoc />
-    public IDoorTilemapController doorTilemap { get; private set; }
+    public IDoorTilemapController DoorTilemap { get; private set; }
 
     /// <summary>
     /// Initializes the door tilemap controller by finding it in the children of this component.
     /// </summary>
     void Awake()
     {
-        doorTilemap = GetComponentInChildren<IDoorTilemapController>();
+        DoorTilemap = GetComponentInChildren<IDoorTilemapController>();
     }
 
     /// <summary>
@@ -47,7 +48,7 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     public override void SwapTiles(TilesContainer container)
     {
         base.SwapTiles(container);
-        doorTilemap.SwapTiles(container);
+        DoorTilemap.SwapTiles(container);
 
         if (_hole.Enabled)
         {
@@ -112,6 +113,6 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     /// </summary>
     void OnDestroy()
     {
-        Destroy(doorTilemap as MonoBehaviour);
+        Destroy(DoorTilemap as MonoBehaviour);
     }
 }
