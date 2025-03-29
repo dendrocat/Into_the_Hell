@@ -2,7 +2,7 @@ using UnityEngine;
 
 /**
  * <summary>
- * Класс, описывающий разрушаемую стену
+ * РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ СЂР°Р·СЂСѓС€Р°РµРјСѓСЋ СЃС‚РµРЅСѓ
  * </summary>
  * **/
 public class DestructibleWall : MonoBehaviour, IDamagable

@@ -18,7 +18,7 @@ public class Missile : MonoBehaviour
 
     /**
      * <summary>
-     * Установка урона и скорости снаряда
+     * РЈСЃС‚Р°РЅРѕРІРєР° СѓСЂРѕРЅР° Рё СЃРєРѕСЂРѕСЃС‚Рё СЃРЅР°СЂСЏРґР°
      * </summary>
      * **/
     public void SetValues(float damage, float speed)
@@ -34,7 +34,7 @@ public class Missile : MonoBehaviour
 
     /**
      * <summary>
-     * Метод движения снаряда.
+     * РњРµС‚РѕРґ РґРІРёР¶РµРЅРёСЏ СЃРЅР°СЂСЏРґР°.
      * </summary>
      * **/
     void Move()
@@ -44,7 +44,7 @@ public class Missile : MonoBehaviour
 
     /**
      * <summary>
-     * Обработка столкновения снаряда с объектом
+     * РћР±СЂР°Р±РѕС‚РєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃРЅР°СЂСЏРґР° СЃ РѕР±СЉРµРєС‚РѕРј
      * </summary>
      * **/
     private void OnCollisionEnter2D(Collision2D collision)

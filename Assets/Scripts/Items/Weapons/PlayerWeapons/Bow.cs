@@ -3,7 +3,7 @@ using UnityEngine;
 
 /**
  * <summary>
- * Класс, описывающий оружие игрока "Лук".
+ * РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РѕСЂСѓР¶РёРµ РёРіСЂРѕРєР° "Р›СѓРє".
  * </summary>
  * **/
 public class Bow : MissileWeapon
@@ -12,7 +12,7 @@ public class Bow : MissileWeapon
     [SerializeField] float altMissileSpeed;
     /**
      * <summary>
-     * Инициализация оружия
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕСЂСѓР¶РёСЏ
      * </summary>
      * **/
     void Start()

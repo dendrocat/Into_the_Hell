@@ -3,7 +3,7 @@ using UnityEngine;
 
 /**
  * <summary>
- * Класс, описывающий оружие игрока "Двуручный меч"
+ * РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РѕСЂСѓР¶РёРµ РёРіСЂРѕРєР° "Р”РІСѓСЂСѓС‡РЅС‹Р№ РјРµС‡"
  * </summary>
  * **/
 public class TwoHandedSword : RangedWeapon
@@ -13,7 +13,7 @@ public class TwoHandedSword : RangedWeapon
 
     /**
      * <summary>
-     * Инициализация оружия
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕСЂСѓР¶РёСЏ
      * </summary>
      * **/
     void Start()

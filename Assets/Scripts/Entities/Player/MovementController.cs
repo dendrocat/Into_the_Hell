@@ -2,7 +2,7 @@ using UnityEngine;
 
 /**
  * <summary>
- * Класс, отвечающий за управление персонажем
+ * РљР»Р°СЃСЃ, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° СѓРїСЂР°РІР»РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶РµРј
  * </summary>
  * **/
 public class MovementController : MonoBehaviour
@@ -12,7 +12,7 @@ public class MovementController : MonoBehaviour
     
     /**
      * <summary>
-     * Инициализация контроллера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
      * </summary>
      * **/
     void Start()
@@ -26,7 +26,7 @@ public class MovementController : MonoBehaviour
 
     /**
      * <summary>
-     * Обработка ввода игрока
+     * РћР±СЂР°Р±РѕС‚РєР° РІРІРѕРґР° РёРіСЂРѕРєР°
      * </summary>
      * **/
     void Update()

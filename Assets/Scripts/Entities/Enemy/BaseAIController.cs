@@ -5,7 +5,7 @@ using Pathfinding;
 
 /**
  * <summary>
- * Базовый класс, описывающий ИИ персонажа.
+ * Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РР РїРµСЂСЃРѕРЅР°Р¶Р°.
  * </summary>
  * **/
 public class BaseAIController : MonoBehaviour
@@ -17,7 +17,7 @@ public class BaseAIController : MonoBehaviour
 
     /**
      * <summary>
-     * Инициализация ИИ.
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РР.
      * </summary>
      * **/
     private void Start()
@@ -38,7 +38,7 @@ public class BaseAIController : MonoBehaviour
 
     /**
      * <summary>
-     * Метод, определяющий поведение ИИ. Вызывается каждый кадр.
+     * РњРµС‚РѕРґ, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РїРѕРІРµРґРµРЅРёРµ РР. Р’С‹Р·С‹РІР°РµС‚СЃСЏ РєР°Р¶РґС‹Р№ РєР°РґСЂ.
      * </summary>
      * **/
     private void Update()
