@@ -10,6 +10,9 @@ public class Player : Person, IDamagable
     public PlayerInventory inventory;
     public int ShiftCount = 3;
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void ChangeWeaponPosition()
     {
         List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 10f).ToList<Collider2D>();
@@ -48,18 +51,33 @@ public class Player : Person, IDamagable
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
-    public void Attack()
+    /**
+     * <summary>
+     * Метод, вызывающий обычную атаку игрока.
+     * </summary>
+     * **/
+    new public void Attack()
     {
         if (inventory.GetPlayerWeapon().isReloading()) return;
         inventory.GetPlayerWeapon().LaunchAttack();
     }
 
+    /**
+     * <summary>
+     * Метод, вызвающий альтернативную атаку игрока.
+     * </summary>
+     * **/
     public void AltAttack()
     {
         if (inventory.GetPlayerWeapon().isReloadingAlt()) return;
         inventory.GetPlayerWeapon().LaunchAltAttack();
     }
 
+    /**
+     * <summary>
+     * Метод, запускающий рывок игрока.
+     * </summary>
+     * **/
     public void PerformShift()
     {
         if (!hasEffect(EffectNames.Shift) && (ShiftCount > 0) && isMoving())
@@ -70,6 +88,11 @@ public class Player : Person, IDamagable
         }
     }
 
+    /**
+     * <summary>
+     * Метод, обрабатывающий использование зелья игроком.
+     * </summary>
+     * **/
     public void UsePotion()
     {
         if (health < maxHealth)
@@ -87,6 +110,9 @@ public class Player : Person, IDamagable
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     public new void TakeDamage(float damage, DamageType type)
     {
         if (isAlive())
@@ -134,6 +160,11 @@ public class Player : Person, IDamagable
         }
     }
 
+    /**
+     * <summary>
+     * Корутина, обрабатывающая перезарядку рывка (родительская)
+     * </summary>
+     * **/
     private IEnumerator ShiftCoroutine()
     {
         AddEffect(EffectNames.Shift);
@@ -146,12 +177,22 @@ public class Player : Person, IDamagable
         StartCoroutine(Timer1Coroutine());
     }
 
+    /**
+     * <summary>
+     * Корутина, обрабатывающая перезарядку рывка (таймер 1)
+     * </summary>
+     * **/
     private IEnumerator Timer1Coroutine()
     {
         yield return new WaitForSeconds(1f);
         StartCoroutine(Timer2Coroutine());
     }
 
+    /**
+     * <summary>
+     * Корутина, обрабатывающая перезарядку рывка (таймер 2)
+     * </summary>
+     * **/
     private IEnumerator Timer2Coroutine()
     {
         yield return new WaitForSeconds(2f);
@@ -162,6 +203,9 @@ public class Player : Person, IDamagable
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void OnDeath()
     {
         Debug.Log("You died. Game over!");

@@ -1,10 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * <summary>
+ * Класс, описывающий оружие игрока "Двуручный меч"
+ * </summary>
+ * **/
 public class TwoHandedSword : RangedWeapon
 {
     [SerializeField] float altRange = 5f;
     [SerializeField] float altAngle = 10f;
+
+    /**
+     * <summary>
+     * Инициализация оружия
+     * </summary>
+     * **/
     void Start()
     {
         damage = 15f;
@@ -21,17 +32,26 @@ public class TwoHandedSword : RangedWeapon
         angle = 90f;
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override bool CheckAltAttackConditions()
     {
         return true;
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void OnPrepareAltAttackEnd()
     {
         owner.facingDirection = owner.weaponDirection;
         owner.AddEffect(EffectNames.Shift, 1);
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void AltAttack()
     {
         List<IDamagable> targets = FindTargetsForAttack(altRange, altAngle);

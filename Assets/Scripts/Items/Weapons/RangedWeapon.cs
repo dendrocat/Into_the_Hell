@@ -2,12 +2,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-//Класс оружия ближнего боя
+/**
+ * <summary>
+ * Класс оружия ближнего боя
+ * </summary>
+ * **/
 public class RangedWeapon : AlternateAttackWeapon
 {
     [SerializeField] protected float range;
     [SerializeField] protected float angle;
 
+    /** 
+     * <summary>
+     * Метод для отрисовки сектора атаки (для дебага).
+     * </summary>
+     * **/
     private void OnDrawGizmos()
     {
         Vector2 ownerPosition = owner.transform.position;
@@ -17,6 +26,14 @@ public class RangedWeapon : AlternateAttackWeapon
         Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
     }
 
+    /** 
+     * <summary>
+     * Метод, возвращающий список целей в секторе атаки.
+     * </summary>
+     * <param name="range">Расстояние атаки (если равно -1, используется то расстояние, которое указано в классе)</param>
+     * <param name="angle">Угол атаки (если равен -1, используется тот угол, который указан в классе</param>
+     * <returns>Список целей в секторе атаки.</returns>
+     * **/
     protected List<IDamagable> FindTargetsForAttack(float range = -1f, float angle = -1f)
     {
         if (range == -1f) range = this.range;
@@ -47,7 +64,10 @@ public class RangedWeapon : AlternateAttackWeapon
         return targets;
     }
 
-    protected override void Attack() //реализация метода атаки
+    /**
+     * <inheritdoc/>
+     * **/
+    protected override void Attack()
     {
         List<IDamagable> targets = FindTargetsForAttack();
 

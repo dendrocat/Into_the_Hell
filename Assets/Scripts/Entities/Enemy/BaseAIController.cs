@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+/**
+ * <summary>
+ * Базовый класс, описывающий ИИ персонажа.
+ * </summary>
+ * **/
 public class BaseAIController : MonoBehaviour
 {
     public float attackRange = 2f;
@@ -10,6 +15,11 @@ public class BaseAIController : MonoBehaviour
     AIPath aipath;
     AIDestinationSetter aiDestSetter;
 
+    /**
+     * <summary>
+     * Инициализация ИИ.
+     * </summary>
+     * **/
     private void Start()
     {
         if (!gameObject.TryGetComponent<BaseEnemy>(out NPC))
@@ -26,6 +36,11 @@ public class BaseAIController : MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Метод, определяющий поведение ИИ. Вызывается каждый кадр.
+     * </summary>
+     * **/
     private void Update()
     {
         aipath.maxSpeed = NPC.getSpeed();

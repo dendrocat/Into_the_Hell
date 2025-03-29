@@ -3,6 +3,11 @@ using System.Linq;
 using Pathfinding;
 using UnityEngine;
 
+/**
+ * <summary>
+ * Базовый класс для врагов.
+ * </summary>
+ * **/
 public class BaseEnemy : Person
 {
     Path path;
@@ -10,6 +15,11 @@ public class BaseEnemy : Person
     AIPath aipath;
     AIDestinationSetter aiDestSetter;
 
+    /**
+     * <summary>
+     * Инициализация врага
+     * </summary>
+     * **/
     new void Start()
     {
         base.Start();
@@ -31,6 +41,9 @@ public class BaseEnemy : Person
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void ChangeWeaponPosition()
     {
         List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 10f).ToList<Collider2D>();
@@ -63,6 +76,11 @@ public class BaseEnemy : Person
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
+    /**
+     * <summary>
+     * Обновление состояния врага. Вызывается каждый кадр
+     * </summary>
+     * **/
     void Update()
     {
         if (isAlive())
@@ -87,6 +105,9 @@ public class BaseEnemy : Person
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void OnDeath()
     {
         aipath.canMove = false;

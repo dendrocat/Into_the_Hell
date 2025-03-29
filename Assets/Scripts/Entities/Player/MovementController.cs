@@ -1,10 +1,20 @@
 using UnityEngine;
 
+/**
+ * <summary>
+ * Класс, отвечающий за управление персонажем
+ * </summary>
+ * **/
 public class MovementController : MonoBehaviour
 {
     [SerializeField] Player player;
     InputManager inputManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    /**
+     * <summary>
+     * Инициализация контроллера
+     * </summary>
+     * **/
     void Start()
     {
         inputManager = InputManager.Instance;
@@ -14,7 +24,11 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /**
+     * <summary>
+     * Обработка ввода игрока
+     * </summary>
+     * **/
     void Update()
     {
         if (inputManager != null)

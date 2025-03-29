@@ -1,11 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * <summary>
+ * Класс, описывающий оружие игрока "Лук".
+ * </summary>
+ * **/
 public class Bow : MissileWeapon
 {
     [SerializeField] GameObject altMissilePrefab;
     [SerializeField] float altMissileSpeed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /**
+     * <summary>
+     * Инициализация оружия
+     * </summary>
+     * **/
     void Start()
     {
         scaleCoeff = 1f;
@@ -20,6 +29,9 @@ public class Bow : MissileWeapon
         baseAltReloadTime = 5f;
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override bool CheckAltAttackConditions()
     {
         if (owner is Player player)
@@ -29,6 +41,9 @@ public class Bow : MissileWeapon
         else return false;
     }
 
+    /** 
+     * <inheritdoc/>
+     * **/
     protected override void AltAttack()
     {
         if (owner is Player player)

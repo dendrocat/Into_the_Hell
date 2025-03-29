@@ -1,10 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Класс оружия игрока "Меч"
+/**
+ * <summary>
+ * Класс, описывающий оружие игрока "Меч"
+ * </summary>
+ * **/
 public class Sword : RangedWeapon
 {
     bool altAttackActive = false;
+
+    /**
+     * <summary>
+     * Инициализация оружия
+     * </summary>
+     * **/
     void Start()
     {
         damage = 7f;
@@ -20,7 +30,10 @@ public class Sword : RangedWeapon
         angle = 60f;
     }
 
-    protected override void Attack() //реализация метода атаки
+    /**
+     * <inheritdoc/>
+     * **/
+    protected override void Attack()
     {
         List<IDamagable> targets = FindTargetsForAttack();
 
@@ -35,7 +48,12 @@ public class Sword : RangedWeapon
         }
     }
 
-    public override void LaunchAltAttack() //Активирует или деактивирует альт. атаку
+    /**
+     * <summary>
+     * Активирует или деактивирует альтернативную атаку.
+     * </summary>
+     * **/
+    public override void LaunchAltAttack()
     {
         altAttackActive = !altAttackActive;
         if (altAttackActive) AltAttack();
@@ -45,16 +63,30 @@ public class Sword : RangedWeapon
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void AltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, level);
     }
 
+    /**
+     * <summary>
+     * Метод, выполняющий действия по завершению альтернативной атаки оружия
+     * </summary>
+     * **/
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
     }
 
+    /**
+     * <summary>
+     * Возвращает, активна ли альтернативная атака.
+     * </summary>
+     * <returns>true, если альтернативная атака сейчас активна.</returns>
+     * **/
     public bool altAttackIsActive()
     {
         return altAttackActive;

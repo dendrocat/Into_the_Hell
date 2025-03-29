@@ -1,35 +1,66 @@
 using UnityEngine;
 
-//Класс, описывающий улучшаемый предмет
+/// <summary>
+/// Класс, описывающий улучшаемый предмет.
+/// </summary>
 public class UpgradableItem : MonoBehaviour
 {
-    protected float scaleCoeff = 0.2f; //Коэффициент масштабирования.
-                                       //Задается в классах-наследниках в методе Start
-    protected float minValueDescending = 0.5f; //Доля, которая остается при уменьшающем масштабировании
-                                               //на максимальном уровне.
-    public byte level; //Текущий уровень предмета
-    public byte maxLevel; //Максимальный уровень предмета
+    /// <summary>
+    /// Коэффициент масштабирования. Задается в классах-наследниках в методе Start.
+    /// </summary>
+    protected float scaleCoeff = 0.2f;
 
-    public int GetUpgradeCost() //Возвращает стоимость улучшения на следующий уровень
+    /// <summary>
+    /// Доля, которая остается при уменьшающем масштабировании на максимальном уровне.
+    /// </summary>
+    protected float minValueDescending = 0.5f;
+
+    /// <summary>
+    /// Текущий уровень предмета.
+    /// </summary>
+    public byte level;
+
+    /// <summary>
+    /// Максимальный уровень предмета.
+    /// </summary>
+    public byte maxLevel;
+
+    /// <summary>
+    /// Возвращает стоимость улучшения на следующий уровень. Если предмет уже максимально улучшен, возвращает -1.
+    /// </summary>
+    /// <returns>Стоимость улучшения или -1.</returns>
+    public int GetUpgradeCost()
     {
         if (level < maxLevel) return 100 * level;
-        else return -1; //возвращаем -1 как знак о том, что предмет максимально улучшен
+        else return -1;
     }
-    
-    public float CalcScale(float scalable) //Возвращает значение scalable, умноженное согласно
-                                           //текущему уровню предмета
+
+    /// <summary>
+    /// Возвращает значение scalable, умноженное согласно текущему уровню предмета.
+    /// </summary>
+    /// <param name="scalable">Значение, которое необходимо масштабировать.</param>
+    /// <returns>Масштабированное значение.</returns>
+    public float CalcScale(float scalable)
     {
         return scalable * (1f + (level - 1) * scaleCoeff);
     }
 
-    public float CalcScaleDescending(float scalable) //Возвращает значение scalable, уменьшенное
-                                                     //согласно текущему уровню предмета
+    /// <summary>
+    /// Возвращает значение scalable, уменьшенное согласно текущему уровню предмета.
+    /// </summary>
+    /// <param name="scalable">Значение, которое необходимо уменьшить.</param>
+    /// <returns>Уменьшенное значение.</returns>
+    public float CalcScaleDescending(float scalable)
     {
         float coeff = minValueDescending / (maxLevel - 1);
         return scalable * (1f - (level - 1) * coeff);
     }
 
-    public void Upgrade(byte diff) //Функция, отвечающая за апгрейд предмета
+    /// <summary>
+    /// Функция, отвечающая за апгрейд предмета на указанное количество уровней.
+    /// </summary>
+    /// <param name="diff">Количество уровней, на которое нужно улучшить предмет.</param>
+    public void Upgrade(byte diff)
     {
         level = (byte)Mathf.Clamp(level + diff, 1, maxLevel);
     }

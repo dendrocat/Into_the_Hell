@@ -11,29 +11,42 @@ public class Missile : MonoBehaviour
     protected Rigidbody2D rb;
     public Vector2 direction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /**
+     * <summary>
+     * Установка урона и скорости снаряда
+     * </summary>
+     * **/
     public void SetValues(float damage, float speed)
     {
         this.damage = damage;
         this.speed = speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
     }
 
+    /**
+     * <summary>
+     * Метод движения снаряда.
+     * </summary>
+     * **/
     void Move()
     {
         rb.linearVelocity = (Vector3)direction.normalized * speed;
     }
 
+    /**
+     * <summary>
+     * Обработка столкновения снаряда с объектом
+     * </summary>
+     * **/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         List<Collider2D> colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius).ToList<Collider2D>();

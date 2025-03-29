@@ -1,11 +1,18 @@
 using UnityEngine;
 
-//Класс оружия дальнего боя
+/**
+ * <summary>
+ * Класс оружия дальнего боя.
+ * </summary>
+ * **/
 public class MissileWeapon : AlternateAttackWeapon
 {
     [SerializeField] protected GameObject missilePrefab;
     [SerializeField] protected float missileSpeed;
 
+    /**
+     * <inheritdoc/>
+     * **/
     protected override void Attack()
     {
         GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
