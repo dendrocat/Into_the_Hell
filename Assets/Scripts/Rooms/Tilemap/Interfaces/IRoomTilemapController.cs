@@ -16,6 +16,11 @@ public interface IRoomTilemapController : ITilemapController
     public IDoorTilemapController DoorTilemap { get; }
 
     /// <summary>
+    /// Removes additional tilemap.
+    /// </summary>
+    public void RemoveAdditional();
+
+    /// <summary>
     /// Retrieves all free positions on the additional tilemap.
     /// </summary>
     /// <returns>A list of free positions as <see cref="Vector2Int"/> coordinates. Returns an empty list if the additional tilemap is not enabled.</returns>

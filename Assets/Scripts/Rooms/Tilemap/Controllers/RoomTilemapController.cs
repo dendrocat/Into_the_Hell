@@ -85,6 +85,14 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     }
 
     /// <inheritdoc />
+    public void RemoveAdditional()
+    {
+        if (!_additional.Enabled) return;
+        Destroy(_additional.Value.gameObject);
+        _additional.Enabled = false;
+    }
+
+    /// <inheritdoc />
     public List<Vector2Int> GetFreePositions()
     {
         if (!_additional.Enabled) return new List<Vector2Int>();

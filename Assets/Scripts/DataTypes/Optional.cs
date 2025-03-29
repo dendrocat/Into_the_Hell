@@ -22,7 +22,7 @@ public struct Optional<T>
     /// <summary>
     /// Gets a value indicating whether the optional value is enabled.
     /// </summary>
-    public bool Enabled => _enabled;
+    public bool Enabled { get => _enabled; set => _enabled = value; }
 
     /// <summary>
     /// Gets the value of the optional field.
