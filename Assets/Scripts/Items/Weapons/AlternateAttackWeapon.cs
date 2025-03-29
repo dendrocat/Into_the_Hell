@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+/**
+ * <summary>
+ * Класс, описывающий оружие с альтернативной атакой.
+ * </summary>
+ * **/
 public class AlternateAttackWeapon : BaseWeapon
 {
     [SerializeField] protected float altDamage;
@@ -9,10 +14,22 @@ public class AlternateAttackWeapon : BaseWeapon
     [SerializeField] protected float baseAltEndAttackTime;
     bool altReloading = false;
 
+    /**
+     * <summary>
+     * Определяет, перезаряжается ли альтернативная атака оружия.
+     * </summary>
+     * <returns>bool - перезаряжается ли альтернативная атака оружия.</returns>
+     * **/
     public bool isReloadingAlt()
     {
         return altReloading;
     }
+
+    /**
+     * <summary>
+     * Метод, запускающий альтернативную атаку. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
     public virtual void LaunchAltAttack()
     {
         if (!altReloading && CheckAltAttackConditions())
@@ -22,6 +39,12 @@ public class AlternateAttackWeapon : BaseWeapon
         }
     }
 
+    /**
+     * <summary>
+     * <see cref="Coroutine">Корутина</see>, отвечающая за проведение альтернативной атаки.
+     * </summary>
+     * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
+     * **/
     private IEnumerator PerformAltAttack()
     {
         OnPrepareAltAttackStart();
@@ -34,37 +57,73 @@ public class AlternateAttackWeapon : BaseWeapon
         StartCoroutine(ReloadAltWeapon(CalcScaleDescending(baseAltReloadTime)));
     }
 
-    protected virtual bool CheckAltAttackConditions() //метод для проверки, возможна ли альтернативаная атака.
-                                                      //Переопределяется в классах-наследниках
+    /**
+     * <summary>
+     * Метод для проверки, возможна ли альтернативная атака. Переопределяется в классах-наследниках.
+     * </summary>
+     * <returns>bool - возможна ли альтернативная атака.</returns>
+     * **/
+    protected virtual bool CheckAltAttackConditions()
     {
         return false;
     }
 
-    protected virtual void AltAttack() //метод для альтернативной атаки. Переопределяется в классах-наследниках
+    /**
+     * <summary>
+     * Метод, описывающий действия, входящие в альтернативную атаку. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void AltAttack()
     {
 
     }
 
-    protected virtual void OnPrepareAltAttackStart() //действия, выполняемые перед началом подготовки альт атаки
+    /**
+     * <summary>
+     * Метод, описывающий действия, выполняемые до начала подготовки к альтернативной атаке. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void OnPrepareAltAttackStart()
     {
 
     }
 
-    protected virtual void OnPrepareAltAttackEnd() //действия, выполняемые после окончания подготовки альт атаки
+    /**
+     * <summary>
+     * Метод, описывающий действия, выполняемые после окончания подготовки к альтернативной атаке. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void OnPrepareAltAttackEnd()
     {
 
     }
 
-    protected virtual void OnEndAltAttackStart() //действия, выполняемые перед началом окончания альт атаки
+    /**
+     * <summary>
+     * Метод, описывающий действия, выполняемые до начала завершения альтернативной атаки. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void OnEndAltAttackStart()
     {
 
     }
 
-    protected virtual void OnEndAltAttackEnd() //действия, выполняемые после окончания окончания альт атаки
+    /**
+     * <summary>
+     * Метод, описывающий действия, выполняемые после окончания завершения альтернативной атаки. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void OnEndAltAttackEnd()
     {
 
     }
 
+    /**
+     * <summary>
+     * <see cref="Coroutine">Корутина</see>, отвечающая за обработку перезарядки альтернативной атаки оружия.
+     * </summary>
+     * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
+     * **/
     private IEnumerator ReloadAltWeapon(float reloadTime)
     {
         yield return new WaitForSeconds(reloadTime);

@@ -2,7 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-//Базовый класс персонажа
+/**
+ * <summary>
+ * Базовый класс персонажа
+ * </summary>
+ * **/
 public class Person : Effectable, IDamagable
 {
     bool alive = true;
@@ -11,7 +15,7 @@ public class Person : Effectable, IDamagable
     protected float maxHealth = 100f; //максимальное здоровье
     protected float health = 100f; //текущее здоровье
     protected float speed = 2f; //скорость передвижения персонажа
-    public List<BaseWeapon> weapons; //список оружий персонажа
+    public BaseWeapon weapon; //оружие персонажа
     public Transform weaponObject;
     public List<string> targetTags; //список тегов возможных целей
 
@@ -23,26 +27,55 @@ public class Person : Effectable, IDamagable
     Rigidbody2D rb = null;
     Animator anim = null; //компонент аниматор
 
+    /**
+     * <summary>
+     * Метод, возвращающий текущее здоровье персонажа
+     * </summary>
+     * <returns>float - текущий запас здоровья персонажа.</returns>
+     * **/
     public float getHP()
     {
         return health;
     }
 
+    /**
+     * <summary>
+     * Метод, определяющий, двигается ли персонаж.
+     * </summary>
+     * <returns>bool - двигается ли персонаж.</returns>
+     * **/
     public bool isMoving()
     {
         return moving;
     }
 
+    /**
+     * <summary>
+     * Метод, устанавливающий, двигается ли персонаж.
+     * </summary>
+     * <param name="moving">Двигается ли персонаж?</param>
+     * **/
     public void setMoving(bool moving)
     {
         this.moving = moving;
     }
 
+    /**
+     * <summary>
+     * Метод, устанавливающий, жив ли персонаж.
+     * </summary>
+     * <returns>bool - жив ли персонаж.</returns>
+     * **/
     public bool isAlive()
     {
         return alive;
     }
 
+    /**
+     * <summary>
+     * Инициализация персонажа.
+     * </summary>
+     * **/
     protected void Start()
     {
         facingDirection = Vector2.right;
@@ -64,6 +97,11 @@ public class Person : Effectable, IDamagable
         }
     }
 
+    /**
+     * <summary>
+     * Изменяет позицию оружия персонажа. Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
     protected virtual void ChangeWeaponPosition()
     {
         weaponDirection = facingDirection;
@@ -77,6 +115,11 @@ public class Person : Effectable, IDamagable
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
+    /**
+     * <summary>
+     * Обработка действий персонажа.
+     * </summary>
+     * **/
     void Update()
     {
         if (alive)
@@ -106,6 +149,9 @@ public class Person : Effectable, IDamagable
         }
     }
 
+    /**
+     * <inheritdoc/>
+     * **/
     public void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
     {
         if (alive)
@@ -148,6 +194,12 @@ public class Person : Effectable, IDamagable
         }
     }
 
+    /**
+     * <summary>
+     * Определяет текущую скорость персонажа с учетом эффектов.
+     * </summary>
+     * <returns>Текущая скорость персонажа.</returns>
+     * **/
     public float getSpeed()
     {
         float currentSpeed = speed;
@@ -176,6 +228,11 @@ public class Person : Effectable, IDamagable
         return currentSpeed;
     }
 
+    /**
+     * <summary>
+     * Обработка передвижения персонажа.
+     * </summary>
+     * **/
     public void Move() //функция передвижения в заданном направлении
     {
         float currentSpeed = getSpeed();
@@ -197,32 +254,23 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    public void Attack(int weaponIndex = -1) //функция атаки. В аргументах может стоять индекс
-                                             //оружия, которым нужно бить (если оно не указано, то -1).
+    /**
+     * <summary>
+     * Метод, запускающий атаку персонажа.
+     * </summary>
+     * **/
+    public void Attack() //функция атаки
     {
-        BaseWeapon currentWeapon = (weaponIndex != -1) ? weapons[weaponIndex] : null; //получаем ссылку на оружие
-        if ((currentWeapon != null) && currentWeapon.isReloading()) //если выбранное оружие перезаряжается, то выходим
-        {
-            return;
-        }
-
-        if (currentWeapon == null) //если оружие не указано
-        {
-            for (int i = weapons.Count - 1; i >= 0; i--) //перебираем все оружия с конца
-            {
-                if (!weapons[i].isReloading()) //если оружие готово к атаке
-                {
-                    currentWeapon = weapons[i]; //выбираем его
-                    break;
-                }
-            }
-        }
-        if (currentWeapon == null) return; //если нет доступного оружия, то выходим
-
-        currentWeapon.LaunchAttack();
+        if (!weapon.isReloading())
+            weapon.LaunchAttack();
     }
 
-    protected void Die() //функция смерти персонажа
+    /**
+     * <summary>
+     * Метод, обрабатывающий смерть персонажа.
+     * </summary>
+     * **/
+    protected void Die()
     {
         alive = false;
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
@@ -231,12 +279,23 @@ public class Person : Effectable, IDamagable
         StartCoroutine(DestructionDelayCoroutine());
     }
 
-    protected virtual void OnDeath() //Метод, вызывающий события при смерти персонажа.
-                          //Переопределяется в классах-наследниках при необходимости
+    /**
+     * <summary>
+     * Метод, вызывающий события при смерти персонажа. Переопределяется в классах-
+     * наследниках при необходимости.
+     * </summary>
+     * **/
+    protected virtual void OnDeath()
     {
         Debug.Log(gameObject.name + ": dead");
     }
 
+    /**
+     * <summary>
+     * <see cref="Coroutine">Корутина</see>, обрабатывающая задержку уничтожения объекта.
+     * </summary>
+     * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
+     * **/
     private IEnumerator DestructionDelayCoroutine()
     {
         yield return new WaitForSeconds(destructionDelay);

@@ -4159,8 +4159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 696956418}
+  weapon: {fileID: 696956418}
   weaponObject: {fileID: 535425034}
   targetTags:
   - Player
@@ -5300,8 +5299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 995376618}
+  weapon: {fileID: 995376618}
   weaponObject: {fileID: 1196896397}
   targetTags:
   - Player
@@ -7079,8 +7077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1338249916}
+  weapon: {fileID: 1338249916}
   weaponObject: {fileID: 1537703298}
   targetTags:
   - Player
@@ -8688,7 +8685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2428deaf0dfa24f44b73f9f1681783dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  weapon: {fileID: 0}
   weaponObject: {fileID: 197651800}
   targetTags:
   - Enemy
@@ -9540,8 +9537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1773220951}
+  weapon: {fileID: 1773220951}
   weaponObject: {fileID: 2011496334}
   targetTags:
   - Player
@@ -10752,8 +10748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 2013444090}
+  weapon: {fileID: 2013444090}
   weaponObject: {fileID: 1343649009}
   targetTags:
   - Player

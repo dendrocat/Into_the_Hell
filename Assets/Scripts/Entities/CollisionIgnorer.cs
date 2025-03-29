@@ -1,11 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/**
+ * <summary>
+ * Класс, обрабатывающий игнорирование коллизий с объектами, имеющими некоторые теги.
+ * </summary>
+ * **/
 public class CollisionIgnorer : MonoBehaviour
 {
     [SerializeField] List<string> ignoredTags = new List<string>();
     private HashSet<Collider2D> ignoredColliders = new HashSet<Collider2D>();
 
+    /**
+     * <summary>
+     * Добавление имеющихся на старте объектов в список игнорируемых
+     * </summary>
+     * **/
     void Start()
     {
         // Игнорирование коллизий при старте для существующих объектов
@@ -19,6 +29,12 @@ public class CollisionIgnorer : MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * При столкновении с объектом проверяет его тег: если он есть
+     * в списке игнориуемых тегов, то добавляет объект в список игнорируемых.
+     * </summary>
+     * **/
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Динамическое игнорирование для новых объектов
@@ -28,6 +44,11 @@ public class CollisionIgnorer : MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Метод, обрабатывающий игнорирование коллизии с объектом
+     * </summary>
+     * **/
     private void IgnoreCollisionsWithObject(GameObject target)
     {
         Collider2D[] ourColliders = GetComponents<Collider2D>();

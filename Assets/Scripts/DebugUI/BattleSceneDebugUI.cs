@@ -17,11 +17,12 @@ public class BattleSceneDebugUI : MonoBehaviour
     [SerializeField] TMP_Text expArrowCount;
     [SerializeField] TMP_Text playerEffectsText;
 
-    void Start()
-    {
-
-    }
-
+    /**
+     * <summary>
+     * Метод Update. Обновляет информацию в тестовом интерфейсе дебага.
+     * </summary>
+     * 
+     * **/
     void Update()
     {
         float playerHP = player.getHP();

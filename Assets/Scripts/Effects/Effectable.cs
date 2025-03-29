@@ -14,7 +14,12 @@ public enum EffectNames {
     ShieldBlock = 9, //блок щитом
     Shift = 10, //рывок
 };
-//Класс сущностей, на которые можно наложить эффект
+
+/**
+ * <summary>
+ * Класс сущностей, на которые можно наложить эффект
+ * </summary>
+ * **/
 public class Effectable: MonoBehaviour
 {
     private const int EFFECT_COUNT = 11; //общее количество типов эффектов
@@ -29,6 +34,12 @@ public class Effectable: MonoBehaviour
     {
         InitializeEffects();
     }
+
+    /**
+     * <summary>
+     * Метод, вызывающий инициализацию эффектов.
+     * </summary>
+     * **/
     protected void InitializeEffects()
     {
         for (int i = 0; i < EFFECT_COUNT; i++)
@@ -59,6 +70,14 @@ public class Effectable: MonoBehaviour
         effectDuration[10] = 0.25f;
     }
 
+    /**
+     * <summary>
+     * Добавляет эффект с заданным id к сущности
+     * </summary>
+     * <param name="effectId">ID эффекта</param>
+     * <param name="diff">Количество добавляемых эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void AddEffect(int effectId, int diff = 1, bool resetRemainingTime = true)
     {
         if ((effectId < 0) || (effectId > effectCount.Count))
@@ -74,11 +93,27 @@ public class Effectable: MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Добавляет эффект с заданным названием к сущности
+     * </summary>
+     * <param name="effect">Название эффекта</param>
+     * <param name="diff">Количество удаляемых эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void AddEffect(EffectNames effect, int diff = 1, bool resetRemainingTime = true)
     {
         AddEffect((int)effect, diff, resetRemainingTime);
     }
 
+    /**
+     * <summary>
+     * Удаляет эффект с заданным id у сущности
+     * </summary>
+     * <param name="effectId">ID эффекта</param>
+     * <param name="diff">Количество удаляемых эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void RemoveEffect(int effectId, int diff = 1, bool resetRemainingTime = true)
     {
         if ((effectId < 0) || (effectId > effectCount.Count))
@@ -94,11 +129,27 @@ public class Effectable: MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Удаляет эффект с заданным названием у сущности
+     * </summary>
+     * <param name="effect">Название эффекта</param>
+     * <param name="diff">Количество удаляемых эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void RemoveEffect(EffectNames effect, int diff = 1, bool resetRemainingTime = true)
     {
         RemoveEffect((int)effect, diff, resetRemainingTime);
     }
 
+    /**
+     * <summary>
+     * Устанавливает уровень эффекта с заданным id у сущности
+     * </summary>
+     * <param name="effectId">ID эффекта</param>
+     * <param name="count">Количество эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void SetEffect(int effectId, int count, bool resetRemainingTime = true)
     {
         if ((effectId < 0) || (effectId > effectCount.Count))
@@ -117,11 +168,25 @@ public class Effectable: MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Устанавливает уровень эффекта с заданным названием у сущности
+     * </summary>
+     * <param name="effect">Название эффекта</param>
+     * <param name="count">Количество эффектов</param>
+     * <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
+     * **/
     public void SetEffect(EffectNames effect, int count, bool resetRemainingTime = true)
     {
         SetEffect((int)effect, count, resetRemainingTime);
     }
 
+    /**
+     * <summary>
+     * Сбрасывает время действия эффекта с заданным id
+     * </summary>
+     * <param name="effectId">ID эффекта</param>
+     * **/
     void ResetEffectRemainingTime(int effectId)
     {
         if (effectCount[effectId] > 0)
@@ -130,7 +195,12 @@ public class Effectable: MonoBehaviour
         }
     }
 
-    protected void UpdateEffectRemainingTime() //обновление оставшегося времени действия эффектов
+    /**
+     * <summary>
+     * Обновление оставшегося времени действия эффектов. Вызывается каждый кадр в функции Update
+     * </summary>
+     * **/
+    protected void UpdateEffectRemainingTime()
     {
         for (int i = 0; i < EFFECT_COUNT; i++) //проверяем каждый тип эффекта
         {
@@ -148,23 +218,47 @@ public class Effectable: MonoBehaviour
         }
     }
 
+    /**
+     * <summary>
+     * Определяет, есть ли эффект с заданным ID на сущности.
+     * </summary>
+     * <returns>bool - имеет ли сущность данный эффект.</returns>
+     * **/
     public bool hasEffect(int effectId)
     {
         if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return false; 
         return effectCount[effectId] > 0;
     }
 
+    /**
+     * <summary>
+     * Определяет, есть ли эффект с заданным названием на сущности.
+     * </summary>
+     * <returns>bool - имеет ли сущность данный эффект.</returns>
+     * **/
     public bool hasEffect(EffectNames effect)
     {
         return hasEffect((int)effect);
     }
 
+    /**
+     * <summary>
+     * Возвращает количество эффектов с заданным ID на сущности.
+     * </summary>
+     * <returns>int - количество искомых эффектов на сущности.</returns>
+     * **/
     public int getEffectCount(int effectId)
     {
         if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return 0;
         return effectCount[effectId];
     }
 
+    /**
+     * <summary>
+     * Возвращает количество эффектов с заданным названием на сущности.
+     * </summary>
+     * <returns>int - количество искомых эффектов на сущности.</returns>
+     * **/
     public int getEffectCount(EffectNames effect)
     {
         return getEffectCount((int)effect);
