@@ -9,13 +9,13 @@ using UnityEngine;
  * **/
 public class BattleSceneDebugUI : MonoBehaviour
 {
-    public Player player;
+    [SerializeField] Player player;
 
-    public TMP_Text playerHPText;
-    public TMP_Text dashCount;
-    public TMP_Text potionCount;
-    public TMP_Text expArrowCount;
-    public TMP_Text playerEffectsText;
+    [SerializeField] TMP_Text playerHPText;
+    [SerializeField] TMP_Text dashCount;
+    [SerializeField] TMP_Text potionCount;
+    [SerializeField] TMP_Text expArrowCount;
+    [SerializeField] TMP_Text playerEffectsText;
 
     void Start()
     {

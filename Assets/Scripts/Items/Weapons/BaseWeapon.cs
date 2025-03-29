@@ -4,13 +4,18 @@ using UnityEngine;
 //Базовый класс оружия
 public class BaseWeapon : UpgradableItem
 {
-    public Texture2D weaponTexture;
+    [SerializeField] protected Texture2D weaponTexture;
     public Person owner;
-    public float damage;
-    public float baseReloadTime;
-    public float basePrepareAttackTime;
-    public float baseEndAttackTime;
-    public bool reloading = false;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float baseReloadTime;
+    [SerializeField] protected float basePrepareAttackTime;
+    [SerializeField] protected float baseEndAttackTime;
+    bool reloading = false;
+
+    public bool isReloading()
+    {
+        return reloading;
+    }
 
     void Start()
     {

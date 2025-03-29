@@ -3,11 +3,16 @@ using UnityEngine;
 
 public class AlternateAttackWeapon : BaseWeapon
 {
-    public float altDamage;
-    public float baseAltReloadTime;
-    public float baseAltPrepareAttackTime;
-    public float baseAltEndAttackTime;
-    public bool altReloading = false;
+    [SerializeField] protected float altDamage;
+    [SerializeField] protected float baseAltReloadTime;
+    [SerializeField] protected float baseAltPrepareAttackTime;
+    [SerializeField] protected float baseAltEndAttackTime;
+    bool altReloading = false;
+
+    public bool isReloadingAlt()
+    {
+        return altReloading;
+    }
     public virtual void LaunchAltAttack()
     {
         if (!altReloading && CheckAltAttackConditions())

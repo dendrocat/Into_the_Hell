@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerArmor : UpgradableItem
 {
-    public float damageReduction = 0.05f;
-    public float maxHealthBonus = 25f;
+    [SerializeField] float damageReduction = 0.05f;
+    [SerializeField] float maxHealthBonus = 25f;
 
     void Start()
     {

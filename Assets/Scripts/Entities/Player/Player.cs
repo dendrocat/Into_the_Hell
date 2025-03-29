@@ -50,19 +50,19 @@ public class Player : Person, IDamagable
 
     public void Attack()
     {
-        if (inventory.GetPlayerWeapon().reloading) return;
+        if (inventory.GetPlayerWeapon().isReloading()) return;
         inventory.GetPlayerWeapon().LaunchAttack();
     }
 
     public void AltAttack()
     {
-        if (inventory.GetPlayerWeapon().altReloading) return;
+        if (inventory.GetPlayerWeapon().isReloadingAlt()) return;
         inventory.GetPlayerWeapon().LaunchAltAttack();
     }
 
     public void PerformShift()
     {
-        if (!hasEffect(EffectNames.Shift) && (ShiftCount > 0) && isMoving)
+        if (!hasEffect(EffectNames.Shift) && (ShiftCount > 0) && isMoving())
         {
             StopAllCoroutines();
 

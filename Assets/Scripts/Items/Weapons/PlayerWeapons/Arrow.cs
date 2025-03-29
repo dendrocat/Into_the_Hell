@@ -15,8 +15,7 @@ public class Arrow : Missile
     {
         Collider2D collider = collision.collider;
         IDamagable damagable = collider.GetComponent<IDamagable>();
-        if (!targetTags.Contains(collider.gameObject.tag)) return;
-        if (damagable != null)
+        if ((damagable != null) && targetTags.Contains(collider.gameObject.tag))
         {
             damagable.TakeDamage(damage, DamageType.None);
         }

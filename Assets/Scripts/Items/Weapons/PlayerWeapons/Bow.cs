@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Bow : MissileWeapon
 {
-    public GameObject altMissilePrefab;
-    public float altMissileSpeed;
+    [SerializeField] GameObject altMissilePrefab;
+    [SerializeField] float altMissileSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,8 +37,7 @@ public class Bow : MissileWeapon
         }
         GameObject missile = GameObject.Instantiate(altMissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
-        missileComponent.speed = altMissileSpeed;
-        missileComponent.damage = CalcScale(altDamage);
+        missileComponent.SetValues(CalcScale(altDamage), altMissileSpeed);
         missileComponent.direction = owner.weaponObject.localPosition;
     }
 }

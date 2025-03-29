@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public Player player;
+    [SerializeField] Player player;
     InputManager inputManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +21,7 @@ public class MovementController : MonoBehaviour
         {
             Vector2 movement = inputManager.move;
             player.currentDirection = movement;
-            player.isMoving = (movement != Vector2.zero);
+            player.setMoving(movement != Vector2.zero);
 
             if (inputManager.Attack)
             {

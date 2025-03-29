@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public List<string> targetTags;
-    public float damage;
-    public float speed;
-    public float damageRadius = 0.5f;
+    [SerializeField] protected List<string> targetTags;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float damageRadius = 0.5f;
     protected Rigidbody2D rb;
     public Vector2 direction;
 
@@ -15,6 +15,12 @@ public class Missile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void SetValues(float damage, float speed)
+    {
+        this.damage = damage;
+        this.speed = speed;
     }
 
     // Update is called once per frame

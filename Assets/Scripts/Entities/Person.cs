@@ -15,7 +15,7 @@ public class Person : Effectable, IDamagable
     public Transform weaponObject;
     public List<string> targetTags; //список тегов возможных целей
 
-    public bool isMoving = false;
+    [SerializeField] bool moving = false;
     public Vector2 currentDirection;
     public Vector2 facingDirection;
     public Vector2 weaponDirection;
@@ -26,6 +26,16 @@ public class Person : Effectable, IDamagable
     public float getHP()
     {
         return health;
+    }
+
+    public bool isMoving()
+    {
+        return moving;
+    }
+
+    public void setMoving(bool moving)
+    {
+        this.moving = moving;
     }
 
     public bool isAlive()
@@ -84,12 +94,12 @@ public class Person : Effectable, IDamagable
             ChangeWeaponPosition();
 
             //движение персонажа
-            if ((!hasEffect(EffectNames.Stun) && isMoving) || hasEffect(EffectNames.Shift)) 
+            if ((!hasEffect(EffectNames.Stun) && moving) || hasEffect(EffectNames.Shift)) 
                 //если нет оглушения и персонаж двигается, или на нем есть эффект рывка
             {
                 Move();
             }
-            else if (!isMoving)
+            else if (!moving)
             {
                 rb.linearVelocity = new Vector2(0, 0);
             }
@@ -191,7 +201,7 @@ public class Person : Effectable, IDamagable
                                              //оружия, которым нужно бить (если оно не указано, то -1).
     {
         BaseWeapon currentWeapon = (weaponIndex != -1) ? weapons[weaponIndex] : null; //получаем ссылку на оружие
-        if ((currentWeapon != null) && currentWeapon.reloading) //если выбранное оружие перезаряжается, то выходим
+        if ((currentWeapon != null) && currentWeapon.isReloading()) //если выбранное оружие перезаряжается, то выходим
         {
             return;
         }
@@ -200,7 +210,7 @@ public class Person : Effectable, IDamagable
         {
             for (int i = weapons.Count - 1; i >= 0; i--) //перебираем все оружия с конца
             {
-                if (!weapons[i].reloading) //если оружие готово к атаке
+                if (!weapons[i].isReloading()) //если оружие готово к атаке
                 {
                     currentWeapon = weapons[i]; //выбираем его
                     break;

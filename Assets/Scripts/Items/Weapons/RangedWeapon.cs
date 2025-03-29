@@ -5,8 +5,8 @@ using UnityEngine;
 //Класс оружия ближнего боя
 public class RangedWeapon : AlternateAttackWeapon
 {
-    public float range;
-    public float angle;
+    [SerializeField] protected float range;
+    [SerializeField] protected float angle;
 
     private void OnDrawGizmos()
     {
@@ -17,8 +17,10 @@ public class RangedWeapon : AlternateAttackWeapon
         Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
     }
 
-    protected List<IDamagable> FindTargetsForAttack()
+    protected List<IDamagable> FindTargetsForAttack(float range = -1f, float angle = -1f)
     {
+        if (range == -1f) range = this.range;
+        if (angle == -1f) angle = this.angle;
         List<IDamagable> targets = new List<IDamagable>(); //поиск целей для атаки
         //Person[] possibleTargets = FindObjectsByType<Person>(FindObjectsSortMode.None);
 

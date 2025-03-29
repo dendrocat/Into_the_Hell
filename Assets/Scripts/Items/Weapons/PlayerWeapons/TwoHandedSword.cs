@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TwoHandedSword : RangedWeapon
 {
-    public float altRange = 5f;
-    public float altAngle = 10f;
+    [SerializeField] float altRange = 5f;
+    [SerializeField] float altAngle = 10f;
     void Start()
     {
         damage = 15f;
@@ -34,7 +34,7 @@ public class TwoHandedSword : RangedWeapon
 
     protected override void AltAttack()
     {
-        List<IDamagable> targets = FindTargetsForAttack();
+        List<IDamagable> targets = FindTargetsForAttack(altRange, altAngle);
 
         foreach(IDamagable target in targets)
         {

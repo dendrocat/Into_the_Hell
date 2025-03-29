@@ -10,7 +10,7 @@ public class BaseEnemy : Person
     AIPath aipath;
     AIDestinationSetter aiDestSetter;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         if (!gameObject.TryGetComponent<Seeker>(out seeker))

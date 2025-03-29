@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class CollisionIgnorer : MonoBehaviour
 {
-    public List<string> ignoredTags = new List<string>();
+    [SerializeField] List<string> ignoredTags = new List<string>();
     private HashSet<Collider2D> ignoredColliders = new HashSet<Collider2D>();
 
     void Start()
