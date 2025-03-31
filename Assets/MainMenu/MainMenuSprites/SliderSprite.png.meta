@@ -1,0 +1,764 @@
+fileFormatVersion: 2
+guid: 4c0296212b9c34744965923bcc750fc7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4818117644900889873
+    second: SliderSprite_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SliderSprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1350
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6f73889f408a54e8fc3521ac98fefc
+      internalID: 34089379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1300
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c3121e86ac22d4d9d954cf68f4ff21
+      internalID: 1355816555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb8a74e6b49788449888272fa1844f5
+      internalID: -1037513825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223369dd18ae5bf47b8828850cf3caf5
+      internalID: 1348176360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ccf70f4cbeed340908e4df6bd31154
+      internalID: -1450662740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e3f5d59cd334e4fb696cee1e7b058d
+      internalID: 126495899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1050
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49db74155fc8ad644a17f14047997375
+      internalID: -170996687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e50cf04e7ade4447bba8c8b779c4a65
+      internalID: 220033437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 950
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b542f6cad1e6c4a8e92e1d7e260d87
+      internalID: -1570226233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddac6658ef4a2542b63a4b3974abd49
+      internalID: -1823915120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 850
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03539f58db7b4a14f895dc257ab7fee9
+      internalID: -1897912951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eb9450a85a9b4459595c2b54b63842
+      internalID: -2099325412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 750
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065b1afef1c319d40b54e730891f25c4
+      internalID: 482766591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2faca37b35ff1498cc4f4443527dfe
+      internalID: 1889776880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 650
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2275018c7b7a7414f99c67b7b4f3578d
+      internalID: 858440821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df0cb8170edf2c45836329c06e090ad
+      internalID: -625244130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 550
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d36c982c7dfaf4499b359fe9c0c274
+      internalID: -2110739674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f663dcca3d210408173f7acc19e9d3
+      internalID: -1261741571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9fb24c7aca0b14d8c0afbf9f3c7141
+      internalID: 1837940568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74b23199bda0f5f4b8e90b2d24653c2e
+      internalID: -2136514547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9a7b1236326f5468b828aa42527115
+      internalID: 677177782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b5b2c7aa587a248855b73a53482f41
+      internalID: -1583591904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5243bc9204e0a5648a6a9b88a69d4149
+      internalID: -2064714965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e49a9a7128fb646b7292727560014e
+      internalID: 1225399819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e1868132f806e4e9a91d7ea2d04b5e
+      internalID: 323029688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ae610462f4cda4cb17c517665c5fb7
+      internalID: -1965861699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451d6791c0997be42894800dcaad2d57
+      internalID: -1491697778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SliderSprite_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e021e3cb41792ab46969a9546d3ab8c8
+      internalID: 1525282922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5f5de5fc33f987c4a94e792724e76db7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SliderSprite_0: 34089379
+      SliderSprite_1: 1355816555
+      SliderSprite_10: -1897912951
+      SliderSprite_11: -2099325412
+      SliderSprite_12: 482766591
+      SliderSprite_13: 1889776880
+      SliderSprite_14: 858440821
+      SliderSprite_15: -625244130
+      SliderSprite_16: -2110739674
+      SliderSprite_17: -1261741571
+      SliderSprite_18: 1837940568
+      SliderSprite_19: -2136514547
+      SliderSprite_2: -1037513825
+      SliderSprite_20: 677177782
+      SliderSprite_21: -1583591904
+      SliderSprite_22: -2064714965
+      SliderSprite_23: 1225399819
+      SliderSprite_24: 323029688
+      SliderSprite_25: -1965861699
+      SliderSprite_26: -1491697778
+      SliderSprite_27: 1525282922
+      SliderSprite_3: 1348176360
+      SliderSprite_4: -1450662740
+      SliderSprite_5: 126495899
+      SliderSprite_6: -170996687
+      SliderSprite_7: 220033437
+      SliderSprite_8: -1570226233
+      SliderSprite_9: -1823915120
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
