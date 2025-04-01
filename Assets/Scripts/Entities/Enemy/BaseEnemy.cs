@@ -10,6 +10,8 @@ using UnityEngine;
  * **/
 public class BaseEnemy : Person
 {
+    [SerializeField] float dropMoneyChance = 0.5f;
+    [SerializeField] int dropMoneyCount = 5;
     Path path;
     Seeker seeker;
     AIPath aipath;
@@ -20,9 +22,9 @@ public class BaseEnemy : Person
      * Инициализация врага
      * </summary>
      * **/
-    new void Start()
+    void Start()
     {
-        base.Start();
+        InitializePerson();
         if (!gameObject.TryGetComponent<Seeker>(out seeker))
         {
             Debug.LogError(gameObject.name + ": missing Seeker component");
@@ -42,6 +44,16 @@ public class BaseEnemy : Person
     }
 
     /**
+     * <summary>
+     * Обновляет скорость ИИ в соответствии с текущей скоростью персонажа
+     * </summary>
+     * **/
+    void UpdateSpeed()
+    {
+        aipath.maxSpeed = getSpeed();
+    }
+
+    /**
      * <inheritdoc/>
      * **/
     protected override void ChangeWeaponPosition()
@@ -52,7 +64,7 @@ public class BaseEnemy : Person
             Vector2 nearestDirection = new Vector2(15f, 0f);
             foreach (Collider2D enemyCollider in enemyColliders)
             {
-                if (enemyCollider.gameObject.tag != "Player") continue;
+                if (!enemyCollider.gameObject.CompareTag("Player")) continue;
                 Vector2 dir = enemyCollider.gameObject.transform.position - transform.position;
                 if (dir.magnitude < nearestDirection.magnitude)
                 {
@@ -97,6 +109,9 @@ public class BaseEnemy : Person
             // обновление позиции оружия
             ChangeWeaponPosition();
 
+            // обновление скорости персонажа
+            UpdateSpeed();
+
             //движение персонажа
             if (hasEffect(EffectNames.Stun))
             {
@@ -112,6 +127,20 @@ public class BaseEnemy : Person
     {
         aipath.canMove = false;
         aiDestSetter.target = null;
-        Debug.Log(gameObject.name + ": dead");
+        DropMoney();
+    }
+
+    /**
+     * <summary>
+     * С некоторым шансом выдает деньги игроку.
+     * </summary>
+     * **/
+    void DropMoney()
+    {
+        if (Random.Range(0.0f, 1.0f) < dropMoneyChance)
+        {
+            GameObject.FindGameObjectWithTag("Player").
+                GetComponent<Player>().inventory.ModifyMoneyCount(dropMoneyCount);
+        }
     }
 }

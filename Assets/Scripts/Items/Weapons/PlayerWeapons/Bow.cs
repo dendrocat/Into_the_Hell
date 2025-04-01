@@ -17,6 +17,7 @@ public class Bow : MissileWeapon
      * **/
     void Start()
     {
+        FindOwner();
         scaleCoeff = 1f;
         minValueDescending = 0.6f;
         damage = 10f;

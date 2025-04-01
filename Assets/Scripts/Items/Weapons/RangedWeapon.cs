@@ -19,11 +19,14 @@ public class RangedWeapon : AlternateAttackWeapon
      * **/
     private void OnDrawGizmos()
     {
-        Vector2 ownerPosition = owner.transform.position;
-        Vector2 leftAngle = Quaternion.Euler(0f, 0f, angle / 2) * owner.weaponDirection.normalized;
-        Vector2 rightAngle = Quaternion.Euler(0f, 0f, -angle / 2) * owner.weaponDirection.normalized;
-        Debug.DrawRay(ownerPosition, leftAngle * range, Color.yellow);
-        Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
+        if (owner)
+        {
+            Vector2 ownerPosition = owner.transform.position;
+            Vector2 leftAngle = Quaternion.Euler(0f, 0f, angle / 2) * owner.weaponDirection.normalized;
+            Vector2 rightAngle = Quaternion.Euler(0f, 0f, -angle / 2) * owner.weaponDirection.normalized;
+            Debug.DrawRay(ownerPosition, leftAngle * range, Color.yellow);
+            Debug.DrawRay(ownerPosition, rightAngle * range, Color.yellow);
+        }
     }
 
     /** 
@@ -46,7 +49,7 @@ public class RangedWeapon : AlternateAttackWeapon
         foreach (Collider2D candidate in possibleTargets)
         { // перебор возможных целей
             IDamagable damagable = candidate.GetComponent<IDamagable>();
-            if (!owner.targetTags.Contains(candidate.gameObject.tag)) continue; //не реагируем на цели, не соответствующие тегу
+            if (!targetTags.Contains(candidate.gameObject.tag)) continue; //не реагируем на цели, не соответствующие тегу
 
             Vector2 candidatePosition = candidate.transform.position;
             Vector2 candidateDirection = candidatePosition - (Vector2)transform.position;

@@ -12,12 +12,11 @@ public class Person : Effectable, IDamagable
     bool alive = true;
 
     protected float destructionDelay = 1f;
-    protected float maxHealth = 100f; //максимальное здоровье
-    protected float health = 100f; //текущее здоровье
-    protected float speed = 2f; //скорость передвижения персонажа
+    [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
+    [SerializeField] protected float health = 100f; //текущее здоровье
+    [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
     public BaseWeapon weapon; //оружие персонажа
     public Transform weaponObject;
-    public List<string> targetTags; //список тегов возможных целей
 
     [SerializeField] bool moving = false;
     public Vector2 currentDirection;
@@ -76,7 +75,7 @@ public class Person : Effectable, IDamagable
      * Инициализация персонажа.
      * </summary>
      * **/
-    protected void Start()
+    protected void InitializePerson()
     {
         facingDirection = Vector2.right;
         if (!TryGetComponent<Animator>(out anim)) //получаем ссылку на компонент аниматора
@@ -95,6 +94,11 @@ public class Person : Effectable, IDamagable
         {
             Debug.LogError(gameObject.name + ": Missing weapon object");
         }
+    }
+
+    void Start()
+    {
+        InitializePerson();
     }
 
     /**

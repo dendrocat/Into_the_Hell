@@ -18,6 +18,7 @@ public class TwoHandedSword : RangedWeapon
      * **/
     void Start()
     {
+        FindOwner();
         damage = 15f;
         baseReloadTime = 2f;
         basePrepareAttackTime = 0.2f;

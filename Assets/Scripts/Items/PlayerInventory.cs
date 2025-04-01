@@ -185,9 +185,9 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public bool ModifyMoneyCount(int diff)
     {
-        if (money - diff > 0)
+        if (money + diff > 0)
         {
-            money -= diff;
+            money += diff;
             return true;
         }
         return false;

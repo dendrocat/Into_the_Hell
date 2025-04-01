@@ -26,5 +26,5 @@ public interface IDamagable
      * <param name="damage">Количество получаемого урона</param>
      * <param name="type"><see cref="DamageType">Тип урона</see>, наносимого объекту</param>
      * **/
-    public abstract void TakeDamage(float damage, DamageType type);
+    public void TakeDamage(float damage, DamageType type);
 }

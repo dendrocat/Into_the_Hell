@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -12,9 +13,14 @@ public class BaseWeapon : UpgradableItem
     [SerializeField] protected Texture2D weaponTexture;
 
     /// <summary>
+    /// Список тегов, которым оружие может наносить урон.
+    /// </summary>
+    [SerializeField] protected List<string> targetTags;
+
+    /// <summary>
     /// Владелец оружия.
     /// </summary>
-    public Person owner;
+    protected Person owner;
 
     /// <summary>
     /// Базовый урон, наносимый оружием.
@@ -51,10 +57,19 @@ public class BaseWeapon : UpgradableItem
     }
 
     /// <summary>
+    /// Заполняет поле владельца.
+    /// </summary>
+    protected void FindOwner()
+    {
+        owner = gameObject.GetComponentInParent<Person>();
+    }
+
+    /// <summary>
     /// Инициализирует коэффициент масштабирования при старте.
     /// </summary>
     void Start()
     {
+        FindOwner();
         scaleCoeff = 1f;
     }
 

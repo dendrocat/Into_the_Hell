@@ -8,11 +8,13 @@ using UnityEngine;
 public class Potion : UpgradableItem
 {
     float baseHeal = 50f;
+    float baseReloadTime = 10f;
 
     private void Start()
     {
         maxLevel = 3;
         scaleCoeff = 1f;
+        minValueDescending = 0.8f;
     }
 
     /**
@@ -24,5 +26,16 @@ public class Potion : UpgradableItem
     public float getTotalHeal()
     {
         return CalcScale(baseHeal);
+    }
+
+    /**
+     * <summary>
+     * Функция, возвращающая время перезарядки зелья.
+     * </summary>
+     * <returns>Время перезарядки зелья.</returns>
+     * **/
+    public float getReloadTime()
+    {
+        return CalcScaleDescending(baseReloadTime);
     }
 }

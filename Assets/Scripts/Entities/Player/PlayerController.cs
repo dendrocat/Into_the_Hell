@@ -5,7 +5,7 @@ using UnityEngine;
  * Класс, отвечающий за управление персонажем
  * </summary>
  * **/
-public class MovementController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] Player player;
     InputManager inputManager;

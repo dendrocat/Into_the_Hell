@@ -15,6 +15,7 @@ public class BattleSceneDebugUI : MonoBehaviour
     [SerializeField] TMP_Text dashCount;
     [SerializeField] TMP_Text potionCount;
     [SerializeField] TMP_Text expArrowCount;
+    [SerializeField] TMP_Text moneyCount;
     [SerializeField] TMP_Text playerEffectsText;
 
     /**
@@ -29,8 +30,10 @@ public class BattleSceneDebugUI : MonoBehaviour
 
         playerHPText.SetText("Player HP: " + playerHP + "\nArmor: " + player.inventory.GetPlayerArmor().level);
         dashCount.SetText("Shift count: " + player.ShiftCount);
-        potionCount.SetText("Potion count: " + player.inventory.GetPotionCount());
+        potionCount.SetText("Potion count: " + player.inventory.GetPotionCount() + (player.isHealReloading() ? " (reload)" : ""));
         expArrowCount.SetText("ExpArrow count: " + player.inventory.GetExplosiveArrowCount());
+        moneyCount.SetText("Money count: " + player.inventory.GetMoney());
+
 
         string playerEffects = "Player Effects:\n";
         for (int i = 0; i < 11; i++)

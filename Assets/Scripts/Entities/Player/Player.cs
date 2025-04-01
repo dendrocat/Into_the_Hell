@@ -3,12 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
+/**
+ * <summary>
+ * Класс игрока.<br/>
+ * Важно! Вместо weapon используется inventory
+ * </summary>
+ * **/
 public class Player : Person, IDamagable
 {
+    float baseMaxHealth = 100f;
     public PlayerInventory inventory;
     public int ShiftCount = 3;
+    bool healReloading = false;
+
+    /**
+     * <summary>
+     * Обновляет максимальное здоровье в соответствии с уровнем брони.
+     * </summary>
+     * **/
+    public void RecalculateHealth()
+    {
+        int armorLevel = inventory.GetPlayerArmor().level;
+        maxHealth = baseMaxHealth + inventory.GetPlayerArmor().getHealthBonus();
+    }
+
+    void Start()
+    {
+        InitializePerson();
+        RecalculateHealth();
+    }
 
     /**
      * <inheritdoc/>
@@ -95,10 +119,12 @@ public class Player : Person, IDamagable
      * **/
     public void UsePotion()
     {
-        if (health < maxHealth)
+        if ((health < maxHealth) && !healReloading)
         {
             if (inventory.UsePotion())
             {
+                healReloading = true;
+
                 Potion potion = inventory.GetPotion();
                 float heal = potion.getTotalHeal();
                 health += heal;
@@ -106,8 +132,33 @@ public class Player : Person, IDamagable
                 {
                     health = maxHealth;
                 }
+
+                float reloadTime = potion.getReloadTime();
+                StartCoroutine(HealReload(reloadTime));
             }
         }
+    }
+
+    /**
+     * <summary>
+     * Корутина, обрабатывающая перезарядку зелья
+     * </summary>
+     * **/
+    IEnumerator HealReload(float reloadTime)
+    {
+        yield return new WaitForSeconds(reloadTime);
+        healReloading = false;
+    }
+
+    /**
+     * <summary>
+     * Метод, показывающий, находится ли зелье на перезарядке
+     * </summary>
+     * <returns>Находится ли зелье на перезарядке</returns>
+     * **/
+    public bool isHealReloading()
+    {
+        return healReloading;
     }
 
     /**
