@@ -11,9 +11,9 @@ using Pathfinding;
 public class BaseAIController : MonoBehaviour
 {
     public float attackRange = 2f;
-    BaseEnemy NPC;
-    AIPath aipath;
-    AIDestinationSetter aiDestSetter;
+    protected BaseEnemy NPC;
+    protected AIPath aipath;
+    protected AIDestinationSetter aiDestSetter;
 
     /**
      * <summary>

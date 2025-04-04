@@ -10,6 +10,7 @@ using UnityEngine;
 public class BattleSceneDebugUI : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] Boss boss;
 
     [SerializeField] TMP_Text playerHPText;
     [SerializeField] TMP_Text dashCount;
@@ -17,6 +18,9 @@ public class BattleSceneDebugUI : MonoBehaviour
     [SerializeField] TMP_Text expArrowCount;
     [SerializeField] TMP_Text moneyCount;
     [SerializeField] TMP_Text playerEffectsText;
+
+    [SerializeField] TMP_Text bossNameText;
+    [SerializeField] TMP_Text bossHPText;
 
     /**
      * <summary>
@@ -46,5 +50,8 @@ public class BattleSceneDebugUI : MonoBehaviour
         }
 
         playerEffectsText.SetText(playerEffects);
+
+        bossNameText.SetText(boss.GetBossName());
+        bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
     }
 }

@@ -52,6 +52,7 @@ public class UpgradableItem : MonoBehaviour
     /// <returns>Уменьшенное значение.</returns>
     public float CalcScaleDescending(float scalable)
     {
+        if (level == 1) return scalable;
         float coeff = minValueDescending / (maxLevel - 1);
         return scalable * (1f - (level - 1) * coeff);
     }
