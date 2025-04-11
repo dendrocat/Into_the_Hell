@@ -42,6 +42,7 @@ public class UpgradableItem : MonoBehaviour
     /// <returns>Масштабированное значение.</returns>
     public float CalcScale(float scalable)
     {
+        //Debug.Log(gameObject.name + ": initial=" + scalable + ", calculated=" + (scalable * (1f + (level - 1) * scaleCoeff)));
         return scalable * (1f + (level - 1) * scaleCoeff);
     }
 

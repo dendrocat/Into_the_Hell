@@ -169,4 +169,9 @@ public class BaseWeapon : UpgradableItem
         yield return new WaitForSeconds(reloadTime);
         reloading = false;
     }
+
+    public List<string> GetTargetTags()
+    {
+        return targetTags;
+    }
 }

@@ -10,7 +10,7 @@ using Pathfinding;
  * **/
 public class BaseAIController : MonoBehaviour
 {
-    public float attackRange = 2f;
+    [SerializeField] protected float attackRange = 2f;
     protected BaseEnemy NPC;
     protected AIPath aipath;
     protected AIDestinationSetter aiDestSetter;

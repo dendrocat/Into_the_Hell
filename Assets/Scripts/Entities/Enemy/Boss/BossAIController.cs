@@ -10,9 +10,13 @@ using UnityEngine;
 public class BossAIController : BaseAIController
 {
     protected Boss Boss;
+    /// <summary>
+    /// Время между двумя атаками босса.
+    /// </summary>
+    [SerializeField] float attackDelay = 2f;
 
     /// <summary>
-    /// Показывает, атаковал ли босс в последние 2 секунды. 
+    /// Показывает, атаковал ли босс в последние N секунд.
     /// Используется для предотвращения одновременного запуска атак.
     /// </summary>
     bool attacked = false;
@@ -43,7 +47,7 @@ public class BossAIController : BaseAIController
             {
                 Boss.Attack();
                 attacked = true;
-                StartCoroutine(UpdateAttackStatus(2f));
+                StartCoroutine(UpdateAttackStatus(attackDelay));
             }
         }
     }

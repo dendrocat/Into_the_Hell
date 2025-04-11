@@ -21,6 +21,8 @@ public class BattleSceneDebugUI : MonoBehaviour
 
     [SerializeField] TMP_Text bossNameText;
     [SerializeField] TMP_Text bossHPText;
+    [SerializeField] TMP_Text bossChainAttackText;
+    [SerializeField] TMP_Text bossMiniGolemText;
 
     /**
      * <summary>
@@ -53,5 +55,7 @@ public class BattleSceneDebugUI : MonoBehaviour
 
         bossNameText.SetText(boss.GetBossName());
         bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
+        bossChainAttackText.SetText("Attack chain: " + boss.getEffectCount(EffectNames.AttackChain));
+        bossMiniGolemText.SetText("Mini-golem level: " + boss.getEffectCount(EffectNames.MiniGolem));
     }
 }

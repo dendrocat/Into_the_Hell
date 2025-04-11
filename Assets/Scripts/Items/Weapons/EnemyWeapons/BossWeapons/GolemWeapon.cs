@@ -1,12 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий оружие Морозного йети.
- * </summary>
- * **/
-public class YetiWeapon : BossWeapon
+public class GolemWeapon : BossWeapon
 {
     [SerializeField] float attack1Range = 2f;
     [SerializeField] float attack1Angle = 30f;
@@ -18,7 +13,7 @@ public class YetiWeapon : BossWeapon
     [SerializeField] float attack3Angle = 360f;
     /**
      * <summary>
-     * Инициализация оружия.
+     * ������������� ������.
      * </summary>
      * **/
     void Start()
@@ -27,18 +22,18 @@ public class YetiWeapon : BossWeapon
         level = 1;
         maxLevel = 1;
 
-        damage = 50f;
+        damage = 75f;
         baseReloadTime = 2f;
         basePrepareAttackTime = 0.2f;
         baseEndAttackTime = 0f;
 
         attack2MissileSpeed = 8f;
-        attack2Damage = 60f;
+        attack2Damage = 80f;
         baseAttack2ReloadTime = 5f;
         baseAttack2PrepareAttackTime = 0.5f;
         baseAttack2EndAttackTime = 0.5f;
 
-        attack3Damage = 90f;
+        attack3Damage = 120f;
         baseAttack3ReloadTime = 8f;
         baseAttack3PrepareAttackTime = 1f;
         baseAttack3EndAttackTime = 1f;
@@ -51,20 +46,10 @@ public class YetiWeapon : BossWeapon
     {
         List<IDamagable> targets = FindTargetsForAttack(attack1Range, attack1Angle);
 
-        // определение уровня эффекта "Серия атак" у владельца оружия
-        int ChainLevel = owner.getEffectCount(EffectNames.AttackChain);
-
-        bool hasTargets = false;
-
-        foreach(IDamagable target in targets)
+        foreach (IDamagable target in targets)
         {
-            hasTargets = true;
-            target.TakeDamage(damage * (1f + 0.1f * ChainLevel), DamageType.None);
+            target.TakeDamage(damage, DamageType.None);
         }
-
-        // обновление эффекта серии атак у владельца
-        if (hasTargets) owner.AddEffect(EffectNames.AttackChain, 1);
-        else owner.SetEffect(EffectNames.AttackChain, 0);
     }
 
     /**
@@ -86,15 +71,8 @@ public class YetiWeapon : BossWeapon
     {
         List<IDamagable> targets = FindTargetsForAttack(attack3Range, attack3Angle);
 
-        // определение уровня эффекта "Серия атак" у владельца оружия
-        int ChainLevel = owner.getEffectCount(EffectNames.AttackChain);
-
-        bool hasTargets = false;
-
         foreach (IDamagable target in targets)
         {
-            hasTargets = true;
-
             MonoBehaviour monoTarget = target as MonoBehaviour;
             if (monoTarget == null)
             {
@@ -102,15 +80,11 @@ public class YetiWeapon : BossWeapon
                 continue;
             }
 
-            // определение расстояния до босса и расчет снижения урона
+            // ����������� ���������� �� ����� � ������ �������� �����
             float distance = Vector2.Distance(owner.transform.position, monoTarget.transform.position);
             float damageReduction = Mathf.Clamp(-Mathf.Pow(distance / attack3Range, 2f) + 1f, 0f, 1f);
 
-            target.TakeDamage(attack3Damage * (1f + 0.1f * ChainLevel) * damageReduction, DamageType.None);
+            target.TakeDamage(attack3Damage * damageReduction, DamageType.None);
         }
-
-        // обновление эффекта серии атак у владельца
-        if (hasTargets) owner.AddEffect(EffectNames.AttackChain, 1);
-        else owner.SetEffect(EffectNames.AttackChain, 0);
     }
 }

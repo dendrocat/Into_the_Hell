@@ -18,6 +18,16 @@ public class Missile : MonoBehaviour
 
     /**
      * <summary>
+     * Установка целей для снаряда
+     * </summary>
+     * **/
+    public void SetTargetTags(List<string> targetTags)
+    {
+        this.targetTags = targetTags;
+    }
+
+    /**
+     * <summary>
      * Установка урона и скорости снаряда
      * </summary>
      * **/
