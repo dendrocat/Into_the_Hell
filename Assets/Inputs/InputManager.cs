@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
@@ -14,6 +15,10 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
+    public UnityEvent OnInteractPressed { get; } = new UnityEvent();
+
+    public UnityEvent OnSubmitPressed { get; } = new UnityEvent();
+
     public InputMap CurrentInputMap { get; private set; }
 
     private PlayerInput _playerInput;
@@ -22,7 +27,7 @@ public class InputManager : MonoBehaviour
     {
         if (Instance)
         {
-            Debug.LogError("Instance уже существует");
+            Debug.LogError($"{gameObject}: Instance уже существует");
             return;
         }
         Instance = this;
@@ -40,9 +45,6 @@ public class InputManager : MonoBehaviour
 
     private bool _altAttack = false;
     public bool AltAttack => _altAttack ? (!(_altAttack = false)) : false;
-
-    private bool _interact = false;
-    public bool Interact => _interact ? (!(_interact = false)) : false;
 
     private bool _dash = false;
     public bool Dash => _dash ? (!(_dash = false)) : false;
@@ -99,7 +101,7 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            _interact = true;
+            OnInteractPressed?.Invoke();
         }
     }
 
@@ -136,6 +138,12 @@ public class InputManager : MonoBehaviour
             Debug.Log("Cancel");
             _cancel = true;
         }
+    }
+
+    public void onSubmitPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnSubmitPressed?.Invoke();
     }
 
     public void SwitchInputMap(InputMap map)
