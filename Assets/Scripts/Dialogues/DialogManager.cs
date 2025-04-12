@@ -11,7 +11,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public static UnityEvent OnAwaked = new UnityEvent();
 
     [HideInInspector]
-    public UnityEvent<Story> OnStartStory = new UnityEvent<Story>();
+    public UnityEvent<Story> OnCreatedStory = new UnityEvent<Story>();
 
 
     [SerializeField] DialogDisplayer displayer;
@@ -20,6 +20,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
 
     public Story CurrentStory { get; private set; }
 
+    bool _storyEnded;
 
     void Awake()
     {
@@ -33,13 +34,22 @@ public class DialogManager : MonoBehaviour, IDialogManager
         displayer.gameObject.SetActive(false);
     }
 
-    public void StartStory(TextAsset inkJSONfile)
+    public void SetStory(TextAsset inkJSONfile)
+    {
+        CurrentStory = new Story(inkJSONfile.text);
+        OnCreatedStory?.Invoke(CurrentStory);
+        _storyEnded = false;
+    }
+
+    public void BindFunction(string inkFuncName, Action innerFunc)
+    {
+        CurrentStory.BindExternalFunction(inkFuncName, innerFunc);
+    }
+
+    public void StartStory()
     {
         InputManager.Instance.SwitchInputMap(InputMap.UI);
         InputManager.Instance.OnSubmitPressed.AddListener(ContinueStory);
-
-        CurrentStory = new Story(inkJSONfile.text);
-        OnStartStory?.Invoke(CurrentStory);
 
         displayer.gameObject.SetActive(true);
         ContinueStory();
@@ -47,6 +57,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
 
     void ContinueStory()
     {
+        if (_storyEnded) return;
         if (displayer.IsShowingPhrase)
         {
             displayer.ShowWholePhrase();
@@ -58,7 +69,13 @@ public class DialogManager : MonoBehaviour, IDialogManager
             EndDialog();
             return;
         }
-        displayer.ShowPhrase(CurrentStory.Continue());
+        var phrase = CurrentStory.Continue();
+        if (string.IsNullOrWhiteSpace(phrase))
+        {
+            ContinueStory();
+            return;
+        }
+        displayer.ShowPhrase(phrase);
 
         displayer.HandleTags(CurrentStory.currentTags);
 
@@ -97,6 +114,8 @@ public class DialogManager : MonoBehaviour, IDialogManager
         InputManager.Instance.OnSubmitPressed.RemoveListener(ContinueStory);
 
         displayer.gameObject.SetActive(false);
+
+        _storyEnded = true;
     }
 
 }
