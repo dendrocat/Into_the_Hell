@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
-  speed: 2
+  speed: 1
   weapon: {fileID: 5605084572000305181}
   weaponObject: {fileID: 3633685202547512208}
   moving: 0

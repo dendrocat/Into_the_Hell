@@ -18,6 +18,26 @@ public class Missile : MonoBehaviour
 
     /**
      * <summary>
+     * Получение урона, наносимого снарядом
+     * </summary>
+     * **/
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    /**
+     * <summary>
+     * Получение тегов целей снаряда
+     * </summary>
+     * **/
+    public List<string> GetTargetTags()
+    {
+        return targetTags;
+    }
+
+    /**
+     * <summary>
      * Установка целей для снаряда
      * </summary>
      * **/
