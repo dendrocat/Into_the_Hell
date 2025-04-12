@@ -60,7 +60,7 @@ public class Effectable: MonoBehaviour
         maxEffectCount[5] = 2;
         maxEffectCount[6] = 2;
         maxEffectCount[7] = 1;
-        maxEffectCount[8] = 1;
+        maxEffectCount[8] = 5; //вызвано особенностями наложения эффекта в ловушке
         maxEffectCount[9] = 5;
         maxEffectCount[10] = 1;
         maxEffectCount[11] = 1;

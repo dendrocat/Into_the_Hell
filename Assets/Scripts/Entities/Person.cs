@@ -9,6 +9,8 @@ using System.Collections;
  * **/
 public class Person : Effectable, IDamagable
 {
+    const float iceDriftDeceleration = 0.9f;
+
     bool alive = true;
 
     protected float destructionDelay = 1f;
@@ -148,7 +150,11 @@ public class Person : Effectable, IDamagable
             }
             else if (hasEffect(EffectNames.Stun) || hasEffect(EffectNames.HoleStun) || !moving)
             {
-                rb.linearVelocity = new Vector2(0, 0);
+                if (hasEffect(EffectNames.IceDrifting))
+                {
+                    rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, iceDriftDeceleration * Time.deltaTime);
+                }
+                else rb.linearVelocity = Vector2.zero;
             }
         }
     }
@@ -245,7 +251,15 @@ public class Person : Effectable, IDamagable
         if (!hasEffect(EffectNames.Shift))
         {
             Vector2 movement = currentDirection.normalized * currentSpeed;
-            rb.linearVelocity = movement;
+            if (hasEffect(EffectNames.IceDrifting))
+            {
+                rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, movement, iceDriftDeceleration * Time.deltaTime);
+            }
+            else
+            {
+                rb.linearVelocity = movement;
+            }
+            
 
             //обновление последнего ненулевого передвижения
             if (currentDirection != Vector2.zero)

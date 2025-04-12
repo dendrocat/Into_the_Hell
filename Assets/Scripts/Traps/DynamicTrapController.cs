@@ -72,9 +72,11 @@ public class DynamicTrapController : MonoBehaviour
      * **/
     private IEnumerator ActivatedPeriod()
     {
-        periodicalCheckCoroutine = StartCoroutine(PeriodicalCheck());
+        if (trapType == TrapType.Periodical)
+            periodicalCheckCoroutine = StartCoroutine(PeriodicalCheck());
         yield return new WaitForSeconds(activatedPeriod);
-        StopCoroutine(periodicalCheckCoroutine);
+        if (trapType == TrapType.Periodical)
+            StopCoroutine(periodicalCheckCoroutine);
         DeactivateTrap();
         StartCoroutine(IdlePeriod());
     }
