@@ -141,12 +141,12 @@ public class Person : Effectable, IDamagable
             ChangeWeaponPosition();
 
             //движение персонажа
-            if ((!hasEffect(EffectNames.Stun) && moving) || hasEffect(EffectNames.Shift)) 
-                //если нет оглушения и персонаж двигается, или на нем есть эффект рывка
+            if ((!hasEffect(EffectNames.Stun) && !hasEffect(EffectNames.HoleStun) && moving) || hasEffect(EffectNames.Shift)) 
+                //если нет оглушения или падения в яму и персонаж двигается, или на нем есть эффект рывка
             {
                 Move();
             }
-            else if (!moving)
+            else if (hasEffect(EffectNames.Stun) || hasEffect(EffectNames.HoleStun) || !moving)
             {
                 rb.linearVelocity = new Vector2(0, 0);
             }

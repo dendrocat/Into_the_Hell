@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -6,12 +7,53 @@ using UnityEngine;
 /// </summary>
 public class HolesController : MonoBehaviour
 {
-    /// <summary>
-    /// Scriptable object containing data about the hole (e.g., damage, effects).
-    /// </summary>
-    [SerializeField] HoleScriptable _hole;
+    /**
+     * <summary>
+     * Метод, обрабатывающий вход сущности в яму.
+     * </summary>
+     * <param name="collision">Коллайдер сущности.</param>
+     * **/
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError("Not impemented holes impact on entities");
+        Person person = collision.GetComponent<Person>();
+        if (person)
+        {
+            if (!person.hasEffect(EffectNames.Shift) && !person.hasEffect(EffectNames.HoleStun))
+            {
+                person.TakeDamage(25f, DamageType.None);
+                person.AddEffect(EffectNames.HoleStun);
+
+                //personAnimator.SetTrigger("fallTrigger");
+
+                Vector2 direction = person.transform.position - transform.position;
+                direction = direction.normalized * 1.5f;
+
+                StartCoroutine(HoleExitHandler(person, direction));
+            }
+        }
+    }
+
+    /**
+     * <summary>
+     * Внутренний метод, использующийся в корутине обработки падения в яму.
+     * </summary>
+     * <param name="person">Упавшая сущность.</param>
+     * **/
+    bool FallingPersonHasEffect(Person person)
+    {
+        return person.hasEffect(EffectNames.HoleStun);
+    }
+
+    /**
+     * <summary>
+     * Корутина, обрабатывающая падение в яму.
+     * </summary>
+     * <param name="direction">Точка, в которой сущность появится после падения</param>
+     * <param name="fallingPerson">Падающая сущность</param>
+     * **/
+    IEnumerator HoleExitHandler(Person fallingPerson, Vector2 direction)
+    {
+        yield return new WaitWhile(() => FallingPersonHasEffect(fallingPerson));
+        fallingPerson.transform.position = transform.position + (Vector3) direction;
     }
 }

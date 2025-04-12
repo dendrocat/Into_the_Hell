@@ -13,6 +13,7 @@ public enum EffectNames {
     IceDrifting = 8, //скольжение по льду
     ShieldBlock = 9, //блок щитом
     Shift = 10, //рывок
+    HoleStun = 11 //"оглушение" от ямы. не совсем эффект, но по другому я не придумал
 };
 
 /**
@@ -22,7 +23,7 @@ public enum EffectNames {
  * **/
 public class Effectable: MonoBehaviour
 {
-    private const int EFFECT_COUNT = 11; //общее количество типов эффектов
+    private const int EFFECT_COUNT = 12; //общее количество типов эффектов
 
     protected List<int> effectCount = new List<int>(); //количество эффектов на сущности
     protected List<float> effectRemainingTime = new List<float>(); //оставшееся время действия эффекта
@@ -62,12 +63,14 @@ public class Effectable: MonoBehaviour
         maxEffectCount[8] = 1;
         maxEffectCount[9] = 5;
         maxEffectCount[10] = 1;
+        maxEffectCount[11] = 1;
 
         effectDuration[0] = 3f;
         effectDuration[1] = 1.5f;
         effectDuration[2] = 0.25f;
         effectDuration[3] = 5f;
         effectDuration[10] = 0.25f;
+        effectDuration[11] = 1f;
     }
 
     /**

@@ -13,7 +13,7 @@ public class GolemWeapon : BossWeapon
     [SerializeField] float attack3Angle = 360f;
     /**
      * <summary>
-     * Инициализация оружия.
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕСЂСѓР¶РёСЏ.
      * </summary>
      * **/
     void Start()
@@ -80,7 +80,7 @@ public class GolemWeapon : BossWeapon
                 continue;
             }
 
-            // определение расстояния до босса и расчет снижения урона
+            // РѕРїСЂРµРґРµР»РµРЅРёРµ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РґРѕ Р±РѕСЃСЃР° Рё СЂР°СЃС‡РµС‚ СЃРЅРёР¶РµРЅРёСЏ СѓСЂРѕРЅР°
             float distance = Vector2.Distance(owner.transform.position, monoTarget.transform.position);
             float damageReduction = Mathf.Clamp(-Mathf.Pow(distance / attack3Range, 2f) + 1f, 0f, 1f);
 
