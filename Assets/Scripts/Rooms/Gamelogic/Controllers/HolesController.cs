@@ -26,7 +26,8 @@ public class HolesController : MonoBehaviour
                 //personAnimator.SetTrigger("fallTrigger");
 
                 Vector2 direction = person.transform.position - transform.position;
-                direction = direction.normalized * 1.5f;
+                direction = direction.normalized;
+                direction = ((direction != Vector2.zero) ? direction : Vector2.right) * 1.5f;
 
                 StartCoroutine(HoleExitHandler(person, direction));
             }

@@ -10,76 +10,59 @@ public class BaseTrap : MonoBehaviour
 {
     [SerializeField] protected List<string> targetTags;
     protected bool isActive = false;
-    bool checkTargetsInTrap = false;
+    List<Person> targets = new();
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive)
+        GameObject obj = collision.gameObject;
+        foreach (string targetTag in targetTags)
         {
-            GameObject obj = collision.gameObject;
-            foreach (string targetTag in targetTags)
+            if (obj.CompareTag(targetTag))
             {
-                if (obj.CompareTag(targetTag))
+                Person? target = obj.GetComponent<Person>();
+                if (target)
                 {
-                    Person? target = obj.GetComponent<Person>();
-                    OnEnter(target);
-                    break;
+                    targets.Add(target);
+                    Debug.Log("Target count: " + targets.Count);
+                    if (isActive) OnEnter(target);
                 }
+                break;
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (isActive)
+        GameObject obj = collision.gameObject;
+        foreach (string targetTag in targetTags)
         {
-            GameObject obj = collision.gameObject;
-            foreach (string targetTag in targetTags)
+            if (obj.CompareTag(targetTag))
             {
-                if (obj.CompareTag(targetTag))
+                Person? target = obj.GetComponent<Person>();
+                if (target)
                 {
-                    Person? target = obj.GetComponent<Person>();
-                    OnExit(target);
-                    break;
+                    targets.Remove(target);
+                    Debug.Log("Target count: " + targets.Count);
+                    if (isActive) OnExit(target);
                 }
+                break;
             }
         }
     }
     /**
      * <summary>
-     * Метод, который разрешает ловушке применить эффект OnStay к целям внутри нее. 
-     * Должен вызываться через корутину в контроллере ловушки.
+     * Метод, который применяет эффект OnStay к целям внутри нее.
      * </summary>
      * **/
     public void CheckTargetsInTrap()
     {
-        checkTargetsInTrap = true;
-    }
-
-    /**
-     * <summary>
-     * Метод, который применяет эффект OnStay к целям внутри ловушки.
-     * </summary>
-     * **/
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (checkTargetsInTrap)
+        if (isActive)
         {
-            if (isActive)
+            foreach(Person target in targets)
             {
-                GameObject obj = collision.gameObject;
-                foreach (string targetTag in targetTags)
-                {
-                    if (obj.CompareTag(targetTag))
-                    {
-                        Person? target = obj.GetComponent<Person>();
-                        OnStay(target);
-                        break;
-                    }
-                }
+                OnStay(target);
             }
         }
-        checkTargetsInTrap = false;
     }
 
     /**
@@ -137,6 +120,18 @@ public class BaseTrap : MonoBehaviour
     public void Activate()
     {
         ChangeState(true);
+        OnActivate();
+    }
+
+    /**
+     * <summary>
+     * Метод, вызываемый при активации ловушки.
+     * Переопределяется в классах-наследниках.
+     * </summary>
+     * **/
+    protected virtual void OnActivate()
+    {
+
     }
 
     /**
