@@ -8,7 +8,6 @@ public class TestGameManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        Debug.Log("LoadGame");
         var data = GameRepository.Load();
         var player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerInventory>().SetPlayerData(data.playerData);

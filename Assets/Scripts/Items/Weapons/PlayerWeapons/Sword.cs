@@ -69,7 +69,6 @@ public class Sword : RangedWeapon
      * **/
     protected override void AltAttack()
     {
-        Debug.Log($"Sword: {owner}", this);
         owner.SetEffect(EffectNames.ShieldBlock, level);
     }
 

@@ -62,7 +62,6 @@ public class BaseWeapon : UpgradableItem
     protected void FindOwner()
     {
         owner = gameObject.GetComponentInParent<Person>();
-        Debug.Log($"{GetType()}: {owner}");
     }
 
     /// <summary>

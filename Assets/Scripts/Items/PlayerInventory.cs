@@ -156,9 +156,8 @@ public class PlayerInventory : MonoBehaviour
         {
             Destroy(playerWeapon.gameObject);
         }
-        playerWeapon = newWeapon;
-        var obj = Instantiate(newWeapon.gameObject, transform).GetComponent<AlternateAttackWeapon>();
-        GetComponent<Player>().weaponObject = obj.transform;
+        playerWeapon = Instantiate(newWeapon.gameObject, transform).GetComponent<AlternateAttackWeapon>();
+        GetComponent<Player>().weaponObject = playerWeapon.transform;
     }
 
     /**
@@ -223,7 +222,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetPlayerData(PlayerData data)
     {
-        Debug.Log("SetPlayerData");
         SetPlayerWeapon(TestWeaponStorage.Instance.GetWeapon(data.weapon));
 
         money = data.money;

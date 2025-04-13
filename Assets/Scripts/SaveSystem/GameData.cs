@@ -23,6 +23,7 @@ public struct PlayerData
 [Serializable]
 public struct GameData
 {
+    public int location;
     public int level;
     public PlayerData playerData;
     public List<byte> weaponLevels;

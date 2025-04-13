@@ -1,5 +1,4 @@
 using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
 public class GameRepository
 {
@@ -23,6 +22,7 @@ public class GameRepository
         if (!HasSave())
         {
             var data = new GameData();
+            data.level = 1;
             data.playerData.armorLevel = 1;
             data.playerData.potionLevel = 1;
             data.playerData.weapon = WeaponType.Sword;
