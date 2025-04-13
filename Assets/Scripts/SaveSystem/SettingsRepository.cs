@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class SettingsRepository : MonoBehaviour
+public class SettingsRepository
 {
     public static readonly Dictionary<Type, string> TypePrefixes = new()
     {

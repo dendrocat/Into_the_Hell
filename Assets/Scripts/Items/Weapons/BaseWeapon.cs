@@ -20,7 +20,7 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Владелец оружия.
     /// </summary>
-    protected Person owner;
+    [SerializeField] protected Person owner;
 
     /// <summary>
     /// Базовый урон, наносимый оружием.
@@ -62,6 +62,7 @@ public class BaseWeapon : UpgradableItem
     protected void FindOwner()
     {
         owner = gameObject.GetComponentInParent<Person>();
+        Debug.Log($"{GetType()}: {owner}");
     }
 
     /// <summary>

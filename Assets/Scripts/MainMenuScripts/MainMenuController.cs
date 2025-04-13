@@ -137,10 +137,9 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGameDialogYes()
     {
-        //TODO: replace to findind save file
-        if (PlayerPrefs.HasKey("SavedLevel"))
+        if (GameRepository.HasSave())
         {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
+            //TODO: replace to load level with base
             SceneManager.LoadScene(levelToLoad);
         }
         else

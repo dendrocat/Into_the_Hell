@@ -12,18 +12,18 @@ public struct PlayerData
     public WeaponType weapon;
     public int money;
 
-    public int potions;
-    public int potionCount;
+    public byte potionLevel;
+    public byte potionCount;
 
-    public int arrowCount;
+    public byte arrowCount;
 
-    public int armorLevel;
+    public byte armorLevel;
 }
 
 [Serializable]
 public struct GameData
 {
-    int level;
+    public int level;
     public PlayerData playerData;
-    public List<int> weaponLevel;
+    public List<byte> weaponLevels;
 }

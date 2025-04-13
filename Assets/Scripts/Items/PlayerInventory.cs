@@ -94,7 +94,7 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public void SetExplosiveArrowCount(int count)
     {
-        explosiveArrowCount = (byte) count;
+        explosiveArrowCount = (byte)count;
     }
 
     /** 
@@ -152,7 +152,13 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public void SetPlayerWeapon(AlternateAttackWeapon newWeapon)
     {
+        if (playerWeapon != null)
+        {
+            Destroy(playerWeapon.gameObject);
+        }
         playerWeapon = newWeapon;
+        var obj = Instantiate(newWeapon.gameObject, transform).GetComponent<AlternateAttackWeapon>();
+        GetComponent<Player>().weaponObject = obj.transform;
     }
 
     /**
@@ -191,5 +197,39 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public PlayerData GetPlayerData()
+    {
+        var data = new PlayerData();
+
+        if (playerWeapon is Sword)
+            data.weapon = WeaponType.Sword;
+        else if (playerWeapon is TwoHandedSword)
+            data.weapon = WeaponType.TwoHandedSword;
+        else if (playerWeapon is Bow)
+            data.weapon = WeaponType.Bow;
+        else
+            Debug.LogError("Unsupported weapon type");
+
+
+        data.money = money;
+        data.potionLevel = potion.level;
+        data.potionCount = potionsCount;
+        data.arrowCount = explosiveArrowCount;
+        data.armorLevel = armor.level;
+        return data;
+    }
+
+    public void SetPlayerData(PlayerData data)
+    {
+        Debug.Log("SetPlayerData");
+        SetPlayerWeapon(TestWeaponStorage.Instance.GetWeapon(data.weapon));
+
+        money = data.money;
+        potion.level = data.potionLevel;
+        potionsCount = data.potionCount;
+        explosiveArrowCount = data.arrowCount;
+        armor.level = data.armorLevel;
     }
 }
