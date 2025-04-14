@@ -104,7 +104,11 @@ public class MainMenuController : MonoBehaviour
 
     public void ExitButton()
     {
-        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); 
+#endif
     }
 
     public void SetVolume(float volume)
