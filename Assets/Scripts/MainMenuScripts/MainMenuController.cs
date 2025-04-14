@@ -84,7 +84,7 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(_newGameLevel);
     }
 
-    public void TutorialDialogNo()
+    public void TutorialDialogYes()
     {
         SceneManager.LoadScene(_tutorialLevel);
     }
