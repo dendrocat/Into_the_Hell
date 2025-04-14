@@ -13,13 +13,13 @@ public class BossAIController : BaseAIController
     /// <summary>
     /// Время между двумя атаками босса.
     /// </summary>
-    [SerializeField] float attackDelay = 2f;
+    [SerializeField] protected float attackDelay = 2f;
 
     /// <summary>
     /// Показывает, атаковал ли босс в последние N секунд.
     /// Используется для предотвращения одновременного запуска атак.
     /// </summary>
-    bool attacked = false;
+    protected bool attacked = false;
 
     private void Start()
     {
@@ -52,7 +52,7 @@ public class BossAIController : BaseAIController
         }
     }
 
-    IEnumerator UpdateAttackStatus(float delay)
+    protected IEnumerator UpdateAttackStatus(float delay)
     {
         yield return new WaitForSeconds(delay);
         attacked = false;

@@ -87,6 +87,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2052785111510390901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4914637450508369228}
+  m_Layer: 0
+  m_Name: BlazeDestination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4914637450508369228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052785111510390901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7542744810682144374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8156612596933614851
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +130,7 @@ GameObject:
   - component: {fileID: 627852545101848854}
   - component: {fileID: 773234448290935418}
   - component: {fileID: 8563592153975268396}
-  - component: {fileID: 7010056138991828123}
+  - component: {fileID: 6362151458147007799}
   - component: {fileID: 3266288250538941337}
   - component: {fileID: 2291395388857442097}
   - component: {fileID: 5545631019719764755}
@@ -126,6 +157,7 @@ Transform:
   m_Children:
   - {fileID: 4541043973545435897}
   - {fileID: 4702495709624174640}
+  - {fileID: 4914637450508369228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &627852545101848854
@@ -226,7 +258,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7010056138991828123
+--- !u!114 &6362151458147007799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,11 +267,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8156612596933614851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7edf494f9f195a445abefe3969cf9719, type: 3}
+  m_Script: {fileID: 11500000, guid: b0d6f1d568f875344b924fac34150c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 10
   attackDelay: 4
+  attackTarget: {fileID: 0}
+  evadeDistance: 6
 --- !u!114 &3266288250538941337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
+  target: {fileID: 4914637450508369228}
 --- !u!114 &3720310631644941020
 MonoBehaviour:
   m_ObjectHideFlags: 0

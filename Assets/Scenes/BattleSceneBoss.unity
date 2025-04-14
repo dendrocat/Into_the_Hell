@@ -596,6 +596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7679788448193635050, guid: fdba5c44e4bff61469894fbb69ba6128, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1287,6 +1291,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1827899270108934467, guid: 816e40afbdecdc845a95cea49bbc132d, type: 3}
   m_PrefabInstance: {fileID: 253975728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &268286378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1704427794}
+    m_Modifications:
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137819842235972516, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_Name
+      value: TwoHandedSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137819842235972516, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024815039133605339, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+--- !u!4 &268286379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4272756144510206179, guid: c2c3867173a704b438a9ba735a4f8ac2, type: 3}
+  m_PrefabInstance: {fileID: 268286378}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &277633010
 PrefabInstance:
@@ -8343,6 +8417,7 @@ Transform:
   - {fileID: 1634106546}
   - {fileID: 1862446817}
   - {fileID: 149936975}
+  - {fileID: 268286379}
   m_Father: {fileID: 1953673172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1704427797
@@ -8483,7 +8558,7 @@ MonoBehaviour:
   armor: {fileID: 1704427805}
   potion: {fileID: 1704427804}
   playerWeapon: {fileID: 149936976}
-  potionsCount: 5
+  potionsCount: 4
   explosiveArrowCount: 7
 --- !u!114 &1704427804
 MonoBehaviour:
@@ -10853,23 +10928,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2291395388857442097, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: slowdownDistance
-      value: 7.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2291395388857442097, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: endReachedDistance
-      value: 7
+      value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 5545631019719764755, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
-      propertyPath: target
+    - target: {fileID: 6362151458147007799, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
+      propertyPath: attackTarget
       value: 
       objectReference: {fileID: 1704427794}
     - target: {fileID: 7542744810682144374, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7542744810682144374, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.28
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7542744810682144374, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10906,6 +10981,10 @@ PrefabInstance:
     - target: {fileID: 8156612596933614851, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: m_Name
       value: Blaze
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156612596933614851, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
