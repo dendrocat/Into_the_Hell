@@ -1,6 +1,6 @@
 using System.IO;
 using UnityEngine;
-public class GameRepository
+public class SaveLoadRepository
 {
     private static readonly string _savePath = Path.Combine(
         Application.persistentDataPath, "save.json"
@@ -31,6 +31,11 @@ public class GameRepository
 
         string json = File.ReadAllText(_savePath);
         return JsonUtility.FromJson<GameData>(json);
+    }
+
+    public static void RemoveSave()
+    {
+        File.Delete(_savePath);
     }
 
 }
