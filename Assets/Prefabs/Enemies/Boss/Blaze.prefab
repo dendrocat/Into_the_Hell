@@ -96,7 +96,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7542744810682144374}
-  - component: {fileID: 5849373382141355386}
   - component: {fileID: 627852545101848854}
   - component: {fileID: 773234448290935418}
   - component: {fileID: 8563592153975268396}
@@ -129,19 +128,6 @@ Transform:
   - {fileID: 4702495709624174640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5849373382141355386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8156612596933614851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68770f47bfc0e4428538d909c25ebc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miniGolemPrefab: {fileID: 5819867796659059058, guid: 7ba7026dc193fcf40a9fff52b5fac7b0, type: 3}
 --- !u!114 &627852545101848854
 MonoBehaviour:
   m_ObjectHideFlags: 0

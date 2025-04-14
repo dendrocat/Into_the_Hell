@@ -44,7 +44,7 @@ public class BlazeWeapon : BossWeapon
 
         attack3FireballCount = 16;
         attack3MissileSpeed = 8f;
-        attack3Damage = 50f;
+        attack3Damage = 25f;
         baseAttack3ReloadTime = 8f;
         baseAttack3PrepareAttackTime = 1f;
         baseAttack3EndAttackTime = 2f;
@@ -70,13 +70,13 @@ public class BlazeWeapon : BossWeapon
         GameObject sphere1 = GameObject.Instantiate(attack2MissilePrefab1, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile sphere1Component = sphere1.GetComponent<Missile>();
         sphere1Component.SetTargetTags(targetTags);
-        sphere1Component.SetValues(getScaledDamage(), attack2MissileSpeed);
+        sphere1Component.SetValues(CalcScale(attack2Damage), attack2MissileSpeed);
         sphere1Component.direction = Quaternion.Euler(0f, 0f, -15f) * owner.weaponObject.localPosition;
 
         GameObject sphere2 = GameObject.Instantiate(attack2MissilePrefab2, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile sphere2Component = sphere2.GetComponent<Missile>();
         sphere2Component.SetTargetTags(targetTags);
-        sphere2Component.SetValues(getScaledDamage(), attack2MissileSpeed);
+        sphere2Component.SetValues(CalcScale(attack2Damage), attack2MissileSpeed);
         sphere2Component.direction = Quaternion.Euler(0f, 0f, 15f) * owner.weaponObject.localPosition;
 
         FireSphere fireSphere1 = sphere1.GetComponent<FireSphere>(),
@@ -94,12 +94,18 @@ public class BlazeWeapon : BossWeapon
         StartCoroutine(SpawnFireball(1));
     }
 
+    /**
+     * <summary>
+     * Корутина, управляющая спавном огненных шаров.
+     * </summary>
+     * <param name="number">Номер очередного огненного шара.</param>
+     * **/
     IEnumerator SpawnFireball(int number)
     {
         GameObject missile = GameObject.Instantiate(attack3MissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
         missileComponent.SetTargetTags(targetTags);
-        missileComponent.SetValues(getScaledDamage(), attack3MissileSpeed);
+        missileComponent.SetValues(CalcScale(attack3Damage), attack3MissileSpeed);
         missileComponent.direction = owner.weaponObject.localPosition;
         yield return new WaitForSeconds(baseAttack3EndAttackTime / attack3FireballCount);
         if (number < attack3FireballCount)
