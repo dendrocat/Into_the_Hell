@@ -38,7 +38,8 @@ public class BlazeAIController : BossAIController
     void Update()
     {
         aipath.maxSpeed = Boss.getSpeed();
-        RecalculateDestination();
+        if (Boss.isAlive())
+            RecalculateDestination();
 
         if (!attacked && (attackTarget != null))
         {

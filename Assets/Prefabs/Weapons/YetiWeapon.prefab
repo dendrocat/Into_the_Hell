@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1475130987220872619}
   - component: {fileID: 7500689888440061837}
   - component: {fileID: 4846546345997671439}
-  - component: {fileID: 7675431538063040363}
   m_Layer: 2
   m_Name: YetiWeapon
   m_TagString: Untagged
@@ -121,35 +120,7 @@ MonoBehaviour:
   baseAttack3EndAttackTime: 0
   attack1Range: 2
   attack1Angle: 30
-  attack2MissilePrefab: {fileID: 1130031636975414269, guid: 4f4e6bb5f6332494d8212be9a2be8b90, type: 3}
+  attack2MissilePrefab: {fileID: 1207216263902191456, guid: 7ee4bfbcc28f86542a3f41015fa5ae79, type: 3}
   attack2MissileSpeed: 8
   attack3Range: 4
   attack3Angle: 360
---- !u!114 &7675431538063040363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2191452603840600030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ebd8dbcb21485468f5156d0332caf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
-  maxLevel: 5
-  weaponTexture: {fileID: 2800000, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  targetTags:
-  - Player
-  - DestructibleWall
-  damage: 7
-  baseReloadTime: 1
-  basePrepareAttackTime: 0
-  baseEndAttackTime: 0
-  altDamage: 0
-  baseAltReloadTime: 0
-  baseAltPrepareAttackTime: 0
-  baseAltEndAttackTime: 0
-  range: 2
-  angle: 30
