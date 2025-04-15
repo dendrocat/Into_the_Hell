@@ -15,4 +15,12 @@ public class TestGameManager : MonoBehaviour
     {
         SaveLoadManager.Save();
     }
+
+    void Update()
+    {
+        if (InputManager.Instance.Interact)
+        {
+            SaveGame();
+        }
+    }
 }

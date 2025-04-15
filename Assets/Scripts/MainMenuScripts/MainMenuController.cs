@@ -137,7 +137,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGameDialogYes()
     {
-        if (GameRepository.HasSave())
+        if (SaveLoadRepository.HasSave())
         {
             //TODO: replace to load level with base
             SceneManager.LoadScene(levelToLoad);
