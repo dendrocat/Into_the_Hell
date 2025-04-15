@@ -21,7 +21,15 @@ public class PanelNPC : DialogableNPC
 
     void ActivatePanel()
     {
-        InputManager.Instance.SwitchInputMap(InputMap.UI);
+        InputManager.Instance.PushInputMap(InputMap.UI);
         panel.SetActive(true);
+        StartCoroutine(DeactivatePanel());
+    }
+
+    IEnumerator DeactivatePanel()
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
+        InputManager.Instance.PopInputMap();
+        panel.SetActive(false);
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -19,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     public UnityEvent OnSubmitPressed { get; } = new UnityEvent();
 
-    public InputMap CurrentInputMap { get; private set; }
+    Stack<InputMap> stackInputs;
 
     private PlayerInput _playerInput;
 
@@ -31,11 +33,13 @@ public class InputManager : MonoBehaviour
             return;
         }
         Instance = this;
+        stackInputs = new();
     }
 
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
+        PushInputMap((InputMap)Enum.Parse(typeof(InputMap), _playerInput.currentActionMap.name));
     }
 
     public Vector2 move { get; private set; }
@@ -146,11 +150,23 @@ public class InputManager : MonoBehaviour
             OnSubmitPressed?.Invoke();
     }
 
-    public void SwitchInputMap(InputMap map)
+    void SwitchInputMap(InputMap map)
     {
         _playerInput.SwitchCurrentActionMap(Enum.GetName(typeof(InputMap), map));
-        CurrentInputMap = map;
     }
 
+    public void PushInputMap(InputMap map)
+    {
+        stackInputs.Push(map);
+        SwitchInputMap(map);
+    }
 
+    public void PopInputMap()
+    {
+        if (stackInputs.Count > 1)
+        {
+            stackInputs.Pop();
+            SwitchInputMap(stackInputs.Peek());
+        }
+    }
 }

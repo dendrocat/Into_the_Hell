@@ -48,7 +48,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
 
     public void StartStory()
     {
-        InputManager.Instance.SwitchInputMap(InputMap.UI);
+        InputManager.Instance.PushInputMap(InputMap.UI);
         InputManager.Instance.OnSubmitPressed.AddListener(ContinueStory);
 
         displayer.gameObject.SetActive(true);
@@ -110,7 +110,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
 
     void EndDialog()
     {
-        InputManager.Instance.SwitchInputMap(InputMap.Gameplay);
+        InputManager.Instance.PopInputMap();
         InputManager.Instance.OnSubmitPressed.RemoveListener(ContinueStory);
 
         displayer.gameObject.SetActive(false);
