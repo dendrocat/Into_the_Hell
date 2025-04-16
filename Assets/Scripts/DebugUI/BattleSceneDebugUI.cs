@@ -10,6 +10,7 @@ using UnityEngine;
 public class BattleSceneDebugUI : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] Boss boss;
 
     [SerializeField] TMP_Text playerHPText;
     [SerializeField] TMP_Text dashCount;
@@ -17,6 +18,11 @@ public class BattleSceneDebugUI : MonoBehaviour
     [SerializeField] TMP_Text expArrowCount;
     [SerializeField] TMP_Text moneyCount;
     [SerializeField] TMP_Text playerEffectsText;
+
+    [SerializeField] TMP_Text bossNameText;
+    [SerializeField] TMP_Text bossHPText;
+    [SerializeField] TMP_Text bossChainAttackText;
+    [SerializeField] TMP_Text bossMiniGolemText;
 
     /**
      * <summary>
@@ -46,5 +52,10 @@ public class BattleSceneDebugUI : MonoBehaviour
         }
 
         playerEffectsText.SetText(playerEffects);
+
+        bossNameText.SetText(boss.GetBossName());
+        bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
+        bossChainAttackText.SetText("Attack chain: " + boss.getEffectCount(EffectNames.AttackChain));
+        bossMiniGolemText.SetText("Mini-golem level: " + boss.getEffectCount(EffectNames.MiniGolem));
     }
 }

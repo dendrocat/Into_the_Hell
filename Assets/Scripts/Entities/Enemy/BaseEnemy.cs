@@ -12,10 +12,10 @@ public class BaseEnemy : Person
 {
     [SerializeField] float dropMoneyChance = 0.5f;
     [SerializeField] int dropMoneyCount = 5;
-    Path path;
-    Seeker seeker;
-    AIPath aipath;
-    AIDestinationSetter aiDestSetter;
+    protected Path path;
+    protected Seeker seeker;
+    protected AIPath aipath;
+    protected AIDestinationSetter aiDestSetter;
 
     /**
      * <summary>

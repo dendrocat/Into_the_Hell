@@ -17,6 +17,7 @@ public class MissileWeapon : AlternateAttackWeapon
     {
         GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
+        missileComponent.SetTargetTags(targetTags);
         missileComponent.SetValues(getScaledDamage(), missileSpeed);
         missileComponent.direction = owner.weaponObject.localPosition;
     }

@@ -53,6 +53,7 @@ public class Bow : MissileWeapon
         }
         GameObject missile = GameObject.Instantiate(altMissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
+        missileComponent.SetTargetTags(targetTags);
         missileComponent.SetValues(CalcScale(altDamage), altMissileSpeed);
         missileComponent.direction = owner.weaponObject.localPosition;
     }

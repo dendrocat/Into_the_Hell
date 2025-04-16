@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,18 @@ public class Player : Person, IDamagable
     public int ShiftCount = 3;
     bool healReloading = false;
 
+    Coroutine timer1Coroutine, timer2Coroutine;
+
     /**
      * <summary>
-     * Обновляет максимальное здоровье в соответствии с уровнем брони.
+     * Обновляет здоровье в соответствии с уровнем брони.
      * </summary>
      * **/
     public void RecalculateHealth()
     {
         int armorLevel = inventory.GetPlayerArmor().level;
         maxHealth = baseMaxHealth + inventory.GetPlayerArmor().getHealthBonus();
+        health = maxHealth;
     }
 
     void Start()
@@ -106,7 +110,8 @@ public class Player : Person, IDamagable
     {
         if (!hasEffect(EffectNames.Shift) && (ShiftCount > 0) && isMoving())
         {
-            StopAllCoroutines();
+            if (timer1Coroutine != null) StopCoroutine(timer1Coroutine);
+            if (timer2Coroutine != null) StopCoroutine(timer2Coroutine);
 
             StartCoroutine(ShiftCoroutine());
         }
@@ -144,10 +149,12 @@ public class Player : Person, IDamagable
      * Корутина, обрабатывающая перезарядку зелья
      * </summary>
      * **/
-    IEnumerator HealReload(float reloadTime)
+    private IEnumerator HealReload(float reloadTime)
     {
+        Debug.Log(gameObject.name + ": started to reload heal (" + reloadTime + " sec)");
         yield return new WaitForSeconds(reloadTime);
         healReloading = false;
+        Debug.Log(gameObject.name + ": heal reload complete");
     }
 
     /**
@@ -225,7 +232,7 @@ public class Player : Person, IDamagable
 
         RemoveEffect(EffectNames.Shift);
 
-        StartCoroutine(Timer1Coroutine());
+        timer1Coroutine = StartCoroutine(Timer1Coroutine());
     }
 
     /**
@@ -236,7 +243,7 @@ public class Player : Person, IDamagable
     private IEnumerator Timer1Coroutine()
     {
         yield return new WaitForSeconds(1f);
-        StartCoroutine(Timer2Coroutine());
+        timer2Coroutine = StartCoroutine(Timer2Coroutine());
     }
 
     /**
@@ -250,7 +257,7 @@ public class Player : Person, IDamagable
         if (ShiftCount < 3)
         {
             ShiftCount++;
-            StartCoroutine(Timer2Coroutine());
+            timer2Coroutine = StartCoroutine(Timer2Coroutine());
         }
     }
 
