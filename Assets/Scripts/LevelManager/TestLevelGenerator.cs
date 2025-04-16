@@ -16,6 +16,7 @@ public class TestLevelGenerator : MonoBehaviour
     {
         var rooms = new List<IRoomTilemapController>();
         var controllers = new List<ITilemapController>();
+        var halls = new List<IHallTilemapController>();
         foreach (var g in _generated)
         {
             if (!g.activeInHierarchy) continue;
@@ -23,12 +24,15 @@ public class TestLevelGenerator : MonoBehaviour
             controllers.Add(a);
             if (a is IRoomTilemapController room)
                 rooms.Add(room);
+            if (a is IHallTilemapController hall)
+                halls.Add(hall);
         }
 
         DoDoors(rooms);
         DoTilemap(controllers);
-        //rooms.ForEach((r) => (r as MonoBehaviour).GetComponent<IRoomController>().DoorController.SetDoors(r.DoorTilemap.ActiveDoors));
+        rooms.ForEach((r) => (r as MonoBehaviour).GetComponent<IRoomController>().DoorController.SetDoors(r.DoorTilemap.ActiveDoors));
         rooms.ForEach((r) => Destroy(r as MonoBehaviour));
+        halls.ForEach((h) => h.ExpandHall(10));
     }
 
     void DoDoors(List<IRoomTilemapController> rooms)
