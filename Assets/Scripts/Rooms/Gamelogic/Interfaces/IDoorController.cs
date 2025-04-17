@@ -7,7 +7,7 @@ using UnityEngine;
 public interface IDoorController
 {
     /// <summary>
-    /// Finds all doors tagged with "Door" in the children of this <see cref="GameObject"/>.
+    /// Set all doors of this room.
     /// </summary>
     /// <param name="doors">A list of <see cref="GameObject"/> instances representing the doors to be managed.</param>
     public void SetDoors(List<GameObject> doors);

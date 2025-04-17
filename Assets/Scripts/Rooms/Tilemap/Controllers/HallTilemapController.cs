@@ -7,26 +7,13 @@ using UnityEngine.Tilemaps;
 public class HallTilemapController : TilemapController, IHallTilemapController
 {
     /// <summary>Hall orientation axis</summary>
-    /// /// <remarks>
-    /// Determines coordinate interpretation during extension:
-    /// - Vertical: Extends along Y-axis
-    /// - Horizontal: Extends along X-axis (automatically converted)
-    /// </remarks>
     [Header("Hall Direction")]
     [SerializeField] HallDirection _direction;
 
     /// <summary>Tile boundaries in world coordinates</summary>
-    /// <remarks>
-    /// Tracks minimum (_lowerBound) and maximum (_upperBound) coordinates
-    /// of all tiles across managed tilemaps. Updated during extension.
-    /// </remarks>
     Vector2Int _lowerBound, _upperBound;
 
     /// <summary>Container for managed tilemaps</summary>
-    /// <remarks>
-    /// Contains primary floor (_floor) and walls (_walls).
-    /// All operations (extension/updates) apply synchronously to all tilemaps.
-    /// </remarks>
     List<Tilemap> _tilemaps;
 
     /// <inheritdoc />
