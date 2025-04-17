@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 /// This component must be removed from the game object after level generation via <see cref="Destroy"/>.
 /// Also, it destroys the associated <see cref="IDoorTilemapController"/> instance.
 /// </summary>
+[RequireComponent(typeof(BoxCollider2D))]
 public class RoomTilemapController : TilemapController, IRoomTilemapController
 {
     /// <summary>
@@ -32,12 +33,18 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     /// <inheritdoc />
     public IDoorTilemapController DoorTilemap { get; private set; }
 
+    /// <inheritdoc />
+    public Vector2Int Size { get; private set; }
+
     /// <summary>
     /// Initializes the door tilemap controller by finding it in the children of this component.
     /// </summary>
     void Awake()
     {
         DoorTilemap = GetComponentInChildren<IDoorTilemapController>();
+        var size = GetComponent<BoxCollider2D>().bounds.size;
+        Size = new Vector2Int((int)size.x, (int)size.y);
+        Size += Vector2Int.up * 3 + Vector2Int.right * 2;
     }
 
     /// <summary>

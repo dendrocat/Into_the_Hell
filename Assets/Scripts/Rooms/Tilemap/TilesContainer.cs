@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(fileName = "TilesContainer", menuName = "Scriptable Objects/TilesContainer")]
 public class TilesContainer : ScriptableObject
 {
+    [Header("Walls")]
     [Tooltip("Tile for roof")]
     [SerializeField] TileBase _roof;
 
@@ -16,9 +17,18 @@ public class TilesContainer : ScriptableObject
     [Tooltip("Tile for walls outside the room")]
     [SerializeField] TileBase _wallOuter;
 
+    [Header("Floor")]
     [Tooltip("Tile for floor")]
     [SerializeField] TileBase _floor;
 
+    [Header("Doors")]
+    [Tooltip("Tile for door roof")]
+    [SerializeField] TileBase _doorRoof;
+
+    [Tooltip("Tile for door wall")]
+    [SerializeField] TileBase _doorWall;
+
+    [Header("Additional objects")]
     [Tooltip("Tile for holes")]
     [SerializeField] TileBase _hole;
 
@@ -51,6 +61,16 @@ public class TilesContainer : ScriptableObject
     /// Gets the tile for the floor.
     /// </summary>
     public TileBase Floor => _floor;
+
+    /// <summary>
+    /// Gets the tile for the floor.
+    /// </summary>
+    public TileBase DoorRoof => _doorRoof;
+
+    /// <summary>
+    /// Gets the tile for the floor.
+    /// </summary>
+    public TileBase DoorWall => _doorWall;
 
     /// <summary>
     /// Gets the tile for holes.
