@@ -24,6 +24,17 @@ public class BattleSceneDebugUI : MonoBehaviour
     [SerializeField] TMP_Text bossChainAttackText;
     [SerializeField] TMP_Text bossMiniGolemText;
 
+    private void Start()
+    {
+        if (!boss)
+        {
+            bossNameText.gameObject.SetActive(false);
+            bossHPText.gameObject.SetActive(false);
+            bossChainAttackText.gameObject.SetActive(false);
+            bossMiniGolemText.gameObject.SetActive(false);
+        }
+    }
+
     /**
      * <summary>
      * Метод Update. Обновляет информацию в тестовом интерфейсе дебага.
@@ -53,9 +64,12 @@ public class BattleSceneDebugUI : MonoBehaviour
 
         playerEffectsText.SetText(playerEffects);
 
-        bossNameText.SetText(boss.GetBossName());
-        bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
-        bossChainAttackText.SetText("Attack chain: " + boss.getEffectCount(EffectNames.AttackChain));
-        bossMiniGolemText.SetText("Mini-golem level: " + boss.getEffectCount(EffectNames.MiniGolem));
+        if (boss)
+        {
+            bossNameText.SetText(boss.GetBossName());
+            bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
+            bossChainAttackText.SetText("Attack chain: " + boss.getEffectCount(EffectNames.AttackChain));
+            bossMiniGolemText.SetText("Mini-golem level: " + boss.getEffectCount(EffectNames.MiniGolem));
+        }
     }
 }
