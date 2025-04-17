@@ -1,6 +1,7 @@
 DOXYFILE_ENCODING      = UTF-8
 INPUT                  = "./Assets/Scripts"
 PROJECT_NAME           = "Into the Hell"
+PROJECT_BRIEF          = "Документация проекта Into the Hell"
 OUTPUT_DIRECTORY       = Documentation
 RECURSIVE              = YES
 OUTPUT_LANGUAGE        = English
@@ -20,3 +21,6 @@ ABBREVIATE_BRIEF       = "The $name class" \
 INHERIT_DOCS           = YES
 TAB_SIZE               = 4
 GENERATE_LATEX         = NO
+MARKDOWN_SUPPORT       = YES
+USE_MDFILE_AS_MAINPAGE = ./main_page.md
+INPUT                  += ./main_page.md
