@@ -27,6 +27,10 @@ public class BlazeWeapon : BossWeapon
     void Start()
     {
         FindOwner();
+    }
+
+    public BlazeWeapon()
+    {
         level = 1;
         maxLevel = 1;
 

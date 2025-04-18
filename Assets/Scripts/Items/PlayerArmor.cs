@@ -5,7 +5,7 @@ public class PlayerArmor : UpgradableItem
     [SerializeField] float damageReduction = 0.05f;
     [SerializeField] float maxHealthBonus = 25f;
 
-    void Awake()
+    public PlayerArmor()
     {
         scaleCoeff = 1f;
     }

@@ -70,6 +70,10 @@ public class BaseWeapon : UpgradableItem
     void Start()
     {
         FindOwner();
+    }
+
+    public BaseWeapon()
+    {
         scaleCoeff = 1f;
     }
 

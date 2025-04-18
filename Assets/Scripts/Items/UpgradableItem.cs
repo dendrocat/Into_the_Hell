@@ -6,7 +6,7 @@ using UnityEngine;
 public class UpgradableItem : MonoBehaviour
 {
     /// <summary>
-    /// Коэффициент масштабирования. Задается в классах-наследниках в методе Start.
+    /// Коэффициент масштабирования. Задается в классах-наследниках в методе Awake.
     /// </summary>
     protected float scaleCoeff = 0.2f;
 

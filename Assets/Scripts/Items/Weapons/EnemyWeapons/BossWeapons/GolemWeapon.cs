@@ -19,6 +19,10 @@ public class GolemWeapon : BossWeapon
     void Start()
     {
         FindOwner();
+    }
+
+    public GolemWeapon()
+    {
         level = 1;
         maxLevel = 1;
 
