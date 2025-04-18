@@ -22,5 +22,9 @@ public class TestGameManager : MonoBehaviour
         {
             SaveGame();
         }
+        if (InputManager.Instance.Pause)
+        {
+            SaveLoadRepository.RemoveSave();
+        }
     }
 }

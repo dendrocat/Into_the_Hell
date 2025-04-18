@@ -38,9 +38,9 @@ public class TestWeaponStorage : MonoBehaviour
 
     public AlternateAttackWeapon GetWeapon(WeaponType type)
     {
-        return _weaponCache.TryGetValue(type, out GameObject prefab)
-            ? prefab.GetComponent<AlternateAttackWeapon>()
-            : null;
+        var weapon = _weaponCache[type].GetComponent<AlternateAttackWeapon>();
+        weapon.level = _weaponLevels[type];
+        return weapon;
     }
 
     public List<byte> GetWeaponLevels()
@@ -50,18 +50,9 @@ public class TestWeaponStorage : MonoBehaviour
 
     public void SetWeaponLevels(List<byte> weaponLevels)
     {
-        if (weaponLevels == null)
-        {
-            foreach (var key in Enum.GetValues(typeof(WeaponType)))
-            {
-                _weaponLevels[(WeaponType)key] = 1;
-            }
-            return;
-        }
         foreach (var key in Enum.GetValues(typeof(WeaponType)))
         {
-            var level = weaponLevels[(int)key];
-            _weaponLevels[(WeaponType)key] = level == 0 ? (byte)1 : level;
+            _weaponLevels[(WeaponType)key] = weaponLevels[(int)key];
         }
     }
 }
