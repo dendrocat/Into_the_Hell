@@ -100,29 +100,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60605b667383924fb3f9b4eb38c2ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  maxLevel: 0
+  level: 1
+  maxLevel: 1
   weaponTexture: {fileID: 0}
   targetTags:
   - Player
   - DestructibleWall
-  damage: 0
-  baseReloadTime: 0
+  damage: 75
+  baseReloadTime: 1
   basePrepareAttackTime: 0
   baseEndAttackTime: 0
-  attack2Damage: 0
-  baseAttack2ReloadTime: 0
-  baseAttack2PrepareAttackTime: 0
-  baseAttack2EndAttackTime: 0
-  attack3Damage: 0
-  baseAttack3ReloadTime: 0
-  baseAttack3PrepareAttackTime: 0
-  baseAttack3EndAttackTime: 0
-  missilePrefab: {fileID: 0}
+  attack2Damage: 100
+  baseAttack2ReloadTime: 4
+  baseAttack2PrepareAttackTime: 0.5
+  baseAttack2EndAttackTime: 0.5
+  attack3Damage: 25
+  baseAttack3ReloadTime: 8
+  baseAttack3PrepareAttackTime: 1
+  baseAttack3EndAttackTime: 2
+  missilePrefab: {fileID: 1061599759960762310, guid: f65afb4a06097ee47a24758ad8ccc861, type: 3}
   missileSpeed: 8
   attack2MissilePrefab1: {fileID: 1617671186915113450, guid: b5bba0bbeecd0f54ea77aae1b856564c, type: 3}
   attack2MissilePrefab2: {fileID: 2055762078026548911, guid: 442805f49ffa33848b854aceae5301a8, type: 3}
-  attack2MissileSpeed: 8
+  attack2MissileSpeed: 4
   attack3FireballCount: 16
-  attack3MissilePrefab: {fileID: 0}
+  attack3MissilePrefab: {fileID: 1061599759960762310, guid: f65afb4a06097ee47a24758ad8ccc861, type: 3}
   attack3MissileSpeed: 8

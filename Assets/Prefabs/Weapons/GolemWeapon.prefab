@@ -106,18 +106,18 @@ MonoBehaviour:
   targetTags:
   - Player
   - DestructibleWall
-  damage: 0
-  baseReloadTime: 0
-  basePrepareAttackTime: 0
+  damage: 75
+  baseReloadTime: 2
+  basePrepareAttackTime: 0.2
   baseEndAttackTime: 0
-  attack2Damage: 0
-  baseAttack2ReloadTime: 0
-  baseAttack2PrepareAttackTime: 0
-  baseAttack2EndAttackTime: 0
-  attack3Damage: 0
-  baseAttack3ReloadTime: 0
-  baseAttack3PrepareAttackTime: 0
-  baseAttack3EndAttackTime: 0
+  attack2Damage: 80
+  baseAttack2ReloadTime: 5
+  baseAttack2PrepareAttackTime: 0.5
+  baseAttack2EndAttackTime: 0.5
+  attack3Damage: 120
+  baseAttack3ReloadTime: 8
+  baseAttack3PrepareAttackTime: 1
+  baseAttack3EndAttackTime: 1
   attack1Range: 2
   attack1Angle: 30
   attack2MissilePrefab: {fileID: 2496569075726599864, guid: 16dcd1f45c387da448daf149ffd30b56, type: 3}

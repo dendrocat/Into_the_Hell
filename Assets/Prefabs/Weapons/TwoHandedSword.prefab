@@ -100,21 +100,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2c20bbda174a14a8d3191e8a72fdf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 1
   maxLevel: 5
   weaponTexture: {fileID: 0}
   targetTags:
   - Enemy
   - DestructibleWall
-  damage: 0
-  baseReloadTime: 0
-  basePrepareAttackTime: 0
-  baseEndAttackTime: 0
-  altDamage: 0
-  baseAltReloadTime: 0
+  damage: 15
+  baseReloadTime: 2
+  basePrepareAttackTime: 0.2
+  baseEndAttackTime: 0.2
+  altDamage: 45
+  baseAltReloadTime: 6
   baseAltPrepareAttackTime: 0
-  baseAltEndAttackTime: 0
-  range: 0
-  angle: 0
+  baseAltEndAttackTime: 1
+  range: 3
+  angle: 90
   altRange: 5
   altAngle: 10

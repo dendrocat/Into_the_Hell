@@ -49,7 +49,7 @@ public class GolemWeapon : BossWeapon
     protected override void Attack()
     {
         List<IDamagable> targets = FindTargetsForAttack(attack1Range, attack1Angle);
-
+        Debug.Log(damage);
         foreach (IDamagable target in targets)
         {
             target.TakeDamage(damage, DamageType.None);
@@ -74,7 +74,7 @@ public class GolemWeapon : BossWeapon
     protected override void Attack3()
     {
         List<IDamagable> targets = FindTargetsForAttack(attack3Range, attack3Angle);
-
+        Debug.Log(attack3Damage);
         foreach (IDamagable target in targets)
         {
             MonoBehaviour monoTarget = target as MonoBehaviour;
