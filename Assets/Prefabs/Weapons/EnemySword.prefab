@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7455102707906789025}
   - component: {fileID: 2932713186294421373}
-  - component: {fileID: 1788469607351184684}
+  - component: {fileID: 4539955912803393541}
   m_Layer: 2
   m_Name: EnemySword
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1788469607351184684
+--- !u!114 &4539955912803393541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,16 +97,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551550708118860096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ebd8dbcb21485468f5156d0332caf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 681b6762639c358448968a459a5e6b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxLevel: 5
-  weaponTexture: {fileID: 2800000, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  maxLevel: 1
+  weaponTexture: {fileID: 0}
   targetTags:
   - Player
   - DestructibleWall
-  damage: 7
+  damage: 25
   baseReloadTime: 1
   basePrepareAttackTime: 0
   baseEndAttackTime: 0

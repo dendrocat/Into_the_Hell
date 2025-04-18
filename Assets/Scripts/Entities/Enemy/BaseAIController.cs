@@ -52,6 +52,17 @@ public class BaseAIController : MonoBehaviour
             {
                 NPC.Attack();
             }
+            else {
+                List<RaycastHit2D> hits = Physics2D.RaycastAll(transform.position, NPC.weaponDirection, attackRange).ToList();
+                foreach(RaycastHit2D hit in hits)
+                {
+                    if (hit.collider.gameObject.CompareTag("DestructibleWall"))
+                    {
+                        NPC.Attack();
+                        break;
+                    }
+                }
+            }
         }
     }
 }
