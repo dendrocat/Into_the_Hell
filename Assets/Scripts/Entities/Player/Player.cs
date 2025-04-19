@@ -27,7 +27,6 @@ public class Player : Person, IDamagable
      * **/
     public void RecalculateHealth()
     {
-        int armorLevel = inventory.GetPlayerArmor().level;
         maxHealth = baseMaxHealth + inventory.GetPlayerArmor().getHealthBonus();
         health = maxHealth;
     }

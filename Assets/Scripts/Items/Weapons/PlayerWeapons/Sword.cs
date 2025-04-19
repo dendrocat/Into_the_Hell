@@ -18,6 +18,10 @@ public class Sword : RangedWeapon
     void Start()
     {
         FindOwner();
+    }
+
+    public Sword()
+    {
         damage = 7f;
         baseReloadTime = 1f;
         basePrepareAttackTime = 0f;

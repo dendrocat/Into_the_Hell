@@ -10,7 +10,7 @@ public class Potion : UpgradableItem
     float baseHeal = 50f;
     float baseReloadTime = 10f;
 
-    private void Start()
+    public Potion()
     {
         maxLevel = 3;
         scaleCoeff = 1f;

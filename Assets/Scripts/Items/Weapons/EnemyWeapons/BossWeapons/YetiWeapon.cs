@@ -24,6 +24,10 @@ public class YetiWeapon : BossWeapon
     void Start()
     {
         FindOwner();
+    }
+
+    public YetiWeapon()
+    {
         level = 1;
         maxLevel = 1;
 
