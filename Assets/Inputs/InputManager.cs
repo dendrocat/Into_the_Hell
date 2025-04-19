@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
@@ -14,7 +17,11 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public InputMap CurrentInputMap { get; private set; }
+    public UnityEvent OnInteractPressed { get; } = new UnityEvent();
+
+    public UnityEvent OnSubmitPressed { get; } = new UnityEvent();
+
+    Stack<InputMap> stackInputs;
 
     private PlayerInput _playerInput;
 
@@ -22,15 +29,17 @@ public class InputManager : MonoBehaviour
     {
         if (Instance)
         {
-            Debug.LogError("Instance уже существует");
+            Debug.LogError($"{gameObject}: Instance уже существует");
             return;
         }
         Instance = this;
+        stackInputs = new();
     }
 
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
+        PushInputMap((InputMap)Enum.Parse(typeof(InputMap), _playerInput.currentActionMap.name));
     }
 
     public Vector2 move { get; private set; }
@@ -40,9 +49,6 @@ public class InputManager : MonoBehaviour
 
     private bool _altAttack = false;
     public bool AltAttack => _altAttack ? (!(_altAttack = false)) : false;
-
-    private bool _interact = false;
-    public bool Interact => _interact ? (!(_interact = false)) : false;
 
     private bool _dash = false;
     public bool Dash => _dash ? (!(_dash = false)) : false;
@@ -99,7 +105,7 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            _interact = true;
+            OnInteractPressed?.Invoke();
         }
     }
 
@@ -138,11 +144,29 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void SwitchInputMap(InputMap map)
+    public void onSubmitPressed(InputAction.CallbackContext context)
     {
-        _playerInput.SwitchCurrentActionMap(Enum.GetName(typeof(InputMap), map));
-        CurrentInputMap = map;
+        if (context.performed)
+            OnSubmitPressed?.Invoke();
     }
 
+    void SwitchInputMap(InputMap map)
+    {
+        _playerInput.SwitchCurrentActionMap(Enum.GetName(typeof(InputMap), map));
+    }
 
+    public void PushInputMap(InputMap map)
+    {
+        stackInputs.Push(map);
+        SwitchInputMap(map);
+    }
+
+    public void PopInputMap()
+    {
+        if (stackInputs.Count > 1)
+        {
+            stackInputs.Pop();
+            SwitchInputMap(stackInputs.Peek());
+        }
+    }
 }
