@@ -1,35 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Ink.Runtime;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PanelNPC : DialogableNPC
 {
-    [SerializeField] string inkFuncName;
+    [Serializable]
+    struct FuncPanel
+    {
+        public string inkFuncName;
+        public BasePanel panel;
 
-    [SerializeField] GameObject panel;
+    }
+
+    [SerializeField] List<FuncPanel> _funcPanels;
+
 
 
     protected override void SetStory()
     {
         base.SetStory();
-        DialogManager.Instance.BindFunction(inkFuncName, ActivatePanel);
-    }
-
-
-    void ActivatePanel()
-    {
-        InputManager.Instance.PushInputMap(InputMap.UI);
-        panel.SetActive(true);
-        StartCoroutine(DeactivatePanel());
-    }
-
-    IEnumerator DeactivatePanel()
-    {
-        yield return new WaitForSecondsRealtime(1.5f);
-        InputManager.Instance.PopInputMap();
-        panel.SetActive(false);
+        foreach (var panel in _funcPanels)
+            DialogManager.Instance.BindFunction(
+                panel.inkFuncName,
+                () => panel.panel.Open()
+            );
     }
 }

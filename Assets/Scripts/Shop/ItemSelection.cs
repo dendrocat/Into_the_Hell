@@ -6,12 +6,17 @@ public class ItemSelection : MonoBehaviour
 {
     [SerializeField] Color _selectedColor;
 
-    [SerializeField] List<Button> _buttons;
+    List<Button> _buttons;
 
     void Start()
     {
+        _buttons = new();
         for (int i = 0; i < transform.childCount; ++i)
-            _buttons.Add(transform.GetChild(i).GetComponent<Button>());
+        {
+            var button = transform.GetChild(i).GetComponent<Button>();
+            button.onClick.AddListener(() => SelectItem(button));
+            _buttons.Add(button);
+        }
     }
 
     void ResetColors()
@@ -22,6 +27,7 @@ public class ItemSelection : MonoBehaviour
 
     public void SelectItem(Button button)
     {
+        //Debug.Log(button.gameObject.name);
         ResetColors();
 
         button.targetGraphic.color = _selectedColor;

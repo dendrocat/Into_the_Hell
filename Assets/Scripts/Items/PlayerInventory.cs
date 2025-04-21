@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour
     byte maxPotionsCount = 12;
     [SerializeField] byte explosiveArrowCount = 0;
     byte maxExplosiveArrowCount = 99;
+    [SerializeField]
+    [Range(0, 2000)]
     int money = 0;
 
     /**
@@ -94,7 +96,7 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public void SetExplosiveArrowCount(int count)
     {
-        explosiveArrowCount = (byte) count;
+        explosiveArrowCount = (byte)count;
     }
 
     /** 
@@ -152,7 +154,12 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public void SetPlayerWeapon(AlternateAttackWeapon newWeapon)
     {
-        playerWeapon = newWeapon;
+        if (playerWeapon != null)
+        {
+            Destroy(playerWeapon.gameObject);
+        }
+        playerWeapon = Instantiate(newWeapon.gameObject, transform).GetComponent<AlternateAttackWeapon>();
+        GetComponent<Player>().weaponObject = playerWeapon.transform;
     }
 
     /**
@@ -185,7 +192,7 @@ public class PlayerInventory : MonoBehaviour
      * **/
     public bool ModifyMoneyCount(int diff)
     {
-        if (money + diff > 0)
+        if (money + diff >= 0)
         {
             money += diff;
             return true;
