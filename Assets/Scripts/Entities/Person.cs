@@ -15,7 +15,11 @@ public class Person : Effectable, IDamagable
 
     protected float destructionDelay = 1f;
     [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
+    public float MaxHealth => maxHealth;
+
     [SerializeField] protected float health = 100f; //текущее здоровье
+    public float Health => health;
+
     [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
     public BaseWeapon weapon; //оружие персонажа
     public Transform weaponObject;
@@ -143,8 +147,8 @@ public class Person : Effectable, IDamagable
             ChangeWeaponPosition();
 
             //движение персонажа
-            if ((!hasEffect(EffectNames.Stun) && !hasEffect(EffectNames.HoleStun) && moving) || hasEffect(EffectNames.Shift)) 
-                //если нет оглушения или падения в яму и персонаж двигается, или на нем есть эффект рывка
+            if ((!hasEffect(EffectNames.Stun) && !hasEffect(EffectNames.HoleStun) && moving) || hasEffect(EffectNames.Shift))
+            //если нет оглушения или падения в яму и персонаж двигается, или на нем есть эффект рывка
             {
                 Move();
             }
@@ -259,7 +263,7 @@ public class Person : Effectable, IDamagable
             {
                 rb.linearVelocity = movement;
             }
-            
+
 
             //обновление последнего ненулевого передвижения
             if (currentDirection != Vector2.zero)

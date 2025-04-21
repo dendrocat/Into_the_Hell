@@ -5,7 +5,6 @@ public class UpgradePanel : ShopPanel
 {
     protected override void InitPanel()
     {
-        Debug.Log($"{this} started");
         foreach (var type in Enum.GetValues(typeof(WeaponType)))
         {
             SetItemCost(
