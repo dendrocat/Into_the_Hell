@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ using UnityEngine.SceneManagement;
  * Важно! Вместо weapon используется inventory
  * </summary>
  * **/
-public class Player : Person, IDamagable
+public class Player : Person
 {
     [HideInInspector]
     public UnityEvent<float> OnPotionUsed = new();
@@ -184,7 +183,7 @@ public class Player : Person, IDamagable
     /**
      * <inheritdoc/>
      * **/
-    public new void TakeDamage(float damage, DamageType type)
+    public override void TakeDamage(float damage, DamageType type)
     {
         if (isAlive())
         {

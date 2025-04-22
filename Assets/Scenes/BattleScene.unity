@@ -2219,12 +2219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -5985,6 +5985,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1744386489424836032, guid: 5b5319c86a85a764da70b1cebeee48d8, type: 3}
+      propertyPath: _timeSmoothing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2010899093357275115, guid: 5b5319c86a85a764da70b1cebeee48d8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9552,6 +9556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HellSlime
       objectReference: {fileID: 0}
+    - target: {fileID: 7183665765238550628, guid: 4314127ba337d9c489108d7c5ff048b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9666,6 +9674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HellMouse
       objectReference: {fileID: 0}
+    - target: {fileID: 5242801157821161428, guid: 141e49fda5543bb43acf514f76318143, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9131167935678171984, guid: 141e49fda5543bb43acf514f76318143, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.0534477
@@ -9768,6 +9780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Demon
       objectReference: {fileID: 0}
+    - target: {fileID: 3956633726794170060, guid: 15bcedbda4fa69941b44d3d529ccfb72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6490729293054798783, guid: 15bcedbda4fa69941b44d3d529ccfb72, type: 3}
       propertyPath: target
       value: 
@@ -9788,6 +9804,10 @@ PrefabInstance:
     - target: {fileID: 757470724580973456, guid: 34a608b6a0aea3d4cb6cf404e78d3520, type: 3}
       propertyPath: m_Name
       value: LivingFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 757470724580973456, guid: 34a608b6a0aea3d4cb6cf404e78d3520, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8410747567462973256, guid: 34a608b6a0aea3d4cb6cf404e78d3520, type: 3}
       propertyPath: m_LocalPosition.x

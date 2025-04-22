@@ -16,48 +16,57 @@ public class HealthBarController : MonoBehaviour
     Coroutine _smoothHealth;
     Coroutine _smoothSmoothed;
 
+    float _targetFill;
+
     public void SetHealth(float fill)
     {
+        _targetFill = fill;
         _healthImage.fillAmount = fill;
         _smoothedHealthImage.fillAmount = fill;
     }
 
-    public void SetHealthSmoothed(float fill)
+    void Update()
     {
-        if (_smoothHealth != null)
+        if (_smoothedHealthImage.fillAmount != _targetFill)
         {
-            StopCoroutine(_smoothHealth);
-            _smoothHealth = null;
+            SetHealthSmoothed(_targetFill);
         }
-        if (_smoothSmoothed != null)
-        {
-            StopCoroutine(_smoothSmoothed);
-            _smoothSmoothed = null;
-        }
-        _smoothHealth = StartCoroutine(
-            SmoothHealth(_healthImage, fill, 0.2f)
-        );
     }
 
-    IEnumerator SmoothHealth(Image image, float targetFill, float duration)
+    public void SetHealthSmoothed(float fill)
+    {
+        _targetFill = fill;
+        if (_smoothHealth == null)
+            _smoothHealth = StartCoroutine(
+                SmoothHealth(_healthImage, _timeSmoothing / 10)
+            );
+        if (_smoothSmoothed == null)
+        {
+            _smoothSmoothed = StartCoroutine(
+                SmoothHealth(_smoothedHealthImage, _timeSmoothing)
+            );
+
+        }
+    }
+
+    IEnumerator SmoothHealth(Image image, float duration)
     {
         float start = image.fillAmount;
         float t = 0;
         while (t < 1)
         {
-            var fill = _curve.Evaluate(t) * (targetFill - start) + start;
+            var fill = _curve.Evaluate(t) * (_targetFill - start) + start;
             image.fillAmount = fill;
 
             t += Time.deltaTime / duration;
 
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
-        image.fillAmount = targetFill;
-        if (_smoothSmoothed == null)
+        image.fillAmount = _targetFill;
+        if (image == _healthImage)
         {
-            _smoothSmoothed = StartCoroutine(
-                SmoothHealth(_smoothedHealthImage, targetFill, _timeSmoothing)
-            );
+            _smoothHealth = null;
         }
+        else _smoothSmoothed = null;
     }
 }

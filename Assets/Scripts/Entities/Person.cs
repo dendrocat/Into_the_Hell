@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
 
 /**
@@ -166,7 +165,7 @@ public class Person : Effectable, IDamagable
     /**
      * <inheritdoc/>
      * **/
-    public void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
+    public virtual void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
     {
         if (alive)
         {
