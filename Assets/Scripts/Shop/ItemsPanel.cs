@@ -10,6 +10,7 @@ public class ItemsPanel : MonoBehaviour
     protected struct Item
     {
         public TextMeshProUGUI cost;
+        public TextMeshProUGUI count;
         public Button button;
         public GameObject maxText;
     }
@@ -23,6 +24,7 @@ public class ItemsPanel : MonoBehaviour
         {
             var t = transform.GetChild(i);
             Item item = new();
+            item.count = t.Find("Count")?.GetComponent<TextMeshProUGUI>();
             item.cost = t.Find("ContainerCost").GetComponentInChildren<TextMeshProUGUI>();
             item.button = t.GetComponentInChildren<Button>();
             item.maxText = t.Find("MaxText").gameObject;
@@ -31,17 +33,23 @@ public class ItemsPanel : MonoBehaviour
         }
     }
 
+    public void SetItemCount(string key, int count)
+    {
+        if (_items[key].count == null) return;
+        _items[key].count.text = count.ToString();
+    }
+
     public void SetItemCost(string key, int cost)
     {
         _items[key].cost.text = cost.ToString();
     }
 
-    public void CalcItemsState(Func<int, bool> predicate)
+    public void CalcItemsState(Func<int, string, bool> predicate)
     {
-        foreach (var item in _items.Values)
+        foreach (var p in _items)
         {
-            item.button.interactable =
-            predicate(Convert.ToInt32(item.cost.text));
+            p.Value.button.interactable =
+            predicate(Convert.ToInt32(p.Value.cost.text), p.Key);
         }
     }
 

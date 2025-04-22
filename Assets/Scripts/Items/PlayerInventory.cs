@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 /**
  * <summary>
@@ -9,13 +10,22 @@ using UnityEngine;
  * **/
 public class PlayerInventory : MonoBehaviour
 {
+    [HideInInspector]
+    public UnityEvent<int> OnExplosiveArrowCountChanged = new();
+    [HideInInspector]
+    public UnityEvent<int> OnMoneyChanged = new();
+    [HideInInspector]
+    public UnityEvent<int> OnPotionCountChanged = new();
+
     [SerializeField] PlayerArmor armor;
     [SerializeField] Potion potion;
     [SerializeField] AlternateAttackWeapon playerWeapon;
     [SerializeField] byte potionsCount = 0;
     byte maxPotionsCount = 12;
+    public byte MaxPotionsCount => maxPotionsCount;
     [SerializeField] byte explosiveArrowCount = 0;
     byte maxExplosiveArrowCount = 99;
+    public byte MaxExplosiveArrowCount => maxExplosiveArrowCount;
     [SerializeField]
     [Range(0, 2000)]
     int money = 0;
@@ -31,6 +41,7 @@ public class PlayerInventory : MonoBehaviour
         if (potionsCount < maxPotionsCount)
         {
             potionsCount++;
+            OnPotionCountChanged.Invoke(potionsCount);
             return true;
         }
         return false;
@@ -68,6 +79,7 @@ public class PlayerInventory : MonoBehaviour
         if (potionsCount > 0)
         {
             potionsCount--;
+            OnPotionCountChanged.Invoke(potionsCount);
             return true;
         }
         return false;
@@ -84,6 +96,7 @@ public class PlayerInventory : MonoBehaviour
         if (explosiveArrowCount < maxExplosiveArrowCount)
         {
             explosiveArrowCount++;
+            OnExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
             return true;
         }
         return false;
@@ -122,6 +135,7 @@ public class PlayerInventory : MonoBehaviour
         if (explosiveArrowCount > 0)
         {
             explosiveArrowCount--;
+            OnExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
             return true;
         }
         return false;
@@ -195,6 +209,7 @@ public class PlayerInventory : MonoBehaviour
         if (money + diff >= 0)
         {
             money += diff;
+            OnMoneyChanged.Invoke(money);
             return true;
         }
         return false;

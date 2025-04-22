@@ -25,9 +25,15 @@ public class HealthBarController : MonoBehaviour
     public void SetHealthSmoothed(float fill)
     {
         if (_smoothHealth != null)
+        {
             StopCoroutine(_smoothHealth);
+            _smoothHealth = null;
+        }
         if (_smoothSmoothed != null)
+        {
             StopCoroutine(_smoothSmoothed);
+            _smoothSmoothed = null;
+        }
         _smoothHealth = StartCoroutine(
             SmoothHealth(_healthImage, fill, 0.2f)
         );

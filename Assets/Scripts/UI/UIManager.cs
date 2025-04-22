@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,36 +11,35 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _ui.SetArrows(_player.inventory.GetExplosiveArrowCount());
-        _ui.SetPotions(_player.inventory.GetPotionCount());
         _ui.SetMoney(_player.inventory.GetMoney());
         _ui.HealthBar.SetHealth(_player.Health / _player.MaxHealth);
         _ui.ShiftController.SetShiftCount(_player.ShiftCount);
-        StartCoroutine(TestDamageCoroutine());
-        StartCoroutine(TestMoneyCorotine());
-        StartCoroutine(TestImmidiateCoroutine());
-    }
+        _ui.PotionController.SetPotions(_player.inventory.GetPotionCount());
 
-    IEnumerator TestImmidiateCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(2f);
-        _player.inventory.UseExplosiveArrow();
-        _player.inventory.UsePotion();
-        _ui.SetPotions(_player.inventory.GetPotionCount());
-        _ui.SetArrows(_player.inventory.GetExplosiveArrowCount());
-    }
+        _ui.ChangeWeaponImage(Enum.Parse<WeaponType>(_player.inventory.GetPlayerWeapon().name));
 
-    IEnumerator TestDamageCoroutine()
-    {
-        yield return null;
-        yield return new WaitForSecondsRealtime(1f);
-        _player.TakeDamage(50f, DamageType.None);
-        _ui.HealthBar.SetHealthSmoothed(_player.Health / _player.MaxHealth);
-    }
+        _player.OnHealthChanged.AddListener(() =>
+            _ui.HealthBar.SetHealthSmoothed(_player.Health / _player.MaxHealth)
+        );
 
-    IEnumerator TestMoneyCorotine()
-    {
-        yield return new WaitForSecondsRealtime(1.5f);
-        _player.inventory.ModifyMoneyCount(20);
-        _ui.SetMoneySmooth(_player.inventory.GetMoney());
+        _player.inventory.OnPotionCountChanged.AddListener(
+            _ui.PotionController.SetPotions
+        );
+
+        _player.OnPotionUsed.AddListener(
+            _ui.PotionController.StartReload
+        );
+
+        _player.OnShiftPerformed.AddListener(() =>
+            _ui.ShiftController.SetShiftCount(_player.ShiftCount)
+        );
+        _player.OnShiftReloadStarted.AddListener(
+            _ui.ShiftController.StartShiftSmoothReload
+        );
+
+        _player.inventory.OnExplosiveArrowCountChanged.AddListener(_ui.SetArrows);
+
+        _player.inventory.OnMoneyChanged.AddListener(_ui.SetMoneySmooth);
+
     }
 }

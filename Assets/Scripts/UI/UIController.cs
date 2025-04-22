@@ -1,22 +1,29 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [Header("Bar Parameters")]
+    [Header("Animated Parameters")]
     [SerializeField] HealthBarController _healthBar;
     public HealthBarController HealthBar => _healthBar;
 
     [SerializeField] ShiftController _shiftController;
     public ShiftController ShiftController => _shiftController;
 
+    [SerializeField] PotionController _potionController;
+    public PotionController PotionController => _potionController;
+
     [Header("Text Parameters")]
-    [SerializeField] TextMeshProUGUI _potions;
     [SerializeField] TextMeshProUGUI _arrows;
     [SerializeField] TextMeshProUGUI _money;
+
+    [Header("Weapon Parameters")]
+    [SerializeField] Image _weaponImage;
+    [SerializeField] List<Sprite> _weaponImages;
 
     public void SetArrows(int arrows)
     {
@@ -40,16 +47,18 @@ public class UIController : MonoBehaviour
     IEnumerator SmoothMoney(int money)
     {
         int start = Convert.ToInt32(_money.text);
-        while (start < money)
+        int sign = Convert.ToInt32(Mathf.Sign(money - start));
+        while (start != money)
         {
-            ++start;
+            start += sign;
             _money.text = start.ToString();
             yield return null;
         }
     }
 
-    public void SetPotions(int potions)
+    public void ChangeWeaponImage(WeaponType type)
     {
-        _potions.text = potions.ToString();
+        _weaponImage.sprite = _weaponImages[(int)type];
     }
+
 }
