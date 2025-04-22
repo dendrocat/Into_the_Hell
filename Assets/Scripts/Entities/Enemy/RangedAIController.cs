@@ -21,7 +21,7 @@ public class RangedAIController : BaseAIController
         if (target != null)
         {
             Vector2 raycastStartPos = NPC.weaponObject.position + NPC.weaponObject.rotation * Vector2.right * 0.5f;
-            RaycastHit2D hit = Physics2D.Raycast(raycastStartPos, target.position);
+            RaycastHit2D hit = Physics2D.Raycast(raycastStartPos, ((Vector2) target.position - raycastStartPos).normalized);
             if (hit.collider)
             {
                 if (hit.collider.gameObject == target.gameObject)
