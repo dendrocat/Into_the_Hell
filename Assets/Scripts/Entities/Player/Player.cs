@@ -19,8 +19,6 @@ public class Player : Person
     public UnityEvent OnShiftPerformed = new();
     [HideInInspector]
     public UnityEvent<float> OnShiftReloadStarted = new();
-    [HideInInspector]
-    public UnityEvent OnHealthChanged = new();
 
     float baseMaxHealth = 100f;
     public PlayerInventory inventory;
@@ -268,7 +266,6 @@ public class Player : Person
     {
         if (ShiftCount < 3)
         {
-            Debug.Log("Shift reloading");
             OnShiftReloadStarted.Invoke(2f);
             yield return new WaitForSeconds(2f);
 

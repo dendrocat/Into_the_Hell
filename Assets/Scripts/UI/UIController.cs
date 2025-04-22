@@ -17,6 +17,9 @@ public class UIController : MonoBehaviour
     [SerializeField] PotionController _potionController;
     public PotionController PotionController => _potionController;
 
+    [SerializeField] BossHealthBarController _bossHealthBar;
+    public BossHealthBarController BossHealthBar => _bossHealthBar;
+
     [Header("Text Parameters")]
     [SerializeField] TextMeshProUGUI _arrows;
     [SerializeField] TextMeshProUGUI _money;

@@ -26,7 +26,7 @@ public class MiniGolemSpawner : MonoBehaviour
     private void Start()
     {
         boss = GetComponent<Boss>();
-        bossMaxHealth = boss.GetMaxHealth();
+        bossMaxHealth = boss.MaxHealth;
 
         spawnData.Add(new SpawnData(4, 0.75f));
         spawnData.Add(new SpawnData(5, 0.5f));
@@ -52,7 +52,7 @@ public class MiniGolemSpawner : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Vector2 position = transform.position + Quaternion.Euler(0f, 0f, 360.0f * ((float) i / count)) * Vector2.right * 1.5f;
+            Vector2 position = transform.position + Quaternion.Euler(0f, 0f, 360.0f * ((float)i / count)) * Vector2.right * 1.5f;
             GameObject miniGolem = Instantiate(miniGolemPrefab, position, Quaternion.Euler(0f, 0f, 0f));
             boss.AddEffect(EffectNames.MiniGolem, 1);
             miniGolem.GetComponent<AIDestinationSetter>().target = GetComponent<AIDestinationSetter>().target;

@@ -2305,6 +2305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1704427799}
   _ui: {fileID: 1119753251}
+  _debugBoss: {fileID: 0}
 --- !u!4 &376538419
 Transform:
   m_ObjectHideFlags: 0
@@ -5985,10 +5986,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1744386489424836032, guid: 5b5319c86a85a764da70b1cebeee48d8, type: 3}
-      propertyPath: _timeSmoothing
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2010899093357275115, guid: 5b5319c86a85a764da70b1cebeee48d8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7407,6 +7404,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2428deaf0dfa24f44b73f9f1681783dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 100
   health: 100
   speed: 2
@@ -7423,9 +7426,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnShiftReloadStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   inventory: {fileID: 1704427803}
@@ -9558,7 +9558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183665765238550628, guid: 4314127ba337d9c489108d7c5ff048b3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9676,7 +9676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242801157821161428, guid: 141e49fda5543bb43acf514f76318143, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9131167935678171984, guid: 141e49fda5543bb43acf514f76318143, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9782,7 +9782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956633726794170060, guid: 15bcedbda4fa69941b44d3d529ccfb72, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6490729293054798783, guid: 15bcedbda4fa69941b44d3d529ccfb72, type: 3}
       propertyPath: target

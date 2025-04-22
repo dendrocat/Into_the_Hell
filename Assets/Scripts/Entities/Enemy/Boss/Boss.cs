@@ -15,11 +15,6 @@ public class Boss : BaseEnemy
         return bossName;
     }
 
-    public float GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
     new public void Attack()
     {
         bool[] reloading = new bool[3];

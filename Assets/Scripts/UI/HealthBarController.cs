@@ -18,11 +18,14 @@ public class HealthBarController : MonoBehaviour
 
     float _targetFill;
 
-    public void SetHealth(float fill)
+    protected virtual void SetTextHealth(float health, float maxHealth) { }
+
+    public void SetHealth(float health, float maxHealth)
     {
-        _targetFill = fill;
-        _healthImage.fillAmount = fill;
-        _smoothedHealthImage.fillAmount = fill;
+        _targetFill = health / maxHealth;
+        _healthImage.fillAmount = _targetFill;
+        _smoothedHealthImage.fillAmount = _targetFill;
+        SetTextHealth(health, maxHealth);
     }
 
     void Update()
@@ -33,7 +36,14 @@ public class HealthBarController : MonoBehaviour
         }
     }
 
-    public void SetHealthSmoothed(float fill)
+    public void SetHealthSmoothed(float health, float maxHealth)
+    {
+        _targetFill = health / maxHealth;
+        SetTextHealth(health, maxHealth);
+        SetHealthSmoothed(_targetFill);
+    }
+
+    void SetHealthSmoothed(float fill)
     {
         _targetFill = fill;
         if (_smoothHealth == null)
