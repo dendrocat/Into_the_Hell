@@ -16,6 +16,6 @@ public class BossHealthBarController : HealthBarController
 
     protected override void SetTextHealth(float health, float maxHealth)
     {
-        _textHealth.text = $"{health} / {maxHealth}";
+        _textHealth.text = $"{Mathf.Ceil(health)} / {maxHealth}";
     }
 }
