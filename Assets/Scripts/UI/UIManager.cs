@@ -19,9 +19,6 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
-        if (_debugBoss == null)
-            Debug.LogWarning("Boss was not setted in debug mode");
-        else SetBoss(_debugBoss);
     }
 
     void Start()
@@ -59,22 +56,14 @@ public class UIManager : MonoBehaviour
 
         _player.inventory.OnMoneyChanged.AddListener(_ui.SetMoneySmooth);
 
+        if (_debugBoss == null)
+            Debug.LogWarning("Boss was not setted in debug mode");
+        else SetBoss(_debugBoss);
     }
 
     public void SetBoss(Boss boss)
     {
-        _ui.BossHealthBar.SetBossName(boss.GetBossName());
-        Debug.Log($"{boss.GetBossName()} {boss.getHP()} {boss.MaxHealth}");
-        _ui.BossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
-        boss.OnHealthChanged.AddListener(() =>
-            _ui.BossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)
-        );
-        boss.OnDied.AddListener(() =>
-            _ui.BossHealthBar.gameObject.SetActive(false)
-        );
-        _ui.BossHealthBar.SetPredicateColorChange(() =>
-            boss.hasEffect(EffectNames.MiniGolem)
-        );
-        _ui.BossHealthBar.gameObject.SetActive(true);
+        _ui.BossBarController.SetBoss(boss);
+        _ui.BossBarController.gameObject.SetActive(true);
     }
 }

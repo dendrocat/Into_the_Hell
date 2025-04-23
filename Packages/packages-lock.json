@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.coffee.softmask-for-ugui": {
+      "version": "https://github.com/mob-sakai/SoftMaskForUGUI.git?path=Packages/src",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "8b76751edaaf8ba86698977a89861561f5799f47"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.4",
       "depth": 0,

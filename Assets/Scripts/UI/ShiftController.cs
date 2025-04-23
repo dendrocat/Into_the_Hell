@@ -15,7 +15,7 @@ public class ShiftController : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; ++i)
         {
-            _images.Add(transform.GetChild(i).GetChild(0).GetComponent<Image>());
+            _images.Add(transform.GetChild(i).Find("ReloadImage").GetComponent<Image>());
         }
         foreach (var image in _images)
             image.fillAmount = 0;
