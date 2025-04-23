@@ -34,7 +34,7 @@ public class PotionController : MonoBehaviour
         {
             _imageReload.fillAmount = Mathf.Lerp(1, 0, t);
             t += Time.deltaTime / time;
-            yield return new WaitForSecondsRealtime(Time.deltaTime);
+            yield return null;
         }
         _imageReload.fillAmount = 0;
     }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBarController : MonoBehaviour
 {
     [Header("Images with health")]
-    [SerializeField] Image _healthImage;
+    [SerializeField] protected Image _healthImage;
     [SerializeField] Image _smoothedHealthImage;
 
     [Header("Parameters for animation")]

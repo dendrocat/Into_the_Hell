@@ -22,7 +22,6 @@ public class Person : Effectable, IDamagable
     public float MaxHealth => maxHealth;
 
     [SerializeField] protected float health = 100f; //текущее здоровье
-    public float Health => health;
 
     [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
     public BaseWeapon weapon; //оружие персонажа

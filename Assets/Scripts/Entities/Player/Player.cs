@@ -146,9 +146,9 @@ public class Player : Person
                 }
 
                 float reloadTime = potion.getReloadTime();
+                OnPotionUsed.Invoke(reloadTime);
                 StartCoroutine(HealReload(reloadTime));
 
-                OnPotionUsed.Invoke(reloadTime);
                 OnHealthChanged.Invoke();
             }
         }

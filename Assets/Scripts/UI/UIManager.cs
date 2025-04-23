@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     {
         _ui.SetArrows(_player.inventory.GetExplosiveArrowCount());
         _ui.SetMoney(_player.inventory.GetMoney());
-        _ui.HealthBar.SetHealth(_player.Health, _player.MaxHealth);
+        _ui.HealthBar.SetHealth(_player.getHP(), _player.MaxHealth);
         _ui.ShiftController.SetShiftCount(_player.ShiftCount);
         _ui.PotionController.SetPotions(_player.inventory.GetPotionCount());
 
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
         _player.OnHealthChanged.AddListener(() =>
             _ui.HealthBar.SetHealthSmoothed(
-                _player.Health, _player.MaxHealth
+                _player.getHP(), _player.MaxHealth
             )
         );
 
@@ -64,13 +64,16 @@ public class UIManager : MonoBehaviour
     public void SetBoss(Boss boss)
     {
         _ui.BossHealthBar.SetBossName(boss.GetBossName());
-        Debug.Log($"{boss.GetBossName()} {boss.Health} {boss.MaxHealth}");
-        _ui.BossHealthBar.SetHealth(boss.Health, boss.MaxHealth);
+        Debug.Log($"{boss.GetBossName()} {boss.getHP()} {boss.MaxHealth}");
+        _ui.BossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
         boss.OnHealthChanged.AddListener(() =>
-            _ui.BossHealthBar.SetHealthSmoothed(boss.Health, boss.MaxHealth)
+            _ui.BossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)
         );
         boss.OnDied.AddListener(() =>
             _ui.BossHealthBar.gameObject.SetActive(false)
+        );
+        _ui.BossHealthBar.SetPredicateColorChange(() =>
+            boss.hasEffect(EffectNames.MiniGolem)
         );
         _ui.BossHealthBar.gameObject.SetActive(true);
     }
