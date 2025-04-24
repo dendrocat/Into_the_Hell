@@ -67,7 +67,7 @@ public class BattleSceneDebugUI : MonoBehaviour
         if (boss)
         {
             bossNameText.SetText(boss.GetBossName());
-            bossHPText.SetText("" + boss.getHP() + " / " + boss.GetMaxHealth());
+            bossHPText.SetText("" + boss.getHP() + " / " + boss.MaxHealth);
             bossChainAttackText.SetText("Attack chain: " + boss.getEffectCount(EffectNames.AttackChain));
             bossMiniGolemText.SetText("Mini-golem level: " + boss.getEffectCount(EffectNames.MiniGolem));
         }

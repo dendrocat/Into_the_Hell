@@ -1,6 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Events;
 
 /**
  * <summary>
@@ -9,13 +9,20 @@ using System.Collections;
  * **/
 public class Person : Effectable, IDamagable
 {
+    [HideInInspector]
+    public UnityEvent OnHealthChanged = new();
+    [HideInInspector]
+    public UnityEvent OnDied = new();
     const float iceDriftDeceleration = 0.9f;
 
     bool alive = true;
 
     protected float destructionDelay = 1f;
     [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
+    public float MaxHealth => maxHealth;
+
     [SerializeField] protected float health = 100f; //текущее здоровье
+
     [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
     public BaseWeapon weapon; //оружие персонажа
     public Transform weaponObject;
@@ -143,8 +150,8 @@ public class Person : Effectable, IDamagable
             ChangeWeaponPosition();
 
             //движение персонажа
-            if ((!hasEffect(EffectNames.Stun) && !hasEffect(EffectNames.HoleStun) && moving) || hasEffect(EffectNames.Shift)) 
-                //если нет оглушения или падения в яму и персонаж двигается, или на нем есть эффект рывка
+            if ((!hasEffect(EffectNames.Stun) && !hasEffect(EffectNames.HoleStun) && moving) || hasEffect(EffectNames.Shift))
+            //если нет оглушения или падения в яму и персонаж двигается, или на нем есть эффект рывка
             {
                 Move();
             }
@@ -162,7 +169,7 @@ public class Person : Effectable, IDamagable
     /**
      * <inheritdoc/>
      * **/
-    public void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
+    public virtual void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
     {
         if (alive)
         {
@@ -197,6 +204,7 @@ public class Person : Effectable, IDamagable
                 ". Result damage: " + resultDamage);*/
 
             health -= resultDamage;
+            OnHealthChanged.Invoke();
             if (health <= 0)
             {
                 Die();
@@ -259,7 +267,7 @@ public class Person : Effectable, IDamagable
             {
                 rb.linearVelocity = movement;
             }
-            
+
 
             //обновление последнего ненулевого передвижения
             if (currentDirection != Vector2.zero)
@@ -294,6 +302,7 @@ public class Person : Effectable, IDamagable
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         OnDeath(); //вызов событий при смерти персонажа
+        OnDied.Invoke();
         StartCoroutine(DestructionDelayCoroutine());
     }
 

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EffectNames { 
+public enum EffectNames
+{
     Burning = 0, //горение
     Freezing = 1, //заморозка
     Stun = 2, //оглушение
@@ -21,7 +22,7 @@ public enum EffectNames {
  * Класс сущностей, на которые можно наложить эффект
  * </summary>
  * **/
-public class Effectable: MonoBehaviour
+public class Effectable : MonoBehaviour
 {
     private const int EFFECT_COUNT = 12; //общее количество типов эффектов
 
@@ -90,7 +91,7 @@ public class Effectable: MonoBehaviour
         else
         {
             effectCount[effectId] += diff;
-            if (effectCount[effectId] > maxEffectCount[effectId]) 
+            if (effectCount[effectId] > maxEffectCount[effectId])
                 effectCount[effectId] = maxEffectCount[effectId];
             if (resetRemainingTime) ResetEffectRemainingTime(effectId);
         }
@@ -126,7 +127,7 @@ public class Effectable: MonoBehaviour
         else
         {
             effectCount[effectId] -= diff;
-            if (effectCount[effectId] < 0) 
+            if (effectCount[effectId] < 0)
                 effectCount[effectId] = 0;
             if (resetRemainingTime) ResetEffectRemainingTime(effectId);
         }
@@ -161,7 +162,7 @@ public class Effectable: MonoBehaviour
         }
         else
         {
-            effectCount[effectId] = (int) Mathf.Clamp(count, 0, maxEffectCount[effectId]);
+            effectCount[effectId] = (int)Mathf.Clamp(count, 0, maxEffectCount[effectId]);
             if ((count < 0) || (count > maxEffectCount[effectId]))
             {
                 Debug.Log(gameObject.name + ": setted effect with id=" + effectId +
@@ -229,7 +230,7 @@ public class Effectable: MonoBehaviour
      * **/
     public bool hasEffect(int effectId)
     {
-        if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return false; 
+        if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return false;
         return effectCount[effectId] > 0;
     }
 
@@ -265,5 +266,28 @@ public class Effectable: MonoBehaviour
     public int getEffectCount(EffectNames effect)
     {
         return getEffectCount((int)effect);
+    }
+
+    /**
+     * <summary>
+     * Возвращает длительность эффекта с заданным ID.
+     * </summary>
+     * <returns>float - длительность эффекта.</returns>
+     * **/
+    public float getEffectDuration(int effectId)
+    {
+        if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return 0;
+        return effectDuration[effectId];
+    }
+
+    /**
+    * <summary>
+    * Возвращает длительность эффекта с заданным названием.
+    * </summary>
+    * <returns>float - длительность эффекта.</returns>
+    * **/
+    public float getEffectDuration(EffectNames effect)
+    {
+        return getEffectDuration((int)effect);
     }
 }

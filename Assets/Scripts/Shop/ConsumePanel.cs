@@ -16,14 +16,17 @@ public class ConsumePanel : ShopPanel
     {
         SetItemCost("Potion", CalcPotionCost());
         SetItemCost("Arrow", explosiveArrowCost);
+        SetItemCount("Arrow", _inventory.GetExplosiveArrowCount());
+        SetItemCount("Potion", _inventory.GetPotionCount());
         CalcActiveItems();
     }
 
     public void BuyArrow()
     {
-        if (!CheckBuy(explosiveArrowCost)) return;
+        if (!base.CheckBuy(explosiveArrowCost)) return;
         if (!_inventory.AddExplosiveArrow()) return;
         _inventory.ModifyMoneyCount(-explosiveArrowCost);
+        SetItemCount("Arrow", _inventory.GetExplosiveArrowCount());
 
         CalcActiveItems();
     }
@@ -31,10 +34,26 @@ public class ConsumePanel : ShopPanel
     public void BuyPotion()
     {
         var cost = CalcPotionCost();
-        if (!CheckBuy(cost)) return;
+        if (!base.CheckBuy(cost)) return;
         if (!_inventory.AddPotion()) return;
         _inventory.ModifyMoneyCount(-cost);
+        SetItemCount("Potion", _inventory.GetPotionCount());
 
         CalcActiveItems();
+    }
+
+    protected override bool CheckBuy(int cost, string name)
+    {
+        var res = base.CheckBuy(cost);
+        switch (name)
+        {
+            case "Arrow":
+                res &= _inventory.GetExplosiveArrowCount() < _inventory.MaxExplosiveArrowCount;
+                break;
+            case "Potion":
+                res &= _inventory.GetPotionCount() < _inventory.MaxPotionsCount;
+                break;
+        }
+        return res;
     }
 }

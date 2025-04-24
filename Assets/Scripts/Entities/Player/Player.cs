@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 /**
@@ -11,8 +11,15 @@ using UnityEngine.SceneManagement;
  * Важно! Вместо weapon используется inventory
  * </summary>
  * **/
-public class Player : Person, IDamagable
+public class Player : Person
 {
+    [HideInInspector]
+    public UnityEvent<float> OnPotionUsed = new();
+    [HideInInspector]
+    public UnityEvent OnShiftPerformed = new();
+    [HideInInspector]
+    public UnityEvent<float> OnShiftReloadStarted = new();
+
     float baseMaxHealth = 100f;
     public PlayerInventory inventory;
     public int ShiftCount = 3;
@@ -46,7 +53,7 @@ public class Player : Person, IDamagable
         if (enemyColliders.Count > 1)
         {
             Vector2 nearestDirection = new Vector2(15f, 0f);
-            foreach(Collider2D enemyCollider in enemyColliders)
+            foreach (Collider2D enemyCollider in enemyColliders)
             {
                 if (enemyCollider.gameObject.tag != "Enemy") continue;
                 if (!enemyCollider.gameObject.GetComponent<Person>().isAlive()) continue;
@@ -113,6 +120,7 @@ public class Player : Person, IDamagable
             if (timer2Coroutine != null) StopCoroutine(timer2Coroutine);
 
             StartCoroutine(ShiftCoroutine());
+            OnShiftPerformed.Invoke();
         }
     }
 
@@ -138,7 +146,10 @@ public class Player : Person, IDamagable
                 }
 
                 float reloadTime = potion.getReloadTime();
+                OnPotionUsed.Invoke(reloadTime);
                 StartCoroutine(HealReload(reloadTime));
+
+                OnHealthChanged.Invoke();
             }
         }
     }
@@ -170,7 +181,7 @@ public class Player : Person, IDamagable
     /**
      * <inheritdoc/>
      * **/
-    public new void TakeDamage(float damage, DamageType type)
+    public override void TakeDamage(float damage, DamageType type)
     {
         if (isAlive())
         {
@@ -206,10 +217,11 @@ public class Player : Person, IDamagable
                 ", expres=" + ExplosionResistDamageReduction +
                 ", minigolem=" + MiniGolemDamageReduction +
                 ", fireres=" + FireResistDamageReduction +
-                ", armor=" + armorDamageReduction + 
+                ", armor=" + armorDamageReduction +
                 ". Result damage: " + resultDamage);
 
             health -= resultDamage;
+            OnHealthChanged.Invoke();
             if (health <= 0)
             {
                 Die();
@@ -252,9 +264,11 @@ public class Player : Person, IDamagable
      * **/
     private IEnumerator Timer2Coroutine()
     {
-        yield return new WaitForSeconds(2f);
         if (ShiftCount < 3)
         {
+            OnShiftReloadStarted.Invoke(2f);
+            yield return new WaitForSeconds(2f);
+
             ShiftCount++;
             timer2Coroutine = StartCoroutine(Timer2Coroutine());
         }

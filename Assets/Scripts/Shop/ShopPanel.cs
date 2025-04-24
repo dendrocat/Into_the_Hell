@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class ShopPanel : BasePanel
@@ -11,6 +12,11 @@ public abstract class ShopPanel : BasePanel
         InitPanel();
     }
 
+    protected void SetItemCount(string item, int count)
+    {
+        items.SetItemCount(item, count);
+    }
+
     protected void SetItemCost(string item, int cost)
     {
         if (cost == -1)
@@ -21,13 +27,13 @@ public abstract class ShopPanel : BasePanel
         items.SetItemCost(item, cost);
     }
 
-    protected bool CheckBuy(int cost)
+    protected virtual bool CheckBuy(int cost, string name = "")
     {
         return _inventory.GetMoney() >= cost;
     }
 
     protected void CalcActiveItems()
     {
-        items.CalcItemsState((cost) => CheckBuy(cost));
+        items.CalcItemsState(CheckBuy);
     }
 }
