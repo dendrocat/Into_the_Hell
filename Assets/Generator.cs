@@ -6,18 +6,20 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour {
 	[SerializeField] GameObject[] roomPrefabs;
-	[SerializeField] GameObject testS;
+	[SerializeField] GameObject[] halls;
 	private void Start() {
 		roomPrefabs = Resources.LoadAll<GameObject>("Rooms");
+		halls = Resources.LoadAll<GameObject>("Halls");
 		SimpleGenerate(25, roomPrefabs);
 	}
 
-	private void SimpleGenerate(int roomNumber, GameObject[] rooms){
+	private void SimpleGenerate(int roomNumber, GameObject[] rooms, GameObject firstRoomPrefab=null, GameObject lastRoomPrefab=null){
 		List<Vector2Int> possPos = new(){new(0, 0)};
 		HashSet<Vector2Int> poses = new();
 		System.Random random = new();
 		List<Vector2> coridors = new();
-		
+
+		Vector2Int firstRoom = new(-1000, -1000), lastRoom = firstRoom;
 		while(roomNumber -- > 0){ 
 			int ind = random.Next(1000007);
 			ind %= possPos.Count;
@@ -28,14 +30,15 @@ public class Generator : MonoBehaviour {
 				++roomNumber;
 			}else{ 
 				poses.Add(pos);
+				if(firstRoom.x == -1000) firstRoom = pos;
+				lastRoom = pos;
 				int num = 0;
 				Vector2 coridor = new(0f, 0f);
 				Array.ForEach(new Vector2Int[]{
 					new(1, 0), new(-1, 0), new(0, 1), new(0, -1)  
 				}, (shift)=>{
 					if(poses.Contains(shift + pos)){ 
-						++num;
-						if(UnityEngine.Random.value < 1f / num)
+						if(UnityEngine.Random.value <= 1f / ++num || coridor == Vector2.zero)
 							coridor = pos + 0.5f * (Vector2)shift;
 					}else possPos.Add(pos + shift);
 				});
@@ -53,8 +56,25 @@ public class Generator : MonoBehaviour {
 			Vector2Int shift = new(minX, minY);
 			Matrix<Room> mr = new(maxX-minX+1, maxY-minY+1);		
 			foreach(var i in poses){
-				mr[i - shift] = new Room(rooms[random.Next((int)1e9+7) % rooms.Length]);
+				if(i == lastRoom && lastRoomPrefab != null)
+					mr[i - shift] = new Room(lastRoomPrefab);
+				else if (i == firstRoom && firstRoomPrefab != null)
+					mr[i - shift] = new Room(firstRoomPrefab);
+				else
+					mr[i - shift] = new Room(rooms[random.Next((int)1e9+7) % rooms.Length]);
 			}
+
+			foreach(var coridor_ in coridors){
+				var coridor = coridor_ - shift;
+				if(coridor.x == (int)coridor.x){
+					mr[(int)coridor.x, (int)coridor.y].AddDoor(DoorDirection.Up);
+					mr[(int)coridor.x, (int)coridor.y+1].AddDoor(DoorDirection.Down);
+				}else if(coridor.y == (int)coridor.y){
+					mr[(int)coridor.x, (int)coridor.y].AddDoor(DoorDirection.Right);
+					mr[(int)coridor.x+1, (int)coridor.y].AddDoor(DoorDirection.Left);
+				}else throw new Exception("Coridor is incorrect " + coridor + " " + coridor_);
+			}
+
 			return mr;
 		};
 		
@@ -68,6 +88,7 @@ public class Generator : MonoBehaviour {
 						if(szh[j+1] < mr[i, j].h) szh[j+1] = mr[i, j].h;
 					}
 
+			/*
 			string debug = "";
 			foreach(var i in szw) debug += i + " ";
 			Debug.Log(debug);
@@ -75,6 +96,7 @@ public class Generator : MonoBehaviour {
 			debug = "";
 			foreach(var i in szh) debug += i + " ";	
 			Debug.Log(debug);
+			*/
 
 			for(int i=0;i<szw.Length-1;++i) szw[i+1] += random.Next((int)1e+7) % 5 * 2 + 5;
 			for(int i=0;i<szh.Length-1;++i) szh[i+1] += random.Next((int)1e+7) % 5 * 2 + 5;
@@ -89,17 +111,26 @@ public class Generator : MonoBehaviour {
 		};
 
 		var mr = NormilizeRooms(GetMatrix(poses, rooms));
-		mr.ForEach((room)=>{
-			room?.Instantiate();
-		});
-
-		foreach(var i in coridors){
-			if(i.x == (int)i.x){
-				
-			}else{
-
-			}		
-		}
+		for(int i=0;i<mr.w;++i)
+			for(int j=0;j<mr.h;++j) {
+				if(mr[i, j] != null) {
+					mr[i, j].SetUp();
+					if(i > 0 && (mr[i, j].doors & (1<<(int) DoorDirection.Left)) != 0){
+						Room.GenerateHall(
+							mr[i-1,j].coord + Vector2.right * (mr[i-1,j].w+1)*0.5f,
+							mr[i,j].coord + Vector2.left * (mr[i,j].w-1)*0.5f,
+							halls[0]
+							);
+					}	
+					if(j > 0 && (mr[i, j].doors & (1<<(int) DoorDirection.Down)) != 0){
+						Room.GenerateHall(
+							mr[i,j-1].coord + Vector2.up * (mr[i,j-1].h+1)*0.5f,
+							mr[i,j].coord + Vector2.down * (mr[i,j].h-3)*0.5f,
+							halls[1]
+							);
+					}	
+				}
+			}
 	}
 
 	public class Matrix<T> where T: class {
@@ -131,25 +162,35 @@ public class Generator : MonoBehaviour {
 	public class Room{ 
 		public int w {get; private set; } 	
 		public int h {get; private set; } 	
-		GameObject prefab; 
-		GameObject room; 
+		private GameObject room; 
 		public Vector2 coord;
 		public Room(GameObject prefab ){
-			this.prefab = prefab;
-			var col = prefab.GetComponent<BoxCollider2D>().size;
-			w = ((int)col.x) + 4;
-			h = ((int)col.y) + 4;
+			room = Instantiate(prefab);
+			var col = room.GetComponent<ISizeGetable>().Size;
+			w = col.x;
+			h = col.y;
 		}
 
-		public byte doors = 0;
+		public int doors = 0;
 
-		public void Instantiate(){
-			room = GameObject.Instantiate(prefab, (Vector3)coord, Quaternion.identity);
-			// for(int i=1;i<16;i<<=1){
-			// 	if((doors & i) != 0)	
-			// 		room.GetComponent<IRoomTilemapController>().DoorTilemap.ActivateDoor(Enum.Parse(DoorDirection, i+"")));
-			// }
+		public void SetUp(){
+			room.transform.position = (Vector3)coord;
+			room.GetComponent<IRoomController>().DoorController.SetDoors(
+				room.GetComponent<IRoomTilemapController>().DoorTilemap.ActiveDoors );
 		}
-	}
+
+        public void AddDoor(DoorDirection dir) {
+			doors |= 1<<(int)dir;
+			Debug.Log((room == null) + " " + (room?.GetComponent<IRoomController>() == null));
+			room.GetComponent<IRoomTilemapController>().
+					DoorTilemap.ActivateDoor(dir);
+        }
+
+        public static void GenerateHall(Vector2 start, Vector2 fin, GameObject prefab) {
+			GameObject hall = Instantiate(prefab);
+			hall.transform.position = (Vector3) start;
+			hall.GetComponent<IHallTilemapController>().ExtendToLength((int)(fin-start).magnitude);
+		}
+    }
 
 }
