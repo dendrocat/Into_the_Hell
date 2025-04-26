@@ -10,7 +10,7 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     /// <summary>
     /// List of door game objects in the room.
     /// </summary>
-    List<GameObject> _doors;
+    [SerializeField] List<GameObject> _doors;
 
     /// <inheritdoc />
     public List<GameObject> ActiveDoors { get; private set; }
@@ -21,22 +21,28 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     void Awake()
     {
         ActiveDoors = new List<GameObject>();
-
-        _walls = new List<Tilemap>(GetComponentsInChildren<Tilemap>());
-        _doors = new List<GameObject>();
-        for (int i = 0; i < transform.childCount; ++i)
-        {
-            var d = transform.GetChild(i);
-            if (d.GetComponent<Tilemap>() != null)
-                continue;
-            _doors.Add(d.gameObject);
-        }
     }
 
     /// <inheritdoc />
     public override void SwapTiles(TilesContainer container)
     {
         SwapWallTiles(container);
+        SwapDoorTiles(container);
+    }
+
+    /// <summary>Replaces all tiles in the door tilemaps with the tiles specified in the provided container. </summary>
+    /// <param name="container">The container holding the tiles to replace the existing ones.</param>
+    void SwapDoorTiles(TilesContainer container)
+    {
+        foreach (var door in _doors)
+        {
+            var tilemaps = door.GetComponentsInChildren<Tilemap>();
+            foreach (var tilemap in tilemaps)
+            {
+                tilemap.SwapTile(_templateContainer.DoorRoof, container.DoorRoof);
+                tilemap.SwapTile(_templateContainer.DoorWall, container.DoorWall);
+            }
+        }
     }
 
     /// <inheritdoc />
@@ -45,7 +51,7 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
         _doors[(int)door].SetActive(true);
         ActiveDoors.Add(_doors[(int)door]);
 
-        _walls[(int)door].gameObject.SetActive(false);
+        _walls[(int)door].transform.parent.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -65,9 +71,10 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
         );
         _walls.RemoveAll((el) =>
             {
-                if (!el.isActiveAndEnabled)
+                var a = el.transform.parent.gameObject;
+                if (!a.activeInHierarchy)
                 {
-                    Destroy(el.gameObject);
+                    Destroy(a);
                     return true;
                 }
                 return false;

@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// Interface for objects that manage tilemaps within a room, including doors and other tile-based elements.
 /// </summary>
-public interface IRoomTilemapController : ITilemapController
+public interface IRoomTilemapController : ITilemapController, ISizeGetable
 {
     /// <summary>
     /// Gets the controller for managing the door tilemap within the room.
