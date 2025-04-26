@@ -220,7 +220,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1614434799}
-  - component: {fileID: 1614434798}
+  - component: {fileID: 1614434801}
+  - component: {fileID: 1614434800}
   m_Layer: 0
   m_Name: RoomGenerator
   m_TagString: Untagged
@@ -228,20 +229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1614434798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614434797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10aa6ccdf7c73f40a3d851e63f1f109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomPrefabs: []
-  testS: {fileID: 2324935793605144288, guid: 65fdd432bd17aed469998196244b123f, type: 3}
 --- !u!4 &1614434799
 Transform:
   m_ObjectHideFlags: 0
@@ -257,6 +244,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614434800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614434797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecc2fd02683de74d82d587f9651dc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halls: []
+--- !u!114 &1614434801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614434797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5587b48b937fb074ebd7a0b1b90f1ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 1614434800}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
