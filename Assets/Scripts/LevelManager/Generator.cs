@@ -68,8 +68,8 @@ public class Generator
 			else
 			{
 				poses.Add(pos);
-				if (firstRoom_coord.x == -1000) firstRoom_coord = pos;
 				lastRoom_coord = pos;
+				if (firstRoom_coord.x == -1000) firstRoom_coord = pos;
 				int num = 0;
 				Vector2 coridor = new(0f, 0f);
 				Array.ForEach(new Vector2Int[]{
@@ -83,7 +83,8 @@ public class Generator
 					}
 					else possPos.Add(pos + shift);
 				});
-				coridors.Add(coridor);
+				if (pos != firstRoom_coord)
+					coridors.Add(coridor);
 			}
 		}
 
@@ -116,19 +117,18 @@ public class Generator
 				foreach (var coridor_ in coridors)
 				{
 					var coridor = coridor_ - shift;
-					if (coridor.x == (int)coridor.x)
+					if (coridor.y != (int)coridor.y)
 					{
 						mr[(int)coridor.x, (int)coridor.y].AddDoor(DoorDirection.Up);
 						mr[(int)coridor.x, (int)coridor.y + 1].AddDoor(DoorDirection.Down);
 					}
-					else if (coridor.y == (int)coridor.y)
+					else if (coridor.x != (int)coridor.x)
 					{
 						mr[(int)coridor.x, (int)coridor.y].AddDoor(DoorDirection.Right);
 						mr[(int)coridor.x + 1, (int)coridor.y].AddDoor(DoorDirection.Left);
 					}
 					else throw new Exception("Coridor is incorrect " + coridor + " " + coridor_);
 				}
-
 				return mr;
 			};
 
