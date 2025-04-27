@@ -15,7 +15,6 @@ public class LevelManager : MonoBehaviour {
     GameObject[] halls = null;
     private void Start() {
         // Resources loading will be deleted;
-        Debug.Log("One");
         rooms = Resources.LoadAll<GameObject>("Rooms");
         halls = Resources.LoadAll<GameObject>("Halls");
         if(!level.created()){
@@ -24,7 +23,7 @@ public class LevelManager : MonoBehaviour {
                     .Halls(halls[1], halls[0])
                     .FirstRoom(rooms[0])
                     .LastRoom(rooms[rooms.Length-1])
-                    .Generate(25, level);
+                    .Generate(10, level);
         }
 
         if(Instance == null)Instance = this;
