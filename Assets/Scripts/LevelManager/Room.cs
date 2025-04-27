@@ -21,7 +21,6 @@ public class Room{
 
     public void AddDoor(DoorDirection dir) {
         doors |= 1<<(int)dir;
-        Debug.Log((room == null) + " " + (room?.GetComponent<IRoomController>() == null));
         room.GetComponent<IRoomTilemapController>().
                 DoorTilemap.ActivateDoor(dir);
     }
