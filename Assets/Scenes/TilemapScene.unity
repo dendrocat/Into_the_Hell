@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 2392266571359601909, guid: c91327d998a037c468705411196ff080, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -227,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 8540601050289998544, guid: eb8ba843a73d5cc47ac49263157eecd3, type: 3}
       propertyPath: m_Name
       value: RoomSquadDestroyHoleTraps
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540601050289998544, guid: eb8ba843a73d5cc47ac49263157eecd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -305,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomColumns
       objectReference: {fileID: 0}
+    - target: {fileID: 5332846548024769344, guid: 89cadcc75f95f5046a3c17a56052e934, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -321,6 +333,10 @@ PrefabInstance:
     - target: {fileID: 2434826440159667043, guid: abb6da52b7742f641a73bc6f46e071c2, type: 3}
       propertyPath: m_Name
       value: GolemRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2434826440159667043, guid: abb6da52b7742f641a73bc6f46e071c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6632496772105526023, guid: abb6da52b7742f641a73bc6f46e071c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -521,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomSquadDestroyTraps
       objectReference: {fileID: 0}
+    - target: {fileID: 6287862175737215414, guid: 2d5d0d2f794e9744bbdf32844c964e3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -578,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaveRoom2
       objectReference: {fileID: 0}
+    - target: {fileID: 5975778506856572084, guid: 60e9a47c8e5d66e469262ef5ea97c48c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -594,6 +618,10 @@ PrefabInstance:
     - target: {fileID: 5777903922187991010, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}
       propertyPath: m_Name
       value: HallHorizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777903922187991010, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6378189206592756738, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -656,6 +684,10 @@ PrefabInstance:
     - target: {fileID: 7684130179282919871, guid: b8dbba9f5cbd62740ae8bf84ff51723f, type: 3}
       propertyPath: m_Name
       value: CaveRoom3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684130179282919871, guid: b8dbba9f5cbd62740ae8bf84ff51723f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8535560878450844754, guid: b8dbba9f5cbd62740ae8bf84ff51723f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallVertical
       objectReference: {fileID: 0}
+    - target: {fileID: 3430609782485855080, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9057113531596306384, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -780,6 +816,10 @@ PrefabInstance:
     - target: {fileID: 5990937908028791114, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
       propertyPath: m_Name
       value: CaveRoom1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990937908028791114, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933996500600070636, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -838,6 +878,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 1960290037160232503, guid: 31bb76f40e27e774684e740d5baf5d46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5682883970075566235, guid: 31bb76f40e27e774684e740d5baf5d46, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47740936
@@ -895,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomWalls
       objectReference: {fileID: 0}
+    - target: {fileID: 1470629922449039815, guid: 51e4cdae38b176f4b825deedb8e5219e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5267825315415445288, guid: 51e4cdae38b176f4b825deedb8e5219e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.552338
@@ -951,6 +999,10 @@ PrefabInstance:
     - target: {fileID: 2361415952033784000, guid: 0a895cb3f8d3bda42a956b5ffe37b855, type: 3}
       propertyPath: m_Name
       value: RoomWallsTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361415952033784000, guid: 0a895cb3f8d3bda42a956b5ffe37b855, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4095632609010411541, guid: 0a895cb3f8d3bda42a956b5ffe37b855, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1054,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MineRoom3
       objectReference: {fileID: 0}
+    - target: {fileID: 4108475786560988288, guid: de82b29b670c8e14f8a9ca036c6fefda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1111,6 +1167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MineRoom2
       objectReference: {fileID: 0}
+    - target: {fileID: 3294035795001149154, guid: 83a356991a7008744baac3e72cb6d58d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1132,6 +1192,10 @@ PrefabInstance:
     - target: {fileID: 287125118493019426, guid: c20fd1feea90d34418047318ab5e21c4, type: 3}
       propertyPath: m_Name
       value: RoomSquadDestroyHole
+      objectReference: {fileID: 0}
+    - target: {fileID: 287125118493019426, guid: c20fd1feea90d34418047318ab5e21c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7330997880821027642, guid: c20fd1feea90d34418047318ab5e21c4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1189,6 +1253,10 @@ PrefabInstance:
     - target: {fileID: 65368410029300359, guid: dd644fd6380ce3445855695414b9279b, type: 3}
       propertyPath: m_Name
       value: MineRoom1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65368410029300359, guid: dd644fd6380ce3445855695414b9279b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 304698561720541396, guid: dd644fd6380ce3445855695414b9279b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1297,6 +1365,7 @@ MonoBehaviour:
   - {fileID: 791493392}
   - {fileID: 1833018673}
   - {fileID: 1026936722}
+  - {fileID: 6451795351480114659}
 --- !u!4 &1207682932
 Transform:
   m_ObjectHideFlags: 0
@@ -1323,6 +1392,10 @@ PrefabInstance:
     - target: {fileID: 3577762494823771445, guid: 5cc794844938d174c8445d79798e84b8, type: 3}
       propertyPath: m_Name
       value: RoomColumnsHolesTraps
+      objectReference: {fileID: 0}
+    - target: {fileID: 3577762494823771445, guid: 5cc794844938d174c8445d79798e84b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9200283674533536167, guid: 5cc794844938d174c8445d79798e84b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1380,6 +1453,10 @@ PrefabInstance:
     - target: {fileID: 3332347325886350699, guid: 42ed0ec0dc82ecb49bf0dddfb0a49e90, type: 3}
       propertyPath: m_Name
       value: YetiRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332347325886350699, guid: 42ed0ec0dc82ecb49bf0dddfb0a49e90, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7692117226525669800, guid: 42ed0ec0dc82ecb49bf0dddfb0a49e90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1442,6 +1519,10 @@ PrefabInstance:
     - target: {fileID: 4240036170185059788, guid: 8909a10c207e0894a9d7b89c4f03f9f7, type: 3}
       propertyPath: m_Name
       value: RoomColumnsHoles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240036170185059788, guid: 8909a10c207e0894a9d7b89c4f03f9f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5251119229223480541, guid: 8909a10c207e0894a9d7b89c4f03f9f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1540,6 +1621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomWallsHoleTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 5585011393336948450, guid: 8e46b9bef2bb7a44687128387f7770ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1556,6 +1641,10 @@ PrefabInstance:
     - target: {fileID: 6433561692350191711, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
       propertyPath: m_Name
       value: RoomSquad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433561692350191711, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7202622798955673994, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1664,6 +1753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HellRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 5843166510591729034, guid: b839327b8aba5e94ebb0d929fcdf163d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1680,6 +1773,10 @@ PrefabInstance:
     - target: {fileID: 2282551266289576575, guid: 728763eb84b53174abe04abf0e455199, type: 3}
       propertyPath: m_Name
       value: RoomColumnsTraps
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282551266289576575, guid: 728763eb84b53174abe04abf0e455199, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5509934397581616276, guid: 728763eb84b53174abe04abf0e455199, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1752,6 +1849,10 @@ PrefabInstance:
     - target: {fileID: 1760856718106631900, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
       propertyPath: m_Name
       value: RoomHoleTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760856718106631900, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2797131025351778342, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1890,11 +1991,85 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomHole
       objectReference: {fileID: 0}
+    - target: {fileID: 5225871495114982113, guid: 4398ca22b839c6b41a9d1de6fb48b9c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4398ca22b839c6b41a9d1de6fb48b9c6, type: 3}
+--- !u!1001 &4225503206675497621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876450110573409312, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_Name
+      value: StartRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881272633116770441, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: TrapSpawns._value
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881272633116770441, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: _additional._value
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+--- !u!1 &6451795351480114659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+  m_PrefabInstance: {fileID: 4225503206675497621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1927,3 +2102,4 @@ SceneRoots:
   - {fileID: 1504581851}
   - {fileID: 944016854}
   - {fileID: 1438296608}
+  - {fileID: 4225503206675497621}
