@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
-  m_Name: IceContainer
+  m_Name: CaveContainer
   m_EditorClassIdentifier: 
-  _roof: {fileID: 11400000, guid: b9d97b53cd3921a4abf9daf9c079bc9f, type: 2}
-  _wallInner: {fileID: 11400000, guid: f730516ecd70cce40a76cf584dfeac4e, type: 2}
-  _wallOuter: {fileID: 11400000, guid: 5ec8e98861f0d2246a2ed2c867486ce1, type: 2}
-  _floor: {fileID: 11400000, guid: 8ac3db65de4aec449b3a716534372092, type: 2}
+  _roof: {fileID: 11400000, guid: ead6ca5700fcbd54aa3a6d72455bdd27, type: 2}
+  _wallInner: {fileID: 11400000, guid: 6aae5d72641e4a54495720a5d7f0fd03, type: 2}
+  _wallOuter: {fileID: 11400000, guid: 921eb1027f81df547836ad435467f990, type: 2}
+  _floor: {fileID: 11400000, guid: 3cb703725ff85f143afb5be5a836cc11, type: 2}
   _doorRoof: {fileID: 11400000, guid: e6db447fbe70a744e85eb341d8076921, type: 2}
   _doorWall: {fileID: 11400000, guid: b335dba3fb963b54fa053c1b8a87e661, type: 2}
   _hole: {fileID: 11400000, guid: b6bb9dbe95b52994e84d3e61f463c909, type: 2}
-  _additional: {fileID: 11400000, guid: 94b4fd4c19cf5cf41aa259837ea7303d, type: 2}
+  _additional: {fileID: 11400000, guid: 947692759e383fe4dad4e4aaa7d1b2a9, type: 2}
   _trap: {fileID: 7163500113360968259, guid: e60a96ef4b2349c43920b95460bd2bec, type: 3}
   _destroys: {fileID: 8298101166922554600, guid: 4277e6d0ceabef5428c07c93a7208975, type: 3}
