@@ -18,4 +18,6 @@ public interface IRoomController
     /// An <see cref="IDoorController"/> instance responsible for finding, opening, and closing doors.
     /// </value>
     public IDoorController DoorController { get; }
+
+    public void MarkAsEndRoom();
 }

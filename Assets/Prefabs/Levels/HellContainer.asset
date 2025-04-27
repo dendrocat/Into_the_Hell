@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
-  m_Name: LavaContainer
+  m_Name: HellContainer
   m_EditorClassIdentifier: 
   _roof: {fileID: 11400000, guid: ca5b6bb9cf141cd48a8587da571eeb0f, type: 2}
   _wallInner: {fileID: 11400000, guid: d21d197c146288047a383dc6847dfe93, type: 2}

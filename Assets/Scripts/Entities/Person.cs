@@ -12,7 +12,7 @@ public class Person : Effectable, IDamagable
     [HideInInspector]
     public UnityEvent OnHealthChanged = new();
     [HideInInspector]
-    public UnityEvent OnDied = new();
+    public UnityEvent<Person> OnDied = new();
     const float iceDriftDeceleration = 0.9f;
 
     bool alive = true;
@@ -302,7 +302,7 @@ public class Person : Effectable, IDamagable
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         OnDeath(); //вызов событий при смерти персонажа
-        OnDied.Invoke();
+        OnDied.Invoke(this);
         StartCoroutine(DestructionDelayCoroutine());
     }
 

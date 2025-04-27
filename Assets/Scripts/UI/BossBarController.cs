@@ -24,7 +24,7 @@ public class BossBarController : MonoBehaviour
         boss.OnHealthChanged.AddListener(() =>
             _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)
         );
-        boss.OnDied.AddListener(() =>
+        boss.OnDied.AddListener((boss) =>
             gameObject.SetActive(false)
         );
         _bossHealthBar.SetPredicateColorChange(() =>

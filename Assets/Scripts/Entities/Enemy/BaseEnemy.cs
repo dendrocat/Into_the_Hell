@@ -39,6 +39,8 @@ public class BaseEnemy : Person
         }
         if (seeker)
         {
+            Debug.Log(transform.position);
+            Debug.Log(aiDestSetter.target.transform.position);
             path = seeker.StartPath(transform.position, aiDestSetter.target.transform.position);
         }
     }

@@ -145,7 +145,7 @@ MonoBehaviour:
     _value: {fileID: 0}
   EnemySpawns:
     _enabled: 1
-    _value: {fileID: 2476799761545575763}
+    _value: {fileID: 657115003508518257}
 --- !u!1 &724651897981892086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8811,7 +8811,7 @@ GameObject:
   - component: {fileID: 3236205207143232448}
   - component: {fileID: 3588718234893501411}
   - component: {fileID: 7151547436830186900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall-Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

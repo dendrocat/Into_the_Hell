@@ -12,6 +12,11 @@ public class BaseTrap : MonoBehaviour
     protected bool isActive = false;
     List<Person> targets = new();
 
+    public void SetTargetTags(List<string> targetTags)
+    {
+        this.targetTags = targetTags;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
@@ -19,8 +24,8 @@ public class BaseTrap : MonoBehaviour
         {
             if (obj.CompareTag(targetTag))
             {
-                Person? target = obj.GetComponent<Person>();
-                if (target)
+                Person target = obj.GetComponent<Person>();
+                if (target != null)
                 {
                     targets.Add(target);
                     Debug.Log("Target count: " + targets.Count);
@@ -38,8 +43,8 @@ public class BaseTrap : MonoBehaviour
         {
             if (obj.CompareTag(targetTag))
             {
-                Person? target = obj.GetComponent<Person>();
-                if (target)
+                Person target = obj.GetComponent<Person>();
+                if (target != null)
                 {
                     targets.Remove(target);
                     Debug.Log("Target count: " + targets.Count);
@@ -58,7 +63,7 @@ public class BaseTrap : MonoBehaviour
     {
         if (isActive)
         {
-            foreach(Person target in targets)
+            foreach (Person target in targets)
             {
                 OnStay(target);
             }

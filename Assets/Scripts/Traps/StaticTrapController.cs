@@ -10,7 +10,12 @@ public class StaticTrapController : MonoBehaviour
 {
     BaseTrap trap;
     [SerializeField] float periodicalCheckPeriod; // время между проверками нахождения в ловушке
-    
+
+    public void SetPeriodicalCheckPeriod(float periodicalCheckPeriod)
+    {
+        this.periodicalCheckPeriod = periodicalCheckPeriod;
+    }
+
     void Start()
     {
         trap = GetComponent<BaseTrap>();

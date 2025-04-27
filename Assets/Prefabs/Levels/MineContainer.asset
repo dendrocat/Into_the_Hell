@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
-  m_Name: CaveContainer
+  m_Name: MineContainer
   m_EditorClassIdentifier: 
   _roof: {fileID: 11400000, guid: ead6ca5700fcbd54aa3a6d72455bdd27, type: 2}
   _wallInner: {fileID: 11400000, guid: 6aae5d72641e4a54495720a5d7f0fd03, type: 2}

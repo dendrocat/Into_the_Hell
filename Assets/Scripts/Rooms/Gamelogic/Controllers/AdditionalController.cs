@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -7,13 +9,12 @@ using UnityEngine;
 public class AdditionalController : MonoBehaviour, IAdditionalController
 {
     //TODO: add some field for effect
-    public void SetAdditionalEffect()
+    public void SetAdditionalEffect(TrapContainer trapContainer)
     {
-        Debug.LogError("Setting additional effect is not implemented");
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.LogError("Not impemented additional effect impact on entities");
+        var trap = gameObject.AddComponent(trapContainer.TrapType);
+        (trap as BaseTrap).SetTargetTags(trapContainer.TargetTags);
+        var trapController = gameObject.AddComponent<StaticTrapController>();
+        trapController.SetPeriodicalCheckPeriod(trapContainer.TrapCheckPeriod);
+        Destroy(this);
     }
 }

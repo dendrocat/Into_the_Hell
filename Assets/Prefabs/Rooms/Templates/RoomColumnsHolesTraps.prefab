@@ -4197,7 +4197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c055da7a6ca3bcb4ea6e81cc9830d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hole: {fileID: 11400000, guid: b8975a8ea223b2c4fa6704873980563a, type: 2}
 --- !u!1 &1184670176542395131
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,7 +4539,7 @@ GameObject:
   - component: {fileID: 5807207768095450935}
   - component: {fileID: 1458827315343087653}
   - component: {fileID: 2707186375833853552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall-Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

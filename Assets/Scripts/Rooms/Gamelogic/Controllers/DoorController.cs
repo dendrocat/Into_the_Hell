@@ -42,16 +42,23 @@ public class DoorController : MonoBehaviour, IDoorController
     public void SetDoors(List<GameObject> doors)
     {
         _doors = doors;
+        OpenDoors();
     }
     /// <inheritdoc />
     public void OpenDoors()
     {
-        Debug.LogError("Not implemnted open doors");
+        foreach (var door in _doors)
+        {
+            door.SetActive(false);
+        }
     }
 
     /// <inheritdoc />
     public void CloseDoors()
     {
-        Debug.LogError("Not implemnted close doors");
+        foreach (var door in _doors)
+        {
+            door.SetActive(true);
+        }
     }
 }

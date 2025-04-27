@@ -147,7 +147,7 @@ MonoBehaviour:
     _value: {fileID: 0}
   EnemySpawns:
     _enabled: 1
-    _value: {fileID: 8700037707805355417}
+    _value: {fileID: 2535985246800975789}
 --- !u!1 &712632250940956882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c055da7a6ca3bcb4ea6e81cc9830d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hole: {fileID: 11400000, guid: b8975a8ea223b2c4fa6704873980563a, type: 2}
 --- !u!1 &2882348099310153006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6411,7 +6410,7 @@ GameObject:
   - component: {fileID: 63358394764161593}
   - component: {fileID: 8666227262424393625}
   - component: {fileID: 555481614996650080}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall-Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
