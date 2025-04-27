@@ -48,28 +48,36 @@ public class MainMenuController : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
+    private List<Resolution> uniqueResolutions = new List<Resolution>();
+
     private void Start()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
-
-        int currentresolutionIndex = 0;
+        HashSet<string> addedRes = new HashSet<string>();
+        int currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+            string resString = $"{resolutions[i].width} x {resolutions[i].height}";
+
+            if (!addedRes.Contains(resString))
+            {
+                addedRes.Add(resString);
+                options.Add(resString);
+                uniqueResolutions.Add(resolutions[i]); // Сохраняем связь
+            }
 
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
             {
-                currentresolutionIndex = i;
+                currentResolutionIndex = i;
             }
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentresolutionIndex;
+        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
