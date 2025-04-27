@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -24,8 +25,8 @@ public class HallTilemapController : TilemapController, IHallTilemapController
     {
         var size = new Vector2Int(_upperBound.x - _lowerBound.x + 1,
                                     _upperBound.y - _lowerBound.y + 1);
-        if (_direction == HallDirection.Horizontal)
-            size.Set(size.y, size.x);
+        // if (_direction == HallDirection.Horizontal)
+        //     size.Set(size.y, size.x);
         Size = size;
     }
 
@@ -57,45 +58,82 @@ public class HallTilemapController : TilemapController, IHallTilemapController
         UpdateSize();
     }
 
-
-    /// <summary>Adjusts X-coordinates for new tile positions during extension</summary>
-    /// <param name="poses">Position collection to modify</param>
-    /// <param name="x">Target X-coordinate for all positions</param>
-    void UpdatePoses(List<Vector3Int> poses, int x)
+    /// <summary>Creates a 3D position using axis values based on corridor orientation</summary>
+    /// <param name="main">Primary axis coordinate (X for horizontal, Y for vertical)</param>
+    /// <param name="cross">Perpendicular axis coordinate</param>
+    /// <returns>Vector3Int with configured coordinates and zero Z-axis</returns>
+    Vector3Int CreatePose(int main, int cross)
     {
+        return _direction == HallDirection.Horizontal
+                ? new Vector3Int(main, cross, 0)
+                : new Vector3Int(cross, main, 0);
+    }
+
+    /// <summary>Updates either X or Y coordinates in positions based on corridor direction</summary>
+    /// <param name="poses">Collection of tile positions to modify</param>
+    /// <param name="value">
+    /// Coordinate value to apply: 
+    /// <list type="bullet">
+    /// <item><description>Y-axis for horizontal corridors</description></item>
+    /// <item><description>X-axis for vertical corridors</description></item>
+    /// </list>
+    /// </param>
+    void UpdatePoses(List<Vector3Int> poses, int value)
+    {
+        bool isHorizontal = _direction == HallDirection.Horizontal;
+
         for (int i = 0; i < poses.Count; ++i)
         {
-            var pose = poses[i];
-            pose.x = x;
-            poses[i] = pose;
+            var pos = poses[i];
+            if (isHorizontal)
+                pos.y = value;
+            else
+                pos.x = value;
+            poses[i] = pos;
         }
     }
 
     /// <inheritdoc />
     public void ExtendToLength(int length)
     {
-        length -= _direction != HallDirection.Horizontal ? Size.y : Size.x;
+        bool isHorizontal = _direction == HallDirection.Horizontal;
+        var (mainSize, mainUpper) = isHorizontal
+            ? (Size.x, _upperBound.x)
+            : (Size.y, _upperBound.y);
+
+        var (crossLower, crossUpper) = isHorizontal
+            ? (_lowerBound.y, _upperBound.y)
+            : (_lowerBound.x, _upperBound.x);
+
+        length -= mainSize;
         if (length <= 0) return;
 
         var tiles = new TileBase[length];
-        List<Vector3Int> poses = new(length);
-        for (int y = 1; y <= length; y++)
-        {
-            poses.Add(new Vector3Int(0, y + _upperBound.y, 0));
-        }
+        var poses = Enumerable.Range(1, length)
+                    .Select(i => CreatePose(mainUpper + i, crossUpper))
+                    .ToList();
 
         foreach (var tilemap in _tilemaps)
         {
-            for (int i = _lowerBound.x; i <= _upperBound.x; ++i)
+            for (int cross = crossLower; cross <= crossUpper; ++cross)
             {
-                var pos = (Vector3Int)new Vector2Int(i, _upperBound.y);
-                if (!tilemap.HasTile(pos)) continue;
-                var tile = tilemap.GetTile(pos);
-                UpdatePoses(poses, i);
+                var basePos = CreatePose(mainUpper, cross);
+                if (!tilemap.HasTile(basePos)) continue;
+
+                var tile = tilemap.GetTile(basePos);
+                UpdatePoses(poses, cross);
+
                 Array.Fill(tiles, tile);
                 tilemap.SetTiles(poses.ToArray(), tiles);
             }
         }
+
+        if (isHorizontal)
+            _upperBound.x += length;
+        else
+            _upperBound.y += length;
+
+        UpdateSize();
 
         foreach (var tilemap in _tilemaps)
         {
@@ -103,7 +141,5 @@ public class HallTilemapController : TilemapController, IHallTilemapController
             if (tilemap.TryGetComponent(out TilemapCollider2D collider2D))
                 collider2D.ProcessTilemapChanges();
         }
-        _upperBound.y = _upperBound.y + length;
-        UpdateSize();
     }
 }

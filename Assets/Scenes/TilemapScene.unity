@@ -619,10 +619,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallHorizontal
       objectReference: {fileID: 0}
-    - target: {fileID: 5777903922187991010, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6378189206592756738, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14
@@ -1337,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3871044a9fa41ea40b3d3ecc1f31b139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 11400000, guid: 7af416c908462e5449aa2540785a09bd, type: 2}
+  _container: {fileID: 11400000, guid: 4b4c64cb3e682e842a868735df5331ef, type: 2}
   _generated:
   - {fileID: 977142166}
   - {fileID: 1727644042}
