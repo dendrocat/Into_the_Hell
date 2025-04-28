@@ -280,6 +280,7 @@ public class Player : Person
     protected override void OnDeath()
     {
         Debug.Log("You died. Game over!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //TODO: Delete this shit
+        GameManager.Instance.ReloadGame();
     }
 }

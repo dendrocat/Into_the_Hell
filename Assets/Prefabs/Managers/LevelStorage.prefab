@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3995741872455278934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3665886153969915704}
+  - component: {fileID: 6985038346455763268}
+  m_Layer: 0
+  m_Name: LevelStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3665886153969915704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995741872455278934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6985038346455763268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995741872455278934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4db7480d3aec04b90f1cf4ab3d65e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _location:
+  - locations: 1
+    tilesContainer: {fileID: 11400000, guid: 4b4c64cb3e682e842a868735df5331ef, type: 2}
+    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    trapContainer: {fileID: 11400000, guid: a702ae7701298684d9d1359ca9df34ed, type: 2}
+  - locations: 2
+    tilesContainer: {fileID: 11400000, guid: e3cecc053c9f31648adf70ab4f13e73d, type: 2}
+    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    trapContainer: {fileID: 0}
+  - locations: 3
+    tilesContainer: {fileID: 11400000, guid: 953bca7bafcd0d248bce55f58f892cfa, type: 2}
+    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    trapContainer: {fileID: 11400000, guid: deb942d9d514aed4fb974accc6baa527, type: 2}
+  _halls:
+  - {fileID: 3430609782485855080, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
+  - {fileID: 5777903922187991010, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}

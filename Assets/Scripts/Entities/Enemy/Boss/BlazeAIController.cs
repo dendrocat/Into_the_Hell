@@ -4,12 +4,12 @@ using UnityEngine;
 public class BlazeAIController : BossAIController
 {
     /// <summary>
-    /// Цель, которую должно атаковать Исчадие ада.
+    /// пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
     /// </summary>
     [SerializeField] Transform attackTarget;
 
     /// <summary>
-    /// Дистанция, которую будет стараться поддерживать Исчадие ада.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.
     /// </summary>
     [SerializeField] float evadeDistance = 5f;
 
@@ -32,7 +32,7 @@ public class BlazeAIController : BossAIController
     void RecalculateDestination()
     {
         Vector2 direction = (transform.position - attackTarget.transform.position).normalized;
-        aiDestSetter.target.position = attackTarget.transform.position + (Vector3) direction * evadeDistance;
+        aiDestSetter.target.position = attackTarget.transform.position + (Vector3)direction * evadeDistance;
     }
 
     void Update()
@@ -50,5 +50,10 @@ public class BlazeAIController : BossAIController
                 StartCoroutine(UpdateAttackStatus(attackDelay));
             }
         }
+    }
+
+    public void SetAttackTarget(Transform target)
+    {
+        attackTarget = target;
     }
 }

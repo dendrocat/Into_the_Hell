@@ -50,6 +50,11 @@ public class MainMenuController : MonoBehaviour
 
     private List<Resolution> uniqueResolutions = new List<Resolution>();
 
+    void Awake()
+    {
+        InputManager.Instance.PushInputMap(InputMap.UI);
+    }
+
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -67,7 +72,7 @@ public class MainMenuController : MonoBehaviour
             {
                 addedRes.Add(resString);
                 options.Add(resString);
-                uniqueResolutions.Add(resolutions[i]); // Сохраняем связь
+                uniqueResolutions.Add(resolutions[i]); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             }
 
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
@@ -89,25 +94,18 @@ public class MainMenuController : MonoBehaviour
 
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(_newGameLevel);
+        GameManager.Instance.NewGame();
     }
 
     public void TutorialDialogYes()
     {
-        SceneManager.LoadScene(_tutorialLevel);
+        GameManager.Instance.StartTutorial();
     }
 
     public void LoadGameDialogYes()
     {
-        if (PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
+        if (!GameManager.Instance.LoadGame())
             noSavedGameDialog.SetActive(true);
-        }
     }
 
     public void ExitButton()
@@ -139,7 +137,7 @@ public class MainMenuController : MonoBehaviour
 
     public void GameplayApply()
     {
-        if (invertYToggle.isOn) 
+        if (invertYToggle.isOn)
         {
             PlayerPrefs.SetInt("masterInvertY", 1);
         }
@@ -149,7 +147,7 @@ public class MainMenuController : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("masterSen", mainControllerSen);
-        StartCoroutine (ConfirmationBox());
+        StartCoroutine(ConfirmationBox());
     }
 
     public void SetBrightness(float brightness)
@@ -177,7 +175,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetInt("masterFullscreen", (_isFullScreen ? 1 : 0));
         Screen.fullScreen = _isFullScreen;
 
-        StartCoroutine (ConfirmationBox());
+        StartCoroutine(ConfirmationBox());
     }
 
     public void ResetButton(string MenuType)
@@ -207,7 +205,7 @@ public class MainMenuController : MonoBehaviour
             VolumeApply();
         }
 
-        if(MenuType == "Gameplay")
+        if (MenuType == "Gameplay")
         {
             ControllerSentextValue.text = defaultSen.ToString("0");
             controllerSenSlider.value = defaultSen;

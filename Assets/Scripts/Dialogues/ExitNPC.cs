@@ -1,13 +1,8 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class ExitNPC : DialogableNPC
 {
-    [SerializeField] string _levelScene;
-
     void Exit()
     {
-        SceneManager.LoadScene("LevelScene");
+        GameManager.Instance.NextLevel();
     }
 
     protected override void SetStory()

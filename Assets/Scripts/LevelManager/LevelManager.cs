@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-[RequireComponent(typeof(LevelStorage))]
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] GameObject _exit;
     private LevelStorage _levelStorage;
 
     public static LevelManager Instance { get; private set; }
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         Instance = this;
-        _levelStorage = GetComponent<LevelStorage>();
+        _levelStorage = LevelStorage.Instance;
         _level = new(new GameObject("Rooms").transform);
     }
 
@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void Generate(Locations location, int level)
+    public void Generate(Locations location, bool isLast)
     {
         if (_level.created()) return;
         _location = location;
@@ -75,9 +75,9 @@ public class LevelManager : MonoBehaviour
         var roomContainer = _levelStorage.GetRoomContainer(_location);
         halls = _levelStorage.GetHalls().ToArray();
         rooms = roomContainer.Rooms.ToArray();
-        var lastRoom = roomContainer.BossRoom;
-        if (level != 5)
-            lastRoom = roomContainer.StartRoom;
+        var lastRoom = isLast
+                        ? roomContainer.BossRoom
+                        : roomContainer.StartRoom;
 
         Generate(roomContainer.StartRoom, lastRoom, 15);
 
@@ -91,6 +91,8 @@ public class LevelManager : MonoBehaviour
         _level.halls.ForEach((h) =>
             h.GetComponent<IHallTilemapController>().SwapTiles(tiles)
         );
+
+        FindAnyObjectByType<AstarPath>().Scan();
     }
 
     void Generate(GameObject startRoom,
@@ -105,6 +107,11 @@ public class LevelManager : MonoBehaviour
                 .Generate(countRooms, _level);
     }
 
+
+    public void SpawnExit(Vector3 position)
+    {
+        Instantiate(_exit, position, Quaternion.identity);
+    }
     // private void Start()
     // {
     //     // Resources loading will be deleted;

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public enum Locations
 {
-    FrozenCaves = 0, MineShaft = 1, HellCastle = 2
+    FrozenCaves = 0, MineShaft = 1, HellCastle = 2, Final = 3
 }
 
 public class LevelStorage : MonoBehaviour
 {
+    public static LevelStorage Instance { get; private set; }
+
     [Serializable]
     struct LocationContainer
     {
@@ -22,6 +24,12 @@ public class LevelStorage : MonoBehaviour
     [SerializeField] List<LocationContainer> _location;
 
     [SerializeField] List<GameObject> _halls;
+
+    void Awake()
+    {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+    }
 
     public TilesContainer GetTilesContainer(Locations location)
     {

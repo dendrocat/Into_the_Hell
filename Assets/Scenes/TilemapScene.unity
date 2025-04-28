@@ -619,10 +619,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaveRoom2
       objectReference: {fileID: 0}
-    - target: {fileID: 5975778506856572084, guid: 60e9a47c8e5d66e469262ef5ea97c48c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -773,10 +769,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallVertical
       objectReference: {fileID: 0}
-    - target: {fileID: 3430609782485855080, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9057113531596306384, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -833,10 +825,6 @@ PrefabInstance:
     - target: {fileID: 5990937908028791114, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
       propertyPath: m_Name
       value: CaveRoom1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990937908028791114, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933996500600070636, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
       propertyPath: m_LocalPosition.x

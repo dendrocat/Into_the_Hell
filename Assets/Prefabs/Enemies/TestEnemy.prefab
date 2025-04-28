@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -140,10 +140,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c003ce6a85598e4a9a908b3e10aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 10
   health: 10
   speed: 4
-  weapon: {fileID: 3276195755544041188}
+  weapon: {fileID: 0}
   weaponObject: {fileID: 5968203431179027817}
   moving: 0
   currentDirection: {x: 0, y: 0}
@@ -393,17 +399,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41556361e57e411429c637c7f11738b8, type: 3}
---- !u!114 &3276195755544041188 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1788469607351184684, guid: 41556361e57e411429c637c7f11738b8, type: 3}
-  m_PrefabInstance: {fileID: 3865928030520589256}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ebd8dbcb21485468f5156d0332caf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5968203431179027817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7455102707906789025, guid: 41556361e57e411429c637c7f11738b8, type: 3}

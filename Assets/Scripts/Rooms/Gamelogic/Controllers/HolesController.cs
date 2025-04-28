@@ -13,9 +13,18 @@ public class HolesController : MonoBehaviour
      * </summary>
      * <param name="collision">Коллайдер сущности.</param>
      * **/
-    void OnTriggerEnter2D(Collider2D collision)
+
+    void Awake()
     {
-        Person person = collision.GetComponent<Person>();
+        tag = "Hole";
+        var collider = GetComponent<Collider2D>();
+        collider.isTrigger = false;
+        collider.includeLayers = LayerMask.GetMask("Player");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Person person = collision.gameObject.GetComponent<Person>();
         if (person)
         {
             if (!person.hasEffect(EffectNames.Shift) && !person.hasEffect(EffectNames.HoleStun))
@@ -55,6 +64,6 @@ public class HolesController : MonoBehaviour
     IEnumerator HoleExitHandler(Person fallingPerson, Vector2 direction)
     {
         yield return new WaitWhile(() => FallingPersonHasEffect(fallingPerson));
-        fallingPerson.transform.position = transform.position + (Vector3) direction;
+        fallingPerson.transform.position = fallingPerson.transform.position + (Vector3)direction;
     }
 }

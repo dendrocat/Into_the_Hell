@@ -38,11 +38,36 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     int enemiesCount = 0;
 
+    void OnBossDied(Person boss)
+    {
+        boss.OnDied.RemoveListener(OnBossDied);
+        RoomFinished();
+    }
+
+    void SpawnBoss(Transform playerTransform)
+    {
+        if (!BossSpawn.Enabled) return;
+        Debug.Log("SpawnBoss");
+        var bossPrefab = EnemyStorage.Instance.GetEnemies().Boss;
+        var boss = Instantiate(bossPrefab, BossSpawn.Value.position, Quaternion.identity);
+        if (boss.TryGetComponent<BlazeAIController>(out var blazeAI))
+        {
+            blazeAI.SetAttackTarget(playerTransform);
+        }
+        else
+            boss.GetComponent<AIDestinationSetter>().target = playerTransform;
+        var bossComp = boss.GetComponent<Boss>();
+        UIManager.Instance.SetBoss(bossComp);
+        bossComp.OnDied.AddListener(OnBossDied);
+
+        Destroy(BossSpawn.Value.gameObject);
+    }
+
     void SpawnEnemies(Transform playerTransform)
     {
-        _enemySpawned = true;
+        if (!EnemySpawns.Enabled) return;
         Debug.Log("SpawnEnemies");
-        var enemies = EnemyStorage.Instance.GetEnemies(GameManager.Instance.Location).Enemies;
+        var enemies = EnemyStorage.Instance.GetEnemies().Enemies;
 
         enemiesCount = EnemySpawns.Value.childCount;
         for (int i = 0; i < enemiesCount; i++)
@@ -55,6 +80,14 @@ public class RoomContoller : MonoBehaviour, IRoomController
             obj.GetComponent<AIDestinationSetter>().target = playerTransform;
         }
         Destroy(EnemySpawns.Value.gameObject);
+    }
+
+    void StartBattle(Transform playerTransform)
+    {
+        _enemySpawned = true;
+
+        SpawnEnemies(playerTransform);
+        SpawnBoss(playerTransform);
 
         DoorController.CloseDoors();
         _enemySpawned = true;
@@ -74,6 +107,10 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
         Destroy(DoorController as MonoBehaviour);
         Destroy(this);
+
+
+        if (_isEndRoom)
+            LevelManager.Instance.SpawnExit(transform.position);
     }
 
     bool IsPlayerEntered(Collider2D player)
@@ -93,17 +130,11 @@ public class RoomContoller : MonoBehaviour, IRoomController
             Destroy(this);
             return;
         }
-        if (IsPlayerEntered(collision) && !_enemySpawned) SpawnEnemies(collision.transform);
+        if (IsPlayerEntered(collision) && !_enemySpawned) StartBattle(collision.transform);
     }
 
     public void MarkAsEndRoom()
     {
         _isEndRoom = true;
-    }
-
-    void OnDestroy()
-    {
-        if (_isEndRoom)
-            Debug.Log("Exit Spawned");
     }
 }

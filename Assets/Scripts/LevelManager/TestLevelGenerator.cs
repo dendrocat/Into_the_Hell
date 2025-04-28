@@ -32,6 +32,11 @@ public class TestLevelGenerator : MonoBehaviour
         DoDoors(rooms);
         DoTilemap(controllers);
         rooms.ForEach((r) => (r as MonoBehaviour).GetComponent<IRoomController>().DoorController.SetDoors(r.DoorTilemap.ActiveDoors));
+        rooms.ForEach((r) =>
+        {
+            Debug.Log((r as MonoBehaviour));
+            Debug.Log((r as MonoBehaviour).GetComponent<ISizeGetable>().Size);
+        });
         rooms.ForEach((r) => Destroy(r as MonoBehaviour));
         halls.ForEach((h) => h.ExtendToLength(10));
         halls.ForEach((h) => Destroy(h as MonoBehaviour));

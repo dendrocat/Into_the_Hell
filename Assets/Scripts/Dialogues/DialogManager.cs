@@ -14,7 +14,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public UnityEvent<Story> OnCreatedStory = new UnityEvent<Story>();
 
 
-    [SerializeField] DialogDisplayer displayer;
+    DialogDisplayer displayer;
 
     public static DialogManager Instance { get; private set; }
 
@@ -31,6 +31,11 @@ public class DialogManager : MonoBehaviour, IDialogManager
         }
         Instance = this;
         OnAwaked?.Invoke();
+    }
+
+    void Start()
+    {
+        displayer = FindFirstObjectByType<DialogDisplayer>(FindObjectsInactive.Include);
         displayer.gameObject.SetActive(false);
     }
 

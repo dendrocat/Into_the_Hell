@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationEnemies:
-  - location: 0
-    enemyContainer: {fileID: 11400000, guid: 520f6b0f779fb104ebf65047d14b237d, type: 2}
   - location: 1
-    enemyContainer: {fileID: 11400000, guid: 93eadce6d3ff50d468f8768cacff2eb6, type: 2}
+    enemyContainer: {fileID: 11400000, guid: 520f6b0f779fb104ebf65047d14b237d, type: 2}
   - location: 2
+    enemyContainer: {fileID: 11400000, guid: 93eadce6d3ff50d468f8768cacff2eb6, type: 2}
+  - location: 3
     enemyContainer: {fileID: 11400000, guid: dc1906b45782e7644bb1116d01e18c20, type: 2}

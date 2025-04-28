@@ -169,4 +169,9 @@ public class InputManager : MonoBehaviour
             SwitchInputMap(stackInputs.Peek());
         }
     }
+
+    void OnDestroy()
+    {
+        Instance = null;
+    }
 }

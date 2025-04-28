@@ -44,7 +44,7 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
         DoorTilemap = GetComponentInChildren<IDoorTilemapController>();
         var size = GetComponent<BoxCollider2D>().bounds.size;
         Size = new Vector2Int((int)size.x, (int)size.y);
-        Size += Vector2Int.up * 3 + Vector2Int.right * 2;
+        Size += Vector2Int.up * 5 + Vector2Int.right * 3;
     }
 
     /// <summary>
@@ -55,11 +55,13 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     public override void SwapTiles(TilesContainer container)
     {
         base.SwapTiles(container);
-        DoorTilemap.SwapTiles(container);
+        DoorTilemap?.SwapTiles(container);
 
         if (_hole.Enabled)
         {
             _hole.Value.SwapTile(_templateContainer.Hole, container.Hole);
+            if (_hole.Value.TryGetComponent(out TilemapCollider2D collider2D))
+                collider2D.ProcessTilemapChanges();
         }
 
         if (TrapSpawns.Enabled)

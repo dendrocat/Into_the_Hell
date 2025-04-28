@@ -6258,7 +6258,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6268,7 +6268,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 25, y: 16}
+  m_Size: {x: 24, y: 14}
   m_EdgeRadius: 0
 --- !u!114 &2753517060884022642
 MonoBehaviour:
@@ -6317,6 +6317,7 @@ MonoBehaviour:
   EnemySpawns:
     _enabled: 1
     _value: {fileID: 2746337321167060607}
+  _isEndRoom: 0
 --- !u!1 &4467850279231951350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,7 +6331,7 @@ GameObject:
   - component: {fileID: 2634210235460873485}
   - component: {fileID: 6887417473711532675}
   - component: {fileID: 1201383704810657886}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6646,7 +6647,7 @@ TilemapCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

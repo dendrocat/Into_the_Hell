@@ -214,4 +214,37 @@ public class PlayerInventory : MonoBehaviour
         }
         return false;
     }
+
+    public PlayerData GetPlayerData()
+    {
+        var data = new PlayerData();
+
+        if (playerWeapon is Sword)
+            data.weapon = WeaponType.Sword;
+        else if (playerWeapon is TwoHandedSword)
+            data.weapon = WeaponType.TwoHandedSword;
+        else if (playerWeapon is Bow)
+            data.weapon = WeaponType.Bow;
+        else
+            Debug.LogError("Unsupported weapon type");
+
+
+        data.money = money;
+        data.potionLevel = potion.level;
+        data.potionCount = potionsCount;
+        data.arrowCount = explosiveArrowCount;
+        data.armorLevel = armor.level;
+        return data;
+    }
+
+    public void SetPlayerData(PlayerData data)
+    {
+        //SetPlayerWeapon(TestWeaponStorage.Instance.GetWeapon(data.weapon));
+
+        money = data.money;
+        potion.level = data.potionLevel;
+        potionsCount = data.potionCount;
+        explosiveArrowCount = data.arrowCount;
+        armor.level = data.armorLevel;
+    }
 }

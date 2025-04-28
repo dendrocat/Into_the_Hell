@@ -5,9 +5,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    [SerializeField] Player _player;
+    Player _player;
 
-    [SerializeField] UIController _ui;
+    UIController _ui;
 
     [SerializeField] Boss _debugBoss;
 
@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _player = FindFirstObjectByType<Player>();
+        _ui = FindFirstObjectByType<UIController>();
+
         _ui.SetArrows(_player.inventory.GetExplosiveArrowCount());
         _ui.SetMoney(_player.inventory.GetMoney());
         _ui.HealthBar.SetHealth(_player.getHP(), _player.MaxHealth);

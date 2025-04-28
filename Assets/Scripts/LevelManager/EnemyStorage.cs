@@ -21,8 +21,9 @@ public class EnemyStorage : MonoBehaviour
         Instance = this;
     }
 
-    public EnemyContainer GetEnemies(Locations location)
+    public EnemyContainer GetEnemies()
     {
+        var location = GameManager.Instance.Location;
         return locationEnemies[(int)location].enemyContainer;
     }
 }

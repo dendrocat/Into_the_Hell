@@ -758,7 +758,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3077654261857140411}
   - component: {fileID: 7816610575052486996}
-  - component: {fileID: 8866959494870249106}
   m_Layer: 5
   m_Name: TextPanel
   m_TagString: Untagged
@@ -795,19 +794,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8242915449324793410}
   m_CullTransparentMesh: 1
---- !u!114 &8866959494870249106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8242915449324793410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c248cd7b9560be9419f23c4fd582ee67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nameText: {fileID: 0}
-  _phraseText: {fileID: 0}
-  _choiceDisplayer: {fileID: 0}
-  _symbolDelayTime: 0.03
