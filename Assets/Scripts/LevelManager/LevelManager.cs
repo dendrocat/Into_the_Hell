@@ -1,4 +1,5 @@
 
+using Pathfinding;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -91,8 +92,6 @@ public class LevelManager : MonoBehaviour
         _level.halls.ForEach((h) =>
             h.GetComponent<IHallTilemapController>().SwapTiles(tiles)
         );
-
-        FindAnyObjectByType<AstarPath>().Scan();
     }
 
     void Generate(GameObject startRoom,

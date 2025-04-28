@@ -90,7 +90,10 @@ public class RoomContoller : MonoBehaviour, IRoomController
         SpawnBoss(playerTransform);
 
         DoorController.CloseDoors();
-        _enemySpawned = true;
+
+        var astar = FindFirstObjectByType<AstarPath>();
+        (astar.graphs[0] as GridGraph).center = transform.position;
+        astar.Scan();
     }
 
     void OnEnemyDied(Person enemy)
