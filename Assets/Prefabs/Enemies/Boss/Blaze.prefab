@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 2291395388857442097}
   - component: {fileID: 5545631019719764755}
   - component: {fileID: 3720310631644941020}
+  - component: {fileID: 2706055284458457957}
   m_Layer: 0
   m_Name: Blaze
   m_TagString: Enemy
@@ -172,6 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c8a776d07149f48865961729a5e281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 3000
   health: 3000
   speed: 1
@@ -192,7 +199,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8156612596933614851}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -373,6 +380,42 @@ MonoBehaviour:
   ignoredTags:
   - Player
   - Enemy
+--- !u!58 &2706055284458457957
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8156612596933614851}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1001 &1331076126218844119
 PrefabInstance:
   m_ObjectHideFlags: 0
