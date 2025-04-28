@@ -2,22 +2,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Samples.RebindUI;
 
+[RequireComponent(typeof(RebindActionUI))]
 public class RebindRuntime : MonoBehaviour
 {
-    [SerializeField] RebindActionUI rebindActionUI;
-
-    [SerializeField] InputActionReference reference;
-
     void Awake()
     {
+        var rebindActionUI = GetComponent<RebindActionUI>();
+        var reference = rebindActionUI.actionReference;
         bool flag = false;
         var actions = InputManager.Instance.GetActions();
-        Debug.Log(reference.action);
         foreach (var i1 in actions.actionMaps)
         {
             foreach (var i2 in i1.actions)
             {
-                Debug.Log(i2);
                 if (i2 == reference.action)
                 {
                     var refer = ScriptableObject.CreateInstance<InputActionReference>();

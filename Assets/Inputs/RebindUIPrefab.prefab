@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6680292650503350826}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: ResetToDefault
         m_Mode: 1
@@ -416,7 +416,8 @@ GameObject:
   - component: {fileID: 6680292650503350825}
   - component: {fileID: 6680292650503350827}
   - component: {fileID: 6680292650503350824}
-  - component: {fileID: 6680292650503350826}
+  - component: {fileID: 7779599014251993451}
+  - component: {fileID: 7281647771897892870}
   m_Layer: 5
   m_Name: RebindUIPrefab
   m_TagString: Untagged
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6680292650503350826
+--- !u!114 &7779599014251993451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,14 +494,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6680292650503350822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc11d99b1a6682f4cbc4aba1fcd9ac5d, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f204daec3cb414d9e6cccefd04a567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7281647771897892870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680292650503350822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ef9c8363f3eaf4d99d24289307f298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Action: {fileID: 0}
   m_BindingId: 
   m_DisplayStringOptions: 0
-  m_ActionLabel: {fileID: 0}
-  m_BindingText: {fileID: 0}
+  m_ActionLabel: {fileID: 1780343760404786705}
+  m_BindingText: {fileID: 557787664879411030}
   m_RebindOverlay: {fileID: 0}
   m_RebindText: {fileID: 0}
   m_UpdateBindingUIEvent:
@@ -769,8 +782,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6680292650503350826}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 7281647771897892870}
+        m_TargetAssemblyTypeName: UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI,
+          Assembly-CSharp
         m_MethodName: StartInteractiveRebind
         m_Mode: 1
         m_Arguments:
