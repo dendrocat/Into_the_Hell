@@ -20,7 +20,7 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Владелец оружия.
     /// </summary>
-    protected Person owner;
+    [SerializeField] protected Person owner;
 
     /// <summary>
     /// Базовый урон, наносимый оружием.

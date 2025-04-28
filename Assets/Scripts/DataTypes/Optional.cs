@@ -12,7 +12,7 @@ public struct Optional<T>
     /// <summary>
     /// Indicates whether the optional value is enabled.
     /// </summary>
-    [SerializeField] bool _enabled;
+    [SerializeField] private bool _enabled;
 
     /// <summary>
     /// The value of the optional field.
