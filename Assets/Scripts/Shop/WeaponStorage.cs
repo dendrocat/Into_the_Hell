@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponStorage : MonoBehaviour
 {
     [Serializable]
-    struct TypePrefab
+    struct WeaponMapping
     {
         public WeaponType type;
         public AlternateAttackWeapon prefab;
@@ -18,7 +18,7 @@ public class WeaponStorage : MonoBehaviour
     Dictionary<WeaponType, byte> _weaponLevels;
 
 
-    [SerializeField] List<TypePrefab> _weaponList;
+    [SerializeField] List<WeaponMapping> _weaponMapping;
 
     void Awake()
     {
@@ -30,7 +30,7 @@ public class WeaponStorage : MonoBehaviour
         Instance = this;
         _weapons = new();
         _weaponLevels = new();
-        foreach (var weapon in _weaponList)
+        foreach (var weapon in _weaponMapping)
         {
             _weapons[weapon.type] = weapon.prefab;
             _weaponLevels[weapon.type] = 1;
@@ -42,9 +42,17 @@ public class WeaponStorage : MonoBehaviour
         return _weapons[type];
     }
 
-    public byte GetWeaponLevel(WeaponType type)
+    public List<byte> GetWeaponLevels()
     {
-        return _weaponLevels[type];
+        return new List<byte>(_weaponLevels.Values);
+    }
+
+    public void SetWeaponLevels(List<byte> weaponLevels)
+    {
+        foreach (var key in Enum.GetValues(typeof(WeaponType)))
+        {
+            _weaponLevels[(WeaponType)key] = weaponLevels[(int)key];
+        }
     }
 
     public int GetUpgradeCost(WeaponType type)

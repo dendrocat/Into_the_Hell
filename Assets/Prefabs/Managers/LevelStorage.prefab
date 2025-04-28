@@ -45,17 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _location:
-  - locations: 1
+  - locations: 0
     tilesContainer: {fileID: 11400000, guid: 4b4c64cb3e682e842a868735df5331ef, type: 2}
     roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
     trapContainer: {fileID: 11400000, guid: a702ae7701298684d9d1359ca9df34ed, type: 2}
-  - locations: 2
+  - locations: 1
     tilesContainer: {fileID: 11400000, guid: e3cecc053c9f31648adf70ab4f13e73d, type: 2}
-    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    roomContainer: {fileID: 11400000, guid: 18e1324814d49ba48bd6100a70dde399, type: 2}
     trapContainer: {fileID: 0}
-  - locations: 3
+  - locations: 2
     tilesContainer: {fileID: 11400000, guid: 953bca7bafcd0d248bce55f58f892cfa, type: 2}
-    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    roomContainer: {fileID: 11400000, guid: cad42e52efe15d940b97f18e13899284, type: 2}
     trapContainer: {fileID: 11400000, guid: deb942d9d514aed4fb974accc6baa527, type: 2}
   _halls:
   - {fileID: 3430609782485855080, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}

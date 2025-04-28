@@ -150,6 +150,11 @@ public class InputManager : MonoBehaviour
             OnSubmitPressed?.Invoke();
     }
 
+    public InputActionAsset GetActions()
+    {
+        return _playerInput.actions;
+    }
+
     void SwitchInputMap(InputMap map)
     {
         _playerInput.SwitchCurrentActionMap(Enum.GetName(typeof(InputMap), map));

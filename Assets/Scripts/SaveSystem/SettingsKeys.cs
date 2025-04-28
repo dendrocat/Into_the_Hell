@@ -40,5 +40,7 @@ public enum SettingsKeys
     /// <summary>
     /// Display resolution
     /// </summary>
-    Resolution
+    Resolution,
+
+    Rebinds
 }

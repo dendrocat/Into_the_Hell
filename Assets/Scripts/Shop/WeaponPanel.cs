@@ -12,7 +12,7 @@ public class WeaponPanel : BasePanel
 
     void Start()
     {
-        var weapon = _inventory.GetPlayerWeapon().name;
+        var weapon = _inventory.GetPlayerWeapon().GetType().Name;
         _windows[(int)Enum.Parse<WeaponType>(weapon)].interactable = false;
     }
 
@@ -32,11 +32,10 @@ public class WeaponPanel : BasePanel
             Debug.LogError($"WeaponType: {type} doesn't exist");
             return;
         }
-
-        var weapon = WeaponStorage.Instance.GetWeapon(weaponType);
-        weapon.level = WeaponStorage.Instance.GetWeaponLevel(weaponType);
-        _inventory.SetPlayerWeapon(weapon);
-        weapon.level = 1;
+        _inventory.SetPlayerWeapon(
+            WeaponStorage.Instance.GetWeapon(weaponType),
+            WeaponStorage.Instance.GetWeaponLevels()[(int)weaponType]
+        );
 
         CalcItemState(weaponType);
         OnWeaponChanged.Invoke(weaponType);

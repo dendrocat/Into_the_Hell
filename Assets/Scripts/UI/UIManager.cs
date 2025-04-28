@@ -9,8 +9,6 @@ public class UIManager : MonoBehaviour
 
     UIController _ui;
 
-    [SerializeField] Boss _debugBoss;
-
     void Awake()
     {
         if (Instance != null)
@@ -32,7 +30,9 @@ public class UIManager : MonoBehaviour
         _ui.ShiftController.SetShiftCount(_player.ShiftCount);
         _ui.PotionController.SetPotions(_player.inventory.GetPotionCount());
 
-        _ui.ChangeWeaponImage(Enum.Parse<WeaponType>(_player.inventory.GetPlayerWeapon().name));
+        _ui.ChangeWeaponImage(
+            Enum.Parse<WeaponType>(_player.inventory.GetPlayerWeapon().GetType().Name)
+        );
 
         _player.OnHealthChanged.AddListener(() =>
             _ui.HealthBar.SetHealthSmoothed(
@@ -58,10 +58,6 @@ public class UIManager : MonoBehaviour
         _player.inventory.OnExplosiveArrowCountChanged.AddListener(_ui.SetArrows);
 
         _player.inventory.OnMoneyChanged.AddListener(_ui.SetMoneySmooth);
-
-        if (_debugBoss == null)
-            Debug.LogWarning("Boss was not setted in debug mode");
-        else SetBoss(_debugBoss);
     }
 
     public void SetBoss(Boss boss)

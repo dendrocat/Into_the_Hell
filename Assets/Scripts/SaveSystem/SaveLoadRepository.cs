@@ -47,10 +47,12 @@ public class SaveLoadRepository
         if (!HasSave())
         {
             var data = new GameData();
-            data.level = 1;
+            data.location = 0;
+            data.level = 0;
             data.playerData.armorLevel = 1;
             data.playerData.potionLevel = 1;
             data.playerData.weapon = WeaponType.Sword;
+            data.playerData.money = 0;
             data.weaponLevels = new(new byte[] { 1, 1, 1 });
             return data;
         }

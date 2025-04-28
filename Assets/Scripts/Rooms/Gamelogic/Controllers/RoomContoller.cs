@@ -127,7 +127,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
         if (!collision.CompareTag("Player")) return;
         if (!EnemySpawns.Enabled && !BossSpawn.Enabled)
         {
-            Destroy(this);
+            RoomFinished();
             return;
         }
         if (IsPlayerEntered(collision) && !_enemySpawned) StartBattle(collision.transform);

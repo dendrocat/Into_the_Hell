@@ -4,7 +4,9 @@ public class PlayerStorage : MonoBehaviour
 {
     public static PlayerStorage Instance { get; private set; }
 
-    public PlayerData PlayerData { get; private set; }
+    [SerializeField] PlayerData _playerData;
+
+    public PlayerData PlayerData { get => _playerData; set => _playerData = value; }
 
     void Awake()
     {
@@ -28,6 +30,10 @@ public class PlayerStorage : MonoBehaviour
         var player = FindFirstObjectByType<Player>();
         if (player == null) return;
         player.inventory.SetPlayerData(PlayerData);
+        player.inventory.SetPlayerWeapon(
+                    WeaponStorage.Instance.GetWeapon(PlayerData.weapon),
+                    WeaponStorage.Instance.GetWeaponLevels()[(int)PlayerData.weapon]
+                );
     }
 
 

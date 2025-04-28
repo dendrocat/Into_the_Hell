@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
@@ -53,9 +54,12 @@ public class MainMenuController : MonoBehaviour
 
     private SettingsManager _settingsManager;
 
+    InputActionAsset _inputActions;
+
     void Awake()
     {
         InputManager.Instance.PushInputMap(InputMap.UI);
+        _inputActions = InputManager.Instance.GetActions();
         _settingsManager = new SettingsManager();
     }
 
@@ -94,6 +98,7 @@ public class MainMenuController : MonoBehaviour
 
     void Load()
     {
+        Debug.Log("Prefs Load");
         var prefs = _settingsManager.Load();
 
         var volume = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Volume, defaultVolume));
@@ -126,6 +131,11 @@ public class MainMenuController : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
         var res = resolutions[_resolutionIndex];
         Screen.SetResolution(res.width, res.height, _isFullScreen);
+
+        var rebinds = Convert.ToString(prefs.GetValueOrDefault(SettingsKeys.Rebinds, ""));
+        Debug.Log($"Rebinds: {rebinds}");
+        if (!string.IsNullOrEmpty(rebinds))
+            _inputActions.LoadBindingOverridesFromJson(rebinds);
     }
 
     public void SetResolution(int resolutionIndex)
@@ -145,8 +155,10 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadGameDialogYes()
     {
-        if (!GameManager.Instance.LoadGame())
+        if (!SaveLoadManager.HasSave())
             noSavedGameDialog.SetActive(true);
+        else
+            GameManager.Instance.LoadGame();
     }
 
     public void ExitButton()
@@ -181,7 +193,10 @@ public class MainMenuController : MonoBehaviour
     {
         _settingsManager.AddToSave(SettingsKeys.InvertY, invertYToggle.isOn);
         _settingsManager.AddToSave(SettingsKeys.Sensitivity, mainControllerSen);
-
+        _settingsManager.AddToSave(
+            SettingsKeys.Rebinds,
+            _inputActions.SaveBindingOverridesAsJson()
+        );
         StartCoroutine(ConfirmationBox());
     }
 
@@ -249,6 +264,7 @@ public class MainMenuController : MonoBehaviour
             controllerSenSlider.value = defaultSen;
             mainControllerSen = defaultSen;
             invertYToggle.isOn = false;
+            _inputActions.RemoveAllBindingOverrides();
             GameplayApply();
         }
     }

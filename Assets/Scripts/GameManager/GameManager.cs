@@ -10,12 +10,10 @@ public class GameManager : MonoBehaviour
     public Locations Location => _location;
 
     [Range(0, 4)]
-    [SerializeField] int level;
+    [SerializeField] int _level;
     [SerializeField] int maxLevel;
 
     bool _nextBase;
-
-    [SerializeField] bool _hasSave;
 
     void LoadBaseScene()
     {
@@ -28,6 +26,8 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("NewGame");
+        if (SaveLoadManager.HasSave())
+            SaveLoadManager.RemoveSave();
         LoadBaseScene();
     }
 
@@ -37,20 +37,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    public bool LoadGame()
+    public void LoadGame()
     {
-        if (!_hasSave)
-        {
-            Debug.Log("No Saves");
-            return false;
-        }
+        SaveLoadManager.Load();
         LoadBaseScene();
-        return true;
-    }
-
-    void LoadData()
-    {
-        Debug.Log("Load Game Data");
     }
 
     void Awake()
@@ -73,7 +63,7 @@ public class GameManager : MonoBehaviour
         if (!scene.name.Contains("Base"))
             LevelManager.Instance.Generate(
                                     _location,
-                                    level == maxLevel - 1
+                                    _level == maxLevel - 1
                                 );
         else
             BaseRoomManager.Instance.SwapTiles(_location);
@@ -83,8 +73,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerStorage.Instance.CollectPlayerData();
         SceneManager.sceneLoaded += OnSceneLoaded;
-        level = (level + Convert.ToInt32(_nextBase)) % maxLevel;
-        if (level == 0 && _nextBase)
+        _level = (_level + Convert.ToInt32(_nextBase)) % maxLevel;
+        if (_level == 0 && _nextBase)
         {
             _location = (Locations)(((int)_location + 1) % Enum.GetValues(typeof(Locations)).Length);
             if (_location == Locations.Final)
@@ -94,11 +84,13 @@ public class GameManager : MonoBehaviour
             }
         }
         if (_nextBase)
+        {
+            SaveLoadManager.Save();
             SceneManager.LoadScene("BaseScene");
+        }
         else
             SceneManager.LoadScene("LevelScene");
         _nextBase = !_nextBase;
-        //_player.transform.position = Vector3.zero;
     }
 
     public void ToMainMenu()
@@ -115,5 +107,16 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         Instance = null;
+    }
+
+    public (Locations, int) GetPlayerProgress()
+    {
+        return (_location, _level);
+    }
+
+    public void SetPlayerProgress(Locations location, int level)
+    {
+        _location = location;
+        _level = level;
     }
 }

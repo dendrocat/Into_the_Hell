@@ -18,7 +18,8 @@ public class SettingsRepository
     {
         { typeof(int), "int_" },
         { typeof(float), "float_" },
-        { typeof(bool), "bool_" }
+        { typeof(bool), "bool_" },
+        { typeof(string), "string_" }
     };
 
     /// <summary>
@@ -59,6 +60,7 @@ public class SettingsRepository
                 case int v: PlayerPrefs.SetInt(key, v); break;
                 case float v: PlayerPrefs.SetFloat(key, v); break;
                 case bool v: PlayerPrefs.SetInt(key, v ? 1 : 0); break;
+                case string v: PlayerPrefs.SetString(key, v); break;
                 default:
                     Debug.LogError($"Неподдерживаемый тип: {type.Name}");
                     break;
@@ -102,6 +104,7 @@ public class SettingsRepository
                     Type t when t == typeof(int) => PlayerPrefs.GetInt(prefixedKey),
                     Type t when t == typeof(float) => PlayerPrefs.GetFloat(prefixedKey),
                     Type t when t == typeof(bool) => PlayerPrefs.GetInt(prefixedKey) == 1,
+                    Type t when t == typeof(string) => PlayerPrefs.GetString(prefixedKey),
                     _ => throw new NotSupportedException()
                 };
 
