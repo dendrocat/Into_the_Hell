@@ -42,19 +42,11 @@ public class SaveLoadRepository
     /// <returns>
     /// Existing <see cref="GameData"/> if found, new game state otherwise
     /// </returns>
-    public static GameData Load()
+    public static GameData? Load()
     {
         if (!HasSave())
         {
-            var data = new GameData();
-            data.location = 0;
-            data.level = 0;
-            data.playerData.armorLevel = 1;
-            data.playerData.potionLevel = 1;
-            data.playerData.weapon = WeaponType.Sword;
-            data.playerData.money = 0;
-            data.weaponLevels = new(new byte[] { 1, 1, 1 });
-            return data;
+            return null;
         }
 
         string json = File.ReadAllText(_savePath);

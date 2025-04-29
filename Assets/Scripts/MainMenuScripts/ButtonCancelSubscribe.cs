@@ -17,6 +17,6 @@ public class ButtonCancelSubscribe : MonoBehaviour
 
     void OnDisable()
     {
-        InputManager.Instance.OnCancelPressed.RemoveListener(_button.onClick.Invoke);
+        InputManager.Instance?.OnCancelPressed.RemoveListener(_button.onClick.Invoke);
     }
 }

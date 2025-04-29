@@ -9,7 +9,7 @@ public class DontDestroyManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null) Destroy(Instance);
+        if (Instance != null) Destroy(Instance.gameObject);
         Instance = this;
         var childs = transform.GetComponentsInChildren<Transform>();
         foreach (var item in childs)

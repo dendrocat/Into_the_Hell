@@ -19,14 +19,12 @@ public class SaveLoadManager
     /// </summary>
     public static void Load()
     {
-        var data = SaveLoadRepository.Load();
+        GameData data = SaveLoadRepository.Load() ??
+                        GameStorage.Instance.InitialGameData;
 
-        PlayerStorage.Instance.PlayerData = data.playerData;
         WeaponStorage.Instance.SetWeaponLevels(data.weaponLevels);
-        GameManager.Instance.SetPlayerProgress(
-            (Locations)Enum.GetValues(typeof(Locations)).GetValue(data.location),
-            data.level
-        );
+        GameStorage.Instance.location = (Locations)Enum.GetValues(typeof(Locations)).GetValue(data.location);
+        GameStorage.Instance.level = data.level;
     }
 
     /// <summary>
@@ -37,10 +35,9 @@ public class SaveLoadManager
         var data = new GameData();
 
         data.weaponLevels = WeaponStorage.Instance.GetWeaponLevels();
-        data.playerData = PlayerStorage.Instance.PlayerData;
-        (var location, var level) = GameManager.Instance.GetPlayerProgress();
-        data.location = (int)location;
-        data.level = level;
+        data.playerData = GameStorage.Instance.PlayerData;
+        data.location = (int)GameStorage.Instance.location;
+        data.level = GameStorage.Instance.level;
 
         SaveLoadRepository.Save(data);
     }

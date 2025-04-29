@@ -31,6 +31,9 @@ public class RoomContoller : MonoBehaviour, IRoomController
     Player _player;
 
     bool _enemySpawned;
+
+    bool _roomFinished;
+
     void Awake()
     {
         DoorController = GetComponentInChildren<IDoorController>();
@@ -113,16 +116,14 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     void RoomFinished()
     {
-        Debug.Log("Room Finished");
         DoorController.OpenDoors();
 
-        Destroy(DoorController as MonoBehaviour);
         Destroy(this);
         _player?.OnDied.RemoveListener(PlayerDied);
 
 
         if (_isEndRoom)
-            LevelManager.Instance.SpawnExit(transform.position);
+            ExitManager.Instance.SpawnExit(transform.position);
     }
 
     bool IsPlayerEntered(Collider2D player)
@@ -180,5 +181,10 @@ public class RoomContoller : MonoBehaviour, IRoomController
     {
         if (_player)
             FixPlayerIn();
+    }
+
+    void OnDestroy()
+    {
+        Destroy(DoorController as MonoBehaviour);
     }
 }

@@ -4,7 +4,7 @@ using UnityEditor;
 
 ////TODO: support multi-object editing
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
+namespace UnityEngine.InputSystem.RebindUI
 {
     /// <summary>
     /// A custom inspector for <see cref="RebindActionUI"/> which provides a more convenient way for

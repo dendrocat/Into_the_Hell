@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -60,5 +61,10 @@ public class DoorController : MonoBehaviour, IDoorController
         {
             door.SetActive(true);
         }
+    }
+
+    void OnDestroy()
+    {
+        _doors.ForEach(el => Destroy(el));
     }
 }

@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 6680292650503350825}
   - component: {fileID: 6680292650503350827}
   - component: {fileID: 6680292650503350824}
-  - component: {fileID: 7779599014251993451}
+  - component: {fileID: 4350447205265931986}
   - component: {fileID: 7281647771897892870}
   m_Layer: 5
   m_Name: RebindUIPrefab
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7779599014251993451
+--- !u!114 &4350447205265931986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

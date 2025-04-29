@@ -61,7 +61,7 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     {
         _doors.RemoveAll((el) =>
             {
-                if (!el.activeInHierarchy)
+                if (!ActiveDoors.Contains(el))
                 {
                     Destroy(el);
                     return true;

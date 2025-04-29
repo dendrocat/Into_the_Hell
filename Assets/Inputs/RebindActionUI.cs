@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 ////TODO: localization support
 
 ////TODO: deal with composites that have parts bound in different control schemes
 
-namespace UnityEngine.InputSystem.Samples.RebindUI
+namespace UnityEngine.InputSystem.RebindUI
 {
     /// <summary>
     /// A reusable component with a self-contained UI for rebinding a single action.
     /// </summary>
+    [RequireComponent(typeof(ActionRuntimeFinder))]
     public class RebindActionUI : MonoBehaviour
     {
         /// <summary>
@@ -153,6 +155,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         /// Otherwise, it is <c>null</c>.
         /// </summary>
         public InputActionRebindingExtensions.RebindingOperation ongoingRebind => m_RebindOperation;
+
+
+        void Start()
+        {
+            var a = GetComponent<ActionRuntimeFinder>();
+            actionReference = a.FindRuntimeAction(actionReference);
+        }
 
         /// <summary>
         /// Return the action and binding index for the binding that is targeted by the component

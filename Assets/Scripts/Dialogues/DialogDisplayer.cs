@@ -42,7 +42,7 @@ public class DialogDisplayer : MonoBehaviour
         for (int i = 0; _phraseText.text.Length < _phrase.Length; ++i)
         {
             _phraseText.text += _phrase[i];
-            yield return new WaitForSeconds(_symbolDelayTime);
+            yield return new WaitForSecondsRealtime(_symbolDelayTime);
         }
         StopCoroutine(showPhraseCoroutine);
         showPhraseCoroutine = null;

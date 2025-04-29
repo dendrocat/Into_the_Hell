@@ -36,10 +36,7 @@ public class InputManager : MonoBehaviour
         }
         Instance = this;
         stackInputs = new();
-    }
 
-    void Start()
-    {
         _playerInput = GetComponent<PlayerInput>();
         PushInputMap((InputMap)Enum.Parse(typeof(InputMap), _playerInput.currentActionMap.name));
     }

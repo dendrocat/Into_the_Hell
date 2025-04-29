@@ -85,7 +85,6 @@ public class MainMenuController : MonoBehaviour
 
     void Load()
     {
-        Debug.Log("Prefs Load");
         var prefs = _settingsManager.Load();
 
         var volume = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Volume, defaultVolume));
@@ -114,7 +113,6 @@ public class MainMenuController : MonoBehaviour
         Screen.SetResolution(res.width, res.height, _isFullScreen);
 
         var rebinds = Convert.ToString(prefs.GetValueOrDefault(SettingsKeys.Rebinds, ""));
-        Debug.Log($"Rebinds: {rebinds}");
         if (!string.IsNullOrEmpty(rebinds))
             _inputActions.LoadBindingOverridesFromJson(rebinds);
     }
@@ -124,14 +122,14 @@ public class MainMenuController : MonoBehaviour
         _resolutionIndex = resolutionIndex;
     }
 
-    public void NewGameDialogYes()
+    public void TutorialDialogNo()
     {
-        GameManager.Instance.NewGame();
+        GameManager.Instance.NewGame(tutorial: false);
     }
 
     public void TutorialDialogYes()
     {
-        GameManager.Instance.StartTutorial();
+        GameManager.Instance.NewGame(tutorial: true);
     }
 
     public void ContinueGame()

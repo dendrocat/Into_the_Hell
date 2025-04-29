@@ -1,20 +1,12 @@
-
-using Pathfinding;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour, ILevelManager
 {
-    [SerializeField] GameObject _exit;
     private LevelStorage _levelStorage;
 
-    public static LevelManager Instance { get; private set; }
-
+    public static LevelManager Instance { get; private set; } = null;
     Level _level;
 
-    public static LevelManager GetInstance()
-    {
-        return Instance;
-    }
     GameObject[] rooms = null;
     GameObject[] halls = null;
 
@@ -68,7 +60,7 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void Generate(Locations location, bool isLast)
+    public void Generate(Locations location)
     {
         if (_level.created()) return;
         _location = location;
@@ -76,7 +68,7 @@ public class LevelManager : MonoBehaviour
         var roomContainer = _levelStorage.GetRoomContainer(_location);
         halls = _levelStorage.GetHalls().ToArray();
         rooms = roomContainer.Rooms.ToArray();
-        var lastRoom = isLast
+        var lastRoom = GameStorage.Instance.isLastLevel
                         ? roomContainer.BossRoom
                         : roomContainer.StartRoom;
 
@@ -92,6 +84,9 @@ public class LevelManager : MonoBehaviour
         _level.halls.ForEach((h) =>
             h.GetComponent<IHallTilemapController>().SwapTiles(tiles)
         );
+
+        Destroy(LevelStorage.Instance.gameObject);
+        Destroy(gameObject);
     }
 
     void Generate(GameObject startRoom,
@@ -105,27 +100,4 @@ public class LevelManager : MonoBehaviour
                 .LastRoom(lastRoom)
                 .Generate(countRooms, _level);
     }
-
-
-    public void SpawnExit(Vector3 position)
-    {
-        Instantiate(_exit, position, Quaternion.identity);
-    }
-    // private void Start()
-    // {
-    //     // Resources loading will be deleted;
-    //     Debug.Log("One");
-    //     rooms = Resources.LoadAll<GameObject>("Rooms");
-    //     halls = Resources.LoadAll<GameObject>("Halls");
-    //     if (!_level.created())
-    //     {
-    //         Generator.New()
-    //                 .Rooms(new(rooms))
-    //                 .Halls(halls[1], halls[0])
-    //                 .FirstRoom(rooms[0])
-    //                 .LastRoom(rooms[rooms.Length - 1])
-    //                 .Generate(25, _level);
-    //     }
-
-    // }
 }

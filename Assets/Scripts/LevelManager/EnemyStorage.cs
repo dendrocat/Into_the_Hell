@@ -23,7 +23,7 @@ public class EnemyStorage : MonoBehaviour
 
     public EnemyContainer GetEnemies()
     {
-        var location = GameManager.Instance.Location;
+        var location = GameStorage.Instance.location;
         return locationEnemies[(int)location].enemyContainer;
     }
 }
