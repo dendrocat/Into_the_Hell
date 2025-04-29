@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
 
     public UnityEvent OnSubmitPressed { get; } = new UnityEvent();
 
+    public UnityEvent OnCancelPressed { get; } = new UnityEvent();
+
     Stack<InputMap> stackInputs;
 
     private PlayerInput _playerInput;
@@ -58,9 +60,6 @@ public class InputManager : MonoBehaviour
 
     private bool _pause = false;
     public bool Pause => _pause ? (!(_pause = false)) : false;
-
-    private bool _cancel = false;
-    public bool Cancel => _cancel ? (!(_cancel = false)) : false;
 
     public bool HoldRightButton = false;
 
@@ -139,8 +138,7 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Cancel");
-            _cancel = true;
+            OnCancelPressed.Invoke();
         }
     }
 

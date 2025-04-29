@@ -1595,6 +1595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Armor
       objectReference: {fileID: 0}
+    - target: {fileID: 6513199000565676211, guid: 72ccafbf17c851949a824f479193bf33, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6ec88c8628ec0944966894d59699ced, type: 3}
     - target: {fileID: 7280794942487101628, guid: 72ccafbf17c851949a824f479193bf33, type: 3}
       propertyPath: m_text
       value: "\u0411\u0440\u043E\u043D\u044F"

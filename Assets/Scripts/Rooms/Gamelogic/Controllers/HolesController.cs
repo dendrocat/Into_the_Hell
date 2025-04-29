@@ -17,12 +17,9 @@ public class HolesController : MonoBehaviour
     void Awake()
     {
         tag = "Hole";
-        var collider = GetComponent<Collider2D>();
-        collider.isTrigger = false;
-        collider.includeLayers = LayerMask.GetMask("Player");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Person person = collision.gameObject.GetComponent<Person>();
         if (person)
@@ -33,8 +30,7 @@ public class HolesController : MonoBehaviour
                 person.AddEffect(EffectNames.HoleStun);
 
                 //personAnimator.SetTrigger("fallTrigger");
-
-                Vector2 direction = person.transform.position - transform.position;
+                Vector2 direction = -person.facingDirection;
                 direction = direction.normalized;
                 direction = ((direction != Vector2.zero) ? direction : Vector2.right) * 1.5f;
 

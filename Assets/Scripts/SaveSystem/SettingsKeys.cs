@@ -14,17 +14,6 @@ public enum SettingsKeys
 
 
     /// <summary>
-    /// Y-axis inversion toggle (bool)
-    /// </summary>
-    /// 
-    InvertY,
-    /// <summary>
-    /// Input sensitivity multiplier (float)
-    /// </summary>
-    Sensitivity,
-
-
-    /// <summary>
     /// Screen brightness level (float 0.0-1.0)
     /// </summary>
     Brightness,

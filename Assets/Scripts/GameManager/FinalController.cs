@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalController : MonoBehaviour
@@ -25,5 +24,6 @@ public class FinalController : MonoBehaviour
             yield return null;
         }
         Destroy(DontDestroyManager.Instance.gameObject);
+        GameManager.ReloadGame();
     }
 }

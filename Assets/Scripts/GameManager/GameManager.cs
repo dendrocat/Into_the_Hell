@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("NewGame");
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
-        LoadBaseScene();
+        LoadGame();
     }
 
     public void StartTutorial()
@@ -99,9 +99,11 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.PopInputMap();
     }
 
-    public void ReloadGame()
+    public static void ReloadGame()
     {
         SceneManager.LoadScene(0);
+        if (SaveLoadManager.HasSave())
+            SaveLoadManager.RemoveSave();
     }
 
     void OnDestroy()

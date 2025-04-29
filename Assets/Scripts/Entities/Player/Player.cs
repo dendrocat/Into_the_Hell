@@ -280,7 +280,5 @@ public class Player : Person
     protected override void OnDeath()
     {
         Debug.Log("You died. Game over!");
-        //TODO: Delete this shit
-        GameManager.Instance.ReloadGame();
     }
 }

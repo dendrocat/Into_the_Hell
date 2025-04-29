@@ -13,15 +13,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
-    [Header("Gameplay Settings")]
-    [SerializeField] private TMP_Text ControllerSentextValue = null;
-    [SerializeField] private Slider controllerSenSlider = null;
-    [SerializeField] private int defaultSen = 4;
-    public int mainControllerSen = 4;
-
-    [Header("Toggle Settings")]
-    [SerializeField] private Toggle invertYToggle = null;
-
     [Header("Graphics Settings")]
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
@@ -40,14 +31,10 @@ public class MainMenuController : MonoBehaviour
     [Header("Confirmation")]
     [SerializeField] private GameObject comfirmationPromt = null;
 
-    [Header("Levels to load")]
-    public string _newGameLevel;
-    public string _tutorialLevel;
-    private string levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;
 
     [Header("Resolution Deopdowns")]
-    public TMP_Dropdown resolutionDropdown;
+    [SerializeField] TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
     private List<Resolution> uniqueResolutions = new List<Resolution>();
@@ -105,12 +92,6 @@ public class MainMenuController : MonoBehaviour
         SetVolume(volume);
         volumeSlider.value = AudioListener.volume;
 
-        invertYToggle.isOn = Convert.ToBoolean(prefs.GetValueOrDefault(SettingsKeys.InvertY, false));
-
-        var sensitivity = Convert.ToInt32(prefs.GetValueOrDefault(SettingsKeys.Sensitivity, defaultSen));
-        SetControllerSen(sensitivity);
-        controllerSenSlider.value = mainControllerSen;
-
         var brightness = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Brightness, defaultBrightness));
         SetBrightness(brightness);
         brightnessSlider.value = _brightnessLevel;
@@ -153,7 +134,7 @@ public class MainMenuController : MonoBehaviour
         GameManager.Instance.StartTutorial();
     }
 
-    public void LoadGameDialogYes()
+    public void ContinueGame()
     {
         if (!SaveLoadManager.HasSave())
             noSavedGameDialog.SetActive(true);
@@ -173,7 +154,7 @@ public class MainMenuController : MonoBehaviour
     public void SetVolume(float volume)
     {
         AudioListener.volume = volume;
-        volumeTextValue.text = volume.ToString("0.0");
+        volumeTextValue.text = (volume * 100).ToString("0") + " %";
     }
 
     public void VolumeApply()
@@ -183,16 +164,8 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(ConfirmationBox());
     }
 
-    public void SetControllerSen(float sensitivity)
+    public void ControlsApply()
     {
-        mainControllerSen = Mathf.RoundToInt(sensitivity);
-        ControllerSentextValue.text = sensitivity.ToString("0");
-    }
-
-    public void GameplayApply()
-    {
-        _settingsManager.AddToSave(SettingsKeys.InvertY, invertYToggle.isOn);
-        _settingsManager.AddToSave(SettingsKeys.Sensitivity, mainControllerSen);
         _settingsManager.AddToSave(
             SettingsKeys.Rebinds,
             _inputActions.SaveBindingOverridesAsJson()
@@ -226,7 +199,6 @@ public class MainMenuController : MonoBehaviour
         var res = resolutions[_resolutionIndex];
         Screen.SetResolution(res.width, res.height, _isFullScreen);
         QualitySettings.SetQualityLevel(_qualityLevel);
-        Screen.fullScreen = _isFullScreen;
 
         StartCoroutine(ConfirmationBox());
     }
@@ -258,14 +230,10 @@ public class MainMenuController : MonoBehaviour
             VolumeApply();
         }
 
-        if (MenuType == "Gameplay")
+        if (MenuType == "Controls")
         {
-            ControllerSentextValue.text = defaultSen.ToString("0");
-            controllerSenSlider.value = defaultSen;
-            mainControllerSen = defaultSen;
-            invertYToggle.isOn = false;
             _inputActions.RemoveAllBindingOverrides();
-            GameplayApply();
+            ControlsApply();
         }
     }
 
