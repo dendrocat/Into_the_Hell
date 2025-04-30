@@ -25,6 +25,7 @@ public class SaveLoadManager
         WeaponStorage.Instance.SetWeaponLevels(data.weaponLevels);
         GameStorage.Instance.location = (Locations)Enum.GetValues(typeof(Locations)).GetValue(data.location);
         GameStorage.Instance.level = data.level;
+        GameStorage.Instance.PlayerData = data.playerData;
     }
 
     /// <summary>

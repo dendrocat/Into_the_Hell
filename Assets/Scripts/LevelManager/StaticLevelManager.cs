@@ -34,20 +34,13 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
             {
                 var dt = _rooms[i + 1].gameObject.transform.position -
                         _rooms[i].gameObject.transform.position;
-                var size_i = _rooms[i].GetComponent<ISizeGetable>().Size;
-                var size_i1 = _rooms[i + 1].GetComponent<ISizeGetable>().Size;
-                var ds = (size_i + size_i1) / 2;
-                Debug.Log($"{size_i} {size_i1}");
                 if (dt.x != 0)
                 {
                     _rooms[i].DoorTilemap.ActivateDoor(DoorDirection.Right);
                     _rooms[i + 1].DoorTilemap.ActivateDoor(DoorDirection.Left);
-                    _halls[i].ExtendToLength(Mathf.RoundToInt(dt.magnitude - ds.x));
-                    Debug.Log($"Горизонтальный коридор {i} {_halls[i].Size}");
                 }
                 else
                 {
-                    _halls[i].ExtendToLength(Mathf.RoundToInt(dt.magnitude - ds.y + 1));
                     if (dt.y > 0)
                     {
                         _rooms[i].DoorTilemap.ActivateDoor(DoorDirection.Up);
@@ -59,6 +52,7 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
                         _rooms[i + 1].DoorTilemap.ActivateDoor(DoorDirection.Up);
                     }
                 }
+                _halls[i].ExtendToLength(10);
             }
         }
         _rooms.ForEach(r =>

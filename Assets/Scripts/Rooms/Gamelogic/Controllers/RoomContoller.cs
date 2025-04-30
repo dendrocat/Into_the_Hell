@@ -37,15 +37,12 @@ public class RoomContoller : MonoBehaviour, IRoomController
         DoorController = GetComponentInChildren<IDoorController>();
         AdditionalController = GetComponentInChildren<IAdditionalController>();
         _collider = GetComponent<Collider2D>();
-    }
-
-    void Start()
-    {
         _collider.enabled = false;
     }
 
     public void ActivateRoom()
     {
+        Debug.Log($"{name} activated");
         _collider.enabled = true;
     }
 
