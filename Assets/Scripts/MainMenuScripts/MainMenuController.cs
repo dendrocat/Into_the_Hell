@@ -39,15 +39,12 @@ public class MainMenuController : MonoBehaviour
 
     private List<Resolution> uniqueResolutions = new List<Resolution>();
 
-    private SettingsManager _settingsManager;
-
     InputActionAsset _inputActions;
 
     void Awake()
     {
         InputManager.Instance.PushInputMap(InputMap.UI);
         _inputActions = InputManager.Instance.GetActions();
-        _settingsManager = new SettingsManager();
     }
 
     private void Start()
@@ -85,7 +82,7 @@ public class MainMenuController : MonoBehaviour
 
     void Load()
     {
-        var prefs = _settingsManager.Load();
+        var prefs = SettingsManager.Instance.Load();
 
         var volume = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Volume, defaultVolume));
         SetVolume(volume);
@@ -157,14 +154,14 @@ public class MainMenuController : MonoBehaviour
 
     public void VolumeApply()
     {
-        _settingsManager.AddToSave(SettingsKeys.Volume, AudioListener.volume);
+        SettingsManager.Instance.SetSetting(SettingsKeys.Volume, AudioListener.volume);
 
         StartCoroutine(ConfirmationBox());
     }
 
     public void ControlsApply()
     {
-        _settingsManager.AddToSave(
+        SettingsManager.Instance.SetSetting(
             SettingsKeys.Rebinds,
             _inputActions.SaveBindingOverridesAsJson()
         );
@@ -189,10 +186,10 @@ public class MainMenuController : MonoBehaviour
 
     public void GraphicsApply()
     {
-        _settingsManager.AddToSave(SettingsKeys.Brightness, _brightnessLevel);
-        _settingsManager.AddToSave(SettingsKeys.Quality, _qualityLevel);
-        _settingsManager.AddToSave(SettingsKeys.FullScreen, _isFullScreen);
-        _settingsManager.AddToSave(SettingsKeys.Resolution, _resolutionIndex);
+        SettingsManager.Instance.SetSetting(SettingsKeys.Brightness, _brightnessLevel);
+        SettingsManager.Instance.SetSetting(SettingsKeys.Quality, _qualityLevel);
+        SettingsManager.Instance.SetSetting(SettingsKeys.FullScreen, _isFullScreen);
+        SettingsManager.Instance.SetSetting(SettingsKeys.Resolution, _resolutionIndex);
 
         var res = resolutions[_resolutionIndex];
         Screen.SetResolution(res.width, res.height, _isFullScreen);
@@ -238,7 +235,7 @@ public class MainMenuController : MonoBehaviour
     public IEnumerator ConfirmationBox()
     {
         comfirmationPromt.SetActive(true);
-        _settingsManager.Save();
+        SettingsManager.Instance.Save();
         yield return new WaitForSeconds(2);
         comfirmationPromt.SetActive(false);
     }

@@ -9,59 +9,39 @@ using UnityEngine;
 /// Provides a buffer system for collecting settings before bulk saving through <see cref="SettingsRepository"/>,
 /// and type-safe loading using enum keys.
 /// </remarks>
-public class SettingsManager
+public class SettingsManager : MonoBehaviour
 {
+    static public SettingsManager Instance { get; private set; } = null;
 
-    Dictionary<string, object> toSave;
-
-    /// <summary>
-    /// Initializes a new settings buffer.
-    /// </summary>
-    public SettingsManager()
+    void Awake()
     {
-        toSave = new Dictionary<string, object>();
-    }
-
-    /// <summary>
-    /// Adds a setting to the save queue.
-    /// </summary>
-    /// <param name="key">Setting identifier from <see cref="SettingsKeys"/></param>
-    /// <param name="value">Setting value (must match types registered in <see cref="SettingsRepository.TypePrefixes"/>)</param>
-    /// <returns>True if added successfully, False if type is unsupported</returns>
-    /// <example>
-    /// <code>
-    /// manager.AddToSave(SettingsKeys.Volume, 0.8f);
-    /// </code>
-    /// </example>
-    public bool AddToSave(SettingsKeys key, object value)
-    {
-        var type = value.GetType();
-        if (!SettingsRepository.TypePrefixes.ContainsKey(type))
+        if (Instance)
         {
-            Debug.LogError($"Тип {type.Name} не зарегистрирован");
-            return false;
+            Destroy(gameObject);
+            return;
         }
-        toSave[Enum.GetName(typeof(SettingsKeys), key)] = value;
-        return true;
+        Instance = this;
+        settings = new();
+        Load();
     }
 
-    /// <summary>
-    /// Removes a setting from the save queue.
-    /// </summary>
-    /// <param name="key">Setting name as string</param>
-    /// <returns>True if removed, False if key didn't exist</returns>
-    /// <remarks>
-    /// Warning: Uses string keys instead of <see cref="SettingsKeys"/> for removal flexibility
-    /// </remarks>
-    public bool RemoveFromSave(string key)
+    Dictionary<SettingsKeys, object> settings;
+
+    public object GetSetting(SettingsKeys key)
     {
-        if (!toSave.ContainsKey(key))
+        return settings.GetValueOrDefault(key, null);
+    }
+    public void SetSetting(SettingsKeys key, object val) { settings[key] = val; }
+    public bool RemoveSetting(SettingsKeys key)
+    {
+        if (!settings.ContainsKey(key))
         {
             Debug.LogError($"Ключ {key} не зарегистрирован");
             return false;
         }
-        return toSave.Remove(key);
+        return settings.Remove(key);
     }
+
 
     /// <summary>
     /// Persists all queued settings to PlayerPrefs through <see cref="SettingsRepository.Save"/>.
@@ -72,8 +52,10 @@ public class SettingsManager
     /// </remarks>
     public void Save()
     {
+        Dictionary<string, object> toSave = new();
+        foreach (var i in settings)
+            toSave.Add(Enum.GetName(typeof(SettingsKeys), i.Key), i.Value);
         SettingsRepository.Save(toSave);
-        toSave.Clear();
     }
 
     /// <summary>
@@ -105,6 +87,7 @@ public class SettingsManager
                 Debug.LogError($"Неизвестный ключ настроек: {kvp.Key}");
             }
         }
+        settings = prefs;
         return prefs;
     }
 }

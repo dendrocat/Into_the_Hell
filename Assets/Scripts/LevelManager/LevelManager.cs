@@ -62,6 +62,7 @@ public class LevelManager : MonoBehaviour, ILevelManager
 
     public void Generate(Locations location)
     {
+        _levelStorage = LevelStorage.Instance;
         if (_level.created()) return;
         _location = location;
 
