@@ -31,6 +31,7 @@ public class DialogEditor : Editor
     {
         Repaint();
         base.OnInspectorGUI();
+        if (DialogManager.Instance == null) return;
         var story = DialogManager.Instance.CurrentStory;
         InkPlayerWindow.DrawStoryPropertyField(story, ref storyExpanded, new GUIContent("Story"));
     }

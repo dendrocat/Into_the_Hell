@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ public class DontDestroyManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null) Destroy(Instance.gameObject);
+        if (Instance != null) DestroyAll();
         Instance = this;
         var childs = transform.GetComponentsInChildren<Transform>();
         foreach (var item in childs)
@@ -18,15 +19,19 @@ public class DontDestroyManager : MonoBehaviour
             DontDestroyOnLoad(item.gameObject);
             dontDestroyable.Add(item.gameObject);
         }
+        StartCoroutine(StartGame());
     }
 
-    void Start()
+    IEnumerator StartGame()
     {
-        GameManager.Instance.ToMainMenu();
+        yield return null;
+        yield return null;
+        GameManager.ToMainMenu();
     }
 
-    void OnDestroy()
+    public void DestroyAll()
     {
+        Destroy(gameObject);
         foreach (var item in dontDestroyable)
         {
             Destroy(item.gameObject);

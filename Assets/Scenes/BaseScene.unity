@@ -669,6 +669,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
+--- !u!114 &555282260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 716279038568596527, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
+  m_PrefabInstance: {fileID: 555282259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c248cd7b9560be9419f23c4fd582ee67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &612361045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9369,6 +9380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1860890167235627950, guid: 6265e11d532414740aef70e2f3db34d1, type: 3}
+      propertyPath: displayer
+      value: 
+      objectReference: {fileID: 555282260}
     - target: {fileID: 6655409740795592216, guid: 6265e11d532414740aef70e2f3db34d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

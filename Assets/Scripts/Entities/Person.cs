@@ -12,7 +12,7 @@ public class Person : Effectable, IDamagable
     [HideInInspector]
     public UnityEvent OnHealthChanged = new();
     [HideInInspector]
-    public UnityEvent<Person> OnDied = new();
+    public static UnityEvent<Person> OnDied = new();
     const float iceDriftDeceleration = 0.9f;
 
     bool alive = true;

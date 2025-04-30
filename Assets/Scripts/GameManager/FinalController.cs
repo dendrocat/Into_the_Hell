@@ -23,7 +23,6 @@ public class FinalController : MonoBehaviour
             _progressImage.fillAmount = t;
             yield return null;
         }
-        Destroy(DontDestroyManager.Instance.gameObject);
-        GameManager.ReloadGame();
+        GameManager.Instance.ReloadGame();
     }
 }

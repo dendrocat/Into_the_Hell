@@ -14,7 +14,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public UnityEvent<Story> OnCreatedStory = new UnityEvent<Story>();
 
 
-    DialogDisplayer displayer;
+    [SerializeField] DialogDisplayer displayer;
 
     public static DialogManager Instance { get; private set; }
 
@@ -30,13 +30,8 @@ public class DialogManager : MonoBehaviour, IDialogManager
             return;
         }
         Instance = this;
-        OnAwaked?.Invoke();
-    }
-
-    void Start()
-    {
-        displayer = FindFirstObjectByType<DialogDisplayer>(FindObjectsInactive.Include);
         displayer.gameObject.SetActive(false);
+        OnAwaked?.Invoke();
     }
 
     public void SetStory(TextAsset inkJSONfile)

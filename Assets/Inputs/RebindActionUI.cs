@@ -397,10 +397,10 @@ namespace UnityEngine.InputSystem.RebindUI
 
             foreach (InputBinding binding in action.actionMap.bindings)
             {
-                currentIndex++;
 
                 if (binding.action == newBinding.action)
                 {
+                    currentIndex++;
                     if (binding.isPartOfComposite && currentIndex != bindingIndex)
                     {
                         if (binding.effectivePath == newBinding.effectivePath)
@@ -409,7 +409,6 @@ namespace UnityEngine.InputSystem.RebindUI
                             return true;
                         }
                     }
-
                     else
                     {
                         continue;

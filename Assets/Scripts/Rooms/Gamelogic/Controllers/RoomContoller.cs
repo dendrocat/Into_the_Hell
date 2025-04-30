@@ -42,7 +42,6 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     public void ActivateRoom()
     {
-        Debug.Log($"{name} activated");
         _collider.enabled = true;
     }
 
@@ -50,7 +49,8 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     void OnBossDied(Person boss)
     {
-        boss.OnDied.RemoveListener(OnBossDied);
+        if (!(boss is Boss)) return;
+        Person.OnDied.RemoveListener(OnBossDied);
         RoomFinished();
     }
 
@@ -66,9 +66,8 @@ public class RoomContoller : MonoBehaviour, IRoomController
         }
         else
             boss.GetComponent<AIDestinationSetter>().target = playerTransform;
-        var bossComp = boss.GetComponent<Boss>();
-        UIManager.Instance.SetBoss(bossComp);
-        bossComp.OnDied.AddListener(OnBossDied);
+        UIManager.Instance.SetBoss(boss.GetComponent<Boss>());
+        Person.OnDied.AddListener(OnBossDied);
 
         Destroy(BossSpawn.Value.gameObject);
     }
@@ -86,22 +85,15 @@ public class RoomContoller : MonoBehaviour, IRoomController
                         EnemySpawns.Value.GetChild(i).position,
                         Quaternion.identity
                     );
-            obj.GetComponent<BaseEnemy>().OnDied.AddListener(OnEnemyDied);
             obj.GetComponent<AIDestinationSetter>().target = playerTransform;
         }
+        Person.OnDied.AddListener(OnEnemyDied);
         Destroy(EnemySpawns.Value.gameObject);
-    }
-
-    void PlayerDied(Person player)
-    {
-        GameManager.ReloadGame();
     }
 
     void StartBattle(Transform playerTransform)
     {
         _enemySpawned = true;
-        _player = playerTransform.gameObject.GetComponent<Player>();
-        _player.OnDied.AddListener(PlayerDied);
         SpawnEnemies(playerTransform);
         SpawnBoss(playerTransform);
 
@@ -112,20 +104,19 @@ public class RoomContoller : MonoBehaviour, IRoomController
         astar.Scan();
     }
 
-    void OnEnemyDied(Person enemy)
+    void OnEnemyDied(Person person)
     {
+        if (person is Player) return;
         --enemiesCount;
-        enemy.OnDied.RemoveListener(OnEnemyDied);
         if (enemiesCount == 0) RoomFinished();
     }
 
     void RoomFinished()
     {
+        Person.OnDied.RemoveListener(OnEnemyDied);
         DoorController.OpenDoors();
 
         Destroy(this);
-        _player?.OnDied.RemoveListener(PlayerDied);
-
 
         if (_isEndRoom)
             ExitManager.Instance.SpawnExit(transform.position);

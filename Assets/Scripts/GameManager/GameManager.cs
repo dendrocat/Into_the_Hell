@@ -9,6 +9,16 @@ public class GameManager : MonoBehaviour
 
     bool _nextBase;
 
+    bool _isTutor;
+
+    void OnPlayerDied(Person player)
+    {
+        Debug.Log($"Person is {player}");
+        if (!(player is Player)) return;
+        ReloadGame();
+    }
+
+
     void Awake()
     {
         if (Instance)
@@ -17,12 +27,13 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        Person.OnDied.AddListener(OnPlayerDied);
     }
 
     void LoadStartLevel(bool isBase)
     {
         InputManager.Instance.PushInputMap(InputMap.Gameplay);
-        _nextBase = !isBase;
+        _isTutor = _nextBase = !isBase;
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (isBase) SceneManager.LoadScene("BaseScene");
         else SceneManager.LoadScene("TutorialScene");
@@ -62,9 +73,9 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         GameStorage.Instance.CollectPlayerData();
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        GameStorage.Instance.level += Convert.ToInt32(_nextBase);
-        if (GameStorage.Instance.isFirstLevel && _nextBase)
+
+        GameStorage.Instance.level += Convert.ToInt32(_nextBase && !_isTutor);
+        if (GameStorage.Instance.isFirstLevel && _nextBase && !_isTutor)
         {
             var location = GameStorage.Instance.location;
             location = (Locations)(((int)location + 1) % Enum.GetValues(typeof(Locations)).Length);
@@ -75,6 +86,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
         if (_nextBase)
         {
             SaveLoadManager.Save();
@@ -82,25 +94,30 @@ public class GameManager : MonoBehaviour
         }
         else
             SceneManager.LoadScene("LevelScene");
-        _nextBase = !_nextBase;
+        _nextBase = _isTutor ? false : !_nextBase;
+        _isTutor = false;
     }
 
-    public void ToMainMenu()
+    public static void ToMainMenu()
     {
         SceneManager.LoadScene(1);
-        InputManager.Instance.PopInputMap();
     }
 
-    public static void ReloadGame()
+    public void ReloadGame()
     {
+        Debug.Log("Reload Game");
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
-        Destroy(DontDestroyManager.Instance);
+
+        Person.OnDied.RemoveListener(OnPlayerDied);
+        DontDestroyManager.Instance.DestroyAll();
+
+        SceneManager.LoadScene(0);
     }
 
     void OnDestroy()
     {
         Instance = null;
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
 }

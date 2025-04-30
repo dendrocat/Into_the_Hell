@@ -14,11 +14,11 @@ public abstract class HintActivator : MonoBehaviour
     void Start()
     {
         _finder = GetComponent<ActionRuntimeFinder>();
-        _hint.InitHint(_finder);
     }
 
     IEnumerator DelayActivation()
     {
+        _hint.InitHint(_finder);
         yield return new WaitForSeconds(_delayActivation);
         HintManager.Instance.ShowHints(_hint.Hints);
         Destroy(this);
