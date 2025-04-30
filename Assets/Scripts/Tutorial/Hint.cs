@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,7 +27,10 @@ public class Hint : ScriptableObject
         {
             if (action.bindings[bindingIndex].isPartOfComposite) continue;
 
-            bindDisplay.Add(action.GetBindingDisplayString(bindingIndex));
+            bindDisplay.Add(action.GetBindingDisplayString(
+                bindingIndex,
+                InputBinding.DisplayStringOptions.DontIncludeInteractions
+            ));
         }
 
         var hint = actionHint.hint;

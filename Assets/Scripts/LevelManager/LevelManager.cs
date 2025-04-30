@@ -79,6 +79,8 @@ public class LevelManager : MonoBehaviour, ILevelManager
         {
             if (r == null) return;
             MakeTiles(r, tiles);
+            Destroy(r.GetRoomTilemapController() as MonoBehaviour);
+            r.GetRoomController().ActivateRoom();
         });
 
         _level.halls.ForEach((h) =>

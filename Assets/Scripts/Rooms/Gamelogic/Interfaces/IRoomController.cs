@@ -20,4 +20,6 @@ public interface IRoomController
     public IDoorController DoorController { get; }
 
     public void MarkAsEndRoom();
+
+    public void ActivateRoom();
 }

@@ -32,13 +32,21 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     bool _enemySpawned;
 
-    bool _roomFinished;
-
     void Awake()
     {
         DoorController = GetComponentInChildren<IDoorController>();
         AdditionalController = GetComponentInChildren<IAdditionalController>();
         _collider = GetComponent<Collider2D>();
+    }
+
+    void Start()
+    {
+        _collider.enabled = false;
+    }
+
+    public void ActivateRoom()
+    {
+        _collider.enabled = true;
     }
 
     int enemiesCount = 0;
@@ -77,7 +85,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
         enemiesCount = EnemySpawns.Value.childCount;
         for (int i = 0; i < enemiesCount; i++)
         {
-            var obj = Instantiate(enemies[Random.Range(0, enemies.Count - 1)],
+            var obj = Instantiate(enemies[Random.Range(0, enemies.Count)],
                         EnemySpawns.Value.GetChild(i).position,
                         Quaternion.identity
                     );

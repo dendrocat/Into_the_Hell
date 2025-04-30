@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     public void NewGame(bool tutorial)
     {
-        Debug.Log("NewGame");
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
         SaveLoadManager.Load();
