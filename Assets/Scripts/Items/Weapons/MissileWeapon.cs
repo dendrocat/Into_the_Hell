@@ -20,7 +20,5 @@ public class MissileWeapon : AlternateAttackWeapon
         missileComponent.SetTargetTags(targetTags);
         missileComponent.SetValues(getScaledDamage(), missileSpeed);
         missileComponent.direction = owner.weaponObject.localPosition;
-
-        Debug.Log(owner.gameObject.name + ": launched attack");
     }
 }

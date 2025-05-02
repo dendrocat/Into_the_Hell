@@ -288,7 +288,9 @@ public class Person : Effectable, IDamagable
     public void Attack() //функция атаки
     {
         if (!weapon.isReloading())
+        {
             weapon.LaunchAttack();
+        }
     }
 
     /**

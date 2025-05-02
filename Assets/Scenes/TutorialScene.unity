@@ -343,6 +343,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789496464568623363, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -729,9 +737,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 633798661}
     m_Modifications:
+    - target: {fileID: 3126857090768781459, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6433561692350191711, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
       propertyPath: m_Name
       value: AttackRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6433561692350191711, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7202622798955673994, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1581,6 +1597,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AltAttackRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 2392266571359601909, guid: c91327d998a037c468705411196ff080, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420254877823876365, guid: c91327d998a037c468705411196ff080, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6685148368620105769, guid: c91327d998a037c468705411196ff080, type: 3}
@@ -1782,6 +1806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShiftRoomHoleTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 1760856718106631900, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2797131025351778342, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
@@ -1825,6 +1853,10 @@ PrefabInstance:
     - target: {fileID: 3268411364943462577, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
       propertyPath: EnemySpawns._enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697954828485510849, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8918644822468824904, guid: 2d78aabf499d8414297af2f92b828d19, type: 3}
       propertyPath: m_TileAssetArray.Array.data[2].m_Data
@@ -2526,6 +2558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 633798661}
     m_Modifications:
+    - target: {fileID: 2264044449865703343, guid: 2e6c0fa29902ab74892a721dea60b5ac, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4292028784349172691, guid: 2e6c0fa29902ab74892a721dea60b5ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59
@@ -2569,6 +2605,10 @@ PrefabInstance:
     - target: {fileID: 6153770608798149833, guid: 2e6c0fa29902ab74892a721dea60b5ac, type: 3}
       propertyPath: m_Name
       value: RoomDestroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153770608798149833, guid: 2e6c0fa29902ab74892a721dea60b5ac, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3219,6 +3259,14 @@ PrefabInstance:
     - target: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
       propertyPath: m_Name
       value: EndRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789496464568623363, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
