@@ -9,7 +9,10 @@ public class SpikeTrap : BaseTrap
         Debug.Log(gameObject.name + ": target " + target.name + " is entered the trap");
         if (target != null)
         {
-            target.TakeDamage(damage, DamageType.None);
+            if (!target.hasEffect(EffectNames.Shift))
+            {
+                target.TakeDamage(damage, DamageType.None);
+            }
         }
     }
 
@@ -18,7 +21,10 @@ public class SpikeTrap : BaseTrap
         Debug.Log(gameObject.name + ": target " + target.name + " is in the trap");
         if (target != null)
         {
-            target.TakeDamage(damage, DamageType.None);
+            if (!target.hasEffect(EffectNames.Shift))
+            {
+                target.TakeDamage(damage, DamageType.None);
+            }
         }
     }
 

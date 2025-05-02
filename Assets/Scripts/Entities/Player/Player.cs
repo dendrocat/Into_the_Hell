@@ -185,6 +185,8 @@ public class Player : Person
     {
         if (isAlive())
         {
+            if (hasEffect(EffectNames.Shift) && (type == DamageType.None)) return; // не реагируем на урон, если есть рывок и игроку наносится обычный урон
+
             float resultDamage = damage; //изначальный урон
 
             //расчет снижения урона от эффектов

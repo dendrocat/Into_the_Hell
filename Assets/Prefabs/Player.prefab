@@ -58,12 +58,9 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  OnDied:
-    m_PersistentCalls:
-      m_Calls: []
   maxHealth: 100
   health: 100
-  speed: 2
+  speed: 4
   weapon: {fileID: 0}
   weaponObject: {fileID: 271036474111174576}
   moving: 0
