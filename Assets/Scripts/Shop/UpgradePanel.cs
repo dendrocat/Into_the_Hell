@@ -50,8 +50,8 @@ public class UpgradePanel : ShopPanel
         if (!CheckBuy(armor.GetUpgradeCost()))
             return;
 
-        armor.Upgrade(1);
         _inventory.ModifyMoneyCount(-armor.GetUpgradeCost());
+        armor.Upgrade(1);
 
         _inventory.GetComponent<Player>().RecalculateHealth();
 
@@ -65,8 +65,8 @@ public class UpgradePanel : ShopPanel
         if (!CheckBuy(potion.GetUpgradeCost()))
             return;
 
-        potion.Upgrade(1);
         _inventory.ModifyMoneyCount(-potion.GetUpgradeCost());
+        potion.Upgrade(1);
 
         SetItemCost("Potion", potion.GetUpgradeCost());
         CalcActiveItems();

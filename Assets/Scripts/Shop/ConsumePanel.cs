@@ -28,6 +28,8 @@ public class ConsumePanel : ShopPanel
         _inventory.ModifyMoneyCount(-explosiveArrowCost);
         SetItemCount("Arrow", _inventory.GetExplosiveArrowCount());
 
+        if (!CheckBuy(explosiveArrowCost, "Arrow"))
+            SetItemCost("Arrow", -1);
         CalcActiveItems();
     }
 
@@ -39,6 +41,8 @@ public class ConsumePanel : ShopPanel
         _inventory.ModifyMoneyCount(-cost);
         SetItemCount("Potion", _inventory.GetPotionCount());
 
+        if (!CheckBuy(CalcPotionCost(), "Potion"))
+            SetItemCost("Potion", -1);
         CalcActiveItems();
     }
 
