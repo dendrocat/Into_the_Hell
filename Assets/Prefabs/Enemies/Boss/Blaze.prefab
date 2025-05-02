@@ -173,10 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c8a776d07149f48865961729a5e281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDied:
+  HealthChanged:
     m_PersistentCalls:
       m_Calls: []
   maxHealth: 3000
@@ -277,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d6f1d568f875344b924fac34150c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 10
+  attackRange: 20
   attackDelay: 4
   attackTarget: {fileID: 0}
   evadeDistance: 6
