@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3050571384757865134}
   - component: {fileID: 8867800838420352796}
   - component: {fileID: 347120595621814745}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 7015135796718998077}
   - component: {fileID: 1999384495755229765}
   - component: {fileID: 1992760293511333153}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Additional
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2309,7 +2309,7 @@ GameObject:
   - component: {fileID: 8871690041287606851}
   - component: {fileID: 121668476967703179}
   - component: {fileID: 4723271600170839958}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5706,7 +5706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704318543596819864}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TrapSpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5865,9 +5865,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5875,9 +5875,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5885,9 +5885,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5895,9 +5895,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5905,9 +5905,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5915,9 +5915,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -5932,9 +5932,9 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 6
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 6
@@ -5958,10 +5958,10 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 0.000000012216162, g: 0.000000012216162, b: 0.000000012216162, a: 0.000000012216162}
-  - m_RefCount: 6
-    m_Data: {r: 0.80238456, g: 0.44721934, b: 0.5397531, a: 1}
   - m_RefCount: 0
-    m_Data: {r: 1.1054e-40, g: 1.1054e-40, b: 1.1054e-40, a: 1.1054e-40}
+    m_Data: {r: 9.8764e-41, g: 9.8764e-41, b: 9.8764e-41, a: 9.8764e-41}
+  - m_RefCount: 6
+    m_Data: {r: 0.87818176, g: 0.5651373, b: 0.6613241, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6037,7 +6037,7 @@ GameObject:
   - component: {fileID: 8110473515575709239}
   - component: {fileID: 3672799222666100678}
   - component: {fileID: 8752216515062417707}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7231,7 +7231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107959807262055202}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7318,7 +7318,7 @@ GameObject:
   - component: {fileID: 8043431969195310294}
   - component: {fileID: 2061504100580238864}
   - component: {fileID: 5089741120755780703}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RoomSquadDestroyHoleTraps
   m_TagString: Untagged
   m_Icon: {fileID: 0}

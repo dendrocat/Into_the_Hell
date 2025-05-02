@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2871403402929921975}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TrapSpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 7510176785560224588}
   - component: {fileID: 7680743458011289278}
   - component: {fileID: 3871216632493858652}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9358,7 +9358,7 @@ GameObject:
   - component: {fileID: 296548270068581214}
   - component: {fileID: 367221101138357209}
   - component: {fileID: 5464465621768923751}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Additional
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14841,7 +14841,7 @@ GameObject:
   - component: {fileID: 4806103028507658248}
   - component: {fileID: 7198910690089727574}
   - component: {fileID: 4846755728355869263}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HellRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14988,7 +14988,7 @@ GameObject:
   - component: {fileID: 923420612798241057}
   - component: {fileID: 7531619807670063859}
   - component: {fileID: 1914099273403148423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

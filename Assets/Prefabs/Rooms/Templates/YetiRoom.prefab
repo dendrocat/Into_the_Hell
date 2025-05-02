@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7942929917864573049}
   - component: {fileID: 4816488429401261151}
   - component: {fileID: 1340878659243872275}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 5851988921095622377}
   - component: {fileID: 8483106768517245796}
   - component: {fileID: 8934351671071892050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9013,7 +9013,7 @@ GameObject:
   - component: {fileID: 630564625730022246}
   - component: {fileID: 6980086653731832679}
   - component: {fileID: 5823644854880826564}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: YetiRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9161,7 +9161,7 @@ GameObject:
   - component: {fileID: 6314235814542382886}
   - component: {fileID: 4519800044705652790}
   - component: {fileID: 5398689717827052013}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Additional
   m_TagString: Untagged
   m_Icon: {fileID: 0}

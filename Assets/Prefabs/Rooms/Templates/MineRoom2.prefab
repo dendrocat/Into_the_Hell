@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1287556701697765643}
   - component: {fileID: 7355352974386896855}
   - component: {fileID: 3477744282926712021}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7291,7 +7291,7 @@ GameObject:
   - component: {fileID: 5832638927210775715}
   - component: {fileID: 5163614457766205138}
   - component: {fileID: -4508326848261175639}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MineRoom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9481,7 +9481,7 @@ GameObject:
   - component: {fileID: 8533955525579281590}
   - component: {fileID: 3176039810709706710}
   - component: {fileID: 7398908563245140836}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10766,7 +10766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4973826156683012788}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}

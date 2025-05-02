@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4275795586390459765}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4339558362867400782}
   - component: {fileID: 3278934835378562664}
   - component: {fileID: 5549199688777438633}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 6939679776832311539}
   - component: {fileID: 3157285830363641419}
   - component: {fileID: -7744106208695635065}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CaveRoom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,7 +1345,7 @@ GameObject:
   - component: {fileID: 4922352679995151298}
   - component: {fileID: 8678662672653627137}
   - component: {fileID: 1814119920264568592}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4746,7 +4746,7 @@ GameObject:
   - component: {fileID: 4160032455765942522}
   - component: {fileID: 6832919283502481457}
   - component: {fileID: 1579571380432934590}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Holes
   m_TagString: Hole
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 204579780887507493}
   - component: {fileID: 3596621016140010080}
   - component: {fileID: 3868235772742155802}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Holes
   m_TagString: Hole
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 915512441655067243}
   - component: {fileID: 2838911714529739175}
   - component: {fileID: 7875799049929653274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7053,7 +7053,7 @@ GameObject:
   - component: {fileID: 947363830187471067}
   - component: {fileID: 2963681023641857737}
   - component: {fileID: 8181655390328685752}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7682,7 +7682,7 @@ GameObject:
   - component: {fileID: 4163392353191424497}
   - component: {fileID: 1172455449660515105}
   - component: {fileID: -1807623636614827546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CaveRoom1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

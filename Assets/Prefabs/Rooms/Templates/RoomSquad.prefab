@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6141819373057692081}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 5662022925256572312}
   - component: {fileID: 2288980772081799465}
   - component: {fileID: 3151684784363865486}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 3491371323086098638}
   - component: {fileID: 7962043294695924405}
   - component: {fileID: 3801451839395610680}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4521,7 +4521,7 @@ GameObject:
   - component: {fileID: 6153338679011972865}
   - component: {fileID: 560152524975552744}
   - component: {fileID: 5966153906047659238}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Additional
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7071,7 +7071,7 @@ GameObject:
   - component: {fileID: 830287813820921477}
   - component: {fileID: 1136636132266778961}
   - component: {fileID: -4776811352240471375}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RoomSquad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

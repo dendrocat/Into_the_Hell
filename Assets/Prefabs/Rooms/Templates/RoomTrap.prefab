@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918862248070821650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Traps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 2164645926956115811}
   - component: {fileID: 8180106749100026988}
   - component: {fileID: -549092973868697883}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RoomTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7994103460412804555}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5207514301174298928}
   - component: {fileID: 8328855027510918736}
   - component: {fileID: 872930479420275156}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Additional
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4078,7 +4078,7 @@ GameObject:
   - component: {fileID: 173372387373736458}
   - component: {fileID: 490066552082855511}
   - component: {fileID: 8998986883611699904}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall-NonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5551,7 +5551,7 @@ GameObject:
   - component: {fileID: 1818678177224733677}
   - component: {fileID: 1328549890275080551}
   - component: {fileID: 7207546817244741010}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
