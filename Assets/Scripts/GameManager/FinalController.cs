@@ -4,25 +4,30 @@ using UnityEngine.UI;
 
 public class FinalController : MonoBehaviour
 {
-    [SerializeField] float delayBeforeRestart;
+    [Range(0f, 2f)]
+    [SerializeField] int delayStartCredits;
+    [Range(2f, 10f)]
+    [SerializeField] int creditsTime;
 
-    [SerializeField] Image _progressImage;
+    [SerializeField] Scrollbar _scroll;
 
-    void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(LoadInitScene());
+        _scroll.value = 1;
+        yield return new WaitForSecondsRealtime(delayStartCredits);
+        yield return StartCoroutine(LoadInitScene());
     }
 
     IEnumerator LoadInitScene()
     {
-        yield return null;
-        float t = 0;
-        while (t < 1f)
+        float t = 1;
+        while (t > 0f)
         {
-            t += Time.deltaTime / delayBeforeRestart;
-            _progressImage.fillAmount = t;
+            t -= Time.deltaTime / creditsTime;
+            _scroll.value = t;
             yield return null;
         }
+        yield return new WaitForSecondsRealtime(1f);
         GameManager.Instance.ReloadGame();
     }
 }
