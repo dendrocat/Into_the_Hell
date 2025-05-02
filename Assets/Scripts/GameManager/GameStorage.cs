@@ -22,7 +22,8 @@ public class GameStorage : MonoBehaviour
     public bool isFirstLevel => _level == 0;
     public bool isLastLevel => _level == maxLevel - 1;
 
-    public PlayerData PlayerData { get; set; }
+    [SerializeField] PlayerData _playerData;
+    public PlayerData PlayerData { get => _playerData; set => _playerData = value; }
 
     void Awake()
     {
