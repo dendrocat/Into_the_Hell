@@ -12,11 +12,11 @@ public class ButtonCancelSubscribe : MonoBehaviour
 
     void OnEnable()
     {
-        InputManager.Instance.OnCancelPressed.AddListener(_button.onClick.Invoke);
+        InputManager.Instance.CancelPressed.AddListener(_button.onClick.Invoke);
     }
 
     void OnDisable()
     {
-        InputManager.Instance?.OnCancelPressed.RemoveListener(_button.onClick.Invoke);
+        InputManager.Instance?.CancelPressed.RemoveListener(_button.onClick.Invoke);
     }
 }

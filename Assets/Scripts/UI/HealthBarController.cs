@@ -28,14 +28,6 @@ public class HealthBarController : MonoBehaviour
         SetTextHealth(health, maxHealth);
     }
 
-    void Update()
-    {
-        if (_smoothedHealthImage.fillAmount != _targetFill)
-        {
-            SetHealthSmoothed(_targetFill);
-        }
-    }
-
     public void SetHealthSmoothed(float health, float maxHealth)
     {
         _targetFill = health / maxHealth;
@@ -48,15 +40,13 @@ public class HealthBarController : MonoBehaviour
         _targetFill = fill;
         if (_smoothHealth == null)
             _smoothHealth = StartCoroutine(
-                SmoothHealth(_healthImage, _timeSmoothing / 10)
-            );
-        if (_smoothSmoothed == null)
-        {
-            _smoothSmoothed = StartCoroutine(
-                SmoothHealth(_smoothedHealthImage, _timeSmoothing)
-            );
-
-        }
+                    SmoothHealth(_healthImage, _timeSmoothing / 10)
+                );
+        if (_smoothSmoothed != null)
+            StopCoroutine(_smoothSmoothed);
+        _smoothSmoothed = StartCoroutine(
+            SmoothHealth(_smoothedHealthImage, _timeSmoothing)
+        );
     }
 
     IEnumerator SmoothHealth(Image image, float duration)

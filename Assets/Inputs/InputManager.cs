@@ -17,11 +17,11 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public UnityEvent OnInteractPressed { get; } = new UnityEvent();
+    public UnityEvent InteractPressed { get; } = new UnityEvent();
 
-    public UnityEvent OnSubmitPressed { get; } = new UnityEvent();
+    public UnityEvent SubmitPressed { get; } = new UnityEvent();
 
-    public UnityEvent OnCancelPressed { get; } = new UnityEvent();
+    public UnityEvent CancelPressed { get; } = new UnityEvent();
 
     Stack<InputMap> stackInputs;
 
@@ -101,7 +101,7 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            OnInteractPressed?.Invoke();
+            InteractPressed?.Invoke();
         }
     }
 
@@ -135,14 +135,14 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            OnCancelPressed.Invoke();
+            CancelPressed.Invoke();
         }
     }
 
     public void onSubmitPressed(InputAction.CallbackContext context)
     {
         if (context.performed)
-            OnSubmitPressed?.Invoke();
+            SubmitPressed?.Invoke();
     }
 
     public InputActionAsset GetActions()

@@ -21,10 +21,10 @@ public class BossBarController : MonoBehaviour
         _bossHealthBar.SetBossName(boss.GetBossName());
         Debug.Log($"{boss.GetBossName()} {boss.getHP()} {boss.MaxHealth}");
         _bossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
-        boss.OnHealthChanged.AddListener(() =>
+        boss.HealthChanged.AddListener(() =>
             _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)
         );
-        Person.OnDied.AddListener((person) =>
+        Person.Died.AddListener((person) =>
         {
             if (!(person is Boss)) return;
             gameObject.SetActive(false);

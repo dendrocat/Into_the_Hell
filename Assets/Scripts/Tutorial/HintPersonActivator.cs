@@ -5,12 +5,12 @@ public class HintPersonActivator : HintActivator
 {
     protected override void ActivateHint()
     {
-        GetComponent<Person>().OnHealthChanged.RemoveListener(ActivateHint);
+        GetComponent<Person>().HealthChanged.RemoveListener(ActivateHint);
         base.ActivateHint();
     }
 
     void Awake()
     {
-        GetComponent<Person>().OnHealthChanged.AddListener(ActivateHint);
+        GetComponent<Person>().HealthChanged.AddListener(ActivateHint);
     }
 }

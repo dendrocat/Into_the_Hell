@@ -14,11 +14,11 @@ using UnityEngine.SceneManagement;
 public class Player : Person
 {
     [HideInInspector]
-    public UnityEvent<float> OnPotionUsed = new();
+    public UnityEvent<float> PotionUsed = new();
     [HideInInspector]
-    public UnityEvent OnShiftPerformed = new();
+    public UnityEvent ShiftPerformed = new();
     [HideInInspector]
-    public UnityEvent<float> OnShiftReloadStarted = new();
+    public UnityEvent<float> ShiftReloadStarted = new();
 
     float baseMaxHealth = 100f;
     public PlayerInventory inventory;
@@ -120,7 +120,7 @@ public class Player : Person
             if (timer2Coroutine != null) StopCoroutine(timer2Coroutine);
 
             StartCoroutine(ShiftCoroutine());
-            OnShiftPerformed.Invoke();
+            ShiftPerformed.Invoke();
         }
     }
 
@@ -146,10 +146,10 @@ public class Player : Person
                 }
 
                 float reloadTime = potion.getReloadTime();
-                OnPotionUsed.Invoke(reloadTime);
+                PotionUsed.Invoke(reloadTime);
                 StartCoroutine(HealReload(reloadTime));
 
-                OnHealthChanged.Invoke();
+                HealthChanged.Invoke();
             }
         }
     }
@@ -223,7 +223,7 @@ public class Player : Person
                 ". Result damage: " + resultDamage);
 
             health -= resultDamage;
-            OnHealthChanged.Invoke();
+            HealthChanged.Invoke();
             if (health <= 0)
             {
                 Die();
@@ -268,7 +268,7 @@ public class Player : Person
     {
         if (ShiftCount < 3)
         {
-            OnShiftReloadStarted.Invoke(2f);
+            ShiftReloadStarted.Invoke(2f);
             yield return new WaitForSeconds(2f);
 
             ShiftCount++;

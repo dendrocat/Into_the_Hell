@@ -11,7 +11,7 @@ public class Interacting : MonoBehaviour
             if (_interactable == null)
             {
                 _interactable = i;
-                InputManager.Instance.OnInteractPressed.AddListener(DoInteract);
+                InputManager.Instance.InteractPressed.AddListener(DoInteract);
             }
         }
     }
@@ -20,7 +20,7 @@ public class Interacting : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable i))
         {
             _interactable = null;
-            InputManager.Instance.OnInteractPressed.RemoveListener(DoInteract);
+            InputManager.Instance.InteractPressed.RemoveListener(DoInteract);
         }
     }
 

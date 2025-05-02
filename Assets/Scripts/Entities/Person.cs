@@ -10,9 +10,9 @@ using UnityEngine.Events;
 public class Person : Effectable, IDamagable
 {
     [HideInInspector]
-    public UnityEvent OnHealthChanged = new();
+    public UnityEvent HealthChanged = new();
     [HideInInspector]
-    public static UnityEvent<Person> OnDied = new();
+    public static UnityEvent<Person> Died = new();
     const float iceDriftDeceleration = 0.9f;
 
     bool alive = true;
@@ -204,7 +204,7 @@ public class Person : Effectable, IDamagable
                 ". Result damage: " + resultDamage);*/
 
             health -= resultDamage;
-            OnHealthChanged.Invoke();
+            HealthChanged.Invoke();
             if (health <= 0)
             {
                 Die();
@@ -304,7 +304,7 @@ public class Person : Effectable, IDamagable
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         OnDeath(); //вызов событий при смерти персонажа
-        OnDied.Invoke(this);
+        Died.Invoke(this);
         StartCoroutine(DestructionDelayCoroutine());
     }
 

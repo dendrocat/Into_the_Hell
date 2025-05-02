@@ -34,30 +34,30 @@ public class UIManager : MonoBehaviour
             Enum.Parse<WeaponType>(_player.inventory.GetPlayerWeapon().GetType().Name)
         );
 
-        _player.OnHealthChanged.AddListener(() =>
+        _player.HealthChanged.AddListener(() =>
             _ui.HealthBar.SetHealthSmoothed(
                 _player.getHP(), _player.MaxHealth
             )
         );
 
-        _player.inventory.OnPotionCountChanged.AddListener(
+        _player.inventory.PotionCountChanged.AddListener(
             _ui.PotionController.SetPotions
         );
 
-        _player.OnPotionUsed.AddListener(
+        _player.PotionUsed.AddListener(
             _ui.PotionController.StartReload
         );
 
-        _player.OnShiftPerformed.AddListener(() =>
+        _player.ShiftPerformed.AddListener(() =>
             _ui.ShiftController.SetShiftCount(_player.ShiftCount)
         );
-        _player.OnShiftReloadStarted.AddListener(
+        _player.ShiftReloadStarted.AddListener(
             _ui.ShiftController.StartShiftSmoothReload
         );
 
-        _player.inventory.OnExplosiveArrowCountChanged.AddListener(_ui.SetArrows);
+        _player.inventory.ExplosiveArrowCountChanged.AddListener(_ui.SetArrows);
 
-        _player.inventory.OnMoneyChanged.AddListener(_ui.SetMoneySmooth);
+        _player.inventory.MoneyChanged.AddListener(_ui.SetMoneySmooth);
     }
 
     public void SetBoss(Boss boss)

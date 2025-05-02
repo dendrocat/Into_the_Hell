@@ -27,7 +27,7 @@ public class HintManager : MonoBehaviour
 
         Time.timeScale = 0;
         InputManager.Instance.PushInputMap(InputMap.UI);
-        InputManager.Instance.OnSubmitPressed.AddListener(ShowNextHint);
+        InputManager.Instance.SubmitPressed.AddListener(ShowNextHint);
 
         displayer.gameObject.SetActive(true);
         ShowNextHint();
@@ -52,7 +52,7 @@ public class HintManager : MonoBehaviour
     void CloseHint()
     {
         InputManager.Instance.PopInputMap();
-        InputManager.Instance.OnSubmitPressed.RemoveListener(ShowNextHint);
+        InputManager.Instance.SubmitPressed.RemoveListener(ShowNextHint);
 
         displayer.gameObject.SetActive(false);
         Time.timeScale = 1;

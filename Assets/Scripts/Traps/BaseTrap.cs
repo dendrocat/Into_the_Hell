@@ -28,7 +28,7 @@ public class BaseTrap : MonoBehaviour
                 if (target != null)
                 {
                     targets.Add(target);
-                    Debug.Log("Target count: " + targets.Count);
+                    //Debug.Log("Target count: " + targets.Count);
                     if (isActive) OnEnter(target);
                 }
                 break;

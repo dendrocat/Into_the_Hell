@@ -50,7 +50,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
     void OnBossDied(Person boss)
     {
         if (!(boss is Boss)) return;
-        Person.OnDied.RemoveListener(OnBossDied);
+        Person.Died.RemoveListener(OnBossDied);
         RoomFinished();
     }
 
@@ -67,7 +67,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
         else
             boss.GetComponent<AIDestinationSetter>().target = playerTransform;
         UIManager.Instance.SetBoss(boss.GetComponent<Boss>());
-        Person.OnDied.AddListener(OnBossDied);
+        Person.Died.AddListener(OnBossDied);
 
         Destroy(BossSpawn.Value.gameObject);
     }
@@ -87,7 +87,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
                     );
             obj.GetComponent<AIDestinationSetter>().target = playerTransform;
         }
-        Person.OnDied.AddListener(OnEnemyDied);
+        Person.Died.AddListener(OnEnemyDied);
         Destroy(EnemySpawns.Value.gameObject);
     }
 
@@ -113,7 +113,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     void RoomFinished()
     {
-        Person.OnDied.RemoveListener(OnEnemyDied);
+        Person.Died.RemoveListener(OnEnemyDied);
         DoorController.OpenDoors();
 
         Destroy(this);

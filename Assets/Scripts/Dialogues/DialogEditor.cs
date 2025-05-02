@@ -12,12 +12,12 @@ public class DialogEditor : Editor
 
     static DialogEditor()
     {
-        DialogManager.OnAwaked.AddListener(OnAwake);
+        DialogManager.Awaked.AddListener(OnAwake);
     }
 
     static void OnAwake()
     {
-        DialogManager.Instance.OnCreatedStory.AddListener(OnCreateStory);
+        DialogManager.Instance.CreatedStory.AddListener(OnCreateStory);
     }
 
 

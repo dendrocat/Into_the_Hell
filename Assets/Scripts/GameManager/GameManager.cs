@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        Person.OnDied.AddListener(OnPlayerDied);
+        Person.Died.AddListener(OnPlayerDied);
     }
 
     void LoadStartLevel(bool isBase)
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
 
-        Person.OnDied.RemoveListener(OnPlayerDied);
+        Person.Died.RemoveListener(OnPlayerDied);
         DontDestroyManager.Instance.DestroyAll();
 
         SceneManager.LoadScene(0);

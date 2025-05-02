@@ -11,11 +11,11 @@ using UnityEngine.Events;
 public class PlayerInventory : MonoBehaviour
 {
     [HideInInspector]
-    public UnityEvent<int> OnExplosiveArrowCountChanged = new();
+    public UnityEvent<int> ExplosiveArrowCountChanged = new();
     [HideInInspector]
-    public UnityEvent<int> OnMoneyChanged = new();
+    public UnityEvent<int> MoneyChanged = new();
     [HideInInspector]
-    public UnityEvent<int> OnPotionCountChanged = new();
+    public UnityEvent<int> PotionCountChanged = new();
 
     [SerializeField] PlayerArmor armor;
     [SerializeField] Potion potion;
@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
         if (potionsCount < maxPotionsCount)
         {
             potionsCount++;
-            OnPotionCountChanged.Invoke(potionsCount);
+            PotionCountChanged.Invoke(potionsCount);
             return true;
         }
         return false;
@@ -79,7 +79,7 @@ public class PlayerInventory : MonoBehaviour
         if (potionsCount > 0)
         {
             potionsCount--;
-            OnPotionCountChanged.Invoke(potionsCount);
+            PotionCountChanged.Invoke(potionsCount);
             return true;
         }
         return false;
@@ -96,7 +96,7 @@ public class PlayerInventory : MonoBehaviour
         if (explosiveArrowCount < maxExplosiveArrowCount)
         {
             explosiveArrowCount++;
-            OnExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
+            ExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
             return true;
         }
         return false;
@@ -135,7 +135,7 @@ public class PlayerInventory : MonoBehaviour
         if (explosiveArrowCount > 0)
         {
             explosiveArrowCount--;
-            OnExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
+            ExplosiveArrowCountChanged.Invoke(explosiveArrowCount);
             return true;
         }
         return false;
@@ -211,7 +211,7 @@ public class PlayerInventory : MonoBehaviour
         if (money + diff >= 0)
         {
             money += diff;
-            OnMoneyChanged.Invoke(money);
+            MoneyChanged.Invoke(money);
             return true;
         }
         return false;

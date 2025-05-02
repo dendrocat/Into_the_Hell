@@ -25,6 +25,15 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
         }
     }
 
+    void SetAdditionalEffect(IRoomController room)
+    {
+        var additionalController = room.AdditionalController;
+        if (additionalController == null) return;
+        var trapContainer = LevelStorage.Instance.GetTrapContainer(GameStorage.Instance.location);
+        if (trapContainer == null) return;
+        additionalController.SetAdditionalEffect(trapContainer);
+    }
+
     public void Generate(Locations location)
     {
         var tiles = LevelStorage.Instance.GetTilesContainer(location);
@@ -58,9 +67,13 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
         _rooms.ForEach(r =>
         {
             GenerateAdditional(r, tiles.Additional);
-            r.GetComponent<IRoomController>()?.DoorController.SetDoors(r?.DoorTilemap.ActiveDoors);
             r.SwapTiles(tiles);
-            r.GetComponent<IRoomController>()?.ActivateRoom();
+            if (r.TryGetComponent(out IRoomController roomController))
+            {
+                SetAdditionalEffect(roomController);
+                roomController.DoorController.SetDoors(r.DoorTilemap.ActiveDoors);
+                roomController.ActivateRoom();
+            }
             Destroy(r);
         });
         _halls.ForEach(h =>

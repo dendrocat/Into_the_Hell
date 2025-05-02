@@ -17,11 +17,13 @@ public enum TrapType
  * Класс-контроллер для динамической (имеющей периоды активности и бездействия) ловушки
  * </summary>
  * **/
+[RequireComponent(typeof(Animator))]
 public class DynamicTrapController : MonoBehaviour
 {
     BaseTrap trap;
-    [SerializeField] GameObject activeSprite;
-    [SerializeField] GameObject inactiveSprite;
+    // [SerializeField] GameObject activeSprite;
+    // [SerializeField] GameObject inactiveSprite;
+    Animator _animator;
 
     [SerializeField] TrapType trapType;
     [SerializeField] float activatedPeriod; // время, в течение которого ловушка активна
@@ -29,27 +31,36 @@ public class DynamicTrapController : MonoBehaviour
     [SerializeField] float idlePeriod; // время, в течение которого ловушка неактивна
     Coroutine periodicalCheckCoroutine;
 
-    private void Start()
+    [Range(0f, 5f)]
+    [SerializeField] float maxStartDelayTime;
+
+    void Awake()
     {
+        _animator = GetComponent<Animator>();
         trap = GetComponent<BaseTrap>();
+        if (trap) trap.Deactivate();
+    }
+
+    IEnumerator Start()
+    {
         if (trap)
         {
-            DeactivateTrap();
+            yield return new WaitForSeconds(Random.Range(0f, maxStartDelayTime));
             StartCoroutine(IdlePeriod());
         }
     }
 
-    void ActivateTrap()
+    IEnumerator ActivateTrap()
     {
-        inactiveSprite.SetActive(false);
-        activeSprite.SetActive(true);
+        _animator.Play("TrapActivate");
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         trap.Activate();
     }
 
-    void DeactivateTrap()
+    IEnumerator DeactivateTrap()
     {
-        inactiveSprite.SetActive(true);
-        activeSprite.SetActive(false);
+        _animator.Play("TrapDeactivate");
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         trap.Deactivate();
     }
 
@@ -61,8 +72,8 @@ public class DynamicTrapController : MonoBehaviour
     private IEnumerator IdlePeriod()
     {
         yield return new WaitForSeconds(idlePeriod);
-        ActivateTrap();
-        StartCoroutine(ActivatedPeriod());
+        yield return StartCoroutine(ActivateTrap());
+        yield return StartCoroutine(ActivatedPeriod());
     }
 
     /**
@@ -77,8 +88,8 @@ public class DynamicTrapController : MonoBehaviour
         yield return new WaitForSeconds(activatedPeriod);
         if (trapType == TrapType.Periodical)
             StopCoroutine(periodicalCheckCoroutine);
-        DeactivateTrap();
-        StartCoroutine(IdlePeriod());
+        yield return StartCoroutine(DeactivateTrap());
+        yield return StartCoroutine(IdlePeriod());
     }
 
     /**

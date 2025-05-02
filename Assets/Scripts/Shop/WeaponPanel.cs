@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class WeaponPanel : BasePanel
 {
-    public UnityEvent<WeaponType> OnWeaponChanged = new();
+    public UnityEvent<WeaponType> WeaponChanged = new();
 
     [SerializeField] List<Button> _windows;
 
@@ -38,6 +38,6 @@ public class WeaponPanel : BasePanel
         );
 
         CalcItemState(weaponType);
-        OnWeaponChanged.Invoke(weaponType);
+        WeaponChanged.Invoke(weaponType);
     }
 }

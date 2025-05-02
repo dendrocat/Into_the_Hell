@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour, IDialogManager
 {
-    public static UnityEvent OnAwaked = new UnityEvent();
+    public static UnityEvent Awaked = new UnityEvent();
 
     [HideInInspector]
-    public UnityEvent<Story> OnCreatedStory = new UnityEvent<Story>();
+    public UnityEvent<Story> CreatedStory = new UnityEvent<Story>();
 
 
     [SerializeField] DialogDisplayer displayer;
@@ -31,13 +31,13 @@ public class DialogManager : MonoBehaviour, IDialogManager
         }
         Instance = this;
         displayer.gameObject.SetActive(false);
-        OnAwaked?.Invoke();
+        Awaked?.Invoke();
     }
 
     public void SetStory(TextAsset inkJSONfile)
     {
         CurrentStory = new Story(inkJSONfile.text);
-        OnCreatedStory?.Invoke(CurrentStory);
+        CreatedStory?.Invoke(CurrentStory);
         _storyEnded = false;
     }
 
@@ -49,7 +49,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public void StartStory()
     {
         InputManager.Instance.PushInputMap(InputMap.UI);
-        InputManager.Instance.OnSubmitPressed.AddListener(ContinueStory);
+        InputManager.Instance.SubmitPressed.AddListener(ContinueStory);
 
         displayer.gameObject.SetActive(true);
         ContinueStory();
@@ -88,7 +88,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
         yield return new WaitUntil(() => !displayer.IsShowingPhrase);
         var buttons = displayer.CreateChoices(CurrentStory.currentChoices);
         SetChoiceListeners(buttons);
-        InputManager.Instance.OnSubmitPressed.RemoveListener(ContinueStory);
+        InputManager.Instance.SubmitPressed.RemoveListener(ContinueStory);
     }
 
     void SetChoiceListeners(List<Button> buttons)
@@ -100,7 +100,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
             {
                 CurrentStory.ChooseChoiceIndex(i1);
                 displayer.DestroyChoices();
-                InputManager.Instance.OnSubmitPressed.AddListener(ContinueStory);
+                InputManager.Instance.SubmitPressed.AddListener(ContinueStory);
                 ContinueStory();
             });
         }
@@ -111,7 +111,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     void EndDialog()
     {
         InputManager.Instance.PopInputMap();
-        InputManager.Instance.OnSubmitPressed.RemoveListener(ContinueStory);
+        InputManager.Instance.SubmitPressed.RemoveListener(ContinueStory);
 
         displayer.gameObject.SetActive(false);
 
