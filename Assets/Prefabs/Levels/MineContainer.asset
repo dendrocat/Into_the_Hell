@@ -16,8 +16,8 @@ MonoBehaviour:
   _wallInner: {fileID: 11400000, guid: 6aae5d72641e4a54495720a5d7f0fd03, type: 2}
   _wallOuter: {fileID: 11400000, guid: 921eb1027f81df547836ad435467f990, type: 2}
   _floor: {fileID: 11400000, guid: 3cb703725ff85f143afb5be5a836cc11, type: 2}
-  _doorRoof: {fileID: 11400000, guid: e6db447fbe70a744e85eb341d8076921, type: 2}
-  _doorWall: {fileID: 11400000, guid: b335dba3fb963b54fa053c1b8a87e661, type: 2}
+  _doorRoof: {fileID: 11400000, guid: 0379323320182264a990e498721aacec, type: 2}
+  _doorWall: {fileID: 11400000, guid: 717cd4f92684f20448cfe13643135963, type: 2}
   _hole: {fileID: 11400000, guid: b6bb9dbe95b52994e84d3e61f463c909, type: 2}
   _additional: {fileID: 0}
   _trap: {fileID: 4685585011638163340, guid: 56026b300636ccd49b1ef7c90f7e747f, type: 3}

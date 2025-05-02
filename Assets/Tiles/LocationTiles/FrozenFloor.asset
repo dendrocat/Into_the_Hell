@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: FrozenFloor
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 7223950226953391895, guid: 0df95643f7afc1b42ac2c96faac4505c, type: 3}
+  m_DefaultSprite: {fileID: -665988694, guid: 6177ed6cade3e664d828e29ddff6f21e, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 7223950226953391895, guid: 0df95643f7afc1b42ac2c96faac4505c, type: 3}
-    - {fileID: -1832321202, guid: 0df95643f7afc1b42ac2c96faac4505c, type: 3}
-    - {fileID: 1643283710, guid: 0df95643f7afc1b42ac2c96faac4505c, type: 3}
-    - {fileID: -425521838, guid: 0df95643f7afc1b42ac2c96faac4505c, type: 3}
+    - {fileID: -665988694, guid: 6177ed6cade3e664d828e29ddff6f21e, type: 3}
+    - {fileID: -1969597618, guid: 6177ed6cade3e664d828e29ddff6f21e, type: 3}
+    - {fileID: 1402754509, guid: 6177ed6cade3e664d828e29ddff6f21e, type: 3}
+    - {fileID: 1315230398, guid: 6177ed6cade3e664d828e29ddff6f21e, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
