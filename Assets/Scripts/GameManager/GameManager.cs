@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     void OnPlayerDied(Person player)
     {
-        Debug.Log($"Person is {player}");
         if (!(player is Player)) return;
         ReloadGame();
     }
@@ -105,7 +104,6 @@ public class GameManager : MonoBehaviour
 
     public void ReloadGame()
     {
-        Debug.Log("Reload Game");
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
 

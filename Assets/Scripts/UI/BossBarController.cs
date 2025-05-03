@@ -19,7 +19,6 @@ public class BossBarController : MonoBehaviour
     public void SetBoss(Boss boss)
     {
         _bossHealthBar.SetBossName(boss.GetBossName());
-        Debug.Log($"{boss.GetBossName()} {boss.getHP()} {boss.MaxHealth}");
         _bossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
         boss.HealthChanged.AddListener(() =>
             _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)

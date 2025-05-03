@@ -124,7 +124,6 @@ public class InputManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Pause performed");
             PausePressed.Invoke();
         }
     }

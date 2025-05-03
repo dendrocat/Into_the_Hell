@@ -8,33 +8,28 @@ public class PauseController : MonoBehaviour
     }
     void OnEnable()
     {
-        Debug.Log("OnEnable");
         Activate();
     }
 
     void OnDisable()
     {
-        Debug.Log("OnDisable");
         Deactivate();
     }
 
     public void PauseGame()
     {
-        Debug.Log("Pause Game");
         gameObject.SetActive(true);
         GameManager.Instance.PauseGame();
     }
 
     public void UnPauseGame()
     {
-        Debug.Log("Unpause Game");
         gameObject.SetActive(false);
         GameManager.Instance.UnPauseGame();
     }
 
     public void ToMainMenu()
     {
-        Debug.Log("ToMainMenu");
         GameManager.Instance.ToMainMenu();
     }
 

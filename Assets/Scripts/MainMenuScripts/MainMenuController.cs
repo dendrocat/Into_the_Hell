@@ -170,7 +170,7 @@ public class MainMenuController : MonoBehaviour
     public void SetBrightness(float brightness)
     {
         _brightnessLevel = brightness;
-        brightnessTextValue.text = brightness.ToString("0.0");
+        brightnessTextValue.text = brightness.ToString("0.00");
         if (ShaderController.Instance)
             ShaderController.Instance.Brightness = brightness;
     }
