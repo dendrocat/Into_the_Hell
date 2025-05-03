@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         _isTutor = false;
     }
 
-    public static void ToMainMenu()
+    public void ToMainMenu()
     {
         SceneManager.LoadScene(1);
     }
@@ -119,5 +119,17 @@ public class GameManager : MonoBehaviour
     {
         Instance = null;
         //SceneManager.LoadScene(0);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        InputManager.Instance.PushInputMap(InputMap.UI);
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1;
+        InputManager.Instance.PopInputMap();
     }
 }

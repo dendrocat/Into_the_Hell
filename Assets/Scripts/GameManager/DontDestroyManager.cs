@@ -26,7 +26,7 @@ public class DontDestroyManager : MonoBehaviour
     {
         yield return null;
         yield return null;
-        GameManager.ToMainMenu();
+        GameManager.Instance.ToMainMenu();
     }
 
     public void DestroyAll()
