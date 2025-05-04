@@ -1,4 +1,5 @@
-using System.Collections;
+#if UNITY_EDITOR
+
 using Ink.Runtime;
 using Ink.UnityIntegration;
 using UnityEditor;
@@ -36,3 +37,5 @@ public class DialogEditor : Editor
         InkPlayerWindow.DrawStoryPropertyField(story, ref storyExpanded, new GUIContent("Story"));
     }
 }
+
+#endif
