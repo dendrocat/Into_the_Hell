@@ -107,7 +107,7 @@ public class Generator
 					if (i == lastRoom_coord && lastRoom != null)
 						mr[i - shift] = new Room(lastRoom, level, true);
 					else if (i == firstRoom_coord && firstRoom != null)
-						mr[i - shift] = new Room(firstRoom, level);
+						mr[i - shift] = new Room(firstRoom, level, false, true);
 					else
 						mr[i - shift] = new Room(rooms[random.Next((int)1e9 + 7) % rooms.Count], level);
 				}

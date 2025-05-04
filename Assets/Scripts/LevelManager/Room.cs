@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class Room
 {
@@ -5,14 +6,16 @@ public class Room
     public int h { get; private set; }
     private GameObject room;
     private bool _isEndRoom;
+    public bool _isStartRoom{ get; private set; }
     public Vector2 coord;
-    public Room(GameObject prefab, Level level, bool isEndRoom = false)
+    public Room(GameObject prefab, Level level, bool isEndRoom = false, bool isStartRoom = false)
     {
         room = GameObject.Instantiate(prefab, level.transform);
         var col = room.GetComponent<ISizeGetable>().Size;
         w = col.x;
         h = col.y;
         _isEndRoom = isEndRoom;
+        _isStartRoom = isStartRoom;
     }
 
     public int doors = 0;
