@@ -1917,6 +1917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1931df7b4d9980f4e8796cd8a708b50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactImage: {fileID: 4430710254316405905, guid: 320ce8f34a0b17d4b833070c0aa84b11, type: 3}
   inkJSONFile: {fileID: 4900000, guid: ca1e9fce87dffad4a86d1d9f0b5dc3ab, type: 3}
   _funcPanels:
   - inkFuncName: open_rack
@@ -2440,6 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1931df7b4d9980f4e8796cd8a708b50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactImage: {fileID: 4430710254316405905, guid: 320ce8f34a0b17d4b833070c0aa84b11, type: 3}
   inkJSONFile: {fileID: 4900000, guid: 52ecd6c3832598643b537023cffc7c50, type: 3}
   _funcPanels:
   - inkFuncName: open_upgrade
