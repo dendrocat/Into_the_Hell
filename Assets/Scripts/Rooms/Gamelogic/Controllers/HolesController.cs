@@ -26,8 +26,8 @@ public class HolesController : MonoBehaviour
         {
             if (!person.hasEffect(EffectNames.Shift) && !person.hasEffect(EffectNames.HoleStun))
             {
-                person.TakeDamage(25f, DamageType.None);
                 person.AddEffect(EffectNames.HoleStun);
+                person.TakeDamage(25f, DamageType.None);
 
                 //personAnimator.SetTrigger("fallTrigger");
                 Vector2 direction = -person.facingDirection;

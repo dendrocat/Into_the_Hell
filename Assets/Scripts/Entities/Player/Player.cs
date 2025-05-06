@@ -240,8 +240,9 @@ public class Player : Person
             HealthChanged.Invoke();
             if (type != DamageType.Fire)
             {
-                var weapon = inventory.GetPlayerWeapon() as Sword;
-                if (weapon != null && weapon.altAttackIsActive())
+                if (hasEffect(EffectNames.HoleStun))
+                    _audioPlayer.Play("Fall");
+                else if (hasEffect(EffectNames.ShieldBlock))
                     _audioPlayer.Play("DamageShield");
                 else _audioPlayer.Play("Damage");
             }
