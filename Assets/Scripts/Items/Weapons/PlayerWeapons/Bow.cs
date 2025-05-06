@@ -56,12 +56,6 @@ public class Bow : MissileWeapon
         {
             player.inventory.UseExplosiveArrow();
         }
-        StartCoroutine(DelayAttack());
-    }
-
-    IEnumerator DelayAttack()
-    {
-        yield return new WaitForSeconds(0.6f);
         GameObject missile = GameObject.Instantiate(altMissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
         missileComponent.SetTargetTags(targetTags);
