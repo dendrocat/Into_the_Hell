@@ -47,6 +47,18 @@ public class Bow : MissileWeapon
         else return false;
     }
 
+    protected override IEnumerator PerformAttack()
+    {
+        OnPrepareAttackStart();
+        yield return new WaitForSeconds(basePrepareAttackTime);
+        OnPrepareAttackEnd();
+        Attack();
+        OnEndAttackStart();
+        yield return new WaitForSeconds(CalcScaleDescending(baseEndAttackTime));
+        OnEndAttackEnd();
+        StartCoroutine(ReloadWeapon(CalcScaleDescending(baseReloadTime)));
+    }
+
     /** 
      * <inheritdoc/>
      * **/

@@ -106,13 +106,14 @@ MonoBehaviour:
   targetTags:
   - Enemy
   - DestructibleWall
+  owner: {fileID: 0}
   damage: 10
   baseReloadTime: 1
-  basePrepareAttackTime: 0
+  basePrepareAttackTime: 0.6
   baseEndAttackTime: 0
   altDamage: 30
   baseAltReloadTime: 5
-  baseAltPrepareAttackTime: 0
+  baseAltPrepareAttackTime: 0.6
   baseAltEndAttackTime: 0
   missilePrefab: {fileID: 1130031636975414269, guid: 4f4e6bb5f6332494d8212be9a2be8b90, type: 3}
   missileSpeed: 8

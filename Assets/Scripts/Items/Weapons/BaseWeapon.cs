@@ -99,10 +99,10 @@ public class BaseWeapon : UpgradableItem
     }
 
     /// <summary>
-    /// Корутина, выполняющая последовательность действий при атаке.
+    /// Корутина, выполняющая последовательность действий при атаке. Может быть переопределена в классах-наследниках.
     /// </summary>
     /// <returns>Корутина.</returns>
-    private IEnumerator PerformAttack()
+    protected virtual IEnumerator PerformAttack()
     {
         OnPrepareAttackStart();
         yield return new WaitForSeconds(CalcScaleDescending(basePrepareAttackTime));
@@ -168,7 +168,7 @@ public class BaseWeapon : UpgradableItem
     /// </summary>
     /// <param name="reloadTime">Время перезарядки.</param>
     /// <returns>Корутина.</returns>
-    private IEnumerator ReloadWeapon(float reloadTime)
+    protected IEnumerator ReloadWeapon(float reloadTime)
     {
         yield return new WaitForSeconds(reloadTime);
         reloading = false;
