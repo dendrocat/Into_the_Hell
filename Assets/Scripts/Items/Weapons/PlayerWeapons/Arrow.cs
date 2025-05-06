@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /**
@@ -31,6 +29,7 @@ public class Arrow : Missile
         {
             damagable.TakeDamage(damage, DamageType.None);
         }
+        MakeSound();
         Destroy(gameObject);
     }
 }

@@ -61,6 +61,7 @@ public class ExplosiveArrow : Missile
                 }
             }
         }
+        MakeSound();
         Destroy(gameObject);
     }
 }

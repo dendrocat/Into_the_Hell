@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MissilesAudio))]
 public class Missile : MonoBehaviour
 {
     [SerializeField] protected List<string> targetTags;
@@ -90,5 +91,10 @@ public class Missile : MonoBehaviour
             }
         }
         Destroy(gameObject);
+    }
+
+    protected void MakeSound()
+    {
+        GetComponent<MissilesAudio>().PlayHitSound();
     }
 }

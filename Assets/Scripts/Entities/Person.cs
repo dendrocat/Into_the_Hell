@@ -17,7 +17,7 @@ public class Person : Effectable, IDamagable
 
     bool alive = true;
 
-    protected float destructionDelay = 1f;
+    protected float destructionDelay = 3f;
     [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
     public float MaxHealth => maxHealth;
 

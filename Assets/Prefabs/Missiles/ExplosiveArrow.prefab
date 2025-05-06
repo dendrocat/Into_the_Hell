@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4767123495082264995}
   - component: {fileID: -6788533526981349552}
   - component: {fileID: -1568308540392719306}
+  - component: {fileID: 6266760825583968993}
   m_Layer: 0
   m_Name: ExplosiveArrow
   m_TagString: Missile
@@ -200,3 +201,19 @@ MonoBehaviour:
   - Missile
   - Hole
   - Player
+--- !u!114 &6266760825583968993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668568274685889158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381a0b6ccfd7b1e41ba0ac9a9bbe30c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missileStart: {fileID: 8300000, guid: cb92ac03092485643a5e130473f1762f, type: 3}
+  _missileHit:
+    _enabled: 1
+    _value: {fileID: 8300000, guid: 4aa06501ff75f194daefcc52fb75190b, type: 3}
