@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class BossBarController : MonoBehaviour
 {
@@ -18,20 +19,32 @@ public class BossBarController : MonoBehaviour
 
     public void SetBoss(Boss boss)
     {
+        Debug.Log($"BossBar: boss setted");
         _bossHealthBar.SetBossName(boss.GetBossName());
         Debug.Log($"{boss.GetBossName()} {boss.getHP()} {boss.MaxHealth}");
         _bossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
         boss.HealthChanged.AddListener(() =>
-            _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth)
-        );
-        Person.Died.AddListener((person) =>
         {
-            if (!(person is Boss)) return;
-            gameObject.SetActive(false);
-        });
+            Debug.Log("Boss bar: health changed");
+            _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth);
+        }
+        );
+        Person.Died.AddListener(OnBossDied);
         _bossHealthBar.SetPredicateColorChange(() =>
             boss.hasEffect(EffectNames.MiniGolem)
         );
         SetBossEffect(boss);
+    }
+    void OnDestroy()
+    {
+        Debug.Log($"Boss bar: destroyed");
+        Person.Died.RemoveListener(OnBossDied);
+    }
+
+    void OnBossDied(Person person)
+    {
+        if (!(person is Boss)) return;
+        Debug.Log($"BossBar: boss died");
+        gameObject.SetActive(false);
     }
 }
