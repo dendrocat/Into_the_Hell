@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEditor;
 
 /**
  * <summary>
@@ -52,9 +53,10 @@ public class BaseAIController : MonoBehaviour
             {
                 NPC.Attack();
             }
-            else {
+            else
+            {
                 List<RaycastHit2D> hits = Physics2D.RaycastAll(transform.position, NPC.weaponDirection, attackRange).ToList();
-                foreach(RaycastHit2D hit in hits)
+                foreach (RaycastHit2D hit in hits)
                 {
                     if (hit.collider.gameObject.CompareTag("DestructibleWall"))
                     {

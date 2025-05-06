@@ -22,7 +22,7 @@ public class BaseEnemy : Person
      * Инициализация врага
      * </summary>
      * **/
-    void Start()
+    protected virtual void Start()
     {
         InitializePerson();
         if (!gameObject.TryGetComponent<Seeker>(out seeker))
@@ -39,8 +39,8 @@ public class BaseEnemy : Person
         }
         if (seeker)
         {
-            Debug.Log(transform.position);
-            Debug.Log(aiDestSetter.target.transform.position);
+            // Debug.Log(transform.position);
+            // Debug.Log(aiDestSetter.target.transform.position);
             path = seeker.StartPath(transform.position, aiDestSetter.target.transform.position);
         }
     }
@@ -113,6 +113,9 @@ public class BaseEnemy : Person
 
             // обновление скорости персонажа
             UpdateSpeed();
+            if (aipath.velocity.magnitude > 0.01f)
+                setMoving(true);
+            else setMoving(false);
 
             //движение персонажа
             if (hasEffect(EffectNames.Stun))

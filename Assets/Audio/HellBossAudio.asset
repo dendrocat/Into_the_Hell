@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124cbcda72bad43459c17ece4f9a92f5, type: 3}
+  m_Name: HellBossAudio
+  m_EditorClassIdentifier: 
+  _nameClips:
+  - name: Walk
+    clip: {fileID: 8300000, guid: bb43fcf7e344b52419247984f36d05a2, type: 3}
+  - name: Damage
+    clip: {fileID: 8300000, guid: 01e787bae4c06864394c75dd7bdb1396, type: 3}
+  - name: Start
+    clip: {fileID: 8300000, guid: db550b628ba4c0448bdebefd89f0ee97, type: 3}
+  - name: Die
+    clip: {fileID: 8300000, guid: f4ea65c9dfe456e48b1c486f08dcbec8, type: 3}
+  - name: Attack1
+    clip: {fileID: 8300000, guid: 9b75ef347a931e048b604b9e66cf48a7, type: 3}
+  - name: Attack2
+    clip: {fileID: 8300000, guid: 9b75ef347a931e048b604b9e66cf48a7, type: 3}
+  - name: Attack3
+    clip: {fileID: 8300000, guid: 9b75ef347a931e048b604b9e66cf48a7, type: 3}

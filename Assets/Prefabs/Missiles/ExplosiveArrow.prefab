@@ -213,7 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381a0b6ccfd7b1e41ba0ac9a9bbe30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missileStart: {fileID: 8300000, guid: cb92ac03092485643a5e130473f1762f, type: 3}
+  _missileStart:
+    _enabled: 1
+    _value: {fileID: 8300000, guid: cb92ac03092485643a5e130473f1762f, type: 3}
   _missileHit:
     _enabled: 1
     _value: {fileID: 8300000, guid: 4aa06501ff75f194daefcc52fb75190b, type: 3}

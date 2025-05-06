@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 /**
  * <summary>
@@ -28,8 +27,6 @@ public class Player : Person
 
     Coroutine timer1Coroutine, timer2Coroutine;
 
-    PlayerAudio _audioPlayer;
-
     /**
      * <summary>
      * Обновляет здоровье в соответствии с уровнем брони.
@@ -46,6 +43,7 @@ public class Player : Person
         InitializePerson();
         RecalculateHealth();
         _audioPlayer = GetComponent<PlayerAudio>();
+        destructionDelay = 1f;
     }
 
     /**
@@ -100,9 +98,9 @@ public class Player : Person
         if (weapon.isReloading()) return;
         weapon.LaunchAttack();
 
-        if (weapon is Sword) _audioPlayer.Play(PlayerAudioName.Sword);
-        else if (weapon is TwoHandedSword) _audioPlayer.Play(PlayerAudioName.TwoHandedSword);
-        else _audioPlayer.Play(PlayerAudioName.Bow);
+        if (weapon is Sword) _audioPlayer.Play("Sword");
+        else if (weapon is TwoHandedSword) _audioPlayer.Play("TwoHandedSword");
+        else _audioPlayer.Play("Bow");
     }
 
     /**
@@ -116,9 +114,9 @@ public class Player : Person
         if (weapon.isReloadingAlt()) return;
         weapon.LaunchAltAttack();
 
-        if (weapon is Sword) { if (isAlive()) _audioPlayer.Play(PlayerAudioName.Shield); }
-        else if (weapon is TwoHandedSword) _audioPlayer.Play(PlayerAudioName.TwoHandedSword);
-        else _audioPlayer.Play(PlayerAudioName.Bow);
+        if (weapon is Sword) { if (isAlive()) _audioPlayer.Play("Shield"); }
+        else if (weapon is TwoHandedSword) _audioPlayer.Play("TwoHandedSword");
+        else _audioPlayer.Play("Bow");
     }
 
     /**
@@ -134,7 +132,7 @@ public class Player : Person
             if (timer2Coroutine != null) StopCoroutine(timer2Coroutine);
 
             StartCoroutine(ShiftCoroutine());
-            _audioPlayer.Play(PlayerAudioName.Dash);
+            _audioPlayer.Play("Dash");
             ShiftPerformed.Invoke();
         }
     }
@@ -165,7 +163,7 @@ public class Player : Person
                 StartCoroutine(HealReload(reloadTime));
 
                 HealthChanged.Invoke();
-                _audioPlayer.Play(PlayerAudioName.Heal);
+                _audioPlayer.Play("Heal");
             }
         }
     }
@@ -244,8 +242,8 @@ public class Player : Person
             {
                 var weapon = inventory.GetPlayerWeapon() as Sword;
                 if (weapon != null && weapon.altAttackIsActive())
-                    _audioPlayer.Play(PlayerAudioName.DamageShield);
-                else _audioPlayer.Play(PlayerAudioName.Damage);
+                    _audioPlayer.Play("DamageShield");
+                else _audioPlayer.Play("Damage");
             }
             if (health <= 0)
             {
@@ -305,6 +303,5 @@ public class Player : Person
     protected override void OnDeath()
     {
         Debug.Log("You died. Game over!");
-        _audioPlayer.Play(PlayerAudioName.Die);
     }
 }

@@ -1,50 +1,11 @@
-using System.Collections.Generic;
-using UnityEngine;
-
-
-[RequireComponent(typeof(PlayerInventory), typeof(Player))]
-public class PlayerAudio : AudioPlayer
+public class PlayerAudio : PersonAudio
 {
-    [SerializeField] PlayerAudioContainer audioContainer;
-
-    Dictionary<PlayerAudioName, AudioClip> _clips;
-
-    Player _player;
-
-    PlayerAudioName currentAudio;
-
-    void Start()
+    protected override void InitAudio()
     {
-        _clips = new();
-        foreach (var item in audioContainer.Clips)
-        {
-            _clips[item.name] = item.clip;
-        }
+        base.InitAudio();
         var inventory = GetComponent<PlayerInventory>();
         inventory.MoneyChanged.AddListener(
-            (money) => Play(PlayerAudioName.Coins)
+            (money) => Play("Coins")
         );
-        _player = GetComponent<Player>();
-    }
-
-    public void Play(PlayerAudioName audioName)
-    {
-        if (audioName == PlayerAudioName.Walk)
-            Loop = true;
-        else Loop = false;
-        Play(_clips.GetValueOrDefault(audioName, null));
-
-        currentAudio = audioName;
-    }
-
-    void Update()
-    {
-        if (_player.isMoving())
-        {
-            if (currentClip == null)
-                Play(PlayerAudioName.Walk);
-        }
-        else if (currentAudio == PlayerAudioName.Walk)
-            Stop();
     }
 }

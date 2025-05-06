@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.Linq;
 
 /**
  * <summary>
  * Базовый класс персонажа
  * </summary>
  * **/
+[RequireComponent(typeof(PersonAudio))]
 public class Person : Effectable, IDamagable
 {
     [HideInInspector]
@@ -34,6 +36,8 @@ public class Person : Effectable, IDamagable
 
     Rigidbody2D rb = null;
     Animator anim = null; //компонент аниматор
+
+    protected PersonAudio _audioPlayer;
 
     /**
      * <summary>
@@ -102,6 +106,10 @@ public class Person : Effectable, IDamagable
         if (weaponObject == null)
         {
             Debug.LogError(gameObject.name + ": Missing weapon object");
+        }
+        if (!TryGetComponent(out _audioPlayer))
+        {
+            Debug.LogError(gameObject.name + ": Missing Person Audio component");
         }
     }
 
@@ -205,6 +213,12 @@ public class Person : Effectable, IDamagable
 
             health -= resultDamage;
             HealthChanged.Invoke();
+            if (type != DamageType.Fire)
+            {
+                if (!hasEffect(EffectNames.MiniGolem))
+                    _audioPlayer.Play("Damage");
+                else _audioPlayer.Play("DamageGolem");
+            }
             if (health <= 0)
             {
                 Die();
@@ -290,6 +304,7 @@ public class Person : Effectable, IDamagable
         if (!weapon.isReloading())
         {
             weapon.LaunchAttack();
+            _audioPlayer.Play("Attack");
         }
     }
 
@@ -303,8 +318,12 @@ public class Person : Effectable, IDamagable
         alive = false;
         if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
+        GetComponents<Collider2D>().ToList().ForEach((el) => el.enabled = false);
+
         OnDeath(); //вызов событий при смерти персонажа
         Died.Invoke(this);
+        _audioPlayer.Play("Die");
+
         StartCoroutine(DestructionDelayCoroutine());
     }
 

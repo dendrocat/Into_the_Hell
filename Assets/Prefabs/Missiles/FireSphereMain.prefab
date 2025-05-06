@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4184637282977877280}
   - component: {fileID: 3062890070895305825}
   - component: {fileID: -3625451962069767717}
+  - component: {fileID: 5736782470436079494}
   m_Layer: 0
   m_Name: FireSphereMain
   m_TagString: Missile
@@ -148,6 +149,24 @@ MonoBehaviour:
   - Missile
   - Enemy
   - Hole
+--- !u!114 &5736782470436079494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617671186915113450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381a0b6ccfd7b1e41ba0ac9a9bbe30c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missileStart:
+    _enabled: 1
+    _value: {fileID: 8300000, guid: 9b75ef347a931e048b604b9e66cf48a7, type: 3}
+  _missileHit:
+    _enabled: 0
+    _value: {fileID: 0}
 --- !u!1 &7760192977707090407
 GameObject:
   m_ObjectHideFlags: 0

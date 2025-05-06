@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class MissilesAudio : MonoBehaviour
 {
-    [SerializeField] AudioClip _missileStart;
+    [SerializeField] Optional<AudioClip> _missileStart;
     [SerializeField] Optional<AudioClip> _missileHit;
 
     void Awake()
     {
-        PlaySound(_missileStart);
+        if (_missileStart.Enabled)
+            PlaySound(_missileStart.Value);
     }
 
     void PlaySound(AudioClip clip)
@@ -16,7 +17,7 @@ public class MissilesAudio : MonoBehaviour
         obj.transform.position = transform.position;
 
         var audio = obj.AddComponent<AudioSource>();
-        audio.volume = 0.05f;
+        audio.volume = 0.07f;
         audio.clip = clip;
         audio.loop = false;
         audio.Play();
@@ -26,7 +27,7 @@ public class MissilesAudio : MonoBehaviour
 
     public void PlayHitSound()
     {
-        if (!_missileHit.Enabled) return;
-        PlaySound(_missileHit.Value);
+        if (_missileHit.Enabled)
+            PlaySound(_missileHit.Value);
     }
 }

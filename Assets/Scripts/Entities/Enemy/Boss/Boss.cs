@@ -15,6 +15,14 @@ public class Boss : BaseEnemy
         return bossName;
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        _audioPlayer.Play("Start");
+        destructionDelay = 4f;
+    }
+
+
     new public void Attack()
     {
         bool[] reloading = new bool[3];
@@ -28,6 +36,7 @@ public class Boss : BaseEnemy
         {
             if (bossWeapon.CanUseAttack(selectedWeapon) && !reloading[selectedWeapon])
             {
+                _audioPlayer.Play($"Attack{selectedWeapon + 1}");
                 bossWeapon.LaunchAttackByNumber(selectedWeapon);
                 break;
             }

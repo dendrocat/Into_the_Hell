@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /**
@@ -15,6 +16,12 @@ public class MissileWeapon : AlternateAttackWeapon
      * **/
     protected override void Attack()
     {
+        StartCoroutine(DelayAttack());
+    }
+
+    IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(0.6f);
         GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
         missileComponent.SetTargetTags(targetTags);

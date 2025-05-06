@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
 
     UIController _ui;
 
+#if UNITY_EDITOR
+    [SerializeField] Boss debugBoss;
+#endif
+
     void Awake()
     {
         if (Instance != null)
@@ -58,6 +62,9 @@ public class UIManager : MonoBehaviour
         _player.inventory.ExplosiveArrowCountChanged.AddListener(_ui.SetArrows);
 
         _player.inventory.MoneyChanged.AddListener(_ui.SetMoneySmooth);
+#if UNITY_EDITOR
+        if (debugBoss) SetBoss(debugBoss);
+#endif
     }
 
     public void SetBoss(Boss boss)

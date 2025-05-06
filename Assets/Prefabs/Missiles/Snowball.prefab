@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2041249982052661741}
   - component: {fileID: 8833963921757145312}
   - component: {fileID: 7634643806016266965}
+  - component: {fileID: 6102825642093443449}
   m_Layer: 0
   m_Name: Snowball
   m_TagString: Missile
@@ -189,3 +190,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &6102825642093443449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207216263902191456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381a0b6ccfd7b1e41ba0ac9a9bbe30c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missileStart: {fileID: 0}
+  _missileHit:
+    _enabled: 1
+    _value: {fileID: 8300000, guid: 87a436a2aac1f63408e7157d7df39286, type: 3}
