@@ -45,7 +45,7 @@ public class AlternateAttackWeapon : BaseWeapon
      * </summary>
      * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
      * **/
-    private IEnumerator PerformAltAttack()
+    protected virtual IEnumerator PerformAltAttack()
     {
         OnPrepareAltAttackStart();
         yield return new WaitForSeconds(CalcScaleDescending(baseAltPrepareAttackTime));
@@ -124,7 +124,7 @@ public class AlternateAttackWeapon : BaseWeapon
      * </summary>
      * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
      * **/
-    private IEnumerator ReloadAltWeapon(float reloadTime)
+    protected IEnumerator ReloadAltWeapon(float reloadTime)
     {
         yield return new WaitForSeconds(reloadTime);
         altReloading = false;

@@ -59,6 +59,18 @@ public class Bow : MissileWeapon
         StartCoroutine(ReloadWeapon(CalcScaleDescending(baseReloadTime)));
     }
 
+    protected override IEnumerator PerformAltAttack()
+    {
+        OnPrepareAltAttackStart();
+        yield return new WaitForSeconds(baseAltPrepareAttackTime);
+        OnPrepareAltAttackEnd();
+        AltAttack();
+        OnEndAltAttackStart();
+        yield return new WaitForSeconds(CalcScaleDescending(baseAltEndAttackTime));
+        OnEndAltAttackEnd();
+        StartCoroutine(ReloadAltWeapon(CalcScaleDescending(baseAltReloadTime)));
+    }
+
     /** 
      * <inheritdoc/>
      * **/

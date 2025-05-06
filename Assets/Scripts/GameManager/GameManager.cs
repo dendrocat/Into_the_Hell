@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         _isTutor = false;
     }
 
-    public static void ToMainMenu()
+    public void ToMainMenu()
     {
         SceneManager.LoadScene(1);
     }

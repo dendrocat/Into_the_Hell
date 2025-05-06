@@ -18,14 +18,6 @@ public class DontDestroyManager : MonoBehaviour
             DontDestroyOnLoad(item.gameObject);
             dontDestroyable.Add(item.gameObject);
         }
-        StartCoroutine(StartGame());
-    }
-
-    IEnumerator StartGame()
-    {
-        yield return null;
-        yield return null;
-        GameManager.ToMainMenu();
     }
 
     public void DestroyAll()
