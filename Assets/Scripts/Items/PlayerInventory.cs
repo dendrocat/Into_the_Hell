@@ -166,15 +166,13 @@ public class PlayerInventory : MonoBehaviour
      * Устанавливает оружие для игрока.
      * </summary>
      * **/
-    public void SetPlayerWeapon(AlternateAttackWeapon weaponPrefab,
-    byte level)
+    public void SetPlayerWeapon(AlternateAttackWeapon weaponPrefab)
     {
         if (playerWeapon != null)
         {
             Destroy(playerWeapon.gameObject);
         }
         playerWeapon = Instantiate(weaponPrefab.gameObject, transform).GetComponent<AlternateAttackWeapon>();
-        playerWeapon.level = level;
         GetComponent<Player>().weaponObject = playerWeapon.transform;
     }
 

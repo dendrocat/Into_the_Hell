@@ -5,7 +5,7 @@ using UnityEngine;
 /// Manages game state persistence between scenes and sessions
 /// </summary>
 /// <remarks>
-/// Bridges between game objects and <see cref="SaveLoadRepository"/> for data serialization.
+/// Bridges between game objects and <see cref="SaveLoadRepository"/> for loaded serialization.
 /// </remarks>
 public class SaveLoadManager
 {
@@ -19,13 +19,8 @@ public class SaveLoadManager
     /// </summary>
     public static void Load()
     {
-        GameData data = SaveLoadRepository.Load() ??
-                        GameStorage.Instance.InitialGameData;
-
-        WeaponStorage.Instance.SetWeaponLevels(data.weaponLevels);
-        GameStorage.Instance.location = (Locations)Enum.GetValues(typeof(Locations)).GetValue(data.location);
-        GameStorage.Instance.level = data.level;
-        GameStorage.Instance.PlayerData = data.playerData;
+        GameStorage.Instance.GameData = SaveLoadRepository.Load()
+                                        ?? GameStorage.Instance.InitialGameData;
     }
 
     /// <summary>
@@ -33,14 +28,7 @@ public class SaveLoadManager
     /// </summary>
     public static void Save()
     {
-        var data = new GameData();
-
-        data.weaponLevels = WeaponStorage.Instance.GetWeaponLevels();
-        data.playerData = GameStorage.Instance.PlayerData;
-        data.location = (int)GameStorage.Instance.location;
-        data.level = GameStorage.Instance.level;
-
-        SaveLoadRepository.Save(data);
+        SaveLoadRepository.Save(GameStorage.Instance.GameData);
     }
 
     /// <summary>

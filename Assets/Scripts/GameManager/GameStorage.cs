@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStorage : MonoBehaviour
@@ -9,21 +10,8 @@ public class GameStorage : MonoBehaviour
     public GameData InitialGameData => _initialGameData;
 
     [Header("Current game data")]
-    [SerializeField] Locations _location;
-    public Locations location { get => _location; set => _location = value; }
-
-    [Range(0, 4)]
-    [SerializeField] int _level;
-
-    [Range(5, 10)]
-    [SerializeField] int maxLevel = 5;
-    public int level { get => _level; set => _level = value % maxLevel; }
-
-    public bool isFirstLevel => _level == 0;
-    public bool isLastLevel => _level == maxLevel - 1;
-
-    [SerializeField] PlayerData _playerData;
-    public PlayerData PlayerData { get => _playerData; set => _playerData = value; }
+    [SerializeField] GameData gameData;
+    public GameData GameData { get => gameData; set => gameData = value; }
 
     void Awake()
     {
@@ -35,21 +23,31 @@ public class GameStorage : MonoBehaviour
         Instance = this;
     }
 
-    public void CollectPlayerData()
+    public void CollectGameData()
     {
         var player = FindFirstObjectByType<Player>();
         if (player == null) return;
-        PlayerData = player.inventory.GetPlayerData();
+        (var location, var level) = AbstractLevelManager.Instance.GetLevelData();
+        gameData.location = (int)location;
+        gameData.level = level;
+        gameData.weaponLevels = WeaponStorage.Instance.GetWeaponLevels();
+
+        gameData.playerData = player.inventory.GetPlayerData();
     }
 
-    public void InstallPlayerData()
+    public void InstallGameData()
     {
         var player = FindFirstObjectByType<Player>();
         if (player == null) return;
-        player.inventory.SetPlayerData(PlayerData);
+        AbstractLevelManager.Instance.SetLevelData(
+            (Location)GameData.location,
+            GameData.level
+        );
+        WeaponStorage.Instance.SetWeaponLevels(gameData.weaponLevels);
+
+        player.inventory.SetPlayerData(gameData.playerData);
         player.inventory.SetPlayerWeapon(
-            WeaponStorage.Instance.GetWeapon(PlayerData.weapon),
-            WeaponStorage.Instance.GetWeaponLevels()[(int)PlayerData.weapon]
+            WeaponStorage.Instance.GetWeapon(gameData.playerData.weapon)
         );
     }
 

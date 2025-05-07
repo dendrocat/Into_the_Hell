@@ -57,9 +57,10 @@ public class RoomContoller : MonoBehaviour, IRoomController
     void SpawnBoss(Transform playerTransform)
     {
         if (!BossSpawn.Enabled) return;
-        Debug.Log("SpawnBoss");
-        var bossPrefab = EnemyStorage.Instance.GetEnemies().Boss;
-        var boss = Instantiate(bossPrefab, BossSpawn.Value.position, Quaternion.identity);
+
+        var boss = Instantiate(AbstractLevelManager.Instance.GetEnemies().Boss,
+                            BossSpawn.Value.position, Quaternion.identity);
+
         if (boss.TryGetComponent<BlazeAIController>(out var blazeAI))
         {
             blazeAI.SetAttackTarget(playerTransform);
@@ -75,8 +76,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
     void SpawnEnemies(Transform playerTransform)
     {
         if (!EnemySpawns.Enabled) return;
-        Debug.Log("SpawnEnemies");
-        var enemies = EnemyStorage.Instance.GetEnemies().Enemies;
+        var enemies = AbstractLevelManager.Instance.GetEnemies().Enemies;
 
         enemiesCount = EnemySpawns.Value.childCount;
         for (int i = 0; i < enemiesCount; i++)

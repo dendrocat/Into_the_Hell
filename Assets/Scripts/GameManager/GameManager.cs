@@ -57,34 +57,26 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        GameStorage.Instance.InstallPlayerData();
-        if (scene.name.Contains("Level"))
-            StartCoroutine(WaitInstance(() => LevelManager.Instance));
-        else
-            StartCoroutine(WaitInstance(() => StaticLevelManager.Instance));
+        GameStorage.Instance.InstallGameData();
+        StartCoroutine(WaitInstance(() => AbstractLevelManager.Instance));
     }
 
-    IEnumerator WaitInstance(Func<ILevelManager> getInstance)
+    IEnumerator WaitInstance(Func<AbstractLevelManager> getInstance)
     {
         yield return new WaitUntil(() => getInstance() != null);
-        getInstance().Generate(GameStorage.Instance.location);
+        getInstance().Generate();
     }
 
     public void NextLevel()
     {
-        GameStorage.Instance.CollectPlayerData();
+        if (_nextBase && !_isTutor)
+            AbstractLevelManager.Instance.NextLevel();
 
-        GameStorage.Instance.level += Convert.ToInt32(_nextBase && !_isTutor);
-        if (GameStorage.Instance.isFirstLevel && _nextBase && !_isTutor)
+        GameStorage.Instance.CollectGameData();
+        if (AbstractLevelManager.Instance.isFinalLocation)
         {
-            var location = GameStorage.Instance.location;
-            location = (Locations)(((int)location + 1) % Enum.GetValues(typeof(Locations)).Length);
-            GameStorage.Instance.location = location;
-            if (location == Locations.Final)
-            {
-                SceneManager.LoadScene("FinalScene");
-                return;
-            }
+            SceneManager.LoadScene("FinalScene");
+            return;
         }
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (_nextBase)
@@ -109,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
 
-        Person.Died.RemoveListener(OnPlayerDied);
+        Person.Died.RemoveAllListeners();
         DontDestroyManager.Instance.DestroyAll();
 
         SceneManager.LoadScene(0);

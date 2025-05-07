@@ -552,32 +552,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
-      propertyPath: _playerData.money
-      value: 1200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
-      propertyPath: _playerData.armorLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
-      propertyPath: _playerData.arrowCount
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
-      propertyPath: _playerData.potionCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
-      propertyPath: _playerData.potionLevel
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 9060774527863710454, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
       propertyPath: m_Name
       value: GameStorage
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4596072629705538665, guid: dd7398f0ff83168479b99b2b1a7ec777, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

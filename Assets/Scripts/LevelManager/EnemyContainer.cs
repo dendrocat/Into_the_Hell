@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyContainer", menuName = "Scriptable Objects/EnemyContainer")]
+[CreateAssetMenu(fileName = "EnemyContainer", menuName = "Containers/EnemyContainer")]
 public class EnemyContainer : ScriptableObject
 {
     [SerializeField] List<GameObject> _enemies;

@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// Container for tiles and prefabs used in specific locations. This is a ScriptableObject that can be created via the Unity Editor.
 /// </summary>
-[CreateAssetMenu(fileName = "TilesContainer", menuName = "Scriptable Objects/TilesContainer")]
+[CreateAssetMenu(fileName = "TilesContainer", menuName = "Containers/TilesContainer")]
 public class TilesContainer : ScriptableObject
 {
     [Header("Walls")]
