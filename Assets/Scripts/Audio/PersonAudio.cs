@@ -33,7 +33,7 @@ public class PersonAudio : AudioPlayer
 
         _walk = obj.AddComponent<AudioSource>();
         _walk.loop = true;
-        _walk.volume = Volume - 0.2f;
+        _walk.volume = Volume;
         _walk.clip = _clips[WALK];
         _walk.Pause();
     }

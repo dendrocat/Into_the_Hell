@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ReloadGame()
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         Person.Died.RemoveListener(OnPlayerDied);
         DontDestroyManager.Instance.DestroyAll();
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     void OnDestroy()

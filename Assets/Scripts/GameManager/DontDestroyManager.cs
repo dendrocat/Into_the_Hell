@@ -18,6 +18,7 @@ public class DontDestroyManager : MonoBehaviour
             DontDestroyOnLoad(item.gameObject);
             dontDestroyable.Add(item.gameObject);
         }
+        GameManager.Instance.ToMainMenu();
     }
 
     public void DestroyAll()

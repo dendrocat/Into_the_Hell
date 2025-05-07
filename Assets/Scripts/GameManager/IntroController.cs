@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class IntoController : MonoBehaviour
+public class IntroController : MonoBehaviour
 {
     [Serializable]
     struct ObjectDuration
@@ -64,6 +65,6 @@ public class IntoController : MonoBehaviour
             yield return new WaitForSeconds(itemDuration + delayBetweenObjects);
             item.gameObject.SetActive(false);
         }
-        GameManager.Instance.ToMainMenu();
+        SceneManager.LoadScene(1);
     }
 }
