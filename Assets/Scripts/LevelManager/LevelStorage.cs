@@ -2,41 +2,36 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Locations
+public enum Location
 {
     FrozenCaves = 0, MineShaft = 1, HellCastle = 2, Final = 3
 }
 
-public class LevelStorage : MonoBehaviour
+[CreateAssetMenu(fileName = "LevelStorage", menuName = "Storages/Level Storage")]
+public class LevelStorage : ScriptableObject
 {
-    public static LevelStorage Instance { get; private set; }
-
     [Serializable]
     struct LocationContainer
     {
-        public Locations locations;
+        public Location location;
         public TilesContainer tilesContainer;
         public RoomContainer roomContainer;
 
+
         public TrapContainer trapContainer;
+        public EnemyContainer enemyContainer;
     }
 
     [SerializeField] List<LocationContainer> _location;
 
     [SerializeField] List<GameObject> _halls;
 
-    void Awake()
-    {
-        if (Instance != null) Destroy(gameObject);
-        Instance = this;
-    }
-
-    public TilesContainer GetTilesContainer(Locations location)
+    public TilesContainer GetTilesContainer(Location location)
     {
         return _location[(int)location].tilesContainer;
     }
 
-    public RoomContainer GetRoomContainer(Locations location)
+    public RoomContainer GetRoomContainer(Location location)
     {
         return _location[(int)location].roomContainer;
     }
@@ -46,8 +41,13 @@ public class LevelStorage : MonoBehaviour
         return _halls;
     }
 
-    public TrapContainer GetTrapContainer(Locations location)
+    public TrapContainer GetTrapContainer(Location location)
     {
         return _location[(int)location].trapContainer;
+    }
+
+    public EnemyContainer GetEnemyContainer(Location location)
+    {
+        return _location[(int)location].enemyContainer;
     }
 }

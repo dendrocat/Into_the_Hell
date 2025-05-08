@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class StaticLevelManager : MonoBehaviour, ILevelManager
+public class StaticLevelManager : AbstractLevelManager
 {
-    public static StaticLevelManager Instance { get; private set; } = null;
     [SerializeField] List<RoomTilemapController> _rooms;
 
     [SerializeField] List<HallTilemapController> _halls;
@@ -29,14 +28,13 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
     {
         var additionalController = room.AdditionalController;
         if (additionalController == null) return;
-        var trapContainer = LevelStorage.Instance.GetTrapContainer(GameStorage.Instance.location);
+        var trapContainer = _levelStorage.GetTrapContainer(_location);
         if (trapContainer == null) return;
         additionalController.SetAdditionalEffect(trapContainer);
     }
 
-    public void Generate(Locations location)
+    public override void Generate()
     {
-        var tiles = LevelStorage.Instance.GetTilesContainer(location);
         if (_halls.Count > 0)
         {
             for (int i = 0; i < _halls.Count; ++i)
@@ -64,6 +62,7 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
                 _halls[i].ExtendToLength(10);
             }
         }
+        var tiles = _levelStorage.GetTilesContainer(_location);
         _rooms.ForEach(r =>
         {
             GenerateAdditional(r, tiles.Additional);
@@ -82,12 +81,5 @@ public class StaticLevelManager : MonoBehaviour, ILevelManager
             Destroy(h);
         });
 
-        Destroy(LevelStorage.Instance.gameObject);
-        Destroy(gameObject);
-    }
-
-    void Awake()
-    {
-        Instance = this;
     }
 }

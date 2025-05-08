@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TrapContainer", menuName = "Scriptable Objects/TrapContainer")]
+[CreateAssetMenu(fileName = "TrapContainer", menuName = "Containers/TrapContainer")]
 public class TrapContainer : ScriptableObject
 {
     [SerializeField] string _trapTypeName;

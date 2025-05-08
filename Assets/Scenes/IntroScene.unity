@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 660933014}
   - component: {fileID: 660933013}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: GameName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 250, z: 0, w: 0}
+  m_margin: {x: 0, y: 300, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -521,7 +521,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f8b7cc5cce219274199a5905d6ebe46e, type: 3}
   m_Resource: {fileID: 8300000, guid: f8b7cc5cce219274199a5905d6ebe46e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

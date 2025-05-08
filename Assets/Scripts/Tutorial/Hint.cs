@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "HintConfig", menuName = "Scriptable Objects/Hint")]
+[CreateAssetMenu(fileName = "HintConfig", menuName = "Hint")]
 public class Hint : ScriptableObject
 {
     [Serializable]

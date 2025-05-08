@@ -34,6 +34,8 @@ public class UpgradePanel : ShopPanel
         if (!CheckBuy(cost)) return;
 
         WeaponStorage.Instance.UpgradeWeapon(weaponType);
+        if (_inventory.GetPlayerWeapon().GetType().Name.Equals(type))
+            _inventory.GetPlayerWeapon().Upgrade(1);
 
         _inventory.ModifyMoneyCount(-cost);
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RoomContainer", menuName = "Scriptable Objects/RoomContainer")]
+[CreateAssetMenu(fileName = "RoomContainer", menuName = "Containers/RoomContainer")]
 public class RoomContainer : ScriptableObject
 {
     [SerializeField] GameObject _startRoom;

@@ -33,8 +33,7 @@ public class WeaponPanel : BasePanel
             return;
         }
         _inventory.SetPlayerWeapon(
-            WeaponStorage.Instance.GetWeapon(weaponType),
-            WeaponStorage.Instance.GetWeaponLevels()[(int)weaponType]
+            WeaponStorage.Instance.GetWeapon(weaponType)
         );
 
         CalcItemState(weaponType);

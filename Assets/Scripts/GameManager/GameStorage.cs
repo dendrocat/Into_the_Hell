@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStorage : MonoBehaviour
@@ -9,21 +10,25 @@ public class GameStorage : MonoBehaviour
     public GameData InitialGameData => _initialGameData;
 
     [Header("Current game data")]
-    [SerializeField] Locations _location;
-    public Locations location { get => _location; set => _location = value; }
+    [SerializeField] GameData _currentGameData;
+    public GameData GameData { get => _currentGameData; set => _currentGameData = value; }
 
-    [Range(0, 4)]
-    [SerializeField] int _level;
+    
+    void ValidateGameData(ref GameData data) {
+        if (data.location == Location.Final)
+            data.location = Location.HellCastle;
 
-    [Range(5, 10)]
-    [SerializeField] int maxLevel = 5;
-    public int level { get => _level; set => _level = value % maxLevel; }
+        if (data.weaponLevels == null) data.weaponLevels = new List<byte>{1, 1, 1};
+        for (int i = 0; i < data.weaponLevels.Count; ++i)
+            if (data.weaponLevels[i] <= 0) data.weaponLevels[i] = 1;
+    }
 
-    public bool isFirstLevel => _level == 0;
-    public bool isLastLevel => _level == maxLevel - 1;
+    void OnValidate()
+    {
+        ValidateGameData(ref _initialGameData);
+        ValidateGameData(ref _currentGameData);
+    }
 
-    [SerializeField] PlayerData _playerData;
-    public PlayerData PlayerData { get => _playerData; set => _playerData = value; }
 
     void Awake()
     {
@@ -35,21 +40,31 @@ public class GameStorage : MonoBehaviour
         Instance = this;
     }
 
-    public void CollectPlayerData()
+    public void CollectGameData()
     {
         var player = FindFirstObjectByType<Player>();
         if (player == null) return;
-        PlayerData = player.inventory.GetPlayerData();
+        (var location, var level) = AbstractLevelManager.Instance.GetLevelData();
+        _currentGameData.location = location;
+        _currentGameData.level = level;
+        _currentGameData.weaponLevels = WeaponStorage.Instance.GetWeaponLevels();
+
+        _currentGameData.playerData = player.inventory.GetPlayerData();
     }
 
-    public void InstallPlayerData()
+    public void InstallGameData()
     {
         var player = FindFirstObjectByType<Player>();
         if (player == null) return;
-        player.inventory.SetPlayerData(PlayerData);
+        AbstractLevelManager.Instance.SetLevelData(
+            GameData.location,
+            GameData.level
+        );
+        WeaponStorage.Instance.SetWeaponLevels(_currentGameData.weaponLevels);
+
+        player.inventory.SetPlayerData(_currentGameData.playerData);
         player.inventory.SetPlayerWeapon(
-            WeaponStorage.Instance.GetWeapon(PlayerData.weapon),
-            WeaponStorage.Instance.GetWeaponLevels()[(int)PlayerData.weapon]
+            WeaponStorage.Instance.GetWeapon(_currentGameData.playerData.weapon)
         );
     }
 

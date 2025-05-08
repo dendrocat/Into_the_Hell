@@ -4,6 +4,6 @@ public class TestGameManager : MonoBehaviour
 {
     void Start()
     {
-        StaticLevelManager.Instance.Generate(Locations.FrozenCaves);
+        AbstractLevelManager.Instance.Generate();
     }
 }

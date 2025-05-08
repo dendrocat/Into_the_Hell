@@ -15,7 +15,6 @@ public class WeaponStorage : MonoBehaviour
     public static WeaponStorage Instance { get; private set; }
 
     Dictionary<WeaponType, AlternateAttackWeapon> _weapons;
-    Dictionary<WeaponType, byte> _weaponLevels;
 
 
     [SerializeField] List<WeaponMapping> _weaponMapping;
@@ -29,11 +28,9 @@ public class WeaponStorage : MonoBehaviour
         }
         Instance = this;
         _weapons = new();
-        _weaponLevels = new();
         foreach (var weapon in _weaponMapping)
         {
             _weapons[weapon.type] = weapon.prefab;
-            _weaponLevels[weapon.type] = 1;
         }
     }
 
@@ -44,27 +41,30 @@ public class WeaponStorage : MonoBehaviour
 
     public List<byte> GetWeaponLevels()
     {
-        return new List<byte>(_weaponLevels.Values);
+        List<byte> weaponLevels = new();
+        foreach (var item in _weapons)
+        {
+            weaponLevels.Add(item.Value.level);
+        }
+        return weaponLevels;
     }
 
     public void SetWeaponLevels(List<byte> weaponLevels)
     {
         foreach (var key in Enum.GetValues(typeof(WeaponType)))
         {
-            _weaponLevels[(WeaponType)key] = weaponLevels[(int)key];
+            _weapons[(WeaponType)key].level = weaponLevels[(int)key];
         }
     }
 
     public int GetUpgradeCost(WeaponType type)
     {
-        _weapons[type].level = _weaponLevels[type];
         var cost = _weapons[type].GetUpgradeCost();
-        _weapons[type].level = 1;
         return cost;
     }
 
     public void UpgradeWeapon(WeaponType type)
     {
-        _weaponLevels[type]++;
+        _weapons[type].Upgrade(1);
     }
 }
