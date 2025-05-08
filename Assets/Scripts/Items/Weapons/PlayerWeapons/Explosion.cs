@@ -83,7 +83,7 @@ public class Explosion : MonoBehaviour
                 }
             }
         }
-        Destroy(_collider);
+        _collider.enabled = false;
     }
 
     void OnDrawGizmos()

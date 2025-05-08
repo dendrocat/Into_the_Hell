@@ -21,4 +21,8 @@ public interface IDoorController
     /// Closes all doors managed by this controller.
     /// </summary>
     public void CloseDoors();
+    /// <summary>
+    /// Removes all doors managed by this controller.
+    /// </summary>
+    public void RemoveDoors();
 }

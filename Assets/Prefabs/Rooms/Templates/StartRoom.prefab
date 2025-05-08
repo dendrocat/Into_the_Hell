@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 3249055927535856592}
   - component: {fileID: 4881272633116770441}
   - component: {fileID: 736197524171588881}
+  - component: {fileID: 4797652781737934950}
   m_Layer: 0
   m_Name: StartRoom
   m_TagString: Untagged
@@ -710,9 +711,6 @@ MonoBehaviour:
   _additional:
     _enabled: 0
     _value: {fileID: 0}
-  _hole:
-    _enabled: 0
-    _value: {fileID: 0}
   TrapSpawns:
     _enabled: 0
     _value: {fileID: 0}
@@ -738,6 +736,18 @@ MonoBehaviour:
     _enabled: 0
     _value: {fileID: 0}
   _isEndRoom: 0
+--- !u!114 &4797652781737934950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029981440649443703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d61d1bbfec0ed4f863e363a73b5ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5789496464568623363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,10 +2038,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorL
       objectReference: {fileID: 0}
-    - target: {fileID: 8817426859014190417, guid: 3d4002213533f2c44a992c14dc4df5c9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2098,10 +2104,6 @@ PrefabInstance:
     - target: {fileID: 2863732502444606122, guid: d9014431f39abc74a92047671ab0fa2b, type: 3}
       propertyPath: m_Name
       value: DoorU
-      objectReference: {fileID: 0}
-    - target: {fileID: 2863732502444606122, guid: d9014431f39abc74a92047671ab0fa2b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2237,10 +2239,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorR
       objectReference: {fileID: 0}
-    - target: {fileID: 8817426859014190417, guid: 3d4002213533f2c44a992c14dc4df5c9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2374,10 +2372,6 @@ PrefabInstance:
     - target: {fileID: 2863732502444606122, guid: d9014431f39abc74a92047671ab0fa2b, type: 3}
       propertyPath: m_Name
       value: DoorD
-      objectReference: {fileID: 0}
-    - target: {fileID: 2863732502444606122, guid: d9014431f39abc74a92047671ab0fa2b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

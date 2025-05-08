@@ -18,6 +18,10 @@ public class DontDestroyManager : MonoBehaviour
             DontDestroyOnLoad(item.gameObject);
             dontDestroyable.Add(item.gameObject);
         }
+    }
+
+    void Start()
+    {
         GameManager.Instance.ToMainMenu();
     }
 
@@ -28,5 +32,6 @@ public class DontDestroyManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
+        Instance = null;
     }
 }

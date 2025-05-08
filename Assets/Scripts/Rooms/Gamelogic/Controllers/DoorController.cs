@@ -12,7 +12,7 @@ public class DoorController : MonoBehaviour, IDoorController
     /// <summary>
     /// List of door GameObjects found in the scene.
     /// </summary>
-    List<GameObject> _doors;
+    List<DoorMover> _doors;
 
     // <summary>
     /// Called when the game starts. Initiates a coroutine to check the doors.
@@ -42,29 +42,24 @@ public class DoorController : MonoBehaviour, IDoorController
     /// <inheritdoc />
     public void SetDoors(List<GameObject> doors)
     {
-        _doors = doors;
-        OpenDoors();
+        _doors = new();
+        doors.ForEach(d => _doors.Add(d.GetComponent<DoorMover>()));
     }
     /// <inheritdoc />
     public void OpenDoors()
     {
-        foreach (var door in _doors)
-        {
-            door.SetActive(false);
-        }
+        _doors.ForEach(d => d.OpenDoor());
     }
 
     /// <inheritdoc />
     public void CloseDoors()
     {
-        foreach (var door in _doors)
-        {
-            door.SetActive(true);
-        }
+        _doors.ForEach(d => d.CloseDoor());
     }
 
-    void OnDestroy()
+    /// <inheritdoc />
+    public void RemoveDoors()
     {
-        _doors.ForEach(el => Destroy(el));
+        _doors.ForEach(d => Destroy(d.gameObject));
     }
 }
