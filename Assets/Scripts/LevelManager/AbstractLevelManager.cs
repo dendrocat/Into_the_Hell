@@ -14,12 +14,19 @@ public abstract class AbstractLevelManager : MonoBehaviour
     [Range(0, 10)] int _currentLevel = 0;
 
     [SerializeField]
-    [Range(0, 10)] int maxLevel = 5;
+    [Range(5, 10)] int maxLevel = 5;
 
     int CurrentLevel { get => _currentLevel; set => _currentLevel = value % maxLevel; }
 
     public bool isFirstLevel => _currentLevel == 0;
     public bool isLastLevel => _currentLevel == maxLevel - 1;
+
+    private void OnValidate() {
+        if (_currentLevel >= maxLevel)
+            _currentLevel = maxLevel - 1;
+        if (_currentLevel < 0) _currentLevel = 0;
+    }
+
 
     void Awake()
     {
