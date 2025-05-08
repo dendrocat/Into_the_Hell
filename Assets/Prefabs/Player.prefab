@@ -55,25 +55,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2428deaf0dfa24f44b73f9f1681783dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHealthChanged:
+  HealthChanged:
     m_PersistentCalls:
       m_Calls: []
   maxHealth: 100
   health: 100
-  speed: 4
+  speed: 8
   weapon: {fileID: 0}
   weaponObject: {fileID: 271036474111174576}
   moving: 0
   currentDirection: {x: 0, y: 0}
   facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
-  OnPotionUsed:
+  PotionUsed:
     m_PersistentCalls:
       m_Calls: []
-  OnShiftPerformed:
+  ShiftPerformed:
     m_PersistentCalls:
       m_Calls: []
-  OnShiftReloadStarted:
+  ShiftReloadStarted:
     m_PersistentCalls:
       m_Calls: []
   inventory: {fileID: 2804813179404802165}
@@ -190,13 +190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b411c2240aeb54646974107588c5025f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnExplosiveArrowCountChanged:
+  ExplosiveArrowCountChanged:
     m_PersistentCalls:
       m_Calls: []
-  OnMoneyChanged:
+  MoneyChanged:
     m_PersistentCalls:
       m_Calls: []
-  OnPotionCountChanged:
+  PotionCountChanged:
     m_PersistentCalls:
       m_Calls: []
   armor: {fileID: 6320687838305771754}
