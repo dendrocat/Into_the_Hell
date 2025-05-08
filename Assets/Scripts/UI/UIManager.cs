@@ -72,4 +72,8 @@ public class UIManager : MonoBehaviour
         _ui.BossBarController.SetBoss(boss);
         _ui.BossBarController.gameObject.SetActive(true);
     }
+
+    public void GenerateMap(Level level){
+        _ui.MiniMapUI.SetUpLevel(level);
+    }
 }

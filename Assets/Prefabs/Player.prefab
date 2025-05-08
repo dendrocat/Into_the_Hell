@@ -62,7 +62,7 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 100
   health: 100
-  speed: 4
+  speed: 8
   weapon: {fileID: 0}
   weaponObject: {fileID: 1748786270092296343}
   moving: 0
@@ -369,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7679502531138167421}
   - component: {fileID: 6984430771914104722}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

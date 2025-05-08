@@ -23,6 +23,7 @@ public class Player : Person
     float baseMaxHealth = 100f;
     public PlayerInventory inventory;
     public int ShiftCount = 3;
+    public bool AttackToFacingDirection = false;
     bool healReloading = false;
 
     Coroutine timer1Coroutine, timer2Coroutine;
@@ -51,30 +52,37 @@ public class Player : Person
      * **/
     protected override void ChangeWeaponPosition()
     {
-        List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 10f).ToList<Collider2D>();
-        if (enemyColliders.Count > 1)
+        if (AttackToFacingDirection)
         {
-            Vector2 nearestDirection = new Vector2(15f, 0f);
-            foreach (Collider2D enemyCollider in enemyColliders)
-            {
-                if (enemyCollider.gameObject.tag != "Enemy") continue;
-                if (!enemyCollider.gameObject.GetComponent<Person>().isAlive()) continue;
-                Vector2 dir = enemyCollider.gameObject.transform.position - transform.position;
-                if (dir.magnitude < nearestDirection.magnitude)
-                {
-                    nearestDirection = dir;
-                }
-            }
-            weaponDirection = nearestDirection.normalized;
-
-            if (nearestDirection == new Vector2(15f, 0f))
-            {
-                weaponDirection = facingDirection.normalized;
-            }
+            weaponDirection = currentDirection.normalized;
         }
         else
         {
-            weaponDirection = facingDirection.normalized;
+            List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 10f).ToList<Collider2D>();
+            if (enemyColliders.Count > 1)
+            {
+                Vector2 nearestDirection = new Vector2(15f, 0f);
+                foreach (Collider2D enemyCollider in enemyColliders)
+                {
+                    if (enemyCollider.gameObject.tag != "Enemy") continue;
+                    if (!enemyCollider.gameObject.GetComponent<Person>().isAlive()) continue;
+                    Vector2 dir = enemyCollider.gameObject.transform.position - transform.position;
+                    if (dir.magnitude < nearestDirection.magnitude)
+                    {
+                        nearestDirection = dir;
+                    }
+                }
+                weaponDirection = nearestDirection.normalized;
+
+                if (nearestDirection == new Vector2(15f, 0f))
+                {
+                    weaponDirection = facingDirection.normalized;
+                }
+            }
+            else
+            {
+                weaponDirection = facingDirection.normalized;
+            }
         }
 
         Vector2 normalizedDirection = weaponDirection;

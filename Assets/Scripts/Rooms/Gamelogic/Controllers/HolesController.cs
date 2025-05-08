@@ -30,7 +30,7 @@ public class HolesController : MonoBehaviour
                 person.TakeDamage(25f, DamageType.None);
 
                 //personAnimator.SetTrigger("fallTrigger");
-                Vector2 direction = -person.facingDirection;
+                Vector2 direction = person.transform.position - transform.position;
                 direction = direction.normalized;
                 direction = ((direction != Vector2.zero) ? direction : Vector2.right) * 1.5f;
 
@@ -60,6 +60,6 @@ public class HolesController : MonoBehaviour
     IEnumerator HoleExitHandler(Person fallingPerson, Vector2 direction)
     {
         yield return new WaitWhile(() => FallingPersonHasEffect(fallingPerson));
-        fallingPerson.transform.position = fallingPerson.transform.position + (Vector3)direction;
+        fallingPerson.transform.position = transform.position + (Vector3)direction;
     }
 }

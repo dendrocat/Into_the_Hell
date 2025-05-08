@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     void OnPlayerDied(Person player)
     {
-        Debug.Log($"Person is {player}");
         if (!(player is Player)) return;
         ReloadGame();
     }
@@ -105,11 +104,10 @@ public class GameManager : MonoBehaviour
 
     public void ReloadGame()
     {
-        Debug.Log("Reload Game");
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
 
-        Person.Died.RemoveListener(OnPlayerDied);
+        Person.Died.RemoveAllListeners();
         DontDestroyManager.Instance.DestroyAll();
 
         SceneManager.LoadScene(1);
@@ -119,5 +117,17 @@ public class GameManager : MonoBehaviour
     {
         Instance = null;
         //SceneManager.LoadScene(0);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        InputManager.Instance.PushInputMap(InputMap.UI);
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1;
+        InputManager.Instance.PopInputMap();
     }
 }

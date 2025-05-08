@@ -60,10 +60,10 @@ public class BaseEnemy : Person
      * **/
     protected override void ChangeWeaponPosition()
     {
-        List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 10f).ToList<Collider2D>();
+        List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 15f).ToList<Collider2D>();
         if (enemyColliders.Count > 1)
         {
-            Vector2 nearestDirection = new Vector2(15f, 0f);
+            Vector2 nearestDirection = facingDirection * 15f;
             foreach (Collider2D enemyCollider in enemyColliders)
             {
                 if (!enemyCollider.gameObject.CompareTag("Player")) continue;
@@ -73,10 +73,13 @@ public class BaseEnemy : Person
                     nearestDirection = dir;
                 }
             }
+            Debug.Log("Nearest direction of " + gameObject.name + ": " + nearestDirection);
             weaponDirection = nearestDirection.normalized;
+            facingDirection = weaponDirection;
         }
         else
         {
+            Debug.Log("Facing direction of " + gameObject.name + ": " + facingDirection);
             weaponDirection = facingDirection.normalized;
         }
 

@@ -106,11 +106,12 @@ MonoBehaviour:
   targetTags:
   - Enemy
   - DestructibleWall
-  damage: 15
+  owner: {fileID: 0}
+  damage: 22
   baseReloadTime: 2
   basePrepareAttackTime: 0.2
   baseEndAttackTime: 0.2
-  altDamage: 45
+  altDamage: 75
   baseAltReloadTime: 6
   baseAltPrepareAttackTime: 0
   baseAltEndAttackTime: 1

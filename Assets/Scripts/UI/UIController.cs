@@ -19,6 +19,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] BossBarController _bossBarController;
     public BossBarController BossBarController => _bossBarController;
+    [SerializeField] MiniMapUi _miniMapUI;
+    public MiniMapUi MiniMapUI  => _miniMapUI;
 
     [Header("Text Parameters")]
     [SerializeField] TextMeshProUGUI _arrows;
