@@ -27,8 +27,7 @@ public class PlayerInventory : MonoBehaviour
     byte maxExplosiveArrowCount = 99;
     public byte MaxExplosiveArrowCount => maxExplosiveArrowCount;
     [SerializeField]
-    [Range(0, 2000)]
-    int money = 0;
+    [Range(0, 9999)] int money = 0;
 
     /**
      * <summary>
