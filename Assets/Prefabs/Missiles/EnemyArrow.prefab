@@ -216,5 +216,5 @@ MonoBehaviour:
     _enabled: 1
     _value: {fileID: 8300000, guid: cb92ac03092485643a5e130473f1762f, type: 3}
   _missileHit:
-    _enabled: 0
-    _value: {fileID: 0}
+    _enabled: 1
+    _value: {fileID: 8300000, guid: dff1c1da73b58e44995dce3ca2f04b73, type: 3}

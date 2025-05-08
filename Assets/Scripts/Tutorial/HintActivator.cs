@@ -6,7 +6,7 @@ public abstract class HintActivator : MonoBehaviour
 {
     [SerializeField] Hint _hint;
 
-    [SerializeField] float _delayActivation = .5f;
+    [SerializeField] float _delayActivation = .1f;
 
     ActionRuntimeFinder _finder;
 

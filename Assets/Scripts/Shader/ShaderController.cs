@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class ShaderController : MonoBehaviour
 {
-    public static ShaderController Instance { get; private set; }
     public Material shader;
 
     [SerializeField]
@@ -17,19 +16,9 @@ public class ShaderController : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        Instance = this;
-    }
-
     public void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         shader.SetFloat("_Brightness", _brightness);
         Graphics.Blit(src, dest, shader);
-    }
-
-    public void Start()
-    {
-        _brightness = (float)SettingsManager.Instance.GetSetting(SettingsKeys.Brightness) * 0.5f;
     }
 }

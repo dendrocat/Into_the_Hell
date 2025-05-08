@@ -85,7 +85,7 @@ public class MainMenuController : MonoBehaviour
 
         var volume = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Volume, defaultVolume));
         SetVolume(volume);
-        volumeSlider.value = AudioListener.volume;
+        volumeSlider.value = volume;
 
         var brightness = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Brightness, defaultBrightness));
         SetBrightness(brightness);
@@ -147,13 +147,16 @@ public class MainMenuController : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        AudioListener.volume = volume;
+        CameraSettingsController.Instance.Volume = volume;
         volumeTextValue.text = (volume * 100).ToString("0") + " %";
     }
 
     public void VolumeApply()
     {
-        SettingsManager.Instance.SetSetting(SettingsKeys.Volume, AudioListener.volume);
+        SettingsManager.Instance.SetSetting(
+            SettingsKeys.Volume,
+            CameraSettingsController.Instance.Volume
+        );
 
         StartCoroutine(ConfirmationBox());
     }
@@ -171,8 +174,8 @@ public class MainMenuController : MonoBehaviour
     {
         _brightnessLevel = brightness;
         brightnessTextValue.text = brightness.ToString("0.00");
-        if (ShaderController.Instance)
-            ShaderController.Instance.Brightness = brightness;
+        if (CameraSettingsController.Instance)
+            CameraSettingsController.Instance.Brightness = brightness;
     }
 
     public void SetFullScreen(bool isFullScreen)

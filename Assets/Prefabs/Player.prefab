@@ -80,6 +80,7 @@ MonoBehaviour:
       m_Calls: []
   inventory: {fileID: 2804813179404802165}
   ShiftCount: 3
+  AttackToFacingDirection: 0
 --- !u!61 &3325354426899956213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -459,6 +460,7 @@ GameObject:
   - component: {fileID: 5172841987608931470}
   - component: {fileID: 8493490892600320844}
   - component: {fileID: 4776981945912292501}
+  - component: {fileID: 6063766202244296022}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -573,7 +575,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 2100000, guid: 6d0abbfa776467343aa5fe296fa19600, type: 2}
-  Brightness: 0.5
+  _brightness: 0.5
+--- !u!114 &6063766202244296022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649746761970238284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e30ab95b58bddc4ba813d69cd9707f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
 --- !u!1001 &2526254183930691700
 PrefabInstance:
   m_ObjectHideFlags: 0

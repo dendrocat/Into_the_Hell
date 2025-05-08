@@ -157,7 +157,7 @@ MonoBehaviour:
   speed: 0
   damageRadius: 1
   direction: {x: 0, y: 0}
-  magnitude: 50
+  explosionPrefab: {fileID: 4151269541159776031, guid: 8de23096234e2e04d8b57c498d07dae9, type: 3}
 --- !u!50 &-6788533526981349552
 Rigidbody2D:
   serializedVersion: 5
@@ -217,5 +217,5 @@ MonoBehaviour:
     _enabled: 1
     _value: {fileID: 8300000, guid: cb92ac03092485643a5e130473f1762f, type: 3}
   _missileHit:
-    _enabled: 1
-    _value: {fileID: 8300000, guid: 4aa06501ff75f194daefcc52fb75190b, type: 3}
+    _enabled: 0
+    _value: {fileID: 8300000, guid: dff1c1da73b58e44995dce3ca2f04b73, type: 3}

@@ -25,6 +25,7 @@ public class Boss : BaseEnemy
 
     new public void Attack()
     {
+        if (!isAlive()) return;
         bool[] reloading = new bool[3];
         reloading[0] = bossWeapon.isReloading();
         reloading[1] = bossWeapon.Attack2IsReloading();

@@ -17,7 +17,7 @@ public class MissilesAudio : MonoBehaviour
         obj.transform.position = transform.position;
 
         var audio = obj.AddComponent<AudioSource>();
-        audio.volume = 0.07f;
+        audio.volume = .25f;
         audio.clip = clip;
         audio.loop = false;
         audio.Play();
@@ -25,7 +25,7 @@ public class MissilesAudio : MonoBehaviour
         Destroy(obj, clip.length);
     }
 
-    public void PlayHitSound()
+    void OnDestroy()
     {
         if (_missileHit.Enabled)
             PlaySound(_missileHit.Value);

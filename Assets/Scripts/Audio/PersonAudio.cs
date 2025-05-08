@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -33,7 +34,7 @@ public class PersonAudio : AudioPlayer
 
         _walk = obj.AddComponent<AudioSource>();
         _walk.loop = true;
-        _walk.volume = Volume;
+        _walk.volume = Volume * .75f;
         _walk.clip = _clips[WALK];
         _walk.Pause();
     }
@@ -51,6 +52,6 @@ public class PersonAudio : AudioPlayer
                 _walk.Play();
         }
         else if (_walk.isPlaying)
-            _walk.Pause();
+            _walk.Stop();
     }
 }

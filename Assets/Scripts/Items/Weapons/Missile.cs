@@ -92,9 +92,4 @@ public class Missile : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-    void OnDestroy()
-    {
-        GetComponent<MissilesAudio>().PlayHitSound();
-    }
 }
