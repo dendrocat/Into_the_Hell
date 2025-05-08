@@ -31,6 +31,7 @@ public class Sword : RangedWeapon
         baseAltEndAttackTime = 1f;
         baseAltReloadTime = 0f;
         scaleCoeff = 1f;
+        minValueDescending = 0.48f;
         range = 2f;
         angle = 60f;
     }

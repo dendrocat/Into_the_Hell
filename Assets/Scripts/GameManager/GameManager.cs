@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         if (SaveLoadManager.HasSave())
             SaveLoadManager.RemoveSave();
 
-        Person.Died.RemoveListener(OnPlayerDied);
+        Person.Died.RemoveAllListeners();
         DontDestroyManager.Instance.DestroyAll();
 
         SceneManager.LoadScene(0);

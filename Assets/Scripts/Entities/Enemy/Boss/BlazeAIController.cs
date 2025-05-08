@@ -32,7 +32,22 @@ public class BlazeAIController : BossAIController
     void RecalculateDestination()
     {
         Vector2 direction = (transform.position - attackTarget.transform.position).normalized;
-        aiDestSetter.target.position = attackTarget.transform.position + (Vector3)direction * evadeDistance;
+        float maxEvadeDistance = evadeDistance;
+        float curEvadeDistance = maxEvadeDistance;
+        bool targetRaycasted = false;
+
+        Vector2 destPos = attackTarget.transform.position + (Vector3)direction * curEvadeDistance;
+        while (!targetRaycasted)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(aiDestSetter.target.position, -direction, curEvadeDistance);
+            if (hit)
+            {
+                if (hit.collider.gameObject.CompareTag("Player")) break;
+            }
+            curEvadeDistance -= 0.1f;
+            aiDestSetter.target.position = attackTarget.transform.position + (Vector3)direction * curEvadeDistance;
+            if (curEvadeDistance <= 1f) break;
+        }
     }
 
     void Update()

@@ -58,6 +58,8 @@ public class InputManager : MonoBehaviour
 
     public bool HoldRightButton = false;
 
+    public bool HoldLeftCtrl = false;
+
     public void onMovePressed(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -91,6 +93,24 @@ public class InputManager : MonoBehaviour
             if (context.performed)
             {
                 _altAttack = true;
+            }
+        }
+    }
+
+    public void onLeftCtrlPressed(InputAction.CallbackContext context)
+    {
+        if (context.interaction is HoldInteraction)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    Debug.Log("Left ctrl pressed");
+                    HoldLeftCtrl = true;
+                    break;
+                case InputActionPhase.Canceled:
+                    Debug.Log("Left ctrl released");
+                    HoldLeftCtrl = false;
+                    break;
             }
         }
     }

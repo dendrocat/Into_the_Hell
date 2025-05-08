@@ -3068,7 +3068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1704427799}
-  boss: {fileID: 1052601518}
+  boss: {fileID: 2247761699255742780}
   playerHPText: {fileID: 1224911041}
   dashCount: {fileID: 341180847}
   potionCount: {fileID: 2027153700}
@@ -3615,6 +3615,10 @@ PrefabInstance:
     - target: {fileID: 7567405260565835566, guid: bd4c810f01025c749a1aaa283f624fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007090112419545447, guid: bd4c810f01025c749a1aaa283f624fd8, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: f2cea784-7d81-4cda-8d6a-f69e2806bafa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5118,17 +5122,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76cd111ae3b3b884dacf88874483faa1, type: 3}
---- !u!114 &1052601518 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8153389732425004354, guid: 76cd111ae3b3b884dacf88874483faa1, type: 3}
-  m_PrefabInstance: {fileID: 1052601517}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c8a776d07149f48865961729a5e281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1052601519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8965880683754173898, guid: 76cd111ae3b3b884dacf88874483faa1, type: 3}
@@ -11438,14 +11431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1953673172}
     m_Modifications:
-    - target: {fileID: 2291395388857442097, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
-      propertyPath: slowdownDistance
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2291395388857442097, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
-      propertyPath: endReachedDistance
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6362151458147007799, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: attackTarget
       value: 
@@ -11496,13 +11481,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8156612596933614851, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
+--- !u!114 &2247761699255742780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 627852545101848854, guid: 77a860900f9e6d243a1414b83d1f3b6e, type: 3}
+  m_PrefabInstance: {fileID: 2247761699255742779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c8a776d07149f48865961729a5e281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2751827086703965711
 PrefabInstance:
   m_ObjectHideFlags: 0

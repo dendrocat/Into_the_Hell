@@ -106,7 +106,8 @@ MonoBehaviour:
   targetTags:
   - Enemy
   - DestructibleWall
-  damage: 7
+  owner: {fileID: 0}
+  damage: 10
   baseReloadTime: 1
   basePrepareAttackTime: 0
   baseEndAttackTime: 0
