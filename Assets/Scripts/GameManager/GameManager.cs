@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,11 @@ public class GameManager : MonoBehaviour
     void OnPlayerDied(Person player)
     {
         if (!(player is Player)) return;
+        StartCoroutine(WaitPlayerDestroy(player));
+    }
+
+    IEnumerator WaitPlayerDestroy(Person player) {
+        yield return new WaitUntil(() => player.IsDestroyed());
         ReloadGame();
     }
 

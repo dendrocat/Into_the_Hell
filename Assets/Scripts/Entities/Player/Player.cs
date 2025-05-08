@@ -44,7 +44,7 @@ public class Player : Person
         InitializePerson();
         RecalculateHealth();
         _audioPlayer = GetComponent<PlayerAudio>();
-        destructionDelay = 1f;
+        destructionDelay = 3f;
     }
 
     /**
