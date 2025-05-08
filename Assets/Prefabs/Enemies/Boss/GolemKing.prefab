@@ -170,7 +170,7 @@ MonoBehaviour:
   facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
   dropMoneyChance: 1
-  dropMoneyCount: 600
+  dropMoneyCount: 1200
   bossName: "\u041A\u043E\u0440\u043E\u043B\u044C \u0433\u043E\u043B\u0435\u043C\u043E\u0432"
   bossWeapon: {fileID: 5751222871579029676}
 --- !u!61 &3224384059065649278
