@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour, ILevelManager {
     }
     public void Generate(Locations location) {
         _levelStorage = LevelStorage.Instance;
+        _location = location;
         if (_level.created()) return;
 
         Generator.New()
@@ -37,8 +38,5 @@ public class LevelManager : MonoBehaviour, ILevelManager {
                     _levelStorage.GetTrapContainer(location) );
         UIManager.Instance.GenerateMap(_level);
         Destroy(LevelStorage.Instance.gameObject);
-    }
-
-    void OnDestroy() {
     }
 }
