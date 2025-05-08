@@ -3,46 +3,114 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Класс генератора. Используется для полной генерации уровня, включая установку комнат, коридоров и т.д.
+/// </summary>
 public class Generator {
 
+  /// <summary> Префабы комнат, используемые для генерации </summary>
 	private List<GameObject> rooms = null;
 
+  /// <summary>
+  /// Префабы коридоров, используемые для генерации
+  /// nhall = north hall - префаб вертикального коридора
+  /// ehall = east hall - префаб горизонтального коридора
+  /// </summary>
+	private GameObject nhall = null, ehall = null;
+
+  /// <summary> Префаб первой комнаты </summary>
+	private GameObject firstRoom = null;
+
+  /// <summary> Префаб последней комнаты </summary>
+	private GameObject lastRoom = null;
+
+  /// <summary> Функция инициации цепочки вызовов генерации </summary>
+  /// <returns> Generator - используется в цепочке </returns>
 	public static Generator New() { return new(); }
 
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префабы комнат для генерации.
+  /// </summary>
+  /// <param name="room_prefabs"> Список префабов <see cref="GameObject"> комнат </param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator Rooms(List<GameObject> room_prefabs) {
 		rooms = room_prefabs;
 		return this;
 	}
 
-	private GameObject nhall = null, ehall = null;
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префабы коридоров.
+  /// </summary>
+  /// <param name="halls"> Список префабов <see cref="GameObject"> коридоров
+  ///  Коридоров должно быть два: {вертикальный, горизонтальный}
+  /// </param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator Halls(List<GameObject> halls) { return this.Halls(halls[0], halls[1]); }
+
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префабы коридоров.
+  /// </summary>
+  /// <param name="nhall_prefab"> Префаб вертикального коридора <see cref="GameObject"> </param>
+  /// <param name="ehall_prefab"> Префаб горизонтального коридора <see cref="GameObject"> </param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator Halls(GameObject nhall_prefab, GameObject ehall_prefab) {
 		nhall = nhall_prefab; ehall = ehall_prefab;
 		return this;
 	}
 
-	private GameObject firstRoom = null;
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префаб первой комнаты.
+  /// </summary>
+  /// <param name="firstRoom_prefab"> Префаб первой комнаты <see cref="GameObject"></param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator FirstRoom(GameObject firstRoom_prefab) {
 		firstRoom = firstRoom_prefab;
 		return this;
 	}
 
-	private GameObject lastRoom = null;
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префаб последней комнаты.
+  /// </summary>
+  /// <param name="lastRoom_prefab"> Префаб последней комнаты <see cref="GameObject"></param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator LastRoom(GameObject lastRoom_prefab) {
 		lastRoom = lastRoom_prefab;
 		return this;
 	}
 
-    public Generator SetUpRooms(RoomContainer roomContainer, bool isBossLevel) {
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Задает префабы комнат (включая конечную и начальную)
+  /// </summary>
+  /// <param name="roomContainer"> Контейнер с комнатами <see cref="RoomContainer"></param>
+  /// <param name="isBossLevel"> Параметр указывает на то, является ли уровень
+  ///     последним на локации (содержит босса) </param>
+  /// <returns> Generator - используется в цепочке </returns>
+	public Generator SetUpRooms(RoomContainer roomContainer, bool isBossLevel) {
 		return Rooms(roomContainer.Rooms)
 			.FirstRoom(roomContainer.StartRoom)
 			.LastRoom(isBossLevel? roomContainer.BossRoom: roomContainer.StartRoom);
-    }
+	}
 
+  /// <summary> Функция для вывода ошибок генератора </summary>
+  /// <param name="message"> Сообщение для вывода </param>
 	private void Exc(String message) {
 		throw new Exception("Generator: " + message);
 	}
 
+  /// <summary>
+  /// Часть цепочки вызовов генератора.
+  /// Генерирует начальную карту комнат и переходы между ними.
+  /// При этом сами комнаты все еще требуют активации
+  /// </summary>
+  /// <param name="roomNumber"> Количество комнат на уровне </param>
+  /// <param name="level"> Уровень, на котором размещаются комнтаты и коридоры <see cref="Level"></param>
+  /// <returns> Generator - используется в цепочке </returns>
 	public Generator GenerateRooms(int roomNumber, Level level) {
 		if (rooms == null) Exc("Rooms are not specified");
 		if (nhall == null || ehall == null) Exc("Halls are not specified");
@@ -187,51 +255,67 @@ public class Generator {
 		return this;
 	}
 
-    void GenerateAdditional(IRoomTilemapController room, 
-            TileBase additional, float modificator = 1/16.0f) {
-        var poses = room.GetFreePositions();
-        float iter = poses.Count * modificator;
-        while(iter-->0){
-            int ind = UnityEngine.Random.Range(0, poses.Count);
-            room.SetAdditionalTile(additional, poses[ind]);
-            poses[ind] = poses[poses.Count-1];
-            poses.RemoveAt(poses.Count-1);
-        }
-    }
+  /// <summary> Расставляет лаву и лед в комнате </summary>
+  /// <param name="room"> Комната <see cref="IRoomTilemapController"></param>
+  /// <param name="additional"> Тип тайла <see cref="TileBase"></param>
+  /// <param name="modificator"> Доля льда или лавы от свободных тайлов команты </param>
+	void GenerateAdditional(IRoomTilemapController room,
+      TileBase additional, float modificator = 1/16.0f) {
+		var poses = room.GetFreePositions();
+		float iter = poses.Count * modificator;
+		while(iter-->0){
+			int ind = UnityEngine.Random.Range(0, poses.Count);
+			room.SetAdditionalTile(additional, poses[ind]);
+			poses[ind] = poses[poses.Count-1];
+			poses.RemoveAt(poses.Count-1);
+		}
+	}
 
-    void SetAdditionalEffect(Room room, TrapContainer trapContainer) {
-        var additionalController = room.GetRoomController().AdditionalController;
-        if (additionalController == null) return;
-        if (trapContainer == null) return;
-        additionalController.SetAdditionalEffect(trapContainer);
-    }
+  /// <summary> Устанавливает дополнительные ловушки в комнате </summary>
+  /// <param name="room"> Комната <see cref="Room"></param>
+  /// <param name="trapContainer"> Контейнер с ловушками <see cref="TrapContainer"></param>
+	void SetAdditionalEffect(Room room, TrapContainer trapContainer) {
+		var additionalController = room.GetRoomController().AdditionalController;
+		if (additionalController == null) return;
+		if (trapContainer == null) return;
+		additionalController.SetAdditionalEffect(trapContainer);
+	}
 
-    void MakeTiles(Room room, TilesContainer tiles, TrapContainer trapContainer) {
-        var tilemap = room.GetRoomTilemapController();
-        if (tiles.Additional == null)
-            tilemap.RemoveAdditional();
-        else {
-            GenerateAdditional(tilemap, tiles.Additional);
-            SetAdditionalEffect(room, trapContainer);
-        }
-        tilemap.SwapTiles(tiles);
-    }
+  /// <summary> Заменяет тайлы комнаты на соответствующие локации </summary>
+  /// <param name="room"> Комната <see cref="Room"></param>
+  /// <param name="tiles"> Контейнер с тайлами <see cref="TilesContainer"></param>
+  /// <param name="trapContainer"> Контейнер с ловушками <see cref="TrapContainer"></param>
+	void MakeTiles(Room room, TilesContainer tiles, TrapContainer trapContainer) {
+		var tilemap = room.GetRoomTilemapController();
+		if (tiles.Additional == null)
+			tilemap.RemoveAdditional();
+		else {
+			GenerateAdditional(tilemap, tiles.Additional);
+			SetAdditionalEffect(room, trapContainer);
+		}
+		tilemap.SwapTiles(tiles);
+	}
 
+  /// <summary> Функция активации комнат. Завершает генерацию уровня </summary>
+  /// <returns> Generator - используется в цевочке </returns>
+  /// <param name="_level"> Уровень с комнатами и коридорами <see cref="Level"></param>
+  /// <param name="tiles"> Контейнер с тайлами <see cref="TilesContainer"></param>
+  /// <param name="traps"> Контейнер с ловушками <see cref="TrapContainer"></param>
 	public Generator ActivateLevel(Level _level, TilesContainer tiles, TrapContainer traps){
 		if(!_level.created()){
 			Exc("Level must be created at Activator");
 			return this;
 		}
-        _level.rooms.ForEach((r) => {
-            if (r == null) return;
-            MakeTiles(r, tiles, traps);
-            GameObject.Destroy(r.GetRoomTilemapController() as MonoBehaviour);
-            r.GetRoomController().ActivateRoom();
-        });
+		_level.rooms.ForEach((r) => {
+			if (r == null) return;
+			MakeTiles(r, tiles, traps);
+			GameObject.Destroy(r.GetRoomTilemapController() as MonoBehaviour);
+			r.GetRoomController().ActivateRoom();
+		});
 
-        _level.halls.ForEach((h) =>
-            h.GetComponent<IHallTilemapController>().SwapTiles(tiles)
-        );
+		_level.halls.ForEach((h) =>
+			h.GetComponent<IHallTilemapController>().SwapTiles(tiles)
+		);
 		return this;
 	}
 }
