@@ -29,8 +29,6 @@ public class TilesContainer : ScriptableObject
     [SerializeField] TileBase _doorWall;
 
     [Header("Additional objects")]
-    [Tooltip("Tile for holes")]
-    [SerializeField] TileBase _hole;
 
     [Tooltip("Tile for additional")]
     [SerializeField] TileBase _additional;
@@ -71,11 +69,6 @@ public class TilesContainer : ScriptableObject
     /// Gets the tile for the floor.
     /// </summary>
     public TileBase DoorWall => _doorWall;
-
-    /// <summary>
-    /// Gets the tile for holes.
-    /// </summary>
-    public TileBase Hole => _hole;
 
     /// <summary>
     /// Gets the tile for additional elements.
