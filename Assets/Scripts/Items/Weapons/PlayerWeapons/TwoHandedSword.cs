@@ -63,7 +63,7 @@ public class TwoHandedSword : RangedWeapon
 
         foreach(IDamagable target in targets)
         {
-            target.TakeDamage(altDamage, DamageType.None);
+            target.TakeDamage(CalcScale(altDamage), DamageType.None);
         }
     }
 }

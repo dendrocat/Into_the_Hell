@@ -7,19 +7,19 @@ public abstract class AbstractLevelManager : MonoBehaviour
 
     public static AbstractLevelManager Instance { get; private set; } = null;
 
-    protected Location _location;
+    [SerializeField] protected Location _location;
     public bool isFinalLocation => _location == Location.Final;
 
     [SerializeField]
-    [Range(0, 4)] int _currentLevel;
+    [Range(0, 10)] int _currentLevel = 0;
 
     [SerializeField]
-    [Range(5, 10)] int maxLevel = 5;
+    [Range(0, 10)] int maxLevel = 5;
 
-    int CurrentLevel { get => _currentLevel; set => _currentLevel = value % (maxLevel + 1); }
+    int CurrentLevel { get => _currentLevel; set => _currentLevel = value % maxLevel; }
 
     public bool isFirstLevel => _currentLevel == 0;
-    public bool isLastLevel => _currentLevel == maxLevel;
+    public bool isLastLevel => _currentLevel == maxLevel - 1;
 
     void Awake()
     {

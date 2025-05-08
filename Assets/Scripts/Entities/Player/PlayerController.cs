@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
             player.currentDirection = movement;
             player.setMoving(movement != Vector2.zero);
 
+            player.AttackToFacingDirection = inputManager.HoldLeftCtrl;
+
             if (inputManager.Attack)
             {
                 player.Attack();

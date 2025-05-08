@@ -16,11 +16,6 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     [SerializeField] Optional<Tilemap> _additional;
 
     /// <summary>
-    /// The tilemap for holes. This is an optional parameter.
-    /// </summary>
-    [SerializeField] Optional<Tilemap> _hole;
-
-    /// <summary>
     /// The transform containing spawn points for traps. This is an optional parameter.
     /// </summary>
     [SerializeField] Optional<Transform> TrapSpawns;
@@ -49,20 +44,13 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
 
     /// <summary>
     /// Replaces all tiles in the tilemap with the tiles specified in the provided container.
-    /// Also updates the door tilemap and optional tilemaps (e.g., holes, traps, destroyable objects).
+    /// Also updates the door tilemap and optional tilemaps (e.g., traps, destroyable objects).
     /// </summary>
     /// <param name="container">The container holding the tiles and prefabs for replacement.</param>
     public override void SwapTiles(TilesContainer container)
     {
         base.SwapTiles(container);
         DoorTilemap?.SwapTiles(container);
-
-        if (_hole.Enabled)
-        {
-            _hole.Value.SwapTile(_templateContainer.Hole, container.Hole);
-            if (_hole.Value.TryGetComponent(out TilemapCollider2D collider2D))
-                collider2D.ProcessTilemapChanges();
-        }
 
         if (TrapSpawns.Enabled)
         {

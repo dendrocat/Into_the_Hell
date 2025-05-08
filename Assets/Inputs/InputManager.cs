@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,11 +16,13 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public UnityEvent InteractPressed { get; } = new UnityEvent();
+    public UnityEvent InteractPressed { get; } = new();
 
-    public UnityEvent SubmitPressed { get; } = new UnityEvent();
+    public UnityEvent SubmitPressed { get; } = new();
 
-    public UnityEvent CancelPressed { get; } = new UnityEvent();
+    public UnityEvent CancelPressed { get; } = new();
+
+    public UnityEvent PausePressed { get; } = new();
 
     Stack<InputMap> stackInputs;
 
@@ -55,10 +56,9 @@ public class InputManager : MonoBehaviour
     private bool _heal = false;
     public bool Heal => _heal ? (!(_heal = false)) : false;
 
-    private bool _pause = false;
-    public bool Pause => _pause ? (!(_pause = false)) : false;
-
     public bool HoldRightButton = false;
+
+    public bool HoldLeftCtrl = false;
 
     public void onMovePressed(InputAction.CallbackContext context)
     {
@@ -97,6 +97,24 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void onLeftCtrlPressed(InputAction.CallbackContext context)
+    {
+        if (context.interaction is HoldInteraction)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    Debug.Log("Left ctrl pressed");
+                    HoldLeftCtrl = true;
+                    break;
+                case InputActionPhase.Canceled:
+                    Debug.Log("Left ctrl released");
+                    HoldLeftCtrl = false;
+                    break;
+            }
+        }
+    }
+
     public void onInteractPressed(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -124,10 +142,9 @@ public class InputManager : MonoBehaviour
 
     public void onPausePressed(InputAction.CallbackContext context)
     {
-        Debug.Log("Pause");
         if (context.performed)
         {
-            _pause = true;
+            PausePressed.Invoke();
         }
     }
 

@@ -29,7 +29,7 @@ public class MainMenuController : MonoBehaviour
     private int _resolutionIndex;
 
     [Header("Confirmation")]
-    [SerializeField] private GameObject comfirmationPromt = null;
+    [SerializeField] private Image confirmationPromt = null;
 
     [SerializeField] private GameObject noSavedGameDialog = null;
 
@@ -43,7 +43,6 @@ public class MainMenuController : MonoBehaviour
 
     void Awake()
     {
-        InputManager.Instance.PushInputMap(InputMap.UI);
         _inputActions = InputManager.Instance.GetActions();
     }
 
@@ -171,7 +170,9 @@ public class MainMenuController : MonoBehaviour
     public void SetBrightness(float brightness)
     {
         _brightnessLevel = brightness;
-        brightnessTextValue.text = brightness.ToString("0.0");
+        brightnessTextValue.text = brightness.ToString("0.00");
+        if (ShaderController.Instance)
+            ShaderController.Instance.Brightness = brightness;
     }
 
     public void SetFullScreen(bool isFullScreen)
@@ -232,11 +233,23 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    public IEnumerator ConfirmationBox()
+    IEnumerator ConfirmationBox()
     {
-        comfirmationPromt.SetActive(true);
         SettingsManager.Instance.Save();
-        yield return new WaitForSeconds(2);
-        comfirmationPromt.SetActive(false);
+
+        float duration = 1f;
+        float delay = 0.01f;
+        float t = 0f;
+        confirmationPromt.fillAmount = 0;
+        confirmationPromt.gameObject.SetActive(true);
+
+        while (t < 1f)
+        {
+            t += delay / duration;
+            confirmationPromt.fillAmount = t;
+            yield return new WaitForSecondsRealtime(delay);
+        }
+
+        confirmationPromt.gameObject.SetActive(false);
     }
 }
