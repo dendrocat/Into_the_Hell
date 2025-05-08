@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ public class BaseTrap : MonoBehaviour
     [SerializeField] protected List<string> targetTags;
     protected bool isActive = false;
     List<Person> targets = new();
+
+    bool isChecking;
+
+    HashSet<Person> targetsOnAdd = new();
+    HashSet<Person> targetsOnDelete = new();
 
     public void SetTargetTags(List<string> targetTags)
     {
@@ -27,7 +33,9 @@ public class BaseTrap : MonoBehaviour
                 Person target = obj.GetComponent<Person>();
                 if (target != null)
                 {
-                    targets.Add(target);
+                    if (!isChecking) targets.Add(target);
+                    else if (targetsOnDelete.Contains(target)) targetsOnDelete.Remove(target);
+                    else targetsOnAdd.Add(target);
                     //Debug.Log("Target count: " + targets.Count);
                     if (isActive) OnEnter(target);
                 }
@@ -46,7 +54,9 @@ public class BaseTrap : MonoBehaviour
                 Person target = obj.GetComponent<Person>();
                 if (target != null)
                 {
-                    targets.Remove(target);
+                    if (!isChecking) targets.Remove(target);
+                    else if (targetsOnAdd.Contains(target)) targetsOnAdd.Remove(target);
+                    else targetsOnDelete.Add(target);
                     Debug.Log("Target count: " + targets.Count);
                     if (isActive) OnExit(target);
                 }
@@ -63,10 +73,17 @@ public class BaseTrap : MonoBehaviour
     {
         if (isActive)
         {
+            isChecking = true;
             foreach (Person target in targets)
             {
                 OnStay(target);
             }
+            isChecking = false;
+
+            targets.AddRange(targetsOnAdd);
+            targets.RemoveAll(t => targetsOnDelete.Contains(t));
+            targetsOnAdd.Clear();
+            targetsOnDelete.Clear();
         }
     }
 

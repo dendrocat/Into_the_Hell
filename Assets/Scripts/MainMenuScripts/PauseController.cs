@@ -30,7 +30,8 @@ public class PauseController : MonoBehaviour
 
     public void ToMainMenu()
     {
-        GameManager.Instance.ToMainMenu();
+        UnPauseGame();
+        GameManager.Instance.ToMainMenuFromPause();
     }
 
     public void Activate()

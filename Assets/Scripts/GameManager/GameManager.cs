@@ -108,6 +108,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void ToMainMenuFromPause() {
+        InputManager.Instance.PopInputMap();
+        ToMainMenu();
+    }
+
     public void ReloadGame()
     {
         if (SaveLoadManager.HasSave())
