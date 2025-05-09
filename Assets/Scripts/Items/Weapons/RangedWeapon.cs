@@ -19,6 +19,7 @@ public class RangedWeapon : AlternateAttackWeapon
      * **/
     private void OnDrawGizmos()
     {
+        if (!owner) owner = transform.parent.gameObject.GetComponent<Person>();
         if (owner)
         {
             Vector2 ownerPosition = owner.transform.position;
@@ -75,7 +76,7 @@ public class RangedWeapon : AlternateAttackWeapon
         List<IDamagable> targets = FindTargetsForAttack();
 
         //нанесение урона всем целям
-        foreach(IDamagable target in targets)
+        foreach (IDamagable target in targets)
         {
             target.TakeDamage(getScaledDamage(), DamageType.None);
         }

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 11
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,10 +102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   maxLevel: 1
-  weaponTexture: {fileID: 0}
+  weaponSprites:
+  - {fileID: 4782939055297886869}
   targetTags:
   - Player
   - DestructibleWall
+  owner: {fileID: 0}
   damage: 100
   baseReloadTime: 1.5
   basePrepareAttackTime: 0.2

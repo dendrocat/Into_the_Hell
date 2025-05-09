@@ -36,6 +36,7 @@ public class AlternateAttackWeapon : BaseWeapon
         {
             altReloading = true;
             StartCoroutine(PerformAltAttack());
+            _animator?.Play("AltAttack");
         }
     }
 

@@ -10,16 +10,6 @@ public class Sword : RangedWeapon
 {
     bool altAttackActive = false;
 
-    /**
-     * <summary>
-     * Инициализация оружия
-     * </summary>
-     * **/
-    void Start()
-    {
-        FindOwner();
-    }
-
     public Sword()
     {
         damage = 7f;
@@ -75,6 +65,7 @@ public class Sword : RangedWeapon
     protected override void AltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, level);
+        _animator.Play("AltAttack");
     }
 
     /**
@@ -85,6 +76,7 @@ public class Sword : RangedWeapon
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
+        _animator.Play("Nothing");
     }
 
     /**
@@ -96,5 +88,11 @@ public class Sword : RangedWeapon
     public bool altAttackIsActive()
     {
         return altAttackActive;
+    }
+
+    void Update()
+    {
+        _animator.SetFloat("Horizontal", owner.facingDirection.x);
+        _animator.SetFloat("Vertical", owner.facingDirection.y);
     }
 }

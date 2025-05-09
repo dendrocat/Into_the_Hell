@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 /// <summary>
@@ -8,9 +9,9 @@ using UnityEngine;
 public class BaseWeapon : UpgradableItem
 {
     /// <summary>
-    /// Текстура оружия.
+    /// Список спрайтов оружия.
     /// </summary>
-    [SerializeField] protected Texture2D weaponTexture;
+    [SerializeField] protected List<SpriteRenderer> weaponSprites;
 
     /// <summary>
     /// Список тегов, которым оружие может наносить урон.
@@ -47,6 +48,8 @@ public class BaseWeapon : UpgradableItem
     /// </summary>
     bool reloading = false;
 
+    protected Animator _animator;
+
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
     /// </summary>
@@ -70,6 +73,7 @@ public class BaseWeapon : UpgradableItem
     void Start()
     {
         FindOwner();
+        TryGetComponent(out _animator);
     }
 
     public BaseWeapon()
@@ -95,6 +99,7 @@ public class BaseWeapon : UpgradableItem
         {
             reloading = true;
             StartCoroutine(PerformAttack());
+            _animator?.Play("Attack");
         }
     }
 
@@ -177,5 +182,19 @@ public class BaseWeapon : UpgradableItem
     public List<string> GetTargetTags()
     {
         return targetTags;
+    }
+
+    public bool spritesDowned { get; private set; } = false;
+
+    public void DownWeaponSprites()
+    {
+        spritesDowned = true;
+        weaponSprites.ForEach(s => s.sortingOrder -= 2);
+    }
+
+    public void UpWeaponSprites()
+    {
+        spritesDowned = false;
+        weaponSprites.ForEach(s => s.sortingOrder += 2);
     }
 }

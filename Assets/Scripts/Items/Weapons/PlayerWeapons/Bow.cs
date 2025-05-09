@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -11,15 +10,6 @@ public class Bow : MissileWeapon
 {
     [SerializeField] GameObject altMissilePrefab;
     [SerializeField] float altMissileSpeed;
-    /**
-     * <summary>
-     * Инициализация оружия
-     * </summary>
-     * **/
-    void Start()
-    {
-        FindOwner();
-    }
 
     public Bow()
     {
