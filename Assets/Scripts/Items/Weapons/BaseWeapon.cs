@@ -47,6 +47,11 @@ public class BaseWeapon : UpgradableItem
     /// </summary>
     bool reloading = false;
 
+    ///<summary>
+    /// Показывает, отражено ли сейчас оружие по локальной оси Y.
+    /// </summary>
+    bool flippedY = false;
+
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
     /// </summary>
@@ -70,6 +75,20 @@ public class BaseWeapon : UpgradableItem
     void Start()
     {
         FindOwner();
+    }
+
+    /// <summary>
+    /// Проверяет текущий поворот оружия и изменяет его ориентацию при необходимости.
+    /// </summary>
+    private void Update()
+    {
+        bool newFlippedY = owner.weaponDirection.x < 0;
+        if (flippedY != newFlippedY)
+        {
+            Vector3 localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x, -localScale.y, localScale.z);
+        }
+        flippedY = newFlippedY;
     }
 
     public BaseWeapon()
