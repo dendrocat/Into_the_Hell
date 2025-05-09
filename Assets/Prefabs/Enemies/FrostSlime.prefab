@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8010483, a: 1}
+  m_Sprite: {fileID: 7657524752159329517, guid: f3381a6c60e5cb847b8590114a05acf3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 3083387648106461947}
   - component: {fileID: 3570255626067027547}
   - component: {fileID: 8053110039589073410}
+  - component: {fileID: 5205021576745581945}
   m_Layer: 0
   m_Name: FrostSlime
   m_TagString: Enemy
@@ -153,7 +154,6 @@ MonoBehaviour:
   weaponObject: {fileID: 4628259961718276786}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
@@ -488,6 +488,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: 5ddd4b3880b47e046bd87329a2e6b58a, type: 2}
+--- !u!95 &5205021576745581945
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362506804313786204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 20771e798d1e670459a6b07ff3a84a2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5268173238404633433
 PrefabInstance:
   m_ObjectHideFlags: 0

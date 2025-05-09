@@ -8,7 +8,7 @@ using System.Linq;
  * Базовый класс персонажа
  * </summary>
  * **/
-[RequireComponent(typeof(PersonAudio))]
+[RequireComponent(typeof(PersonAudio), typeof(Animator))]
 public class Person : Effectable, IDamagable
 {
     [HideInInspector]
@@ -31,14 +31,25 @@ public class Person : Effectable, IDamagable
 
     [SerializeField] bool moving = false;
     public Vector2 currentDirection;
-    public Vector2 facingDirection;
+    private Vector2 _facingDirection;
+
+    public Vector2 facingDirection
+    {
+        get => _facingDirection;
+        set
+        {
+            _facingDirection = value;
+            anim?.SetFloat("Horizontal", _facingDirection.x);
+            anim?.SetFloat("Vertical", _facingDirection.y);
+        }
+    }
+
     public Vector2 weaponDirection;
 
     Rigidbody2D rb = null;
     Animator anim = null; //компонент аниматор
 
     protected PersonAudio _audioPlayer;
-
     /**
      * <summary>
      * Метод, возвращающий текущее здоровье персонажа
@@ -70,6 +81,11 @@ public class Person : Effectable, IDamagable
     public void setMoving(bool moving)
     {
         this.moving = moving;
+
+        if (!isAlive()) return;
+        if (hasEffect(EffectNames.Shift)) anim.Play("Dash");
+        else if (moving) anim.Play("Walk");
+        else anim.Play("Idle");
     }
 
     /**
@@ -90,7 +106,6 @@ public class Person : Effectable, IDamagable
      * **/
     protected void InitializePerson()
     {
-        facingDirection = Vector2.right;
         if (!TryGetComponent<Animator>(out anim)) //получаем ссылку на компонент аниматора
         {
             Debug.LogError(gameObject.name + ": Missing animator component");
@@ -111,6 +126,7 @@ public class Person : Effectable, IDamagable
         {
             Debug.LogError(gameObject.name + ": Missing Person Audio component");
         }
+        facingDirection = Vector2.right;
     }
 
     void Start()
@@ -316,13 +332,13 @@ public class Person : Effectable, IDamagable
     protected void Die()
     {
         alive = false;
-        if (anim) anim.SetBool("dead", true); //воспроизведение анимации смерти
+        if (anim) anim.Play("Die"); //воспроизведение анимации смерти
+        if (_audioPlayer) _audioPlayer.Play("Die");
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         GetComponents<Collider2D>().ToList().ForEach((el) => el.enabled = false);
 
         OnDeath(); //вызов событий при смерти персонажа
         Died.Invoke(this);
-        _audioPlayer.Play("Die");
 
         StartCoroutine(DestructionDelayCoroutine());
     }

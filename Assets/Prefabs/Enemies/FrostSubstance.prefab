@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7344855078165425000}
   - component: {fileID: 2907897573017317678}
   - component: {fileID: 7175448724615500592}
+  - component: {fileID: 5926281424094317650}
   m_Layer: 0
   m_Name: FrostSubstance
   m_TagString: Enemy
@@ -66,7 +67,6 @@ MonoBehaviour:
   weaponObject: {fileID: 9090182438067025488}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
@@ -401,6 +401,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: 963f5a7127ebba741b38338d000d497d, type: 2}
+--- !u!95 &5926281424094317650
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546629828360165651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 5ae0630f1382d2343bb46e761305941e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9199647155638383368
 GameObject:
   m_ObjectHideFlags: 0

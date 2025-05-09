@@ -207,7 +207,8 @@ MonoBehaviour:
   _damage: 0
   damageRadius: 1.5
   magnitude: 50
-  destructionTime: 0.8
+  colliderEnableTime: 0.02
+  destructionTime: 0.3
 --- !u!1 &5704236797809032322
 GameObject:
   m_ObjectHideFlags: 0
