@@ -90,8 +90,9 @@ public class Sword : RangedWeapon
         return altAttackActive;
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         _animator.SetFloat("Horizontal", owner.facingDirection.x);
         _animator.SetFloat("Vertical", owner.facingDirection.y);
     }

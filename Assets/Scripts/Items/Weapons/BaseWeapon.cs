@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 /// <summary>
@@ -49,6 +49,10 @@ public class BaseWeapon : UpgradableItem
     bool reloading = false;
 
     protected Animator _animator;
+    ///<summary>
+    /// Показывает, отражено ли сейчас оружие по локальной оси Y.
+    /// </summary>
+    bool flippedY = false;
 
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
@@ -74,6 +78,25 @@ public class BaseWeapon : UpgradableItem
     {
         FindOwner();
         TryGetComponent(out _animator);
+    }
+
+    /// <summary>
+    /// Проверяет текущий поворот оружия и изменяет его ориентацию при необходимости.
+    /// </summary>
+    protected virtual void Update()
+    {
+        bool newFlippedY = owner.weaponDirection.x < 0;
+        if (flippedY != newFlippedY)
+        {
+            Vector3 localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x, -localScale.y, localScale.z);
+        }
+        flippedY = newFlippedY;
+        if (owner.weaponDirection.y > 0)
+        {
+            if (!spritesDowned) DownWeaponSprites();
+        }
+        else if (spritesDowned) UpWeaponSprites();
     }
 
     public BaseWeapon()
@@ -186,13 +209,13 @@ public class BaseWeapon : UpgradableItem
 
     public bool spritesDowned { get; private set; } = false;
 
-    public void DownWeaponSprites()
+    private void DownWeaponSprites()
     {
         spritesDowned = true;
         weaponSprites.ForEach(s => s.sortingOrder -= 2);
     }
 
-    public void UpWeaponSprites()
+    private void UpWeaponSprites()
     {
         spritesDowned = false;
         weaponSprites.ForEach(s => s.sortingOrder += 2);

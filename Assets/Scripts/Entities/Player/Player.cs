@@ -93,13 +93,6 @@ public class Player : Person
         Vector2 weaponPosition = normalizedDirection / 2;
         weaponObject.localPosition = weaponPosition;
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
-
-        var w = weaponObject.GetComponent<BaseWeapon>();
-        if (weaponDirection.y > 0)
-        {
-            if (!w.spritesDowned) w.DownWeaponSprites();
-        }
-        else if (w.spritesDowned) w.UpWeaponSprites();
     }
 
     /**
