@@ -12,7 +12,11 @@ public class DialogableNPC : MonoBehaviour, IInteractable
         if (GetComponents<DialogableNPC>().Length > 1)
         {
             Debug.LogError("Many DialogableNPC");
+            return;
         }
+        _hint = Instantiate(_interactImage, transform);
+        _hint.transform.position += new Vector3(.5f, 1f, 0);
+        _hint.SetActive(false);
     }
 
     public void Interact()
@@ -29,13 +33,12 @@ public class DialogableNPC : MonoBehaviour, IInteractable
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() == null) return;
-        _hint = Instantiate(_interactImage, transform);
-        _hint.transform.position += new Vector3(.5f, 1f, 0);
+        _hint.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() == null) return;
-        Destroy(_hint);
+        _hint.SetActive(false);
     }
 }
