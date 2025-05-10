@@ -53,7 +53,7 @@ public class RangedWeapon : AlternateAttackWeapon
             if (!targetTags.Contains(candidate.gameObject.tag)) continue; //не реагируем на цели, не соответствующие тегу
 
             Vector2 candidatePosition = candidate.transform.position;
-            Vector2 candidateDirection = candidatePosition - (Vector2)transform.position;
+            Vector2 candidateDirection = candidatePosition - (Vector2)owner.transform.position;
 
             if (candidateDirection.magnitude <= range)
             {

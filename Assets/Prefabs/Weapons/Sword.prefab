@@ -238,8 +238,8 @@ MonoBehaviour:
   baseAltReloadTime: 0
   baseAltPrepareAttackTime: 0
   baseAltEndAttackTime: 0
-  range: 2
-  angle: 30
+  range: 3
+  angle: 90
 --- !u!95 &2906536521575889036
 Animator:
   serializedVersion: 7
