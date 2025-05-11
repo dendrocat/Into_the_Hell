@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0.24713767, b: 0.54901963, a: 1}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -8048919327011914182, guid: 81040795c17ac1d468a246ae6cf4616e, type: 3}
+  m_Color: {r: 0.62398916, g: 0.7931942, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: -7454067450349467641}
   - component: {fileID: 4860905591216167705}
   - component: {fileID: 9036640236159998092}
+  - component: {fileID: 91781308949022137}
   m_Layer: 0
   m_Name: FrostYeti
   m_TagString: Enemy
@@ -124,7 +125,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7751623756958050878}
@@ -153,8 +154,8 @@ MonoBehaviour:
   weaponObject: {fileID: 8600487435290701763}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
+  anim: {fileID: 0}
   dropMoneyChance: 1
   dropMoneyCount: 600
   bossName: "\u041C\u043E\u0440\u043E\u0437\u043D\u044B\u0439 \u0439\u0435\u0442\u0438"
@@ -193,7 +194,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.1507518}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -203,7 +204,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.9015036}
+  m_Size: {x: 0.69, y: 0.69}
   m_EdgeRadius: 0
 --- !u!50 &2974622706573554584
 Rigidbody2D:
@@ -287,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 0.33
   height: 2
   canMove: 1
   maxSpeed: 2
@@ -380,7 +381,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.33
 --- !u!82 &4860905591216167705
 AudioSource:
   m_ObjectHideFlags: 0
@@ -490,7 +491,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8736c82389b8648b16e3688ece059f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioContainer: {fileID: 0}
+  audioContainer: {fileID: 11400000, guid: 6f06829564292bd4382eee5283530283, type: 2}
+--- !u!95 &91781308949022137
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654895211028066927}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 699ec54d9e7ad5644ad4c69b0ea49300, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7143736023498801768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,7 +566,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrostYetiWeapon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4846546345997671439, guid: b6f6487ef4871ed4e989ee756b6a7dd8, type: 3}
+      propertyPath: weaponSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7500689888440061837, guid: b6f6487ef4871ed4e989ee756b6a7dd8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

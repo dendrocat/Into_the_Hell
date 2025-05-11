@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /**
@@ -10,6 +11,8 @@ public class Boss : BaseEnemy
     [SerializeField] string bossName;
     public BossWeapon bossWeapon;
 
+    bool canAttack = true;
+
     public string GetBossName()
     {
         return bossName;
@@ -18,14 +21,24 @@ public class Boss : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        _audioPlayer.Play("Start");
         destructionDelay = 4f;
+        StartCoroutine(PlayStartSound());
+    }
+
+    IEnumerator PlayStartSound()
+    {
+        canAttack = false;
+        setMoving(false);
+        _audioPlayer.Play("Start");
+        yield return new WaitForSeconds(_audioPlayer.CurrentClipLength);
+        setMoving(true);
+        canAttack = true;
     }
 
 
     new public void Attack()
     {
-        if (!isAlive()) return;
+        if (!isAlive() || !canAttack) return;
         bool[] reloading = new bool[3];
         reloading[0] = bossWeapon.isReloading();
         reloading[1] = bossWeapon.Attack2IsReloading();

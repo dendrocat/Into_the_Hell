@@ -47,7 +47,7 @@ public class Person : Effectable, IDamagable
     public Vector2 weaponDirection;
 
     Rigidbody2D rb = null;
-    Animator anim = null; //компонент аниматор
+    public Animator anim = null; //компонент аниматор
 
     protected PersonAudio _audioPlayer;
     /**
@@ -78,14 +78,13 @@ public class Person : Effectable, IDamagable
      * </summary>
      * <param name="moving">Двигается ли персонаж?</param>
      * **/
-    public void setMoving(bool moving)
+    public virtual void setMoving(bool moving)
     {
         this.moving = moving;
 
         if (!isAlive()) return;
-        if (hasEffect(EffectNames.Shift)) anim.Play("Dash");
-        else if (moving) anim.Play("Walk");
-        else anim.Play("Idle");
+        if (moving) anim.SetBool("Moving", true);
+        else anim.SetBool("Moving", false);
     }
 
     /**
@@ -332,7 +331,7 @@ public class Person : Effectable, IDamagable
     protected void Die()
     {
         alive = false;
-        if (anim) anim.Play("Die"); //воспроизведение анимации смерти
+        if (anim) anim.SetTrigger("Die"); //воспроизведение анимации смерти
         if (_audioPlayer) _audioPlayer.Play("Die");
         weaponObject.gameObject.SetActive(false); //скрыть оружие персонажа
         GetComponents<Collider2D>().ToList().ForEach((el) => el.enabled = false);

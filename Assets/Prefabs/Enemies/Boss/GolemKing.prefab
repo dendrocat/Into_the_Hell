@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.3751731, g: 0.34067082, b: 0.408805, a: 1}
+  m_Sprite: {fileID: -8048919327011914182, guid: 81040795c17ac1d468a246ae6cf4616e, type: 3}
+  m_Color: {r: 0.462, g: 0.462, b: 0.462, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7884422826658838850}
   - component: {fileID: 1289854157069299830}
   - component: {fileID: 8638139854674942961}
+  - component: {fileID: 5233258263587795697}
   m_Layer: 0
   m_Name: GolemKing
   m_TagString: Enemy
@@ -125,7 +126,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 214738555176367375}
@@ -167,8 +168,8 @@ MonoBehaviour:
   weaponObject: {fileID: 2192110367198144509}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
+  anim: {fileID: 0}
   dropMoneyChance: 1
   dropMoneyCount: 600
   bossName: "\u041A\u043E\u0440\u043E\u043B\u044C \u0433\u043E\u043B\u0435\u043C\u043E\u0432"
@@ -207,7 +208,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.1507518}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -217,7 +218,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.9015036}
+  m_Size: {x: 0.69, y: 0.69}
   m_EdgeRadius: 0
 --- !u!50 &6214667280312886549
 Rigidbody2D:
@@ -231,7 +232,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 100
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 0.33
   height: 2
   canMove: 1
   maxSpeed: 2
@@ -394,7 +395,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.33
 --- !u!82 &1289854157069299830
 AudioSource:
   m_ObjectHideFlags: 0
@@ -505,6 +506,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: 7f48e6b74ba7ec64a963d31230fd32db, type: 2}
+--- !u!95 &5233258263587795697
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7702739467203177418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 4679de464a6baaa42b057302a7dd919d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8531022214836484933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3162655253619636246}
     m_Modifications:
+    - target: {fileID: 4158006886489820137, guid: 34631064478f95a44985902a0eded433, type: 3}
+      propertyPath: weaponSprites.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7498413401090071736, guid: 34631064478f95a44985902a0eded433, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -557,7 +584,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GolemWeapon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3322666980314722892, guid: 34631064478f95a44985902a0eded433, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

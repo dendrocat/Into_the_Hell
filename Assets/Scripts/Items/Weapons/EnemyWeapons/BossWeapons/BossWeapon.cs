@@ -42,7 +42,7 @@ public class BossWeapon : BaseWeapon
      * **/
     public bool CanUseAttack(int number)
     {
-        switch(number)
+        switch (number)
         {
             case 0:
                 return CheckAttackConditions();
@@ -63,7 +63,7 @@ public class BossWeapon : BaseWeapon
      * **/
     public void LaunchAttackByNumber(int number)
     {
-        switch(number)
+        switch (number)
         {
             case 0:
                 LaunchAttack();
@@ -78,6 +78,19 @@ public class BossWeapon : BaseWeapon
                 Debug.LogWarning(gameObject.name + ": unexpected attack number (" + number + ")");
                 break;
         }
+    }
+
+    /// <inheritdoc />
+    protected override void OnPrepareAttackStart()
+    {
+        owner.setMoving(false);
+        owner.anim.SetTrigger("Attack1");
+    }
+
+    /// <inheritdoc />
+    protected override void OnEndAttackEnd()
+    {
+        owner.setMoving(true);
     }
 
     /**
@@ -141,7 +154,8 @@ public class BossWeapon : BaseWeapon
     /// </summary>
     protected virtual void OnPrepareAttack2Start()
     {
-
+        owner.setMoving(false);
+        owner.anim.SetTrigger("Attack2");
     }
 
     /// <summary>
@@ -165,7 +179,7 @@ public class BossWeapon : BaseWeapon
     /// </summary>
     protected virtual void OnEndAttack2End()
     {
-
+        owner.setMoving(true);
     }
 
     /// <summary>
@@ -229,7 +243,8 @@ public class BossWeapon : BaseWeapon
     /// </summary>
     protected virtual void OnPrepareAttack3Start()
     {
-
+        owner.setMoving(false);
+        owner.anim.SetTrigger("Attack3");
     }
 
     /// <summary>
@@ -253,7 +268,7 @@ public class BossWeapon : BaseWeapon
     /// </summary>
     protected virtual void OnEndAttack3End()
     {
-
+        owner.setMoving(true);
     }
 
     /// <summary>

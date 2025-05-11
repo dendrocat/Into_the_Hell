@@ -42,6 +42,7 @@ public class TwoHandedSword : RangedWeapon
     {
         owner.facingDirection = owner.weaponDirection;
         owner.AddEffect(EffectNames.Shift, 1);
+        owner.anim.SetTrigger("Dash");
     }
 
     /**

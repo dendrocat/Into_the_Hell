@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 /// <summary>
@@ -53,6 +52,11 @@ public class BaseWeapon : UpgradableItem
     /// Показывает, отражено ли сейчас оружие по локальной оси Y.
     /// </summary>
     bool flippedY = false;
+
+    /// <summary>
+    /// Показывает, опущены ли спрайты оружия ниже игрока
+    /// </summary>
+    bool spritesDowned = false;
 
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
@@ -206,8 +210,6 @@ public class BaseWeapon : UpgradableItem
     {
         return targetTags;
     }
-
-    public bool spritesDowned { get; private set; } = false;
 
     private void DownWeaponSprites()
     {
