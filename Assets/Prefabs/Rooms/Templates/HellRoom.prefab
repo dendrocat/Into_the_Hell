@@ -14736,7 +14736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3cfef8855cbf144987177a906b2e6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  periodicalCheckPeriod: 0
+  periodicalCheckPeriod: 1
 --- !u!114 &5464465621768923751
 MonoBehaviour:
   m_ObjectHideFlags: 0
