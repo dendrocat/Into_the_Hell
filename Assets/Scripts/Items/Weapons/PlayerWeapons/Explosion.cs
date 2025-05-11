@@ -15,8 +15,6 @@ public class Explosion : MonoBehaviour
     [SerializeField] float damageRadius = 1f;
     [SerializeField] float magnitude = 50f;
 
-    [SerializeField] float destructionTime;
-
     List<string> _targetTags;
 
 
@@ -32,7 +30,7 @@ public class Explosion : MonoBehaviour
     {
         _collider = GetComponent<CircleCollider2D>();
         _collider.radius = damageRadius;
-        Destroy(gameObject, destructionTime);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 0.2f);
     }
 
     public void SetDamage(float damage)
@@ -83,7 +81,6 @@ public class Explosion : MonoBehaviour
                 }
             }
         }
-        _collider.enabled = false;
     }
 
     void OnDrawGizmos()

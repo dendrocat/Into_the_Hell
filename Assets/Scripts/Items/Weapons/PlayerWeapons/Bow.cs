@@ -81,9 +81,10 @@ public class Bow : MissileWeapon
             player.inventory.UseExplosiveArrow();
         }
         GameObject missile = GameObject.Instantiate(altMissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
-        Missile missileComponent = missile.GetComponent<Missile>();
-        missileComponent.SetTargetTags(targetTags);
-        missileComponent.SetValues(CalcScale(altDamage), altMissileSpeed);
-        missileComponent.direction = owner.weaponObject.localPosition;
+        var arrowComponent = missile.GetComponent<ExplosiveArrow>();
+        arrowComponent.SetTargetTags(targetTags);
+        arrowComponent.SetValues(CalcScale(damage), altMissileSpeed);
+        arrowComponent.SetExplosionDamage(CalcScale(altDamage));
+        arrowComponent.direction = owner.weaponObject.localPosition;
     }
 }
