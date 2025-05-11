@@ -57,7 +57,7 @@ public class Effectable : MonoBehaviour
         maxEffectCount[1] = 1;
         maxEffectCount[2] = 1;
         maxEffectCount[3] = 10;
-        maxEffectCount[4] = 6;
+        maxEffectCount[4] = 15;
         maxEffectCount[5] = 2;
         maxEffectCount[6] = 2;
         maxEffectCount[7] = 1;
