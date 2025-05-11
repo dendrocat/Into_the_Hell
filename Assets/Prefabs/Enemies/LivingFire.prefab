@@ -68,6 +68,7 @@ MonoBehaviour:
   moving: 0
   currentDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
+  anim: {fileID: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
 --- !u!61 &425291998901909786
@@ -499,8 +500,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.8112055, b: 0, a: 1}
+  m_Sprite: {fileID: -517342245, guid: f5273bbff109ba84e9baa515c8ad7789, type: 3}
+  m_Color: {r: 1, g: 0.18733144, b: 0.18733144, a: 0.69803923}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -561,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 8379522994190713420, guid: aed3e5c09c2f48748aedebaed64ca3c5, type: 3}
       propertyPath: m_Name
       value: LivingFireWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905476167888061166, guid: aed3e5c09c2f48748aedebaed64ca3c5, type: 3}
+      propertyPath: 'weaponSprites.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

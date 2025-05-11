@@ -109,6 +109,7 @@ public class Person : Effectable, IDamagable
         {
             Debug.LogError(gameObject.name + ": Missing animator component");
         }
+        else Debug.Log(gameObject + "animator found");
         if (!TryGetComponent<Rigidbody2D>(out rb))
         {
             Debug.LogError(gameObject.name + ": Missing rigidbody2d component");
@@ -320,6 +321,8 @@ public class Person : Effectable, IDamagable
         {
             weapon.LaunchAttack();
             _audioPlayer.Play("Attack");
+            if (anim.parameters.Any(p => p.name == "Attack1"))
+                anim.SetTrigger("Attack1");
         }
     }
 

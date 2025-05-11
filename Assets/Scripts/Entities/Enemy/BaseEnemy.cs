@@ -26,6 +26,7 @@ public class BaseEnemy : Person
     protected virtual void Start()
     {
         InitializePerson();
+        Debug.Log(anim);
         if (!gameObject.TryGetComponent<Seeker>(out seeker))
         {
             Debug.LogError(gameObject.name + ": missing Seeker component");

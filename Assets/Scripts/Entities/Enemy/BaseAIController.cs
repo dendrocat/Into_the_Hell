@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using UnityEditor;
+using System.Collections;
 
 /**
  * <summary>
@@ -35,6 +36,13 @@ public class BaseAIController : MonoBehaviour
         {
             Debug.LogError(gameObject.name + ": missing AIDestinationSetter component");
         }
+        StartCoroutine(SetMovingFirstFrame());
+    }
+
+    IEnumerator SetMovingFirstFrame()
+    {
+        yield return null;
+        NPC.setMoving(true);
     }
 
     /**

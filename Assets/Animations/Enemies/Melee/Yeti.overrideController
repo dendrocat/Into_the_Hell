@@ -7,5 +7,13 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Yeti
-  m_Controller: {fileID: 9100000, guid: 8234ce7f4de41e843a33e9d334e05f2a, type: 2}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 699ec54d9e7ad5644ad4c69b0ea49300, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8b1065fc7cc70d3409f69fe1597e9b09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4d887472956ef41468ea9a032315eb7e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 21a8fe279f647e748bb06dd958519125, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e7588f961f39744e995b40bac6e066b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2bb5aff5ee5e14a439bc4e12610742c3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 29481985208873e489d24dc4f7965df0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0dfc6d0111849bc4fb0a5338aec4029c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 49e42eaa01488f240b3f9c9b85ef524f, type: 2}
