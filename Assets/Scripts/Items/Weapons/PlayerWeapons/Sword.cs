@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 /**
  * <summary>
@@ -65,6 +64,7 @@ public class Sword : RangedWeapon
     protected override void AltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, level);
+        _animator.SetBool("AltAttack", true);
         _animator.Play("AltAttack");
     }
 
@@ -76,6 +76,7 @@ public class Sword : RangedWeapon
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
+        _animator.SetBool("AltAttack", false);
         _animator.Play("Nothing");
     }
 
