@@ -60,4 +60,10 @@ public class ItemsPanel : MonoBehaviour
         Destroy(_items[key].cost.transform.parent.gameObject);
         _items.Remove(key);
     }
+
+    internal void DeactivateItem(string key)
+    {
+        _items[key].button.interactable = false;
+        _items.Remove(key);
+    }
 }

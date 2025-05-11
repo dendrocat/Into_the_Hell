@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class DialogableNPC : MonoBehaviour, IInteractable
 {
+    [HideInInspector] public UnityEvent DialogStarted = new();
+
     [SerializeField] GameObject _interactImage;
     GameObject _hint;
     [SerializeField] TextAsset inkJSONFile;
@@ -23,6 +26,7 @@ public class DialogableNPC : MonoBehaviour, IInteractable
     {
         SetStory();
         DialogManager.Instance.StartStory();
+        DialogStarted.Invoke();
     }
 
     protected virtual void SetStory()
