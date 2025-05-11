@@ -207,7 +207,6 @@ MonoBehaviour:
   _damage: 0
   damageRadius: 1.5
   magnitude: 50
-  colliderEnableTime: 0.02
   destructionTime: 0.3
 --- !u!1 &5704236797809032322
 GameObject:
@@ -284,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 11
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 515584384245344312}
   - component: {fileID: 4126133902560900308}
   - component: {fileID: 8535190245596927502}
+  - component: {fileID: 4829474199134626814}
   m_Layer: 0
   m_Name: FireSphere
   m_TagString: Missile
@@ -154,6 +155,28 @@ MonoBehaviour:
   _missileHit:
     _enabled: 0
     _value: {fileID: 0}
+--- !u!95 &4829474199134626814
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055762078026548911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8d296b4268cb4cd419adbb6ed4a3a08e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3779107880082869287
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +188,7 @@ GameObject:
   - component: {fileID: 217262959619965065}
   - component: {fileID: 2206068483516328280}
   m_Layer: 0
-  m_Name: SphereSprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,9 +252,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8742138, g: 0.674551, b: 0.15669861, a: 1}
+  m_SortingOrder: 11
+  m_Sprite: {fileID: 5353841184698615464, guid: 7d70df304fcc9f24ab1c00039f14f729, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

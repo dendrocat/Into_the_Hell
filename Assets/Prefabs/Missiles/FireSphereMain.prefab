@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2046612942865690825}
   - component: {fileID: 3034649610052626528}
   m_Layer: 0
-  m_Name: SphereSprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,9 +242,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8742138, g: 0.674551, b: 0.15669861, a: 1}
+  m_SortingOrder: 11
+  m_Sprite: {fileID: 5353841184698615464, guid: 7d70df304fcc9f24ab1c00039f14f729, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
