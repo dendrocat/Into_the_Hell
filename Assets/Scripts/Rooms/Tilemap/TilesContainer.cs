@@ -2,86 +2,120 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Container for tiles and prefabs used in specific locations. This is a ScriptableObject that can be created via the Unity Editor.
+/// Контейнер для тайлов и префабов, используемых в конкретных локациях.
+/// Этот класс является ScriptableObject и может быть создан через Unity Editor.
 /// </summary>
 [CreateAssetMenu(fileName = "TilesContainer", menuName = "Containers/TilesContainer")]
 public class TilesContainer : ScriptableObject
 {
-    [Header("Walls")]
-    [Tooltip("Tile for roof")]
+    [Header("Стены")]
+
+    /// <summary>
+    /// Тайл для крыши.
+    /// </summary>
+    [Tooltip("Тайл для крыши")]
     [SerializeField] TileBase _roof;
 
-    [Tooltip("Tile for walls inside the room")]
+    /// <summary>
+    /// Тайл для внутренних стен комнаты.
+    /// </summary>
+    [Tooltip("Тайл для внутренних стен комнаты")]
     [SerializeField] TileBase _wallInner;
 
-    [Tooltip("Tile for walls outside the room")]
+    /// <summary>
+    /// Тайл для наружных стен комнаты.
+    /// </summary>
+    [Tooltip("Тайл для наружных стен комнаты")]
     [SerializeField] TileBase _wallOuter;
 
-    [Header("Floor")]
-    [Tooltip("Tile for floor")]
+
+    [Header("Пол")]
+
+    /// <summary>
+    /// Тайл для пола.
+    /// </summary>
+    [Tooltip("Тайл для пола")]
     [SerializeField] TileBase _floor;
 
-    [Header("Doors")]
-    [Tooltip("Tile for door roof")]
+
+    [Header("Двери")]
+
+    /// <summary>
+    /// Тайл для крыши двери.
+    /// </summary>
+    [Tooltip("Тайл для крыши двери")]
     [SerializeField] TileBase _doorRoof;
 
-    [Tooltip("Tile for door wall")]
+    /// <summary>
+    /// Тайл для стены двери.
+    /// </summary>
+    [Tooltip("Тайл для стены двери")]
     [SerializeField] TileBase _doorWall;
 
-    [Header("Additional objects")]
 
-    [Tooltip("Tile for additional")]
+    [Header("Дополнительные объекты")]
+
+    /// <summary>
+    /// Тайл для дополнительных ловушек.
+    /// </summary>
+    [Tooltip("Тайл для дополнительных ловушек")]
     [SerializeField] TileBase _additional;
 
-    [Tooltip("Prefab for setting traps")]
+    /// <summary>
+    /// Префаб для установки ловушек.
+    /// </summary>
+    [Tooltip("Префаб для установки ловушек")]
     [SerializeField] GameObject _trap;
 
-    [Tooltip("Prefab for setting destroyable objects")]
+    /// <summary>
+    /// Префаб для установки разрушаемых объектов.
+    /// </summary>
+    [Tooltip("Префаб для установки разрушаемых объектов")]
     [SerializeField] GameObject _destroys;
 
 
-    /// <summary>
-    /// Gets the tile for the roof.
+    // <summary>
+    /// Тайл крыши.
     /// </summary>
     public TileBase Roof => _roof;
 
     /// <summary>
-    /// Gets the tile for walls inside the room.
+    /// Тайл внутренних стен комнаты.
     /// </summary>
     public TileBase WallInner => _wallInner;
 
     /// <summary>
-    /// Gets the tile for walls outside the room.
+    /// Тайл наружных стен комнаты.
     /// </summary>
     public TileBase WallOuter => _wallOuter;
 
     /// <summary>
-    /// Gets the tile for the floor.
+    /// Тайл пола.
     /// </summary>
     public TileBase Floor => _floor;
 
     /// <summary>
-    /// Gets the tile for the floor.
+    /// Тайл крыши двери.
     /// </summary>
     public TileBase DoorRoof => _doorRoof;
 
     /// <summary>
-    /// Gets the tile for the floor.
+    /// Тайл стены двери.
     /// </summary>
     public TileBase DoorWall => _doorWall;
 
     /// <summary>
-    /// Gets the tile for additional elements.
+    /// Тайл дополнительных элементов.
     /// </summary>
     public TileBase Additional => _additional;
 
     /// <summary>
-    /// Gets the prefab for setting traps.
+    /// Префаб для установки ловушек.
     /// </summary>
     public GameObject Trap => _trap;
 
     /// <summary>
-    /// Gets the prefab for setting destroyable objects.
+    /// Префаб для установки разрушаемых объектов.
     /// </summary>
     public GameObject Destroys => _destroys;
 }

@@ -3,26 +3,48 @@ using System.Linq;
 using Pathfinding;
 using UnityEngine;
 
-/**
- * <summary>
- * Базовый класс для врагов.
- * </summary>
- * **/
+
+/// <summary>
+/// Базовый класс для врагов.
+/// </summary>
 public class BaseEnemy : Person
 {
+    /// <summary>
+    /// Шанс выпадения денег при смерти врага.
+    /// </summary>
+    [Tooltip("Шанс выпадения денег при смерти врага")]
     [SerializeField] float dropMoneyChance = 0.5f;
+
+    /// <summary>
+    /// Количество денег, которое может выпасть.
+    /// </summary>
+    [Tooltip("Количество денег, которое может выпасть")]
     [SerializeField] int dropMoneyCount = 5;
+
+    /// <summary>
+    /// Текущий <see cref="Path">путь</see> для навигации.
+    /// </summary>
     protected Path path;
+
+    /// <summary>
+    /// Компонент <see cref="Seeker"/> для поиска пути.
+    /// </summary>
     protected Seeker seeker;
+
+    /// <summary>
+    /// Компонент <see cref="AIPath"/> для управления движением по пути.
+    /// </summary>
     protected AIPath aipath;
-    public AIPath AIPath => aipath;
+
+    /// <summary>
+    /// Компонент <see cref="AIDestinationSetter"/> для установки цели движения.
+    /// </summary>
     protected AIDestinationSetter aiDestSetter;
 
-    /**
-     * <summary>
-     * Инициализация врага
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Инициализация врага
+    /// </summary>
     protected virtual void Start()
     {
         InitializePerson();
@@ -47,19 +69,17 @@ public class BaseEnemy : Person
         }
     }
 
-    /**
-     * <summary>
-     * Обновляет скорость ИИ в соответствии с текущей скоростью персонажа
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Обновляет скорость ИИ в соответствии с текущей скоростью персонажа
+    /// </summary>
     void UpdateSpeed()
     {
         aipath.maxSpeed = isMoving() ? getSpeed() : 0;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    /// <inheritdoc />
     protected override void ChangeWeaponPosition()
     {
         List<Collider2D> enemyColliders = Physics2D.OverlapCircleAll(transform.position, 15f).ToList<Collider2D>();
@@ -95,11 +115,10 @@ public class BaseEnemy : Person
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
-    /**
-     * <summary>
-     * Обновление состояния врага. Вызывается каждый кадр
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Обновление состояния врага. Вызывается каждый кадр
+    /// </summary>
     void Update()
     {
         if (isAlive())
@@ -127,9 +146,8 @@ public class BaseEnemy : Person
         }
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    /// <inheritdoc />
     protected override void OnDeath()
     {
         aipath.canMove = false;
@@ -137,11 +155,10 @@ public class BaseEnemy : Person
         DropMoney();
     }
 
-    /**
-     * <summary>
-     * С некоторым шансом выдает деньги игроку.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// С некоторым шансом выдает деньги игроку.
+    /// </summary>
     void DropMoney()
     {
         if (Random.Range(0.0f, 1.0f) < dropMoneyChance)

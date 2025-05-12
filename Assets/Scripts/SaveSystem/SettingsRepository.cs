@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Provides type-safe PlayerPrefs storage with automatic key prefixing
+/// Обеспечивает типобезопасное хранение настроек в PlayerPrefs с автоматическим добавлением префиксов ключей.
 /// </summary>
 public class SettingsRepository
 {
     /// <summary>
-    /// Maps supported value types to their PlayerPrefs key prefixes.
+    /// Отображает поддерживаемые типы значений в префиксы ключей PlayerPrefs.
     /// </summary>
-    /// /// <remarks>
-    /// Used to differentiate value types in storage.
-    /// Contains mappings for: int, float, and bool.
+    /// <remarks> 
+    /// Используется для различения типов значений при сохранении и загрузке.
+    /// Поддерживаются типы:
+    /// <list type="bullet">
+    /// <item>int</item>
+    /// <item>float</item>
+    /// <item>bool</item>
+    /// <item>string</item>
+    /// </list>
     /// </remarks>
     public static readonly Dictionary<Type, string> TypePrefixes = new()
     {
@@ -23,24 +29,17 @@ public class SettingsRepository
     };
 
     /// <summary>
-    /// Saves a collection of settings to PlayerPrefs.
+    /// Сохраняет коллекцию настроек в PlayerPrefs.
     /// </summary>
-    /// <param name="data">Key-value pairs to store where key is the setting name and value is the setting value</param>
+    /// <param name="data">Пары "ключ-значение" для сохранения, где ключ - имя настройки, значение - её значение.</param>
     /// <remarks>
-    /// Automatically handles:
-    /// - Type prefixing to prevent key collisions
-    /// - Type conversion for supported types
-    /// - Error logging for unsupported types
+    /// Автоматически:
+    /// <list type="bullet">
+    /// <item><description>Добавляет префиксы для предотвращения конфликтов ключей.</description></item>
+    /// <item><description>Конвертирует значения в поддерживаемые типы.</description></item>
+    /// <item><description>Логирует ошибки для неподдерживаемых типов.</description></item>
+    /// </list>
     /// </remarks>
-    /// <example>
-    /// <code>
-    /// var settings = new Dictionary<string, object> {
-    ///     {"Volume", 0.8f},
-    ///     {"Fullscreen", true}
-    /// };
-    /// SettingsRepository.Save(settings);
-    /// </code>
-    /// </example>
     public static void Save(IDictionary<string, object> data)
     {
         foreach (var p in data)
@@ -70,23 +69,18 @@ public class SettingsRepository
     }
 
     /// <summary>
-    /// Loads settings from PlayerPrefs.
+    /// Загружает настройки из PlayerPrefs по списку ключей.
     /// </summary>
-    /// <param name="keys">Collection of setting names to load</param>
-    /// <returns>Dictionary of loaded values with original keys</returns>
+    /// <param name="keys">Коллекция имён настроек для загрузки.</param>
+    /// <returns>Словарь загруженных значений с исходными ключами.</returns>
     /// <remarks>
-    /// Handles:
-    /// - Automatic type detection through prefixes
-    /// - Conversion of stored values to original types
-    /// - Silent skipping of non-existent keys
+    /// Автоматически:
+    /// <list type="bullet">
+    /// <item><description>Определяет тип значения по префиксу ключа.</description></item>
+    /// <item><description>Конвертирует сохранённые данные в исходные типы.</description></item>
+    /// <item><description>Пропускает отсутствующие ключи без ошибок.</description></item>
+    /// </list>
     /// </remarks>
-    /// <example>
-    /// <code>
-    /// var loaded = SettingsRepository.Load(new[] {"Volume", "Fullscreen"});
-    /// float volume = (float)loaded["Volume"];
-    /// bool fullscreen = (bool)loaded["Fullscreen"];
-    /// </code>
-    /// </example>
     public static Dictionary<string, object> Load(IEnumerable<string> keys)
     {
         var result = new Dictionary<string, object>();

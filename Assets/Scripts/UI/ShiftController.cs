@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Контроллер для отображения и анимации перезарядки рывков.
+/// Управляет списком иконок и плавным заполнением индикаторов.
+/// </summary>
 public class ShiftController : MonoBehaviour
 {
+    [Tooltip("Список изображений индикаторов перезарядки")]
     [SerializeField] List<Image> _images;
 
     int _shiftIndex;
@@ -22,6 +27,10 @@ public class ShiftController : MonoBehaviour
         _shiftIndex = _images.Count - 1;
     }
 
+    /// <summary>
+    /// Устанавливает количество доступных рывков и обновляет индикаторы.
+    /// </summary>
+    /// <param name="shiftCount">Количество доступных рывков.</param>
     public void SetShiftCount(int shiftCount)
     {
         var len = _images.Count;
@@ -37,12 +46,21 @@ public class ShiftController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Запускает плавную анимацию перезарядки следующего рывка.
+    /// </summary>
+    /// <param name="reloadTime">Время перезарядки в секундах.</param>
     public void StartShiftSmoothReload(float reloadTime)
     {
         _shiftIndex++;
         shiftReload = StartCoroutine(ShiftSmoothed(reloadTime));
     }
 
+    /// <summary>
+    /// Корутина плавного уменьшения заполнения индикатора рывка.
+    /// </summary>
+    /// <param name="time">Длительность анимации в секундах.</param>
+    /// <returns>IEnumerator для корутины.</returns>
     IEnumerator ShiftSmoothed(float time)
     {
         float t = 0;

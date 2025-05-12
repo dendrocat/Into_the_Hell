@@ -600,14 +600,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlazeWeapon
       objectReference: {fileID: 0}
-    - target: {fileID: 8901299584031821784, guid: 5ca6d4fd72f825648a33155ebe4927f2, type: 3}
-      propertyPath: missilePrefab
-      value: 
-      objectReference: {fileID: 1061599759960762310, guid: f65afb4a06097ee47a24758ad8ccc861, type: 3}
-    - target: {fileID: 8901299584031821784, guid: 5ca6d4fd72f825648a33155ebe4927f2, type: 3}
-      propertyPath: attack3MissilePrefab
-      value: 
-      objectReference: {fileID: 1061599759960762310, guid: f65afb4a06097ee47a24758ad8ccc861, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

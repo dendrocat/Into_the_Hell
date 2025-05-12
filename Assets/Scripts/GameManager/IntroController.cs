@@ -5,30 +5,67 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// <summary>
+/// Контроллер интро-сцены.
+/// Обеспечивает последовательное отображение объектов и переключение на следующую сцену.
+/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class IntroController : MonoBehaviour
 {
+    /// <summary>
+    /// Структура для хранения информации об объекте интро и его длительности отображения.
+    /// </summary>
     [Serializable]
     struct ObjectDuration
     {
+        /// <summary>
+        /// Игровой объект для отображения в интро.
+        /// </summary>
+        [Tooltip("Игровой объект для отображения в интро")]
         public GameObject gameObject;
 
-        [Range(0f, 1f)]
-        public float durationPart;
+        // <summary>
+        /// Доля времени от общей длительности интро, в течение которой объект будет активен.
+        /// </summary>
+        [Tooltip("Доля времени от общей длительности интро (0..1)")]
+        [Range(0f, 1f)] public float durationPart;
     }
 
-    [Header("Intro canvas")]
+    [Header("Настройки холста интро")]
+
+    /// <summary>
+    /// Изображение маски для плавного появления и исчезновения объектов.
+    /// </summary>
+    [Tooltip("Изображение маски для плавного появления и исчезновения объектов")]
     [SerializeField] Image _mask;
+
+    /// <summary>
+    /// Список объектов интро с указанием длительности их отображения.
+    /// </summary>
+    [Tooltip("Список объектов интро с указанием длительности их отображения")]
     [SerializeField] List<ObjectDuration> _introObjects;
 
-    [Header("Intro Parameters")]
+
+    [Header("Параметры интро")]
+
+    /// <summary>
+    /// Задержка между отображением объектов интро (в секундах).
+    /// </summary>
+    [Tooltip("Задержка между отображением объектов интро (в секундах)")]
     [SerializeField] float delayBetweenObjects;
 
+    /// <summary>
+    /// Запуск корутины отображения интро.
+    /// </summary>
     void Awake()
     {
         StartCoroutine(ShowIntro(GetComponent<AudioSource>().clip.length));
     }
 
+    /// <summary>
+    /// Корутина изменения состояния маски (плавное появление и исчезновение).
+    /// </summary>
+    /// <param name="duration">Длительность анимации (в секундах).</param>
     IEnumerator ChangeMaskState(float duration)
     {
         var color = _mask.color;
@@ -53,6 +90,10 @@ public class IntroController : MonoBehaviour
         color.a = 1;
     }
 
+    /// <summary>
+    /// Корутина отображения интро и переключения на следующую сцену.
+    /// </summary>
+    /// <param name="duration">Общая длительность интро (в секундах).</param>
     IEnumerator ShowIntro(float duration)
     {
         yield return null;

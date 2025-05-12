@@ -1,13 +1,11 @@
-using System;
-
-/// <summary>
-/// Interface for controllers that manage additional effects.
+// <summary>
+/// Интерфейс для контроллеров, управляющих дополнительными ловушками.
 /// </summary>
 public interface IAdditionalController
 {
     /// <summary>
-    /// Applies or sets additional effects as defined by the implementing class.
+    /// Применяет или устанавливает дополнительные ловушки, определённые в реализующем классе.
     /// </summary>
-    /// <param name="TODO">//TODO: add param</param>
+    /// <param name="trapContainer"><see cref="TrapContainer">Контейнер ловушек</see>, содержащий данные для применения эффектов.</param>
     public void SetAdditionalEffect(TrapContainer trapContainer);
 }

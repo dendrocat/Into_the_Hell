@@ -1,25 +1,25 @@
 /// <summary>
-/// Enumeration that defines the possible locations of doors within a room.
+/// Перечисление, определяющее возможные расположения дверей в комнате.
 /// </summary>
 public enum DoorDirection
 {
     /// <summary>
-    /// The door is located at the top of the room.
+    /// Дверь, расположенная в верхней части комнаты.
     /// </summary>
     Up = 0,
 
     /// <summary>
-    /// The door is located on the left side of the room.
+    /// Дверь, расположенная слева в комнате.
     /// </summary>
     Left = 1,
 
     /// <summary>
-    /// The door is located on the right side of the room.
+    /// Дверь, расположенная справа в комнате.
     /// </summary>
     Right = 2,
 
     /// <summary>
-    /// The door is located at the bottom of the room.
+    /// Дверь, расположенная в нижней части комнаты.
     /// </summary>
     Down = 3
 }

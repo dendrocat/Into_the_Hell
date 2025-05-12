@@ -10,36 +10,43 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Список спрайтов оружия.
     /// </summary>
+    [Tooltip("Список спрайтов оружия.")]
     [SerializeField] protected List<SpriteRenderer> weaponSprites;
 
     /// <summary>
     /// Список тегов, которым оружие может наносить урон.
     /// </summary>
+    [Tooltip("Список тегов, которым оружие может наносить урон.")]
     [SerializeField] protected List<string> targetTags;
 
     /// <summary>
     /// Владелец оружия.
     /// </summary>
+    [Tooltip("Владелец оружия.")]
     [SerializeField] protected Person owner;
 
     /// <summary>
     /// Базовый урон, наносимый оружием.
     /// </summary>
+    [Tooltip("Базовый урон, наносимый оружием.")]
     [SerializeField] protected float damage;
 
     /// <summary>
     /// Базовое время перезарядки оружия.
     /// </summary>
+    [Tooltip("Базовое время перезарядки оружия.")]
     [SerializeField] protected float baseReloadTime;
 
     /// <summary>
     /// Базовое время подготовки атаки.
     /// </summary>
+    [Tooltip("Базовое время подготовки атаки.")]
     [SerializeField] protected float basePrepareAttackTime;
 
     /// <summary>
     /// Базовое время окончания атаки.
     /// </summary>
+    [Tooltip("Базовое время окончания атаки.")]
     [SerializeField] protected float baseEndAttackTime;
 
     /// <summary>
@@ -47,7 +54,11 @@ public class BaseWeapon : UpgradableItem
     /// </summary>
     bool reloading = false;
 
+    /// <summary>
+    /// Компонент аниматора для управления анимациями
+    /// </summary>
     protected Animator _animator;
+
     ///<summary>
     /// Показывает, отражено ли сейчас оружие по локальной оси Y.
     /// </summary>
@@ -61,7 +72,7 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
     /// </summary>
-    /// <returns>True, если оружие перезаряжается, иначе false.</returns>
+    /// <returns><see langword="true"/>, если оружие перезаряжается, иначе <see langword="false"/>.</returns>
     public bool isReloading()
     {
         return reloading;
@@ -103,6 +114,9 @@ public class BaseWeapon : UpgradableItem
         else if (spritesDowned) UpWeaponSprites();
     }
 
+    /// <summary>
+    /// Конструктор, инициализирующий коэффициент масштабирования.
+    /// </summary>
     public BaseWeapon()
     {
         scaleCoeff = 1f;
@@ -111,7 +125,7 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Возвращает урон, масштабированный согласно текущему уровню оружия.
     /// </summary>
-    /// <returns>Масштабированный урон.</returns>
+    /// <returns><see langword="float"/> - Масштабированный урон.</returns>
     public float getScaledDamage()
     {
         return CalcScale(damage);
@@ -149,7 +163,7 @@ public class BaseWeapon : UpgradableItem
     /// <summary>
     /// Проверяет условия, позволяющие выполнить атаку. Метод для переопределения в классах-наследниках.
     /// </summary>
-    /// <returns>True, если атака возможна, иначе false.</returns>
+    /// <returns>true, если атака возможна, иначе false.</returns>
     protected virtual bool CheckAttackConditions()
     {
         return true;
@@ -206,17 +220,27 @@ public class BaseWeapon : UpgradableItem
         reloading = false;
     }
 
+    // <summary>
+    /// Возвращает список тегов целей.
+    /// </summary>
+    /// <returns>Список строк с тегами целей.</returns>
     public List<string> GetTargetTags()
     {
         return targetTags;
     }
 
+    /// <summary>
+    /// Опускает оружие визуально, уменьшая порядок сортировки спрайтов.
+    /// </summary>
     private void DownWeaponSprites()
     {
         spritesDowned = true;
         weaponSprites.ForEach(s => s.sortingOrder -= 2);
     }
 
+    /// <summary>
+    /// Поднимает оружие визуально, увеличивая порядок сортировки спрайтов.
+    /// </summary>
     private void UpWeaponSprites()
     {
         spritesDowned = false;

@@ -4,20 +4,38 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Скриптабельный объект для хранения подсказок, связанных с действиями ввода.
+/// </summary>
 [CreateAssetMenu(fileName = "HintConfig", menuName = "Hint")]
 public class Hint : ScriptableObject
 {
+    /// <summary>
+    /// Структура, описывающая действие ввода и связанную с ним подсказку.
+    /// </summary>
     [Serializable]
     struct ActionHint
     {
+        [Tooltip("Ссылка на действие ввода")]
         public InputActionReference inputAction;
+
+        [Tooltip("Текст подсказки с плейсхолдерами для клавиш")]
         public string hint;
     }
+
+    [Tooltip("Список подсказок")]
     [SerializeField] List<ActionHint> _actionHints;
 
+    /// <summary>
+    /// Сформированные подсказки с учётом текущих привязок клавиш.
+    /// </summary>
     public List<string> Hints { get; private set; }
 
-
+    /// <summary>
+    /// Заполняет текст подсказки, подставляя текущие отображаемые строки привязок клавиш.
+    /// </summary>
+    /// <param name="actionHint">Структура с действием и шаблоном подсказки.</param>
+    /// <returns>Заполненный текст подсказки.</returns>
     string FillHintByBindings(ActionHint actionHint)
     {
         List<string> bindDisplay = new();
@@ -39,6 +57,10 @@ public class Hint : ScriptableObject
         return hint;
     }
 
+    /// <summary>
+    /// Инициализирует список подсказок, используя рантайм-ссылки на действия.
+    /// </summary>
+    /// <param name="finder">Объект для поиска рантайм-экземпляров действий.</param>
     public void InitHint(ActionRuntimeFinder finder)
     {
         Hints = new();

@@ -1,26 +1,26 @@
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий огненный шар.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий огненный шар.
+/// </summary>
 public class Fireball : Missile
 {
-    /**
-     * <summary>
-     * Инициализация огненного шара
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Инициализация огненного шара
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         damageRadius = 0.01f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <summary>
+    /// Обработка столкновения с объектом.
+    /// Наносит урон и накладывает эффект оглушения, затем уничтожает связанную и текущую сферу.
+    /// </summary>
+    /// <param name="collision">Информация о столкновении.</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;

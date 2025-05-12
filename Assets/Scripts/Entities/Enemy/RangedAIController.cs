@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий ИИ врагов дальнего боя.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий ИИ врагов дальнего боя.
+/// </summary>
 public class RangedAIController : BaseAIController
 {
-    /**
-     * <summary>
-     * Метод, определяющий поведение ИИ. Вызывается каждый кадр.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Метод, определяющий поведение ИИ. Вызывается каждый кадр.
+    /// </summary>
     private void Update()
     {
         aipath.maxSpeed = NPC.getSpeed();
@@ -50,11 +48,10 @@ public class RangedAIController : BaseAIController
         }
     }
 
-    /**
-     * <summary>
-     * Метод для дебага игры: отображает луч от дальнобойного оружия до игрока
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Метод для дебага игры: отображает луч от дальнобойного оружия до игрока
+    /// </summary>
     private void OnDrawGizmos()
     {
         if (aiDestSetter)

@@ -1,12 +1,20 @@
 using UnityEngine;
-using UnityEngine.Analytics;
 
+/// <summary>
+/// Контроллер панели босса, управляющий отображением здоровья, эффектов и реакцией на смерть босса.
+/// </summary>
 public class BossBarController : MonoBehaviour
 {
+     [Tooltip("Компонент отображения здоровья босса")]
     [SerializeField] BossHealthBarController _bossHealthBar;
 
+    [Tooltip("Компонент отображения эффектов босса")]
     [SerializeField] EffectBarController _effect;
 
+    /// <summary>
+    /// Настраивает отображение эффекта босса в зависимости от оружия босса.
+    /// </summary>
+    /// <param name="boss"><see cref="Boss">Объект босса</see>.</param>
     void SetBossEffect(Boss boss)
     {
         EffectNames effect = boss.bossWeapon is YetiWeapon ?
@@ -17,14 +25,16 @@ public class BossBarController : MonoBehaviour
         _effect.SetEffectDuration(boss.getEffectDuration(effect));
     }
 
+    /// <summary>
+    /// Устанавливает босса для панели, подписывается на события изменения здоровья и смерти.
+    /// </summary>
+    /// <param name="boss"><see cref="Boss">Объект босса</see>.</param>
     public void SetBoss(Boss boss)
     {
-        Debug.Log($"BossBar: boss setted");
         _bossHealthBar.SetBossName(boss.GetBossName());
         _bossHealthBar.SetHealth(boss.getHP(), boss.MaxHealth);
         boss.HealthChanged.AddListener(() =>
         {
-            Debug.Log("Boss bar: health changed");
             _bossHealthBar.SetHealthSmoothed(boss.getHP(), boss.MaxHealth);
         }
         );
@@ -36,14 +46,16 @@ public class BossBarController : MonoBehaviour
     }
     void OnDestroy()
     {
-        Debug.Log($"Boss bar: destroyed");
         Person.Died.RemoveListener(OnBossDied);
     }
 
+    /// <summary>
+    /// Обработчик события смерти персонажа. Если умерший - босс, скрывает панель.
+    /// </summary>
+    /// <param name="person">Умерший <see cref="Person">персонаж</see>.</param>
     void OnBossDied(Person person)
     {
         if (!(person is Boss)) return;
-        Debug.Log($"BossBar: boss died");
         gameObject.SetActive(false);
     }
 }

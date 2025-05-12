@@ -1,9 +1,16 @@
-/// <summary>Orientation for hall tilemaps</summary>
+// <summary>
+/// Направление ориентации коридора (холла) на тайлмапе.
+/// </summary>
 public enum HallDirection
 {
-    /// <summary>Vertical corridor (extends along Y-axis)</summary>
+    /// <summary>
+    /// Вертикальный коридор (простирается вдоль оси Y).
+    /// </summary>
     Vertical = 0,
 
-    /// <summary>Horizontal corridor (extends along X-axis)</summary>
+
+    /// <summary>
+    /// Горизонтальный коридор (простирается вдоль оси X).
+    /// </summary>
     Horizontal = 1
 }

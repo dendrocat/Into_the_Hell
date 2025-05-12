@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, который отвечает за нанесение урона объектам между связанными огненными сферами.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, который отвечает за нанесение урона объектам между связанными огненными сферами.
+/// </summary>
 public class FireSphereAttack : MonoBehaviour
 {
+    /// <summary>
+    /// Ссылка на компонент <see cref="FireSphere"/>, к которому привязан этот скрипт.
+    /// </summary>
     FireSphere sphere;
-    float period;
 
+    /// <summary>
+    /// Периодичность нанесения урона (в секундах).
+    /// </summary>
+    [Tooltip("Периодичность нанесения урона (в секундах)")]
+    [SerializeField] float period = 0.25f;
+
+    /// <summary>
+    /// Инициализация компонента и запуск корутины атаки.
+    /// </summary>
     private void Start()
     {
         sphere = GetComponent<FireSphere>();
@@ -19,9 +29,13 @@ public class FireSphereAttack : MonoBehaviour
         StartCoroutine(FireLineAttack());
     }
 
+    /// <summary>
+    /// Корутина, которая периодически наносит урон объектам, находящимся между связанными сферами.
+    /// </summary>
+    /// <returns><see cref="IEnumerator"/> для запуска корутины.</returns>
     IEnumerator FireLineAttack()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(period);
 
         RaycastHit2D[] hits = Physics2D.LinecastAll(transform.position, sphere.linkedSphere.transform.position);
 

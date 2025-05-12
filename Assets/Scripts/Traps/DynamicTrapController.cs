@@ -1,39 +1,34 @@
 using System.Collections;
 using UnityEngine;
 
-/**
- * <summary>
- * Тип ловушки
- * </summary>
- * **/
-public enum TrapType
-{
-    NonPeriodical = 0, // без периодической проверки нахождения в ловушке
-    Periodical = 1 // с периодической проверкой нахождения в ловушке
-}
-
-/**
- * <summary>
- * Класс-контроллер для динамической (имеющей периоды активности и бездействия) ловушки
- * </summary>
- * **/
+/// <summary>
+/// Класс-контроллер для динамической (имеющей периоды активности и бездействия) ловушки
+/// </summary>
 [RequireComponent(typeof(Animator))]
 public class DynamicTrapController : MonoBehaviour
 {
     BaseTrap trap;
-    // [SerializeField] GameObject activeSprite;
-    // [SerializeField] GameObject inactiveSprite;
     Animator _animator;
 
+    [Tooltip("Тип ловушки, определяющий поведение проверки")]
     [SerializeField] TrapType trapType;
-    [SerializeField] float activatedPeriod; // время, в течение которого ловушка активна
-    [SerializeField] float periodicalCheckPeriod; // время между проверками нахождения в ловушке
-    [SerializeField] float idlePeriod; // время, в течение которого ловушка неактивна
+
+    [Tooltip("Время, в течение которого ловушка активна (в секундах)")]
+    [SerializeField] float activatedPeriod;
+
+    [Tooltip("Период между проверками целей в ловушке (в секундах)")]
+    [SerializeField] float periodicalCheckPeriod;
+
+    [Tooltip("Время, в течение которого ловушка неактивна (в секундах)")]
+    [SerializeField] float idlePeriod;
     Coroutine periodicalCheckCoroutine;
 
-    [Range(0f, 5f)]
-    [SerializeField] float maxStartDelayTime;
+    [Tooltip("Максимальная задержка перед стартом ловушки (в секундах)")]
+    [SerializeField, Range(0f, 5f)] float maxStartDelayTime;
 
+    /// <summary>
+    /// Инициализация ловушки
+    /// </summary>
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -41,6 +36,11 @@ public class DynamicTrapController : MonoBehaviour
         if (trap) trap.Deactivate();
     }
 
+
+    /// <summary>
+    /// Запускает ловушку с некоторой рандомной задержкой
+    /// </summary>
+    /// <returns><see cref="IEnumerator"/> для корутины</returns>
     IEnumerator Start()
     {
         if (trap)
@@ -50,6 +50,9 @@ public class DynamicTrapController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Корутина активации ловушки с проигрыванием анимации.
+    /// </summary>
     IEnumerator ActivateTrap()
     {
         _animator.Play("TrapActivate");
@@ -57,6 +60,9 @@ public class DynamicTrapController : MonoBehaviour
         trap.Activate();
     }
 
+    /// <summary>
+    /// Корутина деактивации ловушки с проигрыванием анимации.
+    /// </summary>
     IEnumerator DeactivateTrap()
     {
         _animator.Play("TrapDeactivate");
@@ -64,11 +70,10 @@ public class DynamicTrapController : MonoBehaviour
         trap.Deactivate();
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая период, когда ловушка неактивна.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая период, когда ловушка неактивна.
+    /// </summary>
     private IEnumerator IdlePeriod()
     {
         yield return new WaitForSeconds(idlePeriod);
@@ -76,11 +81,10 @@ public class DynamicTrapController : MonoBehaviour
         yield return StartCoroutine(ActivatedPeriod());
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая период, когда ловушка активна.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая период, когда ловушка активна.
+    /// </summary>
     private IEnumerator ActivatedPeriod()
     {
         if (trapType == TrapType.Periodical)
@@ -92,11 +96,10 @@ public class DynamicTrapController : MonoBehaviour
         yield return StartCoroutine(IdlePeriod());
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая периодическую проверку.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая периодическую проверку.
+    /// </summary>
     private IEnumerator PeriodicalCheck()
     {
         yield return new WaitForSeconds(periodicalCheckPeriod);

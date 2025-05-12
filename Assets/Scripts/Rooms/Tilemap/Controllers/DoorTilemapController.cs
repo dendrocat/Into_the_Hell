@@ -3,20 +3,21 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Controller for managing tilemaps of walls with doors. Implements the <see cref="IDoorTilemapController"/> interface.
+/// Контроллер для управления тайлмапами стен с дверями. Реализует интерфейс <see cref="IDoorTilemapController"/>.
 /// </summary>
 public class DoorTilemapController : TilemapController, IDoorTilemapController
 {
     /// <summary>
-    /// List of door game objects in the room.
+    /// Список игровых объектов дверей в комнате.
     /// </summary>
+    [Tooltip("Список игровых объектов дверей в комнате")]
     [SerializeField] List<GameObject> _doors;
 
     /// <inheritdoc />
     public List<GameObject> ActiveDoors { get; private set; }
 
     /// <summary>
-    /// Initializes the controller by gathering all tilemaps and door game objects in the children of this component.
+    /// Инициализация контроллера, создание списка активных дверей.
     /// </summary>
     void Awake()
     {
@@ -30,8 +31,10 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
         SwapDoorTiles(container);
     }
 
-    /// <summary>Replaces all tiles in the door tilemaps with the tiles specified in the provided container. </summary>
-    /// <param name="container">The container holding the tiles to replace the existing ones.</param>
+    /// <summary>
+    /// Заменяет все тайлы в тайлмапах дверей на тайлы из переданного контейнера.
+    /// </summary>
+    /// <param name="container">Контейнер с тайлами для замены.</param>
     void SwapDoorTiles(TilesContainer container)
     {
         foreach (var door in _doors)
@@ -55,7 +58,7 @@ public class DoorTilemapController : TilemapController, IDoorTilemapController
     }
 
     /// <summary>
-    /// Cleans up inactive doors and wall tilemaps when this component is destroyed.
+    /// Очищает неактивные двери и тайлмапы стен при уничтожении компонента.
     /// </summary>
     void OnDestroy()
     {

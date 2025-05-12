@@ -3,36 +3,78 @@ using System.Collections;
 using UnityEngine.Events;
 using System.Linq;
 
-/**
- * <summary>
- * Базовый класс персонажа
- * </summary>
- * **/
+/// <summary>
+/// Базовый класс персонажа
+/// </summary>
 [RequireComponent(typeof(PersonAudio), typeof(Animator))]
 public class Person : Effectable, IDamagable
 {
-    [HideInInspector]
-    public UnityEvent HealthChanged = new();
-    [HideInInspector]
-    public static UnityEvent<Person> Died = new();
+    /// <summary>
+    /// Событие, вызываемое при изменении здоровья персонажа.
+    /// </summary>
+    [HideInInspector] public UnityEvent HealthChanged = new();
+
+    // <summary>
+    /// Статическое событие, вызываемое при смерти любого персонажа.
+    /// </summary>
+    [HideInInspector] public static UnityEvent<Person> Died = new();
+    
     const float iceDriftDeceleration = 0.9f;
 
+    /// <summary>
+    /// Флаг состояния жизни персонажа.
+    /// </summary>
     bool alive = true;
 
+    /// <summary>
+    /// Задержка перед уничтожением объекта после смерти.
+    /// </summary>
     protected float destructionDelay = 3f;
-    [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
+
+    /// <summary>Максимальное здоровье персонажа.</summary>
+    [Tooltip("Максимальное здоровье персонажа.")]
+    [SerializeField] protected float maxHealth = 100f;
+
+    /// <summary>Максимальное здоробье персонажа.</summary>
     public float MaxHealth => maxHealth;
 
+    /// <summary>
+    /// Текущее здоровье персонажа.
+    /// </summary>
+    [Tooltip("Текущее здоровье персонажа")]
     [SerializeField] protected float health = 100f; //текущее здоровье
 
+    /// <summary>
+    /// Скорость передвижения персонажа.
+    /// </summary>
+    [Tooltip("Скорость передвижения персонажа")]
     [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
-    public BaseWeapon weapon; //оружие персонажа
+
+    /// <summary>
+    /// Оружие, используемое персонажем.
+    /// </summary>
+    public BaseWeapon weapon;
+
+    /// <summary>
+    /// Объект оружия в иерархии персонажа.
+    /// </summary>
     public Transform weaponObject;
 
+    /// <summary>
+    /// Флаг движения персонажа.
+    /// </summary>
+    [Tooltip("Двигается ли персонаж в данный момент")]
     [SerializeField] bool moving = false;
-    public Vector2 currentDirection;
-    private Vector2 _facingDirection;
 
+    /// <summary>
+    /// Текущее направление движения персонажа.
+    /// </summary>
+    public Vector2 currentDirection;
+
+    private Vector2 _facingDirection;
+    /// <summary>
+    /// Текущее направление взгляда персонажа.
+    /// </summary>
     public Vector2 facingDirection
     {
         get => _facingDirection;
@@ -44,40 +86,48 @@ public class Person : Effectable, IDamagable
         }
     }
 
+    /// <summary>
+    /// Направление оружия.
+    /// </summary>
     public Vector2 weaponDirection;
 
     Rigidbody2D rb = null;
-    public Animator anim = null; //компонент аниматор
 
+    /// <summary>
+    /// Компонент аниматора персонажа.
+    /// </summary>
+    public Animator anim = null;
+
+    /// <summary>
+    /// Компонент для воспроизведения звуков персонажа.
+    /// </summary>
     protected PersonAudio _audioPlayer;
-    /**
-     * <summary>
-     * Метод, возвращающий текущее здоровье персонажа
-     * </summary>
-     * <returns>float - текущий запас здоровья персонажа.</returns>
-     * **/
+
+
+    /// <summary>
+    /// Метод, возвращающий текущее здоровье персонажа
+    /// </summary>
+    /// <returns><see langword="float"/> - текущий запас здоровья персонажа.</returns>
     public float getHP()
     {
         return health;
     }
 
-    /**
-     * <summary>
-     * Метод, определяющий, двигается ли персонаж.
-     * </summary>
-     * <returns>bool - двигается ли персонаж.</returns>
-     * **/
+
+    /// <summary>
+    /// Метод, определяющий, двигается ли персонаж.
+    /// </summary>
+    /// <returns><see langword="bool"/> - двигается ли персонаж.</returns>
     public bool isMoving()
     {
         return moving;
     }
 
-    /**
-     * <summary>
-     * Метод, устанавливающий, двигается ли персонаж.
-     * </summary>
-     * <param name="moving">Двигается ли персонаж?</param>
-     * **/
+    
+    /// <summary>
+    /// Метод, устанавливающий, двигается ли персонаж.
+    /// </summary>
+    /// <param name="moving">Двигается ли персонаж?</param>
     public virtual void setMoving(bool moving)
     {
         this.moving = moving;
@@ -87,22 +137,20 @@ public class Person : Effectable, IDamagable
         else anim.SetBool("Moving", false);
     }
 
-    /**
-     * <summary>
-     * Метод, устанавливающий, жив ли персонаж.
-     * </summary>
-     * <returns>bool - жив ли персонаж.</returns>
-     * **/
+    
+    /// <summary>
+    /// Метод, устанавливающий, жив ли персонаж.
+    /// </summary>
+    /// <returns><see langword="bool"/> - жив ли персонаж.</returns>
     public bool isAlive()
     {
         return alive;
     }
 
-    /**
-     * <summary>
-     * Инициализация персонажа.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Инициализация персонажа.
+    /// </summary>
     protected void InitializePerson()
     {
         if (!TryGetComponent<Animator>(out anim)) //получаем ссылку на компонент аниматора
@@ -134,11 +182,10 @@ public class Person : Effectable, IDamagable
         InitializePerson();
     }
 
-    /**
-     * <summary>
-     * Изменяет позицию оружия персонажа. Переопределяется в классах-наследниках.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Изменяет позицию оружия персонажа. Переопределяется в классах-наследниках.
+    /// </summary>
     protected virtual void ChangeWeaponPosition()
     {
         weaponDirection = facingDirection;
@@ -152,11 +199,10 @@ public class Person : Effectable, IDamagable
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
-    /**
-     * <summary>
-     * Обработка действий персонажа.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Обработка действий персонажа.
+    /// </summary>
     void Update()
     {
         if (alive)
@@ -190,10 +236,9 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
-    public virtual void TakeDamage(float damage, DamageType type) //реализация функции TakeDamage из IDamagable
+    
+    /// <inheritdoc />
+    public virtual void TakeDamage(float damage, DamageType type)
     {
         if (alive)
         {
@@ -242,12 +287,11 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    /**
-     * <summary>
-     * Определяет текущую скорость персонажа с учетом эффектов.
-     * </summary>
-     * <returns>Текущая скорость персонажа.</returns>
-     * **/
+    
+    /// <summary>
+    /// Определяет текущую скорость персонажа с учетом эффектов.
+    /// </summary>
+    /// <returns><see langword="float"/> - текущая скорость персонажа.</returns>
     public float getSpeed()
     {
         float currentSpeed = speed;
@@ -276,11 +320,10 @@ public class Person : Effectable, IDamagable
         return currentSpeed;
     }
 
-    /**
-     * <summary>
-     * Обработка передвижения персонажа.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Обработка передвижения персонажа.
+    /// </summary>
     public void Move() //функция передвижения в заданном направлении
     {
         float currentSpeed = getSpeed();
@@ -310,11 +353,10 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    /**
-     * <summary>
-     * Метод, запускающий атаку персонажа.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Метод, запускающий атаку персонажа.
+    /// </summary>
     public void Attack() //функция атаки
     {
         if (!weapon.isReloading())
@@ -326,11 +368,10 @@ public class Person : Effectable, IDamagable
         }
     }
 
-    /**
-     * <summary>
-     * Метод, обрабатывающий смерть персонажа.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Метод, обрабатывающий смерть персонажа.
+    /// </summary>
     protected void Die()
     {
         alive = false;
@@ -345,23 +386,21 @@ public class Person : Effectable, IDamagable
         StartCoroutine(DestructionDelayCoroutine());
     }
 
-    /**
-     * <summary>
-     * Метод, вызывающий события при смерти персонажа. Переопределяется в классах-
-     * наследниках при необходимости.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Метод, вызывающий события при смерти персонажа. Переопределяется в классах-
+    /// наследниках при необходимости.
+    /// </summary>
     protected virtual void OnDeath()
     {
         Debug.Log(gameObject.name + ": dead");
     }
 
-    /**
-     * <summary>
-     * <see cref="Coroutine">Корутина</see>, обрабатывающая задержку уничтожения объекта.
-     * </summary>
-     * <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
-     * **/
+    
+    /// <summary>
+    /// <see cref="Coroutine">Корутина</see>, обрабатывающая задержку уничтожения объекта.
+    /// </summary>
+    /// <returns><see cref="IEnumerator"/>, использующийся в корутинах.</returns>
     private IEnumerator DestructionDelayCoroutine()
     {
         yield return new WaitForSeconds(destructionDelay);
