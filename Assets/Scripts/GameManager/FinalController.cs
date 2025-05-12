@@ -37,13 +37,39 @@ public class FinalController : MonoBehaviour
     [SerializeField] List<LayoutElement> fullHeightElements;
 
     /// <summary>
+    /// Изображение, скрывающее титры перед их показом
+    /// </summary>
+    [Tooltip("Изображение, скрывающее титры перед их показом")]
+    [SerializeField] Image _imageMask;
+
+    /// <summary>
     /// Инициализация запуска прокрутки титров.
     /// </summary>
     void Awake()
     {
         fullHeightElements.ForEach(e => e.preferredHeight = Screen.height);
 
+        StartCoroutine(HideMaskSmooth());
+    }
+    
+    /// <summary>
+    /// Куротина, скрывающая изображение через половину времени задержки титров
+    /// </summary>
+    IEnumerator HideMaskSmooth() {
+        float duration = delayStartCredits / 2;
+        yield return new WaitForSeconds(duration);
         _scroll.value = 1;
+
+        float t = 1;
+        var color = _imageMask.color;
+        while (t > 0) {
+            t -= Time.deltaTime / duration;
+            color.a = t;
+            _imageMask.color = color;
+            yield return null;
+        }
+        color.a = 0;
+        _imageMask.color = color;
         StartCoroutine(LoadInitScene());
     }
 
@@ -52,7 +78,6 @@ public class FinalController : MonoBehaviour
     /// </summary>
     IEnumerator LoadInitScene()
     {
-        yield return new WaitForSecondsRealtime(delayStartCredits);
         float t = 1;
         while (t > 0f)
         {
@@ -60,6 +85,7 @@ public class FinalController : MonoBehaviour
             _scroll.value = t;
             yield return null;
         }
+        _scroll.value = 0;
         yield return new WaitForSecondsRealtime(1f);
         GameManager.Instance.ReloadGame();
     }
