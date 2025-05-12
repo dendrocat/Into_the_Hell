@@ -3,32 +3,67 @@ using System.Collections;
 using UnityEngine.Events;
 using System.Linq;
 
-/**
- * <summary>
- * Базовый класс персонажа
- * </summary>
- * **/
+/// <summary>
+/// Базовый класс персонажа
+/// </summary>
 [RequireComponent(typeof(PersonAudio), typeof(Animator))]
 public class Person : Effectable, IDamagable
 {
-    [HideInInspector]
-    public UnityEvent HealthChanged = new();
-    [HideInInspector]
-    public static UnityEvent<Person> Died = new();
+    /// <summary>
+    /// Событие, вызываемое при изменении здоровья персонажа.
+    /// </summary>
+    [HideInInspector] public UnityEvent HealthChanged = new();
+
+    // <summary>
+    /// Статическое событие, вызываемое при смерти любого персонажа.
+    /// </summary>
+    [HideInInspector] public static UnityEvent<Person> Died = new();
+    
     const float iceDriftDeceleration = 0.9f;
 
+    /// <summary>
+    /// Флаг состояния жизни персонажа.
+    /// </summary>
     bool alive = true;
 
+    /// <summary>
+    /// Задержка перед уничтожением объекта после смерти.
+    /// </summary>
     protected float destructionDelay = 3f;
-    [SerializeField] protected float maxHealth = 100f; //максимальное здоровье
+
+    /// <summary>Максимальное здоровье персонажа.</summary>
+    [Tooltip("Максимальное здоровье персонажа.")]
+    [SerializeField] protected float maxHealth = 100f;
+
+    /// <summary>Выдает максимальное здоробье персонажа.</summary>
     public float MaxHealth => maxHealth;
 
+    /// <summary>
+    /// Текущее здоровье персонажа.
+    /// </summary>
+    [Tooltip("Текущее здоровье персонажа")]
     [SerializeField] protected float health = 100f; //текущее здоровье
 
+    /// <summary>
+    /// Скорость передвижения персонажа.
+    /// </summary>
+    [Tooltip("Скорость передвижения персонажа")]
     [SerializeField] protected float speed = 2f; //скорость передвижения персонажа
-    public BaseWeapon weapon; //оружие персонажа
+
+    /// <summary>
+    /// Оружие, используемое персонажем.
+    /// </summary>
+    public BaseWeapon weapon;
+
+    /// <summary>
+    /// Объект оружия в иерархии персонажа.
+    /// </summary>
     public Transform weaponObject;
 
+    /// <summary>
+    /// Флаг движения персонажа.
+    /// </summary>
+    [Tooltip("Двигается ли персонаж в данный момент")]
     [SerializeField] bool moving = false;
     public Vector2 currentDirection;
     private Vector2 _facingDirection;
