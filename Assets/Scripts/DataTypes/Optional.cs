@@ -22,12 +22,12 @@ public struct Optional<T>
     [SerializeField] private T _value;
 
     /// <summary>
-    /// Выдает или задаёт значение флага активности.
+    /// Флаг активности поля.
     /// </summary>
     public bool Enabled { get => _enabled; set => _enabled = value; }
 
     /// <summary>
-    /// Выдает значение опционального поля.
+    /// Значение опционального поля.
     /// </summary>
     public T Value => _value;
 }

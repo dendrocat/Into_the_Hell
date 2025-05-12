@@ -28,17 +28,17 @@ public class TrapContainer : ScriptableObject
     [SerializeField] List<string> _targetTags;
 
     /// <summary>
-    /// Выдает тип ловушки по имени.
+    /// Тип ловушки по имени.
     /// </summary>
     public Type TrapType => Type.GetType(_trapTypeName);
 
     /// <summary>
-    /// Выдает период проверки ловушки.
+    /// Период проверки ловушки.
     /// </summary>
     public float TrapCheckPeriod => _trapCheckPeriod;
 
     /// <summary>
-    /// Выдает список тегов целей для ловушки.
+    /// Список тегов целей для ловушки.
     /// </summary>
     public List<string> TargetTags => _targetTags;
 }

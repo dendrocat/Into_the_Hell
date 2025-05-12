@@ -4,12 +4,12 @@
 public interface IRoomController
 {
     /// <summary>
-    /// Выдает контроллер для управления дополнительными эффектами или модификациями внутри комнаты.
+    /// Контроллер для управления дополнительными эффектами или модификациями внутри комнаты.
     /// </summary>
     public IAdditionalController AdditionalController { get; }
 
     /// <summary>
-    /// Выдает контроллер для управления дверями внутри комнаты.
+    /// Контроллер для управления дверями внутри комнаты.
     /// </summary>
     public IDoorController DoorController { get; }
 

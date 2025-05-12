@@ -35,7 +35,7 @@ public class Person : Effectable, IDamagable
     [Tooltip("Максимальное здоровье персонажа.")]
     [SerializeField] protected float maxHealth = 100f;
 
-    /// <summary>Выдает максимальное здоробье персонажа.</summary>
+    /// <summary>Максимальное здоробье персонажа.</summary>
     public float MaxHealth => maxHealth;
 
     /// <summary>

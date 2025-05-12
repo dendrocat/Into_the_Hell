@@ -75,47 +75,47 @@ public class TilesContainer : ScriptableObject
 
 
     // <summary>
-    /// Выдает тайл крыши.
+    /// Тайл крыши.
     /// </summary>
     public TileBase Roof => _roof;
 
     /// <summary>
-    /// Выдает тайл внутренних стен комнаты.
+    /// Тайл внутренних стен комнаты.
     /// </summary>
     public TileBase WallInner => _wallInner;
 
     /// <summary>
-    /// Выдает тайл наружных стен комнаты.
+    /// Тайл наружных стен комнаты.
     /// </summary>
     public TileBase WallOuter => _wallOuter;
 
     /// <summary>
-    /// Выдает тайл пола.
+    /// Тайл пола.
     /// </summary>
     public TileBase Floor => _floor;
 
     /// <summary>
-    /// Выдает тайл крыши двери.
+    /// Тайл крыши двери.
     /// </summary>
     public TileBase DoorRoof => _doorRoof;
 
     /// <summary>
-    /// Выдает тайл стены двери.
+    /// Тайл стены двери.
     /// </summary>
     public TileBase DoorWall => _doorWall;
 
     /// <summary>
-    /// Выдает тайл дополнительных элементов.
+    /// Тайл дополнительных элементов.
     /// </summary>
     public TileBase Additional => _additional;
 
     /// <summary>
-    /// Выдает префаб для установки ловушек.
+    /// Префаб для установки ловушек.
     /// </summary>
     public GameObject Trap => _trap;
 
     /// <summary>
-    /// Выдает префаб для установки разрушаемых объектов.
+    /// Префаб для установки разрушаемых объектов.
     /// </summary>
     public GameObject Destroys => _destroys;
 }

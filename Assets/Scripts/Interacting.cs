@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Компонент, позволяющий взаимодействовать с объектами, реализующими интерфейс <see cref="IInteractable"/>, при входе и выходе из триггера.
+/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class Interacting : MonoBehaviour
 {
@@ -24,6 +27,9 @@ public class Interacting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Вызывает метод взаимодействия у текущего объекта IInteractable.
+    /// </summary>
     void DoInteract()
     {
         if (_interactable != null)

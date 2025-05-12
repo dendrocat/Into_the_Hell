@@ -5,32 +5,48 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Контроллер полосы эффектов, отображающий количество и длительность эффектов с анимацией заполнения.
+/// </summary>
 public class EffectBarController : MonoBehaviour
 {
+    [Tooltip("Префаб иконки эффекта")]
     [SerializeField] GameObject _effectPrefab;
 
+    [Tooltip("Список иконок эффектов")]
     [SerializeField] List<Image> _effects = new();
 
     Coroutine _animateCoroutine = null;
 
+    
     Func<int> GetEffectCount;
 
+    [Tooltip("Количество эффектов")]
     [SerializeField] int _effectCount;
 
     float _effectDuration = Mathf.NegativeInfinity;
 
-
+    /// <summary>
+    /// Устанавливает функцию для получения текущего количества эффектов.
+    /// </summary>
+    /// <param name="func">Функция, возвращающая количество эффектов.</param>
     public void SetGetEffectCount(Func<int> func)
     {
         GetEffectCount = func;
     }
 
+    /// <summary>
+    /// Устанавливает длительность эффекта для анимации заполнения иконок.
+    /// </summary>
+    /// <param name="duration">Длительность эффекта в секундах.</param>
     public void SetEffectDuration(float duration)
     {
         _effectDuration = duration;
     }
 
-
+    /// <summary>
+    /// Сбрасывает состояние иконок эффектов и останавливает текущую анимацию.
+    /// </summary>
     void ResetImagesState()
     {
         if (_animateCoroutine == null) return;
@@ -41,6 +57,9 @@ public class EffectBarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Корутина анимации заполнения последней иконки эффекта, которая постепенно уменьшается.
+    /// </summary>
     IEnumerator AnimateEffectImage()
     {
         while (_effectCount > 0)
@@ -60,6 +79,10 @@ public class EffectBarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Устанавливает количество эффектов, добавляя иконки при необходимости и запускает анимацию.
+    /// </summary>
+    /// <param name="effectCount">Новое количество эффектов.</param>
     void SetEffectCount(int effectCount)
     {
         ResetImagesState();
@@ -76,6 +99,10 @@ public class EffectBarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Удаляет лишние иконки эффектов, если текущее количество меньше предыдущего.
+    /// </summary>
+    /// <param name="effectCount">Новое количество эффектов.</param>
     void RemoveEffects(int effectCount)
     {
         if (_effectDuration != Mathf.NegativeInfinity) return;

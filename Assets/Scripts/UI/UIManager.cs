@@ -1,15 +1,22 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Менеджер UI, обеспечивающий связь между игроком и элементами интерфейса.
+/// Реализует паттерн Singleton.
+/// </summary>
 public class UIManager : MonoBehaviour
 {
+    /// <summary>
+    /// Singleton-экземпляр UIManager.
+    /// </summary>
     public static UIManager Instance { get; private set; }
 
     Player _player;
-
     UIController _ui;
 
 #if UNITY_EDITOR
+    [Tooltip("Босс для отладки в редакторе")]
     [SerializeField] Boss debugBoss;
 #endif
 
@@ -23,6 +30,9 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Инициализирует UI.
+    /// </summary>
     void Start()
     {
         _player = FindFirstObjectByType<Player>();
@@ -67,14 +77,27 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
+    // <summary>
+    /// Устанавливает босса для отображения на UI.
+    /// </summary>
+    /// <param name="boss">Объект босса.</param>
     public void SetBoss(Boss boss)
     {
         _ui.BossBarController.SetBoss(boss);
         _ui.BossBarController.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Генерирует мини-карту на основе данных <see cref="Level"/>уровня</see>.
+    /// </summary>
+    /// <param name="level"><see cref="Level"/>Уровень</see> с информацией о комнатах.</param>
     public void GenerateMap(Level level)
     {
         _ui.MiniMapUI.SetUpLevel(level);
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 }

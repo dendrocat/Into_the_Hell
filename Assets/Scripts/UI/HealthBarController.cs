@@ -1,16 +1,24 @@
 using System.Collections;
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Контроллер полосы здоровья с плавной анимацией изменения заполнения.
+/// </summary>
 public class HealthBarController : MonoBehaviour
 {
-    [Header("Images with health")]
+    [Header("Изображения здоровья")]
+    [Tooltip("Изображение основной полосы здоровья")]
     [SerializeField] protected Image _healthImage;
+
+    [Tooltip("Изображение сглаженной полосы здоровья")]
     [SerializeField] Image _smoothedHealthImage;
 
-    [Header("Parameters for animation")]
+    [Header("Параметры анимации")]
+    [Tooltip("Время сглаживания анимации в секундах")]
     [SerializeField] float _timeSmoothing;
+
+    [Tooltip("Кривая анимации для сглаживания")]
     [SerializeField] AnimationCurve _curve;
 
     Coroutine _smoothHealth;
@@ -18,8 +26,18 @@ public class HealthBarController : MonoBehaviour
 
     float _targetFill;
 
+    /// <summary>
+    /// Виртуальный метод для установки текста здоровья (переопределяется в наследниках).
+    /// </summary>
+    /// <param name="health">Текущее здоровье.</param>
+    /// <param name="maxHealth">Максимальное здоровье.</param>
     protected virtual void SetTextHealth(float health, float maxHealth) { }
 
+    /// <summary>
+    /// Устанавливает здоровье без анимации.
+    /// </summary>
+    /// <param name="health">Текущее здоровье.</param>
+    /// <param name="maxHealth">Максимальное здоровье.</param>
     public void SetHealth(float health, float maxHealth)
     {
         _targetFill = health / maxHealth;
@@ -28,6 +46,11 @@ public class HealthBarController : MonoBehaviour
         SetTextHealth(health, maxHealth);
     }
 
+    /// <summary>
+    /// Устанавливает здоровье с плавной анимацией изменения.
+    /// </summary>
+    /// <param name="health">Текущее здоровье.</param>
+    /// <param name="maxHealth">Максимальное здоровье.</param>
     public void SetHealthSmoothed(float health, float maxHealth)
     {
         _targetFill = health / maxHealth;
@@ -35,6 +58,10 @@ public class HealthBarController : MonoBehaviour
         SetHealthSmoothed(_targetFill);
     }
 
+    /// <summary>
+    /// Запускает анимацию плавного изменения заполнения полосы здоровья.
+    /// </summary>
+    /// <param name="fill">Целевое значение заполнения (от 0 до 1).</param>
     void SetHealthSmoothed(float fill)
     {
         _targetFill = fill;
@@ -49,6 +76,12 @@ public class HealthBarController : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Корутина плавного изменения заполнения изображения по заданной кривой.
+    /// </summary>
+    /// <param name="image">Изображение, у которого изменяется заполнение.</param>
+    /// <param name="duration">Длительность анимации в секундах.</param>
+    /// <returns><see cref="IEnumerator"/> для корутины.</returns>
     IEnumerator SmoothHealth(Image image, float duration)
     {
         float start = image.fillAmount;

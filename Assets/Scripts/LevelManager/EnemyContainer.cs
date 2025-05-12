@@ -21,12 +21,12 @@ public class EnemyContainer : ScriptableObject
     [SerializeField] GameObject _boss;
 
     /// <summary>
-    /// Выдает список префабов обычных врагов.
+    /// Список префабов обычных врагов.
     /// </summary>
     public List<GameObject> Enemies => _enemies;
 
     /// <summary>
-    /// Выдает префаб босса.
+    /// Префаб босса.
     /// </summary>
     public GameObject Boss => _boss;
 }

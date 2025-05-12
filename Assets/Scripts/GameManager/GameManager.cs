@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        Instance = null;
+        if (Instance == this) Instance = null;
     }
 
     /// <summary>

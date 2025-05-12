@@ -27,17 +27,17 @@ public class RoomContainer : ScriptableObject
     [SerializeField] GameObject _bossRoom;
 
     /// <summary>
-    /// Выдает префаб стартовой комнаты.
+    /// Префаб стартовой комнаты.
     /// </summary>
     public GameObject StartRoom => _startRoom;
 
     /// <summary>
-    /// Выдает список префабов обычных комнат.
+    /// Список префабов обычных комнат.
     /// </summary>
     public List<GameObject> Rooms => _rooms;
 
     /// <summary>
-    /// Выдает префаб комнаты босса.
+    /// Префаб комнаты босса.
     /// </summary>
     public GameObject BossRoom => _bossRoom;
 }

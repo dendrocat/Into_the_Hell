@@ -1,14 +1,21 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
+// <summary>
+/// UI мини-карты, отображающей комнаты уровня в виде сетки.
+/// </summary>
 public class MiniMapUi : MonoBehaviour {
     private List<GameObject> rooms = new();
     private RectTransform window;
     static MiniMapUi Instance = null;
+
+    [Tooltip("Размер одной комнаты на мини-карте")]
     [SerializeField] static int roomSize = 50;
+
+    [Tooltip("Отступ вокруг комнаты на мини-карте")]
     [SerializeField] static int roomOffset = 10;
+
+    [Tooltip("Префаб комнаты для мини-карты")]
     [SerializeField] GameObject mapRoom;
 
     void Awake() {
@@ -21,6 +28,10 @@ public class MiniMapUi : MonoBehaviour {
         this.window.sizeDelta = Vector2.zero;
     }
 
+    /// <summary>
+    /// Настраивает мини-карту по данным уровня.
+    /// </summary>
+    /// <param name="level"><see cref="Level">Уровень</see> с информацией о комнатах.</param>
     public void SetUpLevel(Level level){
         window.sizeDelta = new Vector2(level.rooms.w, level.rooms.h) 
                 * (roomSize+roomOffset*2);
@@ -39,6 +50,9 @@ public class MiniMapUi : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Уничтожает все объекты комнат на мини-карте.
+    /// </summary>
     public void DestroyUI(){
         foreach(var room in rooms)Destroy(room);
         rooms.Clear();
@@ -46,5 +60,6 @@ public class MiniMapUi : MonoBehaviour {
 
     void OnDestroy() { 
         DestroyUI();
-        Instance = null; }
+        if (Instance == this) Instance = null; 
+    }
 }
