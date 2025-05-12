@@ -3,6 +3,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Класс, реализующий логику взрыва: визуализацию, нанесение <see cref="DamageType.Explosion">взрывного</see> урона и отбрасывание объектов в радиусе действия.
+/// </summary>
 [RequireComponent(typeof(AudioSource), typeof(Animator), typeof(CircleCollider2D))]
 public class Explosion : MonoBehaviour
 {
@@ -97,7 +100,7 @@ public class Explosion : MonoBehaviour
     }
 
     // <summary>
-    /// Обработка столкновений - нанесение урона и отбрасывание объектов в радиусе взрыва.
+    /// Обработка столкновений - нанесение <see cref="DamageType.Explosion">взрывного</see> урона и отбрасывание объектов в радиусе взрыва.
     /// </summary>
     /// <param name="collision">Информация о столкновении.</param>
     private void OnCollisionEnter2D(Collision2D collision)
