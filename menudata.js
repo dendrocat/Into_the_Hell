@@ -23,13 +23,13 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Main Page",url:"index.html"},
-{text:"Classes",url:"annotated.html",children:[
-{text:"Class List",url:"annotated.html"},
-{text:"Class Index",url:"classes.html"},
-{text:"Class Hierarchy",url:"inherits.html"},
-{text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html",children:[
+{text:"Титульная страница",url:"index.html"},
+{text:"Классы",url:"annotated.html",children:[
+{text:"Классы",url:"annotated.html"},
+{text:"Алфавитный указатель классов",url:"classes.html"},
+{text:"Иерархия классов",url:"inherits.html"},
+{text:"Члены классов",url:"functions.html",children:[
+{text:"Указатель",url:"functions.html",children:[
 {text:"_",url:"functions.html#index__5F"},
 {text:"a",url:"functions_a.html#index_a"},
 {text:"b",url:"functions_b.html#index_b"},
@@ -52,7 +52,7 @@ var menudata={children:[
 {text:"v",url:"functions_v.html#index_v"},
 {text:"w",url:"functions_w.html#index_w"},
 {text:"y",url:"functions_y.html#index_y"}]},
-{text:"Functions",url:"functions_func.html",children:[
+{text:"Функции",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func_b.html#index_b"},
 {text:"c",url:"functions_func_c.html#index_c"},
@@ -73,7 +73,7 @@ var menudata={children:[
 {text:"u",url:"functions_func_u.html#index_u"},
 {text:"v",url:"functions_func_v.html#index_v"},
 {text:"y",url:"functions_func_y.html#index_y"}]},
-{text:"Variables",url:"functions_vars.html",children:[
+{text:"Переменные",url:"functions_vars.html",children:[
 {text:"_",url:"functions_vars.html#index__5F"},
 {text:"a",url:"functions_vars.html#index_a"},
 {text:"b",url:"functions_vars.html#index_b"},
@@ -92,7 +92,7 @@ var menudata={children:[
 {text:"s",url:"functions_vars.html#index_s"},
 {text:"t",url:"functions_vars.html#index_t"},
 {text:"w",url:"functions_vars.html#index_w"}]},
-{text:"Properties",url:"functions_prop.html",children:[
+{text:"Свойства",url:"functions_prop.html",children:[
 {text:"_",url:"functions_prop.html#index__5F"},
 {text:"a",url:"functions_prop.html#index_a"},
 {text:"b",url:"functions_prop.html#index_b"},
