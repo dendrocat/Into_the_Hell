@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameClips:
   - name: Walk
-    clip: {fileID: 8300000, guid: 066c172010d420249a7c1b24bc2cdea5, type: 3}
+    clip: {fileID: 8300000, guid: d647b184f1687c949bebbde57d3870b5, type: 3}
   - name: Damage
     clip: {fileID: 8300000, guid: a708334d5343f2846b696398f0e41121, type: 3}
   - name: Start

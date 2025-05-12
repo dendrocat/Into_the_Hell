@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6930868818023769934}
   - component: {fileID: 9163488090338610569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ActiveSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 609594797394802631}
   - component: {fileID: 2257030431481244465}
   - component: {fileID: 27634509702146100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}

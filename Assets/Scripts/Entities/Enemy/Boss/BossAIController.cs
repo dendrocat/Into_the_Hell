@@ -50,6 +50,10 @@ public class BossAIController : BaseAIController
                 StartCoroutine(UpdateAttackStatus(attackDelay));
             }
         }
+        if (target != null && Boss.isMoving())
+        {
+            Boss.setMoving(Vector2.Distance(target.transform.position, Boss.transform.position) - aipath.radius >= 2f);
+        }
     }
 
     protected IEnumerator UpdateAttackStatus(float delay)

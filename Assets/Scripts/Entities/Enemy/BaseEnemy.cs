@@ -15,6 +15,7 @@ public class BaseEnemy : Person
     protected Path path;
     protected Seeker seeker;
     protected AIPath aipath;
+    public AIPath AIPath => aipath;
     protected AIDestinationSetter aiDestSetter;
 
     /**
@@ -25,6 +26,7 @@ public class BaseEnemy : Person
     protected virtual void Start()
     {
         InitializePerson();
+        Debug.Log(anim);
         if (!gameObject.TryGetComponent<Seeker>(out seeker))
         {
             Debug.LogError(gameObject.name + ": missing Seeker component");
@@ -52,7 +54,7 @@ public class BaseEnemy : Person
      * **/
     void UpdateSpeed()
     {
-        aipath.maxSpeed = getSpeed();
+        aipath.maxSpeed = isMoving() ? getSpeed() : 0;
     }
 
     /**
@@ -73,13 +75,13 @@ public class BaseEnemy : Person
                     nearestDirection = dir;
                 }
             }
-            Debug.Log("Nearest direction of " + gameObject.name + ": " + nearestDirection);
+            //Debug.Log("Nearest direction of " + gameObject.name + ": " + nearestDirection);
             weaponDirection = nearestDirection.normalized;
             facingDirection = weaponDirection;
         }
         else
         {
-            Debug.Log("Facing direction of " + gameObject.name + ": " + facingDirection);
+            //Debug.Log("Facing direction of " + gameObject.name + ": " + facingDirection);
             weaponDirection = facingDirection.normalized;
         }
 
@@ -116,14 +118,11 @@ public class BaseEnemy : Person
 
             // обновление скорости персонажа
             UpdateSpeed();
-            if (aipath.velocity.magnitude > 0.01f)
-                setMoving(true);
-            else setMoving(false);
 
             //движение персонажа
             if (hasEffect(EffectNames.Stun))
             {
-                aipath.canMove = false;
+                setMoving(false);
             }
         }
     }

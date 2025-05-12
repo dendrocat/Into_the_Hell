@@ -95,7 +95,7 @@ public class BlazeWeapon : BossWeapon
      * **/
     protected override void Attack3()
     {
-        StartCoroutine(SpawnFireball(1));
+        StartCoroutine(SpawnFireball(attack3FireballCount - 1));
     }
 
     /**
@@ -106,13 +106,16 @@ public class BlazeWeapon : BossWeapon
      * **/
     IEnumerator SpawnFireball(int number)
     {
-        GameObject missile = GameObject.Instantiate(attack3MissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
-        Missile missileComponent = missile.GetComponent<Missile>();
-        missileComponent.SetTargetTags(targetTags);
-        missileComponent.SetValues(CalcScale(attack3Damage), attack3MissileSpeed);
-        missileComponent.direction = owner.weaponObject.localPosition;
-        yield return new WaitForSeconds(baseAttack3EndAttackTime / attack3FireballCount);
-        if (number < attack3FireballCount)
-            StartCoroutine(SpawnFireball(number + 1));
+        Debug.Log("Start Spawning");
+        while (number-- > 0)
+        {
+            GameObject missile = GameObject.Instantiate(attack3MissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
+            Missile missileComponent = missile.GetComponent<Missile>();
+            missileComponent.SetTargetTags(targetTags);
+            missileComponent.SetValues(CalcScale(attack3Damage), attack3MissileSpeed);
+            missileComponent.direction = owner.weaponObject.localPosition;
+            yield return new WaitForSeconds(baseAttack3EndAttackTime / attack3FireballCount);
+        }
+        Debug.Log("End Spawning");
     }
 }

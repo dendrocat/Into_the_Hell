@@ -24,6 +24,10 @@ public abstract class ShopPanel : BasePanel
             items.RemoveItem(item);
             return;
         }
+        if (cost == -2)
+        {
+            items.DeactivateItem(item);
+        }
         items.SetItemCost(item, cost);
     }
 

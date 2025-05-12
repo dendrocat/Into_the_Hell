@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918600187725474089}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 374536643871471053}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8259856184186170035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.61635214, g: 0.61635214, b: 0.61635214, a: 1}
+  m_Sprite: {fileID: -517342245, guid: f5273bbff109ba84e9baa515c8ad7789, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4779555462450302096}
   - component: {fileID: 7436910067559116493}
   - component: {fileID: 381302509335759336}
+  - component: {fileID: 7178125354248357066}
   m_Layer: 0
   m_Name: GolemRanged
   m_TagString: Enemy
@@ -124,7 +125,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9036025763159080610}
@@ -153,8 +154,8 @@ MonoBehaviour:
   weaponObject: {fileID: 6852259937956924194}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
+  anim: {fileID: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
 --- !u!61 &382664357952393037
@@ -488,6 +489,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: 1205bb387e3997644b839d5a2b009cfe, type: 2}
+--- !u!95 &7178125354248357066
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670292415646866819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 59c12a479eaae4546a55f8263a18d5fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7788688171331319494
 PrefabInstance:
   m_ObjectHideFlags: 0

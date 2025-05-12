@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3769699962716309898}
   - component: {fileID: 1695981482099900976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3329761248753225736}
   - component: {fileID: 7658940218100482052}
   - component: {fileID: 612258587789586677}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}

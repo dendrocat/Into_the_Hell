@@ -8,9 +8,9 @@ using UnityEngine;
 public class BaseWeapon : UpgradableItem
 {
     /// <summary>
-    /// Текстура оружия.
+    /// Список спрайтов оружия.
     /// </summary>
-    [SerializeField] protected Texture2D weaponTexture;
+    [SerializeField] protected List<SpriteRenderer> weaponSprites;
 
     /// <summary>
     /// Список тегов, которым оружие может наносить урон.
@@ -47,6 +47,17 @@ public class BaseWeapon : UpgradableItem
     /// </summary>
     bool reloading = false;
 
+    protected Animator _animator;
+    ///<summary>
+    /// Показывает, отражено ли сейчас оружие по локальной оси Y.
+    /// </summary>
+    bool flippedY = false;
+
+    /// <summary>
+    /// Показывает, опущены ли спрайты оружия ниже игрока
+    /// </summary>
+    bool spritesDowned = false;
+
     /// <summary>
     /// Проверяет, находится ли оружие в процессе перезарядки.
     /// </summary>
@@ -70,6 +81,26 @@ public class BaseWeapon : UpgradableItem
     void Start()
     {
         FindOwner();
+        TryGetComponent(out _animator);
+    }
+
+    /// <summary>
+    /// Проверяет текущий поворот оружия и изменяет его ориентацию при необходимости.
+    /// </summary>
+    protected virtual void Update()
+    {
+        bool newFlippedY = owner.weaponDirection.x < 0;
+        if (flippedY != newFlippedY)
+        {
+            Vector3 localScale = transform.localScale;
+            transform.localScale = new Vector3(localScale.x, -localScale.y, localScale.z);
+        }
+        flippedY = newFlippedY;
+        if (owner.weaponDirection.y > 0)
+        {
+            if (!spritesDowned) DownWeaponSprites();
+        }
+        else if (spritesDowned) UpWeaponSprites();
     }
 
     public BaseWeapon()
@@ -95,6 +126,7 @@ public class BaseWeapon : UpgradableItem
         {
             reloading = true;
             StartCoroutine(PerformAttack());
+            _animator?.Play("Attack");
         }
     }
 
@@ -177,5 +209,17 @@ public class BaseWeapon : UpgradableItem
     public List<string> GetTargetTags()
     {
         return targetTags;
+    }
+
+    private void DownWeaponSprites()
+    {
+        spritesDowned = true;
+        weaponSprites.ForEach(s => s.sortingOrder -= 2);
+    }
+
+    private void UpWeaponSprites()
+    {
+        spritesDowned = false;
+        weaponSprites.ForEach(s => s.sortingOrder += 2);
     }
 }

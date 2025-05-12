@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 /**
  * <summary>
@@ -9,16 +8,6 @@ using UnityEngine;
 public class Sword : RangedWeapon
 {
     bool altAttackActive = false;
-
-    /**
-     * <summary>
-     * Инициализация оружия
-     * </summary>
-     * **/
-    void Start()
-    {
-        FindOwner();
-    }
 
     public Sword()
     {
@@ -75,6 +64,8 @@ public class Sword : RangedWeapon
     protected override void AltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, level);
+        _animator.SetBool("AltAttack", true);
+        _animator.Play("AltAttack");
     }
 
     /**
@@ -85,6 +76,8 @@ public class Sword : RangedWeapon
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
+        _animator.SetBool("AltAttack", false);
+        _animator.Play("Nothing");
     }
 
     /**
@@ -96,5 +89,12 @@ public class Sword : RangedWeapon
     public bool altAttackIsActive()
     {
         return altAttackActive;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        _animator.SetFloat("Horizontal", owner.weaponDirection.x);
+        _animator.SetFloat("Vertical", owner.weaponDirection.y);
     }
 }

@@ -8,6 +8,8 @@ public abstract class AudioPlayer : MonoBehaviour
 
     protected float Volume => _source.volume;
 
+    public float CurrentClipLength => _source.clip.length;
+
     protected abstract void InitAudio();
 
     void Awake()

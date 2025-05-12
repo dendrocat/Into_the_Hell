@@ -6,7 +6,7 @@ public class FinalController : MonoBehaviour
 {
     [Range(0f, 2f)]
     [SerializeField] int delayStartCredits;
-    [Range(7f, 15f)]
+    [Range(10, 100)]
     [SerializeField] int creditsTime;
 
     [SerializeField] Scrollbar _scroll;

@@ -18,7 +18,7 @@ public class DialogEditor : Editor
 
     static void OnAwake()
     {
-        DialogManager.Instance.CreatedStory.AddListener(OnCreateStory);
+        DialogManager.Instance.StoryCreated.AddListener(OnCreateStory);
     }
 
 

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3649078689452848219}
   - component: {fileID: 7070808218437993994}
   - component: {fileID: 3331123939101809075}
+  - component: {fileID: 2431407076142422044}
   m_Layer: 0
   m_Name: HellMouse
   m_TagString: Enemy
@@ -66,7 +67,6 @@ MonoBehaviour:
   weaponObject: {fileID: 979289462362708288}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
@@ -401,6 +401,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: e97852eca6815704faa06fa45efe6c72, type: 2}
+--- !u!95 &2431407076142422044
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242801157821161428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 17f2b0105238fdf4cb323d5b179882d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7884522106838840220
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +499,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -3442725813722804587, guid: dff0b78ebd3f0af449b0e3009d9a0b9a, type: 3}
   m_Color: {r: 0.735849, g: 0.17354919, b: 0.17354919, a: 1}
   m_FlipX: 0
   m_FlipY: 0

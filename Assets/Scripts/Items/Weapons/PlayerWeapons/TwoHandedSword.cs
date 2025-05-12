@@ -11,16 +11,6 @@ public class TwoHandedSword : RangedWeapon
     [SerializeField] float altRange = 5f;
     [SerializeField] float altAngle = 10f;
 
-    /**
-     * <summary>
-     * Инициализация оружия
-     * </summary>
-     * **/
-    void Start()
-    {
-        FindOwner();
-    }
-
     public TwoHandedSword()
     {
         damage = 15f;
@@ -52,6 +42,7 @@ public class TwoHandedSword : RangedWeapon
     {
         owner.facingDirection = owner.weaponDirection;
         owner.AddEffect(EffectNames.Shift, 1);
+        owner.anim.SetTrigger("Dash");
     }
 
     /**
@@ -61,7 +52,7 @@ public class TwoHandedSword : RangedWeapon
     {
         List<IDamagable> targets = FindTargetsForAttack(altRange, altAngle);
 
-        foreach(IDamagable target in targets)
+        foreach (IDamagable target in targets)
         {
             target.TakeDamage(CalcScale(altDamage), DamageType.None);
         }

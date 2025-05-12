@@ -11,7 +11,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public static UnityEvent Awaked = new UnityEvent();
 
     [HideInInspector]
-    public UnityEvent<Story> CreatedStory = new UnityEvent<Story>();
+    public UnityEvent<Story> StoryCreated = new UnityEvent<Story>();
 
 
     [SerializeField] DialogDisplayer displayer;
@@ -37,7 +37,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
     public void SetStory(TextAsset inkJSONfile)
     {
         CurrentStory = new Story(inkJSONfile.text);
-        CreatedStory?.Invoke(CurrentStory);
+        StoryCreated?.Invoke(CurrentStory);
         _storyEnded = false;
     }
 

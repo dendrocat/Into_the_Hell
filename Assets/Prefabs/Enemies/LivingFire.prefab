@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8576363950611999527}
   - component: {fileID: 400712677119563411}
   - component: {fileID: 2517322849317427411}
+  - component: {fileID: 1552783419793480591}
   m_Layer: 0
   m_Name: LivingFire
   m_TagString: Enemy
@@ -66,8 +67,8 @@ MonoBehaviour:
   weaponObject: {fileID: 8357844320410832818}
   moving: 0
   currentDirection: {x: 0, y: 0}
-  facingDirection: {x: 0, y: 0}
   weaponDirection: {x: 0, y: 0}
+  anim: {fileID: 0}
   dropMoneyChance: 0.5
   dropMoneyCount: 5
 --- !u!61 &425291998901909786
@@ -401,6 +402,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioContainer: {fileID: 11400000, guid: eaddcd5818e005e47b9f07aba1977852, type: 2}
+--- !u!95 &1552783419793480591
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757470724580973456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8d6787cae95c77743a71d981701dd726, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1016669213224746763
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,8 +500,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.8112055, b: 0, a: 1}
+  m_Sprite: {fileID: -517342245, guid: f5273bbff109ba84e9baa515c8ad7789, type: 3}
+  m_Color: {r: 1, g: 0.18733144, b: 0.18733144, a: 0.69803923}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -539,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 8379522994190713420, guid: aed3e5c09c2f48748aedebaed64ca3c5, type: 3}
       propertyPath: m_Name
       value: LivingFireWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905476167888061166, guid: aed3e5c09c2f48748aedebaed64ca3c5, type: 3}
+      propertyPath: 'weaponSprites.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
