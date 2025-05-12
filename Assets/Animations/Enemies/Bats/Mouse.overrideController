@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Mouse
+  m_Controller: {fileID: 9100000, guid: 8234ce7f4de41e843a33e9d334e05f2a, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 61751389d1694aa4db45d75a2a8f11fe, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 627068cc2b9741945ab1f0330c33c090, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8a462b1719045f249bcb6cd11787dd08, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 627068cc2b9741945ab1f0330c33c090, type: 2}

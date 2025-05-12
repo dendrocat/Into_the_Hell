@@ -1,17 +1,30 @@
 using UnityEngine;
 
-//����� ������ �������� ���
-public class MissileWeapon : BaseWeapon
+/// <summary>
+/// Класс оружия дальнего боя.
+/// </summary>
+public class MissileWeapon : AlternateAttackWeapon
 {
-    public GameObject missilePrefab;
-    public float missileSpeed;
+    /// <summary>
+    /// Префаб снаряда для создания при атаке.
+    /// </summary>
+    [Tooltip("Префаб снаряда для создания при атаке")]
+    [SerializeField] protected GameObject missilePrefab;
 
+    /// <summary>
+    /// Скорость снаряда.
+    /// </summary>
+    [Tooltip("Скорость снаряда")]
+    [SerializeField] protected float missileSpeed;
+
+    /// <inheritdoc />
     protected override void Attack()
     {
-        GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position, Quaternion.Euler(owner.currentDirection));
+        Debug.Log($"{gameObject} Attack");
+        GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
         Missile missileComponent = missile.GetComponent<Missile>();
-        missileComponent.speed = missileSpeed;
-        missileComponent.damage = getScaledDamage();
-        missileComponent.direction = transform.localPosition;
+        missileComponent.SetTargetTags(targetTags);
+        missileComponent.SetValues(getScaledDamage(), missileSpeed);
+        missileComponent.direction = owner.weaponObject.localPosition;
     }
 }

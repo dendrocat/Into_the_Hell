@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a622d33fe6576419012616b81ddbf7, type: 3}
+  m_Name: MineEnemy
+  m_EditorClassIdentifier: 
+  _enemies:
+  - {fileID: 259478015279000908, guid: 1155aeafea597394f88efb3f9478cb97, type: 3}
+  - {fileID: 7705093031904510179, guid: 2798dbc02bb326a418429638561e363e, type: 3}
+  - {fileID: 2034528663924969724, guid: 299c44116707a8640a4198df648d4dc3, type: 3}
+  - {fileID: 3670292415646866819, guid: daa717aa57d3b274487a68c9c74b1013, type: 3}
+  _boss: {fileID: 7702739467203177418, guid: c7973c64878c1fc488c63338e03df515, type: 3}

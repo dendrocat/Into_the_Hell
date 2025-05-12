@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124cbcda72bad43459c17ece4f9a92f5, type: 3}
+  m_Name: YetiBossAudio
+  m_EditorClassIdentifier: 
+  _nameClips:
+  - name: Walk
+    clip: {fileID: 8300000, guid: d647b184f1687c949bebbde57d3870b5, type: 3}
+  - name: Damage
+    clip: {fileID: 8300000, guid: a708334d5343f2846b696398f0e41121, type: 3}
+  - name: Start
+    clip: {fileID: 8300000, guid: d3f200fa4dfddfb44b02ed4c89abc9b9, type: 3}
+  - name: Die
+    clip: {fileID: 8300000, guid: 70a5b54b4b6ca384685f5a38304a1a51, type: 3}
+  - name: Attack1
+    clip: {fileID: 8300000, guid: 4f3bcc81b2d887349be211198cdfc5cb, type: 3}
+  - name: Attack2
+    clip: {fileID: 8300000, guid: 760ce2ebd691ce4469cc05ef5fcef657, type: 3}
+  - name: Attack3
+    clip: {fileID: 8300000, guid: 4198f093b4ed3644ba528aabf9a15e8d, type: 3}

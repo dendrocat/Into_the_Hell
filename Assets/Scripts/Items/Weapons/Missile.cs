@@ -2,42 +2,121 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MissilesAudio))]
 public class Missile : MonoBehaviour
 {
-    public float damage;
-    public float speed;
-    public float damageRadius = 0.5f;
+    /// <summary>
+    /// Список тегов целей, по которым снаряд может нанести урон.
+    /// </summary>
+    [Tooltip("Список тегов целей, по которым снаряд может нанести урон")]
+    [SerializeField] protected List<string> targetTags;
+
+    /// <summary>
+    /// Урон, наносимый снарядом.
+    /// </summary>
+    [Tooltip("Урон, наносимый снарядом")]
+    [SerializeField] protected float damage;
+
+    // <summary>
+    /// Скорость движения снаряда.
+    /// </summary>
+    [Tooltip("Скорость движения снаряда")]
+    [SerializeField] protected float speed;
+
+    /// <summary>
+    /// Радиус урона снаряда при столкновении.
+    /// </summary>
+    [Tooltip("Радиус урона снаряда при столкновении")]
+    [SerializeField] protected float damageRadius = 0.5f;
+
+    /// <summary>
+    /// Rigidbody2D компонента для физического движения снаряда.
+    /// </summary>
+    protected Rigidbody2D rb;
+
+    /// <summary>
+    /// Направление движения снаряда.
+    /// </summary>
     public Vector2 direction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// Инициализация компонента Rigidbody2D.
+    /// </summary>
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Получение урона, наносимого снарядом
+    /// </summary>
+    /// <returns><see langword="float"/> - Значение урона.</returns>
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    /// <summary>
+    /// Получение тегов целей снаряда
+    /// </summary>
+    /// <returns>Список тегов целей.</returns>
+    public List<string> GetTargetTags()
+    {
+        return targetTags;
+    }
+
+    /// <summary>
+    /// Установка целей для снаряда
+    /// </summary>
+    /// <param name="targetTags">Список тегов целей.</param>
+    public void SetTargetTags(List<string> targetTags)
+    {
+        this.targetTags = targetTags;
+    }
+
+    /// <summary>
+    /// Установка урона и скорости снаряда
+    /// </summary>
+    /// <param name="damage">Урон снаряда.</param>
+    /// <param name="speed">Скорость снаряда.</param>
+    public void SetValues(float damage, float speed)
+    {
+        this.damage = damage;
+        this.speed = speed;
+    }
+
+    /// <summary>
+    /// Обновление каждый кадр: движение снаряда.
+    /// </summary>
     void Update()
     {
         Move();
     }
 
+    /// <summary>
+    /// Метод движения снаряда.
+    /// </summary>
     void Move()
     {
-        transform.position = transform.position + (Vector3) direction.normalized * speed * Time.deltaTime;
+        rb.linearVelocity = (Vector3)direction.normalized * speed;
     }
 
+    /// <summary>
+    /// Обработка столкновения снаряда с объектом
+    /// </summary>
+    /// <param name="collision">Информация о столкновении.</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         List<Collider2D> colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius).ToList<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
-            GameObject parent = collider.gameObject;
-            Person person = null;
-            if (parent.TryGetComponent<Person>(out person))
+            IDamagable damagable = collider.GetComponent<IDamagable>();
+            if (!targetTags.Contains(collider.gameObject.tag)) continue;
+            if (damagable != null)
             {
-                person.TakeDamage(damage);
+                damagable.TakeDamage(damage, DamageType.None);
             }
         }
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

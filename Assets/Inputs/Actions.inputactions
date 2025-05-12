@@ -29,7 +29,7 @@
                     "id": "302ba4cc-eb17-47d9-8e08-e9e18136c489",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold,Press",
                     "initialStateCheck": false
                 },
                 {
@@ -63,6 +63,15 @@
                     "name": "Heal",
                     "type": "Button",
                     "id": "9c4d7aed-fb64-48a9-b012-faee602a0ac5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchAttackDirection",
+                    "type": "Button",
+                    "id": "adaefb5d-f04e-4140-80a6-6101de6f4c80",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -104,9 +113,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "6429813b-23f0-450f-8d87-953f6d12d53e",
-                    "path": "<Keyboard>/s",
+                    "name": "left",
+                    "id": "9050e348-2748-4d68-b421-e7eff3e1c3cc",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -115,9 +124,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "9050e348-2748-4d68-b421-e7eff3e1c3cc",
-                    "path": "<Keyboard>/a",
+                    "name": "down",
+                    "id": "6429813b-23f0-450f-8d87-953f6d12d53e",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -190,6 +199,17 @@
                     "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4237c1f-d992-4d55-9cd9-25a7697ca08a",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchAttackDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -205,6 +225,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Submit",
+                    "type": "Button",
+                    "id": "26646f7c-ab3b-46a6-9401-4450257bc925",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseDelta",
+                    "type": "Value",
+                    "id": "43b46414-1d3d-4b56-a5b9-b2c694553c92",
+                    "expectedControlType": "Vector2",
+                    "processors": "ScaleVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -216,6 +254,39 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96b4bde2-3f4d-46df-bc32-82cc92f9906d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfee583e-c32f-48b8-8099-cbd57ca230c6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a60ca838-78e7-4e2a-bfd3-66ae65ca1e08",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MouseDelta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

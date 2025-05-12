@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4db7480d3aec04b90f1cf4ab3d65e2, type: 3}
+  m_Name: LevelStorage
+  m_EditorClassIdentifier: 
+  _location:
+  - location: 0
+    tilesContainer: {fileID: 11400000, guid: 4b4c64cb3e682e842a868735df5331ef, type: 2}
+    roomContainer: {fileID: 11400000, guid: 137f24c42e2b0764b996b79e688955b0, type: 2}
+    trapContainer: {fileID: 11400000, guid: a702ae7701298684d9d1359ca9df34ed, type: 2}
+    enemyContainer: {fileID: 11400000, guid: 520f6b0f779fb104ebf65047d14b237d, type: 2}
+  - location: 0
+    tilesContainer: {fileID: 11400000, guid: e3cecc053c9f31648adf70ab4f13e73d, type: 2}
+    roomContainer: {fileID: 11400000, guid: 18e1324814d49ba48bd6100a70dde399, type: 2}
+    trapContainer: {fileID: 0}
+    enemyContainer: {fileID: 11400000, guid: 93eadce6d3ff50d468f8768cacff2eb6, type: 2}
+  - location: 0
+    tilesContainer: {fileID: 11400000, guid: 953bca7bafcd0d248bce55f58f892cfa, type: 2}
+    roomContainer: {fileID: 11400000, guid: cad42e52efe15d940b97f18e13899284, type: 2}
+    trapContainer: {fileID: 11400000, guid: deb942d9d514aed4fb974accc6baa527, type: 2}
+    enemyContainer: {fileID: 11400000, guid: dc1906b45782e7644bb1116d01e18c20, type: 2}
+  _halls:
+  - {fileID: 3430609782485855080, guid: 48b45cc12eff3b84c92fac4edcb61ad2, type: 3}
+  - {fileID: 5777903922187991010, guid: 9434f58467fe3904290ffffb5dd6e4bc, type: 3}

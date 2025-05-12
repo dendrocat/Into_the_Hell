@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
+  m_Name: HellContainer
+  m_EditorClassIdentifier: 
+  _roof: {fileID: 11400000, guid: ca5b6bb9cf141cd48a8587da571eeb0f, type: 2}
+  _wallInner: {fileID: 11400000, guid: d21d197c146288047a383dc6847dfe93, type: 2}
+  _wallOuter: {fileID: 11400000, guid: 9ed75c3fc18f8504787507be090e7fbb, type: 2}
+  _floor: {fileID: 11400000, guid: 0e71c4de09a16834eaf83f1caeeae263, type: 2}
+  _doorRoof: {fileID: 11400000, guid: 881252bd8dbca45419dee394f1c2f6e1, type: 2}
+  _doorWall: {fileID: 11400000, guid: a762d457b996d7c4b8a899f0b88fa8e6, type: 2}
+  _additional: {fileID: 11400000, guid: 3c97e8c6f4dd82a48901d3d94787cead, type: 2}
+  _trap: {fileID: 4685585011638163340, guid: 56026b300636ccd49b1ef7c90f7e747f, type: 3}
+  _destroys: {fileID: 9132917098414704818, guid: 489040994f8e6c7418eee8e07ceab501, type: 3}

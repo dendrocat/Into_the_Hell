@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f09510edc1a4d498c0f1e28c6c2c51, type: 3}
+  m_Name: MineContainer
+  m_EditorClassIdentifier: 
+  _roof: {fileID: 11400000, guid: ead6ca5700fcbd54aa3a6d72455bdd27, type: 2}
+  _wallInner: {fileID: 11400000, guid: 6aae5d72641e4a54495720a5d7f0fd03, type: 2}
+  _wallOuter: {fileID: 11400000, guid: 921eb1027f81df547836ad435467f990, type: 2}
+  _floor: {fileID: 11400000, guid: 3cb703725ff85f143afb5be5a836cc11, type: 2}
+  _doorRoof: {fileID: 11400000, guid: 0379323320182264a990e498721aacec, type: 2}
+  _doorWall: {fileID: 11400000, guid: 717cd4f92684f20448cfe13643135963, type: 2}
+  _additional: {fileID: 0}
+  _trap: {fileID: 4685585011638163340, guid: 56026b300636ccd49b1ef7c90f7e747f, type: 3}
+  _destroys: {fileID: 9132917098414704818, guid: 944bb77052705fe46870081d80c7bcfc, type: 3}

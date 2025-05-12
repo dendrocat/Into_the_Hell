@@ -1,33 +1,68 @@
 using UnityEngine;
 
-//Класс, описывающий улучшаемый предмет
+/// <summary>
+/// РљР»Р°СЃСЃ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ СѓР»СѓС‡С€Р°РµРјС‹Р№ РїСЂРµРґРјРµС‚.
+/// </summary>
 public class UpgradableItem : MonoBehaviour
 {
-    protected float scaleCoeff = 0.2f; //Коэффициент масштабирования.
-                             //Задается в классах-наследниках в методе Start
-    public byte level; //Текущий уровень предмета
-    public byte maxLevel; //Максимальный уровень предмета
+    /// <summary>
+    /// РљРѕСЌС„С„РёС†РёРµРЅС‚ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ. Р—Р°РґР°РµС‚СЃСЏ РІ РєР»Р°СЃСЃР°С…-РЅР°СЃР»РµРґРЅРёРєР°С… РІ РјРµС‚РѕРґРµ Awake.
+    /// </summary>
+    protected float scaleCoeff = 0.2f;
 
-    public int GetUpgradeCost() //Возвращает стоимость улучшения на следующий уровень
+    /// <summary>
+    /// Р”РѕР»СЏ, РєРѕС‚РѕСЂР°СЏ РѕСЃС‚Р°РµС‚СЃСЏ РїСЂРё СѓРјРµРЅСЊС€Р°СЋС‰РµРј РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРё РЅР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРј СѓСЂРѕРІРЅРµ.
+    /// </summary>
+    protected float minValueDescending = 0.5f;
+
+    /// <summary>
+    /// РўРµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ РїСЂРµРґРјРµС‚Р°.
+    /// </summary>
+    public byte level;
+
+    /// <summary>
+    /// РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ РїСЂРµРґРјРµС‚Р°.
+    /// </summary>
+    public byte maxLevel;
+
+    /// <summary>
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚РѕРёРјРѕСЃС‚СЊ СѓР»СѓС‡С€РµРЅРёСЏ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СѓСЂРѕРІРµРЅСЊ. Р•СЃР»Рё РїСЂРµРґРјРµС‚ СѓР¶Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕ СѓР»СѓС‡С€РµРЅ, РІРѕР·РІСЂР°С‰Р°РµС‚ -1.
+    /// </summary>
+    /// <returns><see langword="int"/> - РЎС‚РѕРёРјРѕСЃС‚СЊ СѓР»СѓС‡С€РµРЅРёСЏ РёР»Рё -1.</returns>
+    public int GetUpgradeCost()
     {
         if (level < maxLevel) return 100 * level;
-        else return -1; //возвращаем -1 как знак о том, что предмет максимально улучшен
+        else return -1;
     }
-    
-    public float CalcScale(float scalable) //Возвращает значение scalable, умноженное согласно
-                                           //текущему уровню предмета
+
+    /// <summary>
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ scalable, СѓРјРЅРѕР¶РµРЅРЅРѕРµ СЃРѕРіР»Р°СЃРЅРѕ С‚РµРєСѓС‰РµРјСѓ СѓСЂРѕРІРЅСЋ РїСЂРµРґРјРµС‚Р°.
+    /// </summary>
+    /// <param name="scalable">Р—РЅР°С‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РЅРµРѕР±С…РѕРґРёРјРѕ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ.</param>
+    /// <returns><see langword="float"/> - РњР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</returns>
+    public float CalcScale(float scalable)
     {
+        //Debug.Log(gameObject.name + ": initial=" + scalable + ", calculated=" + (scalable * (1f + (level - 1) * scaleCoeff)));
         return scalable * (1f + (level - 1) * scaleCoeff);
     }
 
-    public float CalcScaleDescending(float scalable) //Возвращает значение scalable, уменьшенное
-                                                     //согласно текущему уровню предмета
+    /// <summary>
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ scalable, СѓРјРµРЅСЊС€РµРЅРЅРѕРµ СЃРѕРіР»Р°СЃРЅРѕ С‚РµРєСѓС‰РµРјСѓ СѓСЂРѕРІРЅСЋ РїСЂРµРґРјРµС‚Р°.
+    /// </summary>
+    /// <param name="scalable">Р—РЅР°С‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РЅРµРѕР±С…РѕРґРёРјРѕ СѓРјРµРЅСЊС€РёС‚СЊ.</param>
+    /// <returns><see langword="float"/> - СѓРјРµРЅСЊС€РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.</returns>
+    public float CalcScaleDescending(float scalable)
     {
-        float coeff = 0.5f / (maxLevel - 1);
+        if (level == 1) return scalable;
+        float coeff = minValueDescending / (maxLevel - 1);
         return scalable * (1f - (level - 1) * coeff);
     }
 
-    public void Upgrade(byte diff) //Функция, отвечающая за апгрейд предмета
+    /// <summary>
+    /// Р¤СѓРЅРєС†РёСЏ, РѕС‚РІРµС‡Р°СЋС‰Р°СЏ Р·Р° Р°РїРіСЂРµР№Рґ РїСЂРµРґРјРµС‚Р° РЅР° СѓРєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№.
+    /// </summary>
+    /// <param name="diff">РљРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№, РЅР° РєРѕС‚РѕСЂРѕРµ РЅСѓР¶РЅРѕ СѓР»СѓС‡С€РёС‚СЊ РїСЂРµРґРјРµС‚.</param>
+    public void Upgrade(byte diff)
     {
         level = (byte)Mathf.Clamp(level + diff, 1, maxLevel);
     }

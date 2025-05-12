@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6421c4dfbe917847b012244a4bd8179, type: 3}
+  m_Name: FrozenRoomContainer
+  m_EditorClassIdentifier: 
+  _startRoom: {fileID: 4029981440649443703, guid: 4cff5739dfe8d57499ccd15202044d29, type: 3}
+  _rooms:
+  - {fileID: 2392266571359601909, guid: c91327d998a037c468705411196ff080, type: 3}
+  - {fileID: 6433561692350191711, guid: 127bddcfe6b01624282aae1ab1f4052f, type: 3}
+  - {fileID: 5225871495114982113, guid: 4398ca22b839c6b41a9d1de6fb48b9c6, type: 3}
+  - {fileID: 1960290037160232503, guid: 31bb76f40e27e774684e740d5baf5d46, type: 3}
+  - {fileID: 1470629922449039815, guid: 51e4cdae38b176f4b825deedb8e5219e, type: 3}
+  - {fileID: 2361415952033784000, guid: 0a895cb3f8d3bda42a956b5ffe37b855, type: 3}
+  - {fileID: 5332846548024769344, guid: 89cadcc75f95f5046a3c17a56052e934, type: 3}
+  - {fileID: 4240036170185059788, guid: 8909a10c207e0894a9d7b89c4f03f9f7, type: 3}
+  - {fileID: 6153770608798149833, guid: 2e6c0fa29902ab74892a721dea60b5ac, type: 3}
+  - {fileID: 287125118493019426, guid: c20fd1feea90d34418047318ab5e21c4, type: 3}
+  - {fileID: 5990937908028791114, guid: 0ba84ce5d2219774198710712254b69d, type: 3}
+  - {fileID: 5975778506856572084, guid: 60e9a47c8e5d66e469262ef5ea97c48c, type: 3}
+  - {fileID: 7684130179282919871, guid: b8dbba9f5cbd62740ae8bf84ff51723f, type: 3}
+  _bossRoom: {fileID: 3332347325886350699, guid: 42ed0ec0dc82ecb49bf0dddfb0a49e90, type: 3}
