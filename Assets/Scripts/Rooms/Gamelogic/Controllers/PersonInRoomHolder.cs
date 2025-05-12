@@ -1,26 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class PlayerInRoomHolder : MonoBehaviour
+public class PersonInRoomHolder : MonoBehaviour
 {
-    Player _player;
+    List<Person> _persons;
 
     Collider2D _collider;
 
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
+        _persons = new();
     }
 
-    public void SetPlayer(Player player)
+    public void AddPerson(Person person)
     {
-        _player = player;
+        _persons.Add(person);
     }
 
-    void FixPlayerIn()
+    void FixPersonIn(Person person)
     {
+        if (!person.isAlive()) _persons.Remove(person);
         Bounds containerBounds = _collider.bounds;
-        Bounds targetBounds = _player.GetComponent<Collider2D>().bounds;
+        Bounds targetBounds = person.GetComponent<Collider2D>().bounds;
 
         Vector3 dt = Vector3.right + Vector3.up * 2;
         containerBounds.min -= dt - Vector3.up;
@@ -40,12 +43,15 @@ public class PlayerInRoomHolder : MonoBehaviour
             if (maxBound[i] < 0)
                 dt[i] += maxBound[i] - 1f;
         }
-        _player.transform.position += dt;
+        person.transform.position += dt;
     }
 
     void FixedUpdate()
     {
-        if (_player)
-            FixPlayerIn();
+        if (_persons.Count > 0)
+        {
+            var persons = new List<Person>(_persons);
+            persons.ForEach(p => FixPersonIn(p));
+        }
     }
 }

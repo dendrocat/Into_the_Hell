@@ -5,7 +5,7 @@ using UnityEngine;
 /// Controller for managing rooms in the game. Implements the <see cref="IRoomController"/> interface.
 /// Handles room-specific logic such as boss and enemy spawns, additional effects, and door control.
 /// </summary>
-[RequireComponent(typeof(Collider2D), typeof(PlayerInRoomHolder))]
+[RequireComponent(typeof(Collider2D), typeof(PersonInRoomHolder))]
 public class RoomContoller : MonoBehaviour, IRoomController
 {
     /// <summary>
@@ -28,7 +28,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     Collider2D _collider;
 
-    PlayerInRoomHolder playerHolder;
+    PersonInRoomHolder personHolder;
 
     void Awake()
     {
@@ -37,8 +37,8 @@ public class RoomContoller : MonoBehaviour, IRoomController
         _collider = GetComponent<Collider2D>();
         _collider.enabled = false;
 
-        playerHolder = GetComponent<PlayerInRoomHolder>();
-        playerHolder.enabled = false;
+        personHolder = GetComponent<PersonInRoomHolder>();
+        personHolder.enabled = false;
     }
 
     public void ActivateRoom()
@@ -63,6 +63,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
         var boss = Instantiate(AbstractLevelManager.Instance.GetEnemies().Boss,
                             BossSpawn.Value.position, Quaternion.identity);
+        personHolder.AddPerson(boss.GetComponent<Person>());
 
         if (boss.TryGetComponent<BlazeAIController>(out var blazeAI))
         {
@@ -89,6 +90,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
                         Quaternion.identity
                     );
             obj.GetComponent<AIDestinationSetter>().target = playerTransform;
+            personHolder.AddPerson(obj.GetComponent<Person>());
         }
         Person.Died.AddListener(OnEnemyDied);
         Destroy(EnemySpawns.Value.gameObject);
@@ -96,8 +98,8 @@ public class RoomContoller : MonoBehaviour, IRoomController
 
     void StartBattle(Transform playerTransform)
     {
-        playerHolder.enabled = true;
-        playerHolder.SetPlayer(playerTransform.gameObject.GetComponent<Player>());
+        personHolder.enabled = true;
+        personHolder.AddPerson(playerTransform.gameObject.GetComponent<Player>());
 
         SpawnEnemies(playerTransform);
         SpawnBoss(playerTransform);
@@ -140,7 +142,7 @@ public class RoomContoller : MonoBehaviour, IRoomController
     void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
-        if (IsPlayerEntered(collision) && !playerHolder.enabled) StartBattle(collision.transform);
+        if (IsPlayerEntered(collision) && !personHolder.enabled) StartBattle(collision.transform);
     }
 
     public void MarkAsEndRoom()
@@ -151,6 +153,6 @@ public class RoomContoller : MonoBehaviour, IRoomController
     void OnDestroy()
     {
         Destroy(DoorController as MonoBehaviour);
-        Destroy(playerHolder);
+        Destroy(personHolder);
     }
 }
