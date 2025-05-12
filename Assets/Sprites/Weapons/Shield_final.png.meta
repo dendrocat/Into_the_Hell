@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72cf53037fe3dbf40a52542bacb909ed
+guid: 0d17907fa9c1d4840b62338477b927e5
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -17,15 +17,6 @@ TextureImporter:
   - first:
       213: -8418880130915447063
     second: Shield_4
-  - first:
-      213: -7904321528907490436
-    second: Shield_5
-  - first:
-      213: 2341536110440916619
-    second: Shield_6
-  - first:
-      213: 4637961900233290276
-    second: Shield_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,7 +116,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -147,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -169,7 +160,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -191,7 +182,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -212,7 +203,7 @@ TextureImporter:
       name: Shield_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 0
         width: 32
         height: 32
@@ -230,77 +221,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Shield_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c7b1ff6c2753e4290800000000000000
-      internalID: -7904321528907490436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shield_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b86a49bbfaece7020800000000000000
-      internalID: 2341536110440916619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shield_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 422733976c95d5040800000000000000
-      internalID: 4637961900233290276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: a75a4ec758ed72042a99ebf9f8593d9a
     internalID: 0
     vertices: []
     indices: 
@@ -315,9 +240,6 @@ TextureImporter:
       Shield_2: -4098029715399502762
       Shield_3: -407368442477547055
       Shield_4: -8418880130915447063
-      Shield_5: -7904321528907490436
-      Shield_6: 2341536110440916619
-      Shield_7: 4637961900233290276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

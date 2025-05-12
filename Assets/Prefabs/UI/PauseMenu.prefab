@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cd3adffe0e943ef4e910516966f47383, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9904,7 +9904,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: "\u0420"
+      value: H
       objectReference: {fileID: 0}
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontSize
@@ -10645,7 +10645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: "\u0426/\u0424/\u042B/\u0412"
+      value: W/A/S/D
       objectReference: {fileID: 0}
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontSize
@@ -11612,7 +11612,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: "\u0423"
+      value: E
       objectReference: {fileID: 0}
     - target: {fileID: 557787664879411030, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontSize
