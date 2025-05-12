@@ -1,14 +1,20 @@
 /// <summary>
-/// Defines weapon categories available to players
+/// Определяет категории оружия, доступные игрокам.
 /// </summary>
 public enum WeaponType
 {
-    /// <summary>Standard one-handed melee weapon</summary>
+    /// <summary>
+    /// Стандартный одноручное меч и щит.
+    /// </summary>
     Sword = 0,
 
-    /// <summary>Heavy high-damage melee weapon</summary>
+    /// <summary>
+    /// Тяжёлое двуручное оружие с высоким уроном.
+    /// </summary>
     TwoHandedSword = 1,
 
-    /// <summary>Ranged weapon using arrows</summary>
+    /// <summary>
+    /// Дальнобойное оружие, использующее стрелы.
+    /// </summary>
     Bow = 2
 }

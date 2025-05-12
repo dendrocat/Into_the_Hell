@@ -3,29 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Main container for game progress state
+/// Основной контейнер состояния прогресса игры.
 /// </summary>
 /// <remarks>
-/// Contains map position, character state, and inventory through <see cref="PlayerData"/>.
-/// Serialized via <see cref="SaveLoadRepository"/>.
+/// Содержит позицию на карте, состояние персонажа и инвентарь через <see cref="PlayerData"/>.
+/// Сериализуется с помощью <see cref="SaveLoadRepository"/>.
 /// </remarks>
 [Serializable]
 public struct GameData
 {
-    /// <summary>Current location ID</summary>
+    /// <summary>
+    /// Идентификатор локации.
+    /// </summary>
+    [Tooltip("Идентификатор локации")]
     public Location location;
 
-    /// <summary>Current level in location</summary>
-    [Range(0, 10)]
-    public int level;
+    /// <summary>
+    /// Текущий уровень внутри локации.
+    /// </summary>
+    [Tooltip("Текущий уровень внутри локации")]
+    [Range(0, 10)] public int level;
 
-    /// <summary>Character-specific parameters defined in <see cref="PlayerData"/></summary>
+    /// <summary>
+    /// Параметры персонажа, определённые в <see cref="PlayerData"/>.
+    /// </summary>
     public PlayerData playerData;
 
-    /// <summary>Weapon upgrade states</summary>
+    /// <summary>
+    /// Состояния улучшений оружия.
+    /// </summary>
     /// <remarks>
-    /// Each byte corresponds to <see cref="WeaponType"/> ordinal value
+    /// Каждый элемент соответствует порядковому значению <see cref="WeaponType"/>.
     /// </remarks>
-    [Range(1, 5)]
-    public List<byte> weaponLevels;
+    [Tooltip("Состояния улучшений оружия (индекс соответствует типу оружия)")]
+    [Range(1, 5)] public List<byte> weaponLevels;
 }

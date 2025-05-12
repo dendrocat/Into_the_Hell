@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages game settings persistence using type-safe <see cref="SettingsKeys"/> enumeration.
+/// Управляет сохранением и загрузкой настроек игры с использованием типобезопасного перечисления <see cref="SettingsKeys"/>.
 /// </summary>
 /// <remarks>
-/// Provides a buffer system for collecting settings before bulk saving through <see cref="SettingsRepository"/>,
-/// and type-safe loading using enum keys.
+/// Обеспечивает буферизацию настроек перед массовым сохранением через <see cref="SettingsRepository"/>, а также типобезопасную загрузку с использованием ключей-перечислений.
 /// </remarks>
 public class SettingsManager : MonoBehaviour
 {
     [Header("Default settings")]
+
+    [Tooltip("Громкость звука по умолчанию (0.0 - 1.0)")]
     [SerializeField, Range(0f, 1f)] float defaultVolume = 1.0f;
+
+    [Tooltip("Яркость экрана по умолчанию (0.5 - 1.5)")]
     [SerializeField, Range(0.5f, 1.5f)] float defaultBrightness = 1.0f;
+
+    [Tooltip("Уровень качества графики по умолчанию (0 - 3)")]
     [SerializeField, Range(0, 3)] int defaultQualityLevel = 1;
+
+    [Tooltip("Включён ли полноэкранный режим по умолчанию")]
     [SerializeField] bool defaultFullScreen = true;
     int resolutionIndex;
     string rebinds = "";
 
+    /// <summary>
+    /// Singleton-экземпляр менеджера настроек.
+    /// </summary>
     static public SettingsManager Instance { get; private set; } = null;
+
+    Dictionary<SettingsKeys, object> settings;
 
     void Awake()
     {
@@ -37,8 +49,12 @@ public class SettingsManager : MonoBehaviour
         Load();
     }
 
-    Dictionary<SettingsKeys, object> settings;
 
+    /// <summary>
+    /// Возвращает значение настройки по умолчанию для указанного ключа.
+    /// </summary>
+    /// <param name="key">Ключ настройки.</param>
+    /// <returns>Значение настройки по умолчанию.</returns>
     public object GetDefaultSetting(SettingsKeys key) {
         switch (key) {
             case SettingsKeys.Brightness:
@@ -57,13 +73,30 @@ public class SettingsManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Получает текущее значение настройки.
+    /// </summary>
+    /// <param name="key">Ключ настройки.</param>
+    /// <returns>Значение настройки, либо значение по умолчанию, если настройка не установлена.</returns>
     public object GetSetting(SettingsKeys key)
     {
         var val = settings.GetValueOrDefault(key, null);
         if (val != null) return val;
         return GetDefaultSetting(key);
     }
+
+    /// <summary>
+    /// Устанавливает значение настройки.
+    /// </summary>
+    /// <param name="key">Ключ настройки.</param>
+    /// <param name="val">Новое значение настройки.</param>
     public void SetSetting(SettingsKeys key, object val) { settings[key] = val; }
+
+    /// <summary>
+    /// Удаляет настройку из текущих значений.
+    /// </summary>
+    /// <param name="key">Ключ настройки.</param>
+    /// <returns><see langword="true"/>, если настройка была удалена; иначе <see langword="false"/>.</returns>
     public bool RemoveSetting(SettingsKeys key)
     {
         if (!settings.ContainsKey(key))
@@ -76,12 +109,8 @@ public class SettingsManager : MonoBehaviour
 
 
     /// <summary>
-    /// Persists all queued settings to PlayerPrefs through <see cref="SettingsRepository.Save"/>.
+    /// Сохраняет все текущие настройки в PlayerPrefs через <see cref="SettingsRepository.Save"/>.
     /// </summary>
-    /// <remarks>
-    /// Clears the save queue after successful persistence.
-    /// Automatically calls <see cref="SettingsRepository.Save"/>.
-    /// </remarks>
     public void Save()
     {
         Dictionary<string, object> toSave = new();
@@ -91,18 +120,9 @@ public class SettingsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads all registered settings from PlayerPrefs via <see cref="SettingsRepository.Load"/>.
+    /// Загружает все зарегистрированные настройки из PlayerPrefs через <see cref="SettingsRepository.Load"/>.
     /// </summary>
-    /// <returns>Dictionary with <see cref="SettingsKeys"/> as keys and loaded values</returns>
-    /// <remarks>
-    /// Automatically filters and converts PlayerPrefs data to enum-keyed dictionary
-    /// </remarks>
-    /// <example>
-    /// <code>
-    /// var settings = manager.Load();
-    /// float volume = (float)settings[SettingsKeys.Volume];
-    /// </code>
-    /// </example>
+    /// <returns>Словарь с ключами <see cref="SettingsKeys"/> и загруженными значениями.</returns>
     public Dictionary<SettingsKeys, object> Load()
     {
         var loadedPrefs = SettingsRepository.Load(Enum.GetNames(typeof(SettingsKeys)));

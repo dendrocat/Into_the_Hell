@@ -2,11 +2,11 @@ using System.IO;
 using UnityEngine;
 
 /// <summary>
-/// Handles JSON serialization and file operations for game data
+/// Обрабатывает сериализацию в JSON и операции с файлами для данных игры.
 /// </summary>
 /// <remarks>
-/// Manages save file creation, deletion, and JSON conversion using <see cref="GameData"/> structure.
-/// Implements automatic new game initialization when no save exists.
+/// Управляет созданием, удалением файлов сохранения и конвертацией JSON с использованием структуры <see cref="GameData"/>.
+/// Реализует автоматическую инициализацию новой игры при отсутствии сохранения.
 /// </remarks>
 public class SaveLoadRepository
 {
@@ -15,20 +15,20 @@ public class SaveLoadRepository
     );
 
     /// <summary>
-    /// Checks for existing save file
+    /// Проверяет наличие файла сохранения.
     /// </summary>
-    /// <returns>True if save file exists at persistentDataPath/save.json</returns>
+    /// <returns><see langword="true">, если файл сохранения существует по пути persistentDataPath/save.json.</returns>
     public static bool HasSave()
     {
         return File.Exists(_savePath);
     }
 
     /// <summary>
-    /// Serializes game state to JSON file
+    /// Сериализует состояние игры в JSON и сохраняет в файл.
     /// </summary>
-    /// <param name="data">Game state container to serialize</param>
+    /// <param name="data">Контейнер состояния игры для сериализации.</param>
     /// <remarks>
-    /// Creates new or overwrites existing save file with pretty-printed JSON
+    /// Создаёт новый или перезаписывает существующий файл сохранения с форматированным JSON.
     /// </remarks>
     public static void Save(GameData data)
     {
@@ -37,10 +37,10 @@ public class SaveLoadRepository
     }
 
     /// <summary>
-    /// Loads game state from persistent storage
+    /// Загружает состояние игры из постоянного хранилища.
     /// </summary>
     /// <returns>
-    /// Existing <see cref="GameData"/> if found, new game state otherwise
+    /// Существующий <see cref="GameData"/>, если найден, иначе null.
     /// </returns>
     public static GameData? Load()
     {
@@ -54,10 +54,10 @@ public class SaveLoadRepository
     }
 
     /// <summary>
-    /// Deletes persistent save file
+    /// Удаляет файл сохранения.
     /// </summary>
     /// <remarks>
-    /// Use for implementing "New Game" functionality or save reset
+    /// Используется для реализации функции "Новая игра" или сброса сохранений.
     /// </remarks>
     public static void RemoveSave()
     {
