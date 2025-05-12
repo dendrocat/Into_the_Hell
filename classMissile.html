@@ -71,7 +71,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classMissile-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Missile Class Reference</div></div>
 </div><!--header-->
@@ -81,9 +83,21 @@ Inheritance diagram for Missile:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMissile__inherit__graph.png" border="0" usemap="#aMissile_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMissile_inherit__map" id="aMissile_inherit__map">
-<area shape="rect" title=" " alt="" coords="33,79,101,104"/>
-<area shape="rect" title=" " alt="" coords="5,5,129,31"/>
-<area shape="poly" title=" " alt="" coords="70,44,70,79,65,79,65,44"/>
+<area shape="rect" title=" " alt="" coords="238,79,306,104"/>
+<area shape="rect" href="classArrow.html" title="Класс, описывающий стрелу." alt="" coords="37,152,97,177"/>
+<area shape="poly" title=" " alt="" coords="227,111,98,155,96,150,225,106"/>
+<area shape="rect" href="classFireSphere.html" title="Класс, описывающий огненную сферу." alt="" coords="121,152,212,177"/>
+<area shape="poly" title=" " alt="" coords="245,114,185,154,182,150,242,110"/>
+<area shape="rect" href="classFireball.html" title="Класс, описывающий огненный шар." alt="" coords="237,152,307,177"/>
+<area shape="poly" title=" " alt="" coords="275,118,275,152,269,152,269,118"/>
+<area shape="rect" href="classFrostball.html" title="Класс, описывающий снаряд &quot;Frostball&quot; с эффектом заморозки." alt="" coords="331,152,410,177"/>
+<area shape="poly" title=" " alt="" coords="300,110,356,150,353,154,297,114"/>
+<area shape="rect" href="classStoneMissile.html" title="Класс, описывающий булыжник, кидаемый боссами." alt="" coords="434,152,539,177"/>
+<area shape="poly" title=" " alt="" coords="320,106,453,149,451,154,318,111"/>
+<area shape="rect" title=" " alt="" coords="210,5,334,31"/>
+<area shape="poly" title=" " alt="" coords="275,44,275,79,269,79,269,44"/>
+<area shape="rect" href="classExplosiveArrow.html" title="Класс, описывающий взрывную стрелу" alt="" coords="5,225,128,251"/>
+<area shape="poly" title=" " alt="" coords="69,191,69,225,64,225,64,191"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -97,21 +111,209 @@ Collaboration diagram for Missile:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad70d8fa543f1831949a17c50f2906f97" id="r_ad70d8fa543f1831949a17c50f2906f97"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#ad70d8fa543f1831949a17c50f2906f97">GetDamage</a> ()</td></tr>
+<tr class="memdesc:ad70d8fa543f1831949a17c50f2906f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение урона, наносимого снарядом  <br /></td></tr>
+<tr class="separator:ad70d8fa543f1831949a17c50f2906f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327455a4ab36b82b5279f7c30c8eae59" id="r_a327455a4ab36b82b5279f7c30c8eae59"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a327455a4ab36b82b5279f7c30c8eae59">GetTargetTags</a> ()</td></tr>
+<tr class="memdesc:a327455a4ab36b82b5279f7c30c8eae59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение тегов целей снаряда  <br /></td></tr>
+<tr class="separator:a327455a4ab36b82b5279f7c30c8eae59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acf9950791b154f3d1cb2e99592e668" id="r_a2acf9950791b154f3d1cb2e99592e668"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a2acf9950791b154f3d1cb2e99592e668">SetTargetTags</a> (List&lt; string &gt; <a class="el" href="classMissile.html#a9699eb940d2c0c12428c3d48024d17cd">targetTags</a>)</td></tr>
+<tr class="memdesc:a2acf9950791b154f3d1cb2e99592e668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка целей для снаряда  <br /></td></tr>
+<tr class="separator:a2acf9950791b154f3d1cb2e99592e668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10fa2687fc7f1cbacde3874bf5cee29c" id="r_a10fa2687fc7f1cbacde3874bf5cee29c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a10fa2687fc7f1cbacde3874bf5cee29c">SetValues</a> (float <a class="el" href="classMissile.html#a0ef28a1a5673ba9087c0932c91377c3d">damage</a>, float <a class="el" href="classMissile.html#a52ddccf1b43231b94e39296b015e555e">speed</a>)</td></tr>
+<tr class="memdesc:a10fa2687fc7f1cbacde3874bf5cee29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установка урона и скорости снаряда  <br /></td></tr>
+<tr class="separator:a10fa2687fc7f1cbacde3874bf5cee29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a9919e3ba92ef943623be3164979913f5" id="r_a9919e3ba92ef943623be3164979913f5"><td class="memItemLeft" align="right" valign="top"><a id="a9919e3ba92ef943623be3164979913f5" name="a9919e3ba92ef943623be3164979913f5"></a>
+Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
+<tr class="memdesc:a9919e3ba92ef943623be3164979913f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Направление движения снаряда. <br /></td></tr>
+<tr class="separator:a9919e3ba92ef943623be3164979913f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a9699eb940d2c0c12428c3d48024d17cd" id="r_a9699eb940d2c0c12428c3d48024d17cd"><td class="memItemLeft" align="right" valign="top"><a id="a9699eb940d2c0c12428c3d48024d17cd" name="a9699eb940d2c0c12428c3d48024d17cd"></a>
+List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>targetTags</b></td></tr>
+<tr class="memdesc:a9699eb940d2c0c12428c3d48024d17cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список тегов целей, по которым снаряд может нанести урон. <br /></td></tr>
+<tr class="separator:a9699eb940d2c0c12428c3d48024d17cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ef28a1a5673ba9087c0932c91377c3d" id="r_a0ef28a1a5673ba9087c0932c91377c3d"><td class="memItemLeft" align="right" valign="top"><a id="a0ef28a1a5673ba9087c0932c91377c3d" name="a0ef28a1a5673ba9087c0932c91377c3d"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>damage</b></td></tr>
+<tr class="memdesc:a0ef28a1a5673ba9087c0932c91377c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Урон, наносимый снарядом. <br /></td></tr>
 <tr class="separator:a0ef28a1a5673ba9087c0932c91377c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ddccf1b43231b94e39296b015e555e" id="r_a52ddccf1b43231b94e39296b015e555e"><td class="memItemLeft" align="right" valign="top"><a id="a52ddccf1b43231b94e39296b015e555e" name="a52ddccf1b43231b94e39296b015e555e"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b></td></tr>
+<tr class="memitem:a52ddccf1b43231b94e39296b015e555e" id="r_a52ddccf1b43231b94e39296b015e555e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMissile.html#a52ddccf1b43231b94e39296b015e555e">speed</a></td></tr>
 <tr class="separator:a52ddccf1b43231b94e39296b015e555e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06d8b5a49490036c5b781bb32ea59323" id="r_a06d8b5a49490036c5b781bb32ea59323"><td class="memItemLeft" align="right" valign="top"><a id="a06d8b5a49490036c5b781bb32ea59323" name="a06d8b5a49490036c5b781bb32ea59323"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>damageRadius</b> = 0.5f</td></tr>
+<tr class="memdesc:a06d8b5a49490036c5b781bb32ea59323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Радиус урона снаряда при столкновении. <br /></td></tr>
 <tr class="separator:a06d8b5a49490036c5b781bb32ea59323"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9919e3ba92ef943623be3164979913f5" id="r_a9919e3ba92ef943623be3164979913f5"><td class="memItemLeft" align="right" valign="top"><a id="a9919e3ba92ef943623be3164979913f5" name="a9919e3ba92ef943623be3164979913f5"></a>
-Vector2&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
-<tr class="separator:a9919e3ba92ef943623be3164979913f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b13dfd12c21a21b333da3b14a06c8de" id="r_a5b13dfd12c21a21b333da3b14a06c8de"><td class="memItemLeft" align="right" valign="top"><a id="a5b13dfd12c21a21b333da3b14a06c8de" name="a5b13dfd12c21a21b333da3b14a06c8de"></a>
+Rigidbody2D&#160;</td><td class="memItemRight" valign="bottom"><b>rb</b></td></tr>
+<tr class="memdesc:a5b13dfd12c21a21b333da3b14a06c8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rigidbody2D компонента для физического движения снаряда. <br /></td></tr>
+<tr class="separator:a5b13dfd12c21a21b333da3b14a06c8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad70d8fa543f1831949a17c50f2906f97" name="ad70d8fa543f1831949a17c50f2906f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70d8fa543f1831949a17c50f2906f97">&#9670;&#160;</a></span>GetDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Missile.GetDamage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Получение урона, наносимого снарядом </p>
+<dl class="section return"><dt>Returns</dt><dd><code>float</code> - Значение урона.</dd></dl>
+
+</div>
+</div>
+<a id="a327455a4ab36b82b5279f7c30c8eae59" name="a327455a4ab36b82b5279f7c30c8eae59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327455a4ab36b82b5279f7c30c8eae59">&#9670;&#160;</a></span>GetTargetTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; string &gt; Missile.GetTargetTags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Получение тегов целей снаряда </p>
+<dl class="section return"><dt>Returns</dt><dd>Список тегов целей.</dd></dl>
+
+</div>
+</div>
+<a id="a2acf9950791b154f3d1cb2e99592e668" name="a2acf9950791b154f3d1cb2e99592e668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2acf9950791b154f3d1cb2e99592e668">&#9670;&#160;</a></span>SetTargetTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Missile.SetTargetTags </td>
+          <td>(</td>
+          <td class="paramtype">List&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>targetTags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Установка целей для снаряда </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetTags</td><td>Список тегов целей.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a10fa2687fc7f1cbacde3874bf5cee29c" name="a10fa2687fc7f1cbacde3874bf5cee29c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10fa2687fc7f1cbacde3874bf5cee29c">&#9670;&#160;</a></span>SetValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Missile.SetValues </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>damage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Установка урона и скорости снаряда </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damage</td><td>Урон снаряда.</td></tr>
+    <tr><td class="paramname">speed</td><td>Скорость снаряда.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a52ddccf1b43231b94e39296b015e555e" name="a52ddccf1b43231b94e39296b015e555e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ddccf1b43231b94e39296b015e555e">&#9670;&#160;</a></span>speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Missile.speed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Скорость движения снаряда. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/Items/Weapons/<b>Missile.cs</b></li>
 </ul>

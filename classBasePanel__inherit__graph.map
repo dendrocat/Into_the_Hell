@@ -1,0 +1,13 @@
+<map id="BasePanel" name="BasePanel">
+<area shape="rect" id="Node000001" title="Базовый класс для UI&#45;панелей, управляющий состоянием и взаимодействием с инвентарём игрока." alt="" coords="151,79,240,104"/>
+<area shape="rect" id="Node000003" href="$classShopPanel.html" title="Абстрактный базовый класс панели магазина, наследующий BasePanel. Управляет отображением и состоянием..." alt="" coords="89,152,179,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,116,146,154,142,150,174,113"/>
+<area shape="rect" id="Node000006" href="$classWeaponPanel.html" title="Панель выбора оружия, наследует BasePanel. Управляет отображением доступных оружий и переключением ме..." alt="" coords="203,152,313,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="217,113,250,150,246,154,213,116"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="133,5,257,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,44,198,79,193,79,193,44"/>
+<area shape="rect" id="Node000004" href="$classConsumePanel.html" title="Панель покупки расходуемых предметов, наследует ShopPanel. Управляет покупкой стрел и зелий с динамич..." alt="" coords="5,225,124,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="115,189,78,227,74,223,111,185"/>
+<area shape="rect" id="Node000005" href="$classUpgradePanel.html" title="Панель улучшений, наследует ShopPanel. Управляет улучшением оружия, брони и зелий." alt="" coords="147,225,259,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="157,185,194,223,190,227,153,189"/>
+</map>

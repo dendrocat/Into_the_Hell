@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['takedamage_0',['takedamage',['../classPlayer.html#a3d0376e980d32299458239afc569943c',1,'Player.TakeDamage()'],['../classPerson.html#a98cdb3d8810cd18ddbf08fe07ca13414',1,'Person.TakeDamage()'],['../interfaceIDamagable.html#a9de3f2f08be92b6d2c349b5bf1120921',1,'IDamagable.TakeDamage()'],['../classDestructibleWall.html#a7e68564c3e7e19db5f4b4d7d1ea9a9b1',1,'DestructibleWall.TakeDamage()']]],
+  ['targettags_1',['targettags',['../classMissile.html#a9699eb940d2c0c12428c3d48024d17cd',1,'Missile.targetTags'],['../classBaseWeapon.html#ae136ed8ae1d6f0800d233f4749f0a800',1,'BaseWeapon.targetTags'],['../classTrapContainer.html#aa71dbc52a631c9a52ee734a682ca908a',1,'TrapContainer.TargetTags']]],
+  ['testgamemanager_2',['TestGameManager',['../classTestGameManager.html',1,'']]],
+  ['testlevelgenerator_3',['TestLevelGenerator',['../classTestLevelGenerator.html',1,'']]],
+  ['textmanager_4',['TextManager',['../classTextManager.html',1,'']]],
+  ['the_20hell_5',['Into the Hell',['../index.html',1,'']]],
+  ['this_5bint_20i_2c_20int_20j_5d_6',['this[int i, int j]',['../classMatrix.html#aa9a405c95e8085922e28a89cfcb96a46',1,'Matrix']]],
+  ['this_5bvector2int_20v_5d_7',['this[Vector2Int v]',['../classMatrix.html#aa5b9a512553c76154b4136ca8fa591ad',1,'Matrix']]],
+  ['tilemapcontroller_8',['TilemapController',['../classTilemapController.html',1,'']]],
+  ['tilescontainer_9',['TilesContainer',['../classTilesContainer.html',1,'']]],
+  ['tomainmenu_10',['tomainmenu',['../classPauseController.html#a6bbd790b6d4e9f554d9897e8dc256629',1,'PauseController.ToMainMenu()'],['../classGameManager.html#ad123256d41cc7f54d50b5a423ec5fe68',1,'GameManager.ToMainMenu()']]],
+  ['tomainmenufrompause_11',['ToMainMenuFromPause',['../classGameManager.html#a2abd72dbf6df10429d302ebbf66702bc',1,'GameManager']]],
+  ['traderanimatorcontroller_12',['TraderAnimatorController',['../classTraderAnimatorController.html',1,'']]],
+  ['transform_13',['transform',['../classLevel.html#a9bb64e92645ffd3f51cdb63dc5a219a8',1,'Level']]],
+  ['trap_14',['Trap',['../classTilesContainer.html#aaf7dc082d2b2181d2d63cbaa0c7d1b6d',1,'TilesContainer']]],
+  ['trapcheckperiod_15',['TrapCheckPeriod',['../classTrapContainer.html#a7ad0c4a3278fcbac9650bfc2d9c26a80',1,'TrapContainer']]],
+  ['trapcontainer_16',['TrapContainer',['../classTrapContainer.html',1,'']]],
+  ['traptype_17',['TrapType',['../classTrapContainer.html#ab063003c64a55c7433a94761baffb44d',1,'TrapContainer']]],
+  ['tutorialdialogno_18',['TutorialDialogNo',['../classMainMenuController.html#a0046745304f86711769b8099834c770a',1,'MainMenuController']]],
+  ['tutorialdialogyes_19',['TutorialDialogYes',['../classMainMenuController.html#ad843358b76e873728212b2c16ab34f69',1,'MainMenuController']]],
+  ['twohandedsword_20',['twohandedsword',['../classTwoHandedSword.html',1,'TwoHandedSword'],['../classTwoHandedSword.html#a96fbb8046647c8451e0060e437c776c6',1,'TwoHandedSword.TwoHandedSword()']]],
+  ['typeprefixes_21',['TypePrefixes',['../classSettingsRepository.html#a9b219f5a9e05a4a5681a9efe69de3dc4',1,'SettingsRepository']]]
+];

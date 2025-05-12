@@ -1,0 +1,24 @@
+<map id="BlazeWeapon" name="BlazeWeapon">
+<area shape="rect" id="Node000001" title="Класс, реализующий оружие исчадия ада." alt="" coords="5,341,116,367"/>
+<area shape="rect" id="Node000002" href="$classBossWeapon.html" title="Класс, описывающий оружие босса." alt="" coords="8,267,113,292"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,306,63,341,58,341,58,306"/>
+<area shape="rect" id="Node000003" href="$classBaseWeapon.html" title="Базовый класс оружия, наследующий функциональность улучшаемого предмета." alt="" coords="58,179,165,204"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,216,82,229,66,267,61,265,77,227,87,213"/>
+<area shape="rect" id="Node000006" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="223,267,290,292"/>
+<area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="107,218,107,230,112,241,129,252,158,261,224,272,223,277,157,266,127,257,108,244,102,231,102,218"/>
+<area shape="rect" id="Node000004" href="$classUpgradableItem.html" title="Класс, описывающий улучшаемый предмет." alt="" coords="80,80,207,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="138,119,118,179,113,178,133,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="195,5,319,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="229,40,163,82,160,78,226,36"/>
+<area shape="rect" id="Node000007" href="$classEffectable.html" title="Класс сущностей, на которые можно наложить эффект" alt="" coords="213,129,300,155"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="259,44,259,129,254,129,254,44"/>
+<area shape="rect" id="Node000010" href="$classAudioPlayer.html" title="Абстрактный класс для воспроизведения аудиоклипов с использованием компонента AudioSource." alt="" coords="295,80,395,105"/>
+<area shape="poly" id="edge12_Node000010_Node000005" title=" " alt="" coords="283,38,332,77,329,82,280,42"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="222,262,191,245,128,206,131,202,194,240,225,258"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="259,168,259,267,254,267,254,168"/>
+<area shape="rect" id="Node000008" href="$interfaceIDamagable.html" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="422,179,523,204"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="450,215,402,245,344,265,291,276,290,271,343,260,400,240,447,210"/>
+<area shape="rect" id="Node000009" href="$classPersonAudio.html" title="Класс для управления аудио объекта класса Person, наследующий функциональность AudioPlayer." alt="" coords="295,179,397,204"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="326,215,271,268,267,264,322,212"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="348,119,349,179,343,179,342,119"/>
+</map>

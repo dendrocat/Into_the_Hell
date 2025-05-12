@@ -1,0 +1,9 @@
+<map id="AbstractLevelManager" name="AbstractLevelManager">
+<area shape="rect" id="Node000001" title="Абстрактный менеджер уровней, отвечающий за управление текущей локацией и уровнем...." alt="" coords="57,79,225,104"/>
+<area shape="rect" id="Node000003" href="$classLevelManager.html" title="Менеджер уровня, наследующийся от AbstractLevelManager. Отвечает за инициализацию и генерацию текущег..." alt="" coords="5,152,120,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,115,77,154,74,150,117,111"/>
+<area shape="rect" id="Node000004" href="$classStaticLevelManager.html" title="Менеджер статического уровня, наследующийся от AbstractLevelManager. Отвечает за генерацию и настройк..." alt="" coords="145,152,295,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,111,209,150,205,154,162,115"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="79,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,44,144,79,139,79,139,44"/>
+</map>

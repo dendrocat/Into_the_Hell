@@ -1,0 +1,9 @@
+<map id="UpgradePanel" name="UpgradePanel">
+<area shape="rect" id="Node000001" title="Панель улучшений, наследует ShopPanel. Управляет улучшением оружия, брони и зелий." alt="" coords="11,225,123,251"/>
+<area shape="rect" id="Node000002" href="$classShopPanel.html" title="Абстрактный базовый класс панели магазина, наследующий BasePanel. Управляет отображением и состоянием..." alt="" coords="23,152,112,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,191,70,225,65,225,65,191"/>
+<area shape="rect" id="Node000003" href="$classBasePanel.html" title="Базовый класс для UI&#45;панелей, управляющий состоянием и взаимодействием с инвентарём игрока." alt="" coords="23,79,112,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="70,118,70,152,65,152,65,118"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="70,44,70,79,65,79,65,44"/>
+</map>

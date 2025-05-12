@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['missile_0',['Missile',['../classMissile.html',1,'']]],
-  ['missileweapon_1',['MissileWeapon',['../classMissileWeapon.html',1,'']]],
-  ['movementcontroller_2',['MovementController',['../classMovementController.html',1,'']]]
+  ['camerasettingscontroller_0',['CameraSettingsController',['../classCameraSettingsController.html',1,'']]],
+  ['choicedisplayer_1',['ChoiceDisplayer',['../classChoiceDisplayer.html',1,'']]],
+  ['collisionignorer_2',['CollisionIgnorer',['../classCollisionIgnorer.html',1,'']]],
+  ['consumepanel_3',['ConsumePanel',['../classConsumePanel.html',1,'']]]
 ];

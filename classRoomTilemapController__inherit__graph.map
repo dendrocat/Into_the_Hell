@@ -1,0 +1,14 @@
+<map id="RoomTilemapController" name="RoomTilemapController">
+<area shape="rect" id="Node000001" title="Контроллер для управления тайлмапами комнаты. Реализует интерфейс IRoomTilemapController...." alt="" coords="131,152,308,177"/>
+<area shape="rect" id="Node000002" href="$classTilemapController.html" title="Базовый контроллер для управления тайлмапами. Реализует интерфейс ITilemapController...." alt="" coords="58,79,197,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,110,206,150,203,154,151,114"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,40,120,77,116,80,84,43"/>
+<area shape="rect" id="Node000004" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="153,5,296,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="199,41,145,81,142,76,196,37"/>
+<area shape="rect" id="Node000005" href="$interfaceIRoomTilemapController.html" title="Interface for objects that manage tilemaps within a room, including doors and other tile&#45;based elemen..." alt="" coords="221,79,402,104"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="251,37,299,76,295,81,247,41"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="288,114,236,154,233,150,284,110"/>
+<area shape="rect" id="Node000006" href="$interfaceISizeGetable.html" title="Интерфейс для объектов, предоставляющих размер в виде двумерного вектора целых чисел." alt="" coords="321,5,425,31"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="356,43,323,80,319,77,352,40"/>
+</map>

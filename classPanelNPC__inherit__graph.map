@@ -1,0 +1,9 @@
+<map id="PanelNPC" name="PanelNPC">
+<area shape="rect" id="Node000001" title="NPC, который связывает функции Ink с открытием различных UI&#45;панелей." alt="" coords="95,152,179,177"/>
+<area shape="rect" id="Node000002" href="$classDialogableNPC.html" title="Компонент NPC, с которым можно взаимодействовать для запуска диалога." alt="" coords="77,79,196,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,118,139,152,134,152,134,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,39,127,77,124,80,86,43"/>
+<area shape="rect" id="Node000004" href="$interfaceIInteractable.html" title="Интерфейс, определяющий объект, с которым можно взаимодействовать." alt="" coords="154,5,258,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="187,43,150,80,146,77,183,39"/>
+</map>

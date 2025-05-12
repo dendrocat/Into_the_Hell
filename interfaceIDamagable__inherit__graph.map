@@ -1,5 +1,15 @@
 <map id="IDamagable" name="IDamagable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,107,31"/>
-<area shape="rect" id="Node000002" href="$classPerson.html" title=" " alt="" coords="23,79,89,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,44,59,79,53,79,53,44"/>
+<area shape="rect" id="Node000001" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="81,5,182,31"/>
+<area shape="rect" id="Node000002" href="$classDestructibleWall.html" title="Класс, описывающий разрушаемую стену" alt="" coords="5,79,135,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,43,82,80,78,77,110,40"/>
+<area shape="rect" id="Node000003" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="159,79,226,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,40,185,77,181,80,148,43"/>
+<area shape="rect" id="Node000004" href="$classBaseEnemy.html" title="Базовый класс для врагов." alt="" coords="90,152,189,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="178,117,150,153,146,150,174,113"/>
+<area shape="rect" id="Node000007" href="$classPlayer.html" title="Класс игрока. &#160;Важно! Вместо weapon используется inventory." alt="" coords="213,152,276,177"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="211,114,238,150,234,153,207,117"/>
+<area shape="rect" id="Node000005" href="$classBoss.html" title="Класс, описывающий босса." alt="" coords="65,225,118,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="126,190,101,227,97,224,122,187"/>
+<area shape="rect" id="Node000006" href="$classMiniGolem.html" title=" " alt="" coords="142,225,235,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="157,187,183,224,178,227,153,190"/>
 </map>

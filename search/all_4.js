@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['person_0',['Person',['../classPerson.html',1,'']]]
+  ['damage_0',['damage',['../classBaseWeapon.html#ade26f0db0186f5c200858e0592e53955',1,'BaseWeapon.damage'],['../classMissile.html#a0ef28a1a5673ba9087c0932c91377c3d',1,'Missile.damage']]],
+  ['damageradius_1',['damageRadius',['../classMissile.html#a06d8b5a49490036c5b781bb32ea59323',1,'Missile']]],
+  ['deactivate_2',['deactivate',['../classPauseController.html#a716bbeaf25a21814cd1dfc89121c35f9',1,'PauseController.Deactivate()'],['../classBaseTrap.html#af72c8e08990be2e68776d7ab0e50163f',1,'BaseTrap.Deactivate()']]],
+  ['deactivatedialoging_3',['DeactivateDialoging',['../classTraderAnimatorController.html#a343105dc84adf0fffe4af483b25005a9',1,'TraderAnimatorController']]],
+  ['deactivateitem_4',['DeactivateItem',['../classItemsPanel.html#a7d2f7927fd26a8a3a7149b7f82f00c77',1,'ItemsPanel']]],
+  ['destroyall_5',['DestroyAll',['../classDontDestroyManager.html#aa372cc146b7609b0d35d42326be48b5f',1,'DontDestroyManager']]],
+  ['destroychoices_6',['destroychoices',['../classDialogDisplayer.html#a49e5148c1715933bf43b5b456ecce849',1,'DialogDisplayer.DestroyChoices()'],['../classChoiceDisplayer.html#a2e7b0202178699564f7ebfd28a155035',1,'ChoiceDisplayer.DestroyChoices()']]],
+  ['destroys_7',['Destroys',['../classTilesContainer.html#a185f29855a2844c3c2728ba2ee3e4814',1,'TilesContainer']]],
+  ['destroyui_8',['DestroyUI',['../classMiniMapUi.html#ad283a08dfb29674c58043a4ba8672deb',1,'MiniMapUi']]],
+  ['destructiblewall_9',['DestructibleWall',['../classDestructibleWall.html',1,'']]],
+  ['destructiondelay_10',['destructionDelay',['../classPerson.html#a48042f9542c39e1750bdffeccba96f09',1,'Person']]],
+  ['dialogablenpc_11',['DialogableNPC',['../classDialogableNPC.html',1,'']]],
+  ['dialogdisplayer_12',['DialogDisplayer',['../classDialogDisplayer.html',1,'']]],
+  ['dialogmanager_13',['DialogManager',['../classDialogManager.html',1,'']]],
+  ['dialogstarted_14',['DialogStarted',['../classDialogableNPC.html#afc64d2bc645e8e8c43c0b96525202a44',1,'DialogableNPC']]],
+  ['die_15',['Die',['../classPerson.html#a50badbd6d50532781a1e3667d9f20eda',1,'Person']]],
+  ['died_16',['Died',['../classPerson.html#ac70dc854b1adaa40259ac92fdd13ea1c',1,'Person']]],
+  ['direction_17',['direction',['../classMissile.html#a9919e3ba92ef943623be3164979913f5',1,'Missile']]],
+  ['dontdestroymanager_18',['DontDestroyManager',['../classDontDestroyManager.html',1,'']]],
+  ['doorcontroller_19',['doorcontroller',['../classDoorController.html',1,'DoorController'],['../classRoomContoller.html#aab4fbd5a83fe123e131c10c4fd4f3387',1,'RoomContoller.DoorController'],['../interfaceIRoomController.html#a116a115054af138aadbd99878e9e2d91',1,'IRoomController.DoorController']]],
+  ['doormover_20',['DoorMover',['../classDoorMover.html',1,'']]],
+  ['doorroof_21',['DoorRoof',['../classTilesContainer.html#a913bee26e792aea2b2b3d92c4ef17ee6',1,'TilesContainer']]],
+  ['doortilemap_22',['doortilemap',['../interfaceIRoomTilemapController.html#ae141353533334a5d40ae1ffce7cdab68',1,'IRoomTilemapController.DoorTilemap'],['../classRoomTilemapController.html#a4a2859032aa2b5b9f82f7e78c6b7e1df',1,'RoomTilemapController.DoorTilemap']]],
+  ['doortilemapcontroller_23',['DoorTilemapController',['../classDoorTilemapController.html',1,'']]],
+  ['doorwall_24',['DoorWall',['../classTilesContainer.html#ac6ae691bcfe19bcb762182df9c917aae',1,'TilesContainer']]],
+  ['dynamictrapcontroller_25',['DynamicTrapController',['../classDynamicTrapController.html',1,'']]]
 ];

@@ -1,0 +1,18 @@
+<map id="RoomTilemapController" name="RoomTilemapController">
+<area shape="rect" id="Node000001" title="Контроллер для управления тайлмапами комнаты. Реализует интерфейс IRoomTilemapController...." alt="" coords="215,243,392,268"/>
+<area shape="rect" id="Node000002" href="$classTilemapController.html" title="Базовый контроллер для управления тайлмапами. Реализует интерфейс ITilemapController...." alt="" coords="143,168,282,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,200,290,240,287,244,236,204"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,80,129,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,110,194,165,192,170,97,115"/>
+<area shape="rect" id="Node000004" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="293,80,436,105"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="363,120,357,134,348,146,319,160,278,171,277,165,318,155,344,142,353,131,358,118"/>
+<area shape="rect" id="Node000007" href="$interfaceIRoomTilemapController.html" title="Interface for objects that manage tilemaps within a room, including doors and other tile&#45;based elemen..." alt="" coords="307,168,489,193"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="377,117,382,128,396,167,391,169,377,130,372,119"/>
+<area shape="rect" id="Node000005" href="$classTilesContainer.html" title="Контейнер для тайлов и префабов, используемых в конкретных локациях. Этот класс является ScriptableOb..." alt="" coords="153,80,269,105"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="214,119,215,167,210,168,209,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="147,5,276,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="214,45,214,80,209,80,209,45"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="373,204,320,244,317,240,370,200"/>
+<area shape="rect" id="Node000008" href="$interfaceISizeGetable.html" title="Интерфейс для объектов, предоставляющих размер в виде двумерного вектора целых чисел." alt="" coords="461,80,565,105"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="488,116,415,170,412,166,485,111"/>
+</map>

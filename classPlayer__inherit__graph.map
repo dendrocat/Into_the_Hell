@@ -1,0 +1,11 @@
+<map id="Player" name="Player">
+<area shape="rect" id="Node000001" title="Класс игрока. &#160;Важно! Вместо weapon используется inventory." alt="" coords="95,225,157,251"/>
+<area shape="rect" id="Node000002" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="93,152,159,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,191,129,225,123,225,123,191"/>
+<area shape="rect" id="Node000003" href="$classEffectable.html" title="Класс сущностей, на которые можно наложить эффект" alt="" coords="24,79,111,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,113,119,150,114,154,84,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="70,44,70,79,65,79,65,44"/>
+<area shape="rect" id="Node000005" href="$interfaceIDamagable.html" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="135,79,237,104"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="169,116,138,154,134,150,165,113"/>
+</map>

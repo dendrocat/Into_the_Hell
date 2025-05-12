@@ -1,0 +1,10 @@
+<map id="WeaponPanel" name="WeaponPanel">
+<area shape="rect" id="Node000001" title="Панель выбора оружия, наследует BasePanel. Управляет отображением доступных оружий и переключением ме..." alt="" coords="18,243,127,268"/>
+<area shape="rect" id="Node000002" href="$classBasePanel.html" title="Базовый класс для UI&#45;панелей, управляющий состоянием и взаимодействием с инвентарём игрока." alt="" coords="28,168,117,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,208,75,242,70,242,70,208"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,44,75,168,70,168,66,45"/>
+<area shape="rect" id="Node000004" href="$classPlayerInventory.html" title="Класс, описывающий инвентарь игрока." alt="" coords="89,80,214,105"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="93,38,139,78,136,82,90,42"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="134,117,86,169,82,166,130,114"/>
+</map>

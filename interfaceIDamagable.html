@@ -76,23 +76,78 @@ $(function() {
   <div class="headertitle"><div class="title">IDamagable Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Интерфейс, используемый для обработки получения урона объектом.  
+ <a href="interfaceIDamagable.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for IDamagable:</div>
 <div class="dyncontent">
 <div class="center"><img src="interfaceIDamagable__inherit__graph.png" border="0" usemap="#aIDamagable_inherit__map" alt="Inheritance graph"/></div>
 <map name="aIDamagable_inherit__map" id="aIDamagable_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,107,31"/>
-<area shape="rect" href="classPerson.html" title=" " alt="" coords="23,79,89,104"/>
-<area shape="poly" title=" " alt="" coords="59,44,59,79,53,79,53,44"/>
+<area shape="rect" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="81,5,182,31"/>
+<area shape="rect" href="classDestructibleWall.html" title="Класс, описывающий разрушаемую стену" alt="" coords="5,79,135,104"/>
+<area shape="poly" title=" " alt="" coords="114,43,82,80,78,77,110,40"/>
+<area shape="rect" href="classPerson.html" title="Базовый класс персонажа" alt="" coords="159,79,226,104"/>
+<area shape="poly" title=" " alt="" coords="152,40,185,77,181,80,148,43"/>
+<area shape="rect" href="classBaseEnemy.html" title="Базовый класс для врагов." alt="" coords="90,152,189,177"/>
+<area shape="poly" title=" " alt="" coords="178,117,150,153,146,150,174,113"/>
+<area shape="rect" href="classPlayer.html" title="Класс игрока. &#160;Важно! Вместо weapon используется inventory." alt="" coords="213,152,276,177"/>
+<area shape="poly" title=" " alt="" coords="211,114,238,150,234,153,207,117"/>
+<area shape="rect" href="classBoss.html" title="Класс, описывающий босса." alt="" coords="65,225,118,251"/>
+<area shape="poly" title=" " alt="" coords="126,190,101,227,97,224,122,187"/>
+<area shape="rect" href="classMiniGolem.html" title=" " alt="" coords="142,225,235,251"/>
+<area shape="poly" title=" " alt="" coords="157,187,183,224,178,227,153,190"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a87dc160ff6bf02e4f3a28d5cfbde9903" id="r_a87dc160ff6bf02e4f3a28d5cfbde9903"><td class="memItemLeft" align="right" valign="top"><a id="a87dc160ff6bf02e4f3a28d5cfbde9903" name="a87dc160ff6bf02e4f3a28d5cfbde9903"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TakeDamage</b> (float damage)</td></tr>
-<tr class="separator:a87dc160ff6bf02e4f3a28d5cfbde9903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de3f2f08be92b6d2c349b5bf1120921" id="r_a9de3f2f08be92b6d2c349b5bf1120921"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceIDamagable.html#a9de3f2f08be92b6d2c349b5bf1120921">TakeDamage</a> (float damage, DamageType type)</td></tr>
+<tr class="memdesc:a9de3f2f08be92b6d2c349b5bf1120921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Метод, обрабатывающий получение урона объектом.  <br /></td></tr>
+<tr class="separator:a9de3f2f08be92b6d2c349b5bf1120921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Интерфейс, используемый для обработки получения урона объектом. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9de3f2f08be92b6d2c349b5bf1120921" name="a9de3f2f08be92b6d2c349b5bf1120921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de3f2f08be92b6d2c349b5bf1120921">&#9670;&#160;</a></span>TakeDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IDamagable.TakeDamage </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>damage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DamageType&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Метод, обрабатывающий получение урона объектом. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damage</td><td>Количество получаемого урона</td></tr>
+    <tr><td class="paramname">type</td><td><a class="el" href="#afce48e0416f4e1a1a8c79629bbbf602d">Тип урона</a>, наносимого объекту</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classDestructibleWall.html#a7e68564c3e7e19db5f4b4d7d1ea9a9b1">DestructibleWall</a>, <a class="el" href="classPerson.html#a98cdb3d8810cd18ddbf08fe07ca13414">Person</a>, and <a class="el" href="classPlayer.html#a3d0376e980d32299458239afc569943c">Player</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/Scripts/Entities/<b>IDamagable.cs</b></li>
 </ul>

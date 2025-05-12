@@ -1,0 +1,13 @@
+<map id="MiniGolem" name="MiniGolem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="79,299,173,324"/>
+<area shape="rect" id="Node000002" href="$classBaseEnemy.html" title="Базовый класс для врагов." alt="" coords="77,225,175,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,264,129,299,123,299,123,264"/>
+<area shape="rect" id="Node000003" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="93,152,159,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,191,129,225,123,225,123,191"/>
+<area shape="rect" id="Node000004" href="$classEffectable.html" title="Класс сущностей, на которые можно наложить эффект" alt="" coords="24,79,111,104"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,113,119,150,114,154,84,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="70,44,70,79,65,79,65,44"/>
+<area shape="rect" id="Node000006" href="$interfaceIDamagable.html" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="135,79,237,104"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="169,116,138,154,134,150,165,113"/>
+</map>

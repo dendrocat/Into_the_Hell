@@ -1,13 +1,31 @@
 <map id="UpgradableItem" name="UpgradableItem">
-<area shape="rect" id="Node000001" title=" " alt="" coords="74,79,201,104"/>
-<area shape="rect" id="Node000003" href="$classBaseWeapon.html" title=" " alt="" coords="84,152,191,177"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,118,140,152,135,152,135,118"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="75,5,199,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,44,140,79,135,79,135,44"/>
-<area shape="rect" id="Node000004" href="$classMissileWeapon.html" title=" " alt="" coords="5,225,125,251"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="117,189,79,227,75,223,114,185"/>
-<area shape="rect" id="Node000005" href="$classRangedWeapon.html" title=" " alt="" coords="149,225,272,251"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="161,185,201,223,197,227,157,189"/>
-<area shape="rect" id="Node000006" href="$classSword.html" title=" " alt="" coords="179,299,242,324"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="213,264,213,299,208,299,208,264"/>
+<area shape="rect" id="Node000001" title="Класс, описывающий улучшаемый предмет." alt="" coords="359,79,486,104"/>
+<area shape="rect" id="Node000003" href="$classBaseWeapon.html" title="Базовый класс оружия, наследующий функциональность улучшаемого предмета." alt="" coords="240,152,347,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="391,113,316,154,313,149,388,108"/>
+<area shape="rect" id="Node000014" href="$classPlayerArmor.html" title=" " alt="" coords="371,152,474,177"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="425,118,425,152,420,152,420,118"/>
+<area shape="rect" id="Node000015" href="$classPotion.html" title="Класс, описывающий зелье игрока." alt="" coords="498,152,561,177"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="452,109,513,150,510,154,450,114"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="361,5,485,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="425,44,425,79,420,79,420,44"/>
+<area shape="rect" id="Node000004" href="$classAlternateAttackWeapon.html" title="Класс, описывающий оружие с альтернативной атакой." alt="" coords="123,225,299,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="271,188,226,227,222,223,268,184"/>
+<area shape="rect" id="Node000010" href="$classBossWeapon.html" title="Класс, описывающий оружие босса." alt="" coords="381,225,486,251"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="329,181,412,223,409,227,327,186"/>
+<area shape="rect" id="Node000005" href="$classMissileWeapon.html" title="Класс оружия дальнего боя." alt="" coords="5,299,125,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="176,259,90,301,88,296,174,254"/>
+<area shape="rect" id="Node000007" href="$classRangedWeapon.html" title="Класс оружия ближнего боя" alt="" coords="149,299,272,324"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="213,264,213,299,208,299,208,264"/>
+<area shape="rect" id="Node000006" href="$classBow.html" title="Класс, описывающий оружие игрока &quot;Лук&quot;." alt="" coords="40,372,91,397"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="68,338,68,372,63,372,63,338"/>
+<area shape="rect" id="Node000008" href="$classSword.html" title="Класс, описывающий оружие игрока &quot;Меч&quot;." alt="" coords="147,372,210,397"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="202,338,186,373,181,371,197,336"/>
+<area shape="rect" id="Node000009" href="$classTwoHandedSword.html" title="Класс, описывающий оружие игрока &quot;Двуручный меч&quot;." alt="" coords="234,372,371,397"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="238,330,289,370,286,374,234,334"/>
+<area shape="rect" id="Node000011" href="$classBlazeWeapon.html" title="Класс, реализующий оружие исчадия ада." alt="" coords="297,299,407,324"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="412,262,367,300,364,296,408,258"/>
+<area shape="rect" id="Node000012" href="$classGolemWeapon.html" title=" " alt="" coords="432,299,549,324"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="453,260,483,297,479,300,449,263"/>
+<area shape="rect" id="Node000013" href="$classYetiWeapon.html" title="Класс, описывающий оружие Морозного йети." alt="" coords="574,299,671,324"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="477,253,593,296,591,301,476,258"/>
 </map>

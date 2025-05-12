@@ -1,0 +1,16 @@
+<map id="DoorTilemapController" name="DoorTilemapController">
+<area shape="rect" id="Node000001" title="Контроллер для управления тайлмапами стен с дверями. Реализует интерфейс IDoorTilemapController." alt="" coords="209,243,379,268"/>
+<area shape="rect" id="Node000002" href="$classTilemapController.html" title="Базовый контроллер для управления тайлмапами. Реализует интерфейс ITilemapController...." alt="" coords="135,168,274,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,200,281,240,278,244,228,204"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,80,129,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="99,110,187,165,185,170,96,115"/>
+<area shape="rect" id="Node000004" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="309,80,452,105"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="367,119,338,146,307,161,275,171,273,166,305,156,335,142,363,115"/>
+<area shape="rect" id="Node000007" href="$interfaceIDoorTilemapController.html" title="Интерфейс для управления тайлмапом дверей." alt="" coords="300,168,475,193"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="385,119,389,167,384,168,380,119"/>
+<area shape="rect" id="Node000005" href="$classTilesContainer.html" title="Контейнер для тайлов и префабов, используемых в конкретных локациях. Этот класс является ScriptableOb..." alt="" coords="153,80,269,105"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="208,119,206,130,206,168,201,168,201,129,202,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="147,5,276,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="214,45,214,80,209,80,209,45"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="363,204,311,244,308,240,360,200"/>
+</map>

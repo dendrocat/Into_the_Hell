@@ -1,0 +1,7 @@
+<map id="DialogableNPC" name="DialogableNPC">
+<area shape="rect" id="Node000001" title="Компонент NPC, с которым можно взаимодействовать для запуска диалога." alt="" coords="77,79,196,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,129,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,39,127,77,124,80,86,43"/>
+<area shape="rect" id="Node000003" href="$interfaceIInteractable.html" title="Интерфейс, определяющий объект, с которым можно взаимодействовать." alt="" coords="154,5,258,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,43,150,80,146,77,183,39"/>
+</map>

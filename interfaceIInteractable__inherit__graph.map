@@ -1,0 +1,9 @@
+<map id="IInteractable" name="IInteractable">
+<area shape="rect" id="Node000001" title="Интерфейс, определяющий объект, с которым можно взаимодействовать." alt="" coords="43,5,147,31"/>
+<area shape="rect" id="Node000002" href="$classDialogableNPC.html" title="Компонент NPC, с которым можно взаимодействовать для запуска диалога." alt="" coords="35,79,154,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,44,97,79,92,79,92,44"/>
+<area shape="rect" id="Node000003" href="$classExitNPC.html" title="NPC, который при взаимодействии запускает диалог и может инициировать переход на следующий уровень." alt="" coords="5,152,80,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,117,53,153,49,150,76,114"/>
+<area shape="rect" id="Node000004" href="$classPanelNPC.html" title="NPC, который связывает функции Ink с открытием различных UI&#45;панелей." alt="" coords="105,152,189,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="113,114,140,150,136,153,109,117"/>
+</map>

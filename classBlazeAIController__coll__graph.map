@@ -1,0 +1,35 @@
+<map id="BlazeAIController" name="BlazeAIController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="59,704,194,729"/>
+<area shape="rect" id="Node000002" href="$classBossAIController.html" title="Класс для описания базового ИИ босса." alt="" coords="61,629,192,655"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,669,129,704,124,704,124,669"/>
+<area shape="rect" id="Node000003" href="$classBaseAIController.html" title="Базовый класс, описывающий ИИ персонажа." alt="" coords="20,453,151,479"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,491,126,628,121,630,89,492"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="210,5,334,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="197,28,134,36,72,49,26,68,13,79,8,92,8,379,13,402,27,422,46,438,65,451,62,455,42,443,23,426,9,404,3,380,3,91,8,76,23,63,71,44,133,31,196,22"/>
+<area shape="rect" id="Node000007" href="$classEffectable.html" title="Класс сущностей, на которые можно наложить эффект" alt="" coords="239,129,326,155"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="277,44,284,129,279,129,272,45"/>
+<area shape="rect" id="Node000010" href="$classUpgradableItem.html" title="Класс, описывающий улучшаемый предмет." alt="" coords="330,228,457,253"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="289,41,341,128,390,226,386,229,336,131,284,43"/>
+<area shape="rect" id="Node000012" href="$classAudioPlayer.html" title="Абстрактный класс для воспроизведения аудиоклипов с использованием компонента AudioSource." alt="" coords="102,80,202,105"/>
+<area shape="poly" id="edge15_Node000012_Node000004" title=" " alt="" coords="243,40,173,82,170,78,240,35"/>
+<area shape="rect" id="Node000005" href="$classBaseEnemy.html" title="Базовый класс для врагов." alt="" coords="121,365,220,391"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="151,403,99,455,95,451,147,399"/>
+<area shape="rect" id="Node000013" href="$classBoss.html" title="Класс, описывающий босса." alt="" coords="161,541,215,567"/>
+<area shape="poly" id="edge17_Node000013_Node000005" title=" " alt="" coords="176,404,189,541,184,541,171,405"/>
+<area shape="rect" id="Node000006" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="188,277,255,303"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="204,315,194,328,177,366,172,364,190,325,199,312"/>
+<area shape="rect" id="Node000009" href="$classBaseWeapon.html" title="Базовый класс оружия, наследующий функциональность улучшаемого предмета." alt="" coords="244,365,351,391"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="216,316,216,329,220,340,233,353,250,363,247,368,229,358,215,343,210,330,211,316"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="290,168,290,186,287,205,277,227,263,248,236,279,232,275,259,244,272,225,281,203,285,186,284,168"/>
+<area shape="rect" id="Node000008" href="$interfaceIDamagable.html" title="Интерфейс, используемый для обработки получения урона объектом." alt="" coords="171,179,272,204"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="224,218,224,277,219,277,219,218"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="284,355,266,328,238,305,242,301,270,325,288,352"/>
+<area shape="rect" id="Node000014" href="$classBossWeapon.html" title="Класс, описывающий оружие босса." alt="" coords="235,453,341,479"/>
+<area shape="poly" id="edge19_Node000014_Node000009" title=" " alt="" coords="297,405,292,453,287,453,292,404"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="385,267,367,304,341,343,315,367,312,363,337,340,362,302,381,265"/>
+<area shape="rect" id="Node000011" href="$classPersonAudio.html" title="Класс для управления аудио объекта класса Person, наследующий функциональность AudioPlayer." alt="" coords="43,179,146,204"/>
+<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="105,216,115,235,128,251,157,269,188,280,187,285,155,274,125,255,110,238,100,218"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="141,118,104,180,99,177,136,116"/>
+<area shape="poly" id="edge16_Node000002_Node000013" title=" " alt="" coords="174,580,137,630,133,627,169,577"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="266,490,204,543,200,539,262,486"/>
+</map>

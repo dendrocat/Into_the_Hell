@@ -1,0 +1,7 @@
+<map id="IRoomTilemapController" name="IRoomTilemapController">
+<area shape="rect" id="Node000001" title="Interface for objects that manage tilemaps within a room, including doors and other tile&#45;based elemen..." alt="" coords="59,79,241,104"/>
+<area shape="rect" id="Node000002" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="5,5,148,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,38,140,77,136,80,97,42"/>
+<area shape="rect" id="Node000003" href="$interfaceISizeGetable.html" title="Интерфейс для объектов, предоставляющих размер в виде двумерного вектора целых чисел." alt="" coords="173,5,277,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,42,164,80,160,77,201,38"/>
+</map>

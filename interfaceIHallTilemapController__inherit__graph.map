@@ -1,0 +1,9 @@
+<map id="IHallTilemapController" name="IHallTilemapController">
+<area shape="rect" id="Node000001" title="Интерфейс контроллера для холловых тайлмапов с возможностью расширения размера." alt="" coords="65,79,235,104"/>
+<area shape="rect" id="Node000004" href="$classHallTilemapController.html" title="Контроллер для управления тайлмапами коридоров с возможностью расширения размера." alt="" coords="67,152,233,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,118,153,152,147,152,147,118"/>
+<area shape="rect" id="Node000002" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="5,5,148,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,38,140,77,136,80,97,42"/>
+<area shape="rect" id="Node000003" href="$interfaceISizeGetable.html" title="Интерфейс для объектов, предоставляющих размер в виде двумерного вектора целых чисел." alt="" coords="173,5,277,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,42,164,80,160,77,201,38"/>
+</map>

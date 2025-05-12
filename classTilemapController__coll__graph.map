@@ -1,0 +1,11 @@
+<map id="TilemapController" name="TilemapController">
+<area shape="rect" id="Node000001" title="Базовый контроллер для управления тайлмапами. Реализует интерфейс ITilemapController...." alt="" coords="155,168,294,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,129,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,110,205,165,202,170,99,114"/>
+<area shape="rect" id="Node000003" href="$interfaceITilemapController.html" title="Интерфейс для объектов, управляющих тайлмапами." alt="" coords="153,80,296,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,119,227,167,222,167,222,119"/>
+<area shape="rect" id="Node000004" href="$classTilesContainer.html" title="Контейнер для тайлов и префабов, используемых в конкретных локациях. Этот класс является ScriptableOb..." alt="" coords="320,80,436,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="347,115,247,170,244,165,344,110"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="313,5,443,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="381,45,381,80,375,80,375,45"/>
+</map>

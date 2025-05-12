@@ -1,0 +1,15 @@
+<map id="Effectable" name="Effectable">
+<area shape="rect" id="Node000001" title="Класс сущностей, на которые можно наложить эффект" alt="" coords="89,79,175,104"/>
+<area shape="rect" id="Node000003" href="$classPerson.html" title="Базовый класс персонажа" alt="" coords="99,152,165,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,118,135,152,129,152,129,118"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="70,5,194,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,44,135,79,129,79,129,44"/>
+<area shape="rect" id="Node000004" href="$classBaseEnemy.html" title="Базовый класс для врагов." alt="" coords="31,225,129,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,190,91,227,86,224,113,187"/>
+<area shape="rect" id="Node000007" href="$classPlayer.html" title="Класс игрока. &#160;Важно! Вместо weapon используется inventory." alt="" coords="154,225,217,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="151,187,179,224,175,227,147,190"/>
+<area shape="rect" id="Node000005" href="$classBoss.html" title="Класс, описывающий босса." alt="" coords="5,299,59,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="67,264,42,300,38,297,62,261"/>
+<area shape="rect" id="Node000006" href="$classMiniGolem.html" title=" " alt="" coords="83,299,176,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="98,261,124,297,119,300,94,264"/>
+</map>
