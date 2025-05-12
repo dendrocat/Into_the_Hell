@@ -9,7 +9,7 @@ using UnityEngine;
 public class BossAIController : BaseAIController
 {
     /// <summary>
-    /// Ссылка на компонент босса, которым управляет ИИ.
+    /// Ссылка на <see cref="Boss">босса</see>, которым управляет ИИ.
     /// </summary>
     protected Boss Boss;
     

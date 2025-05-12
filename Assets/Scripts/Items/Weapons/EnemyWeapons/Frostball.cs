@@ -1,21 +1,20 @@
 using UnityEngine;
 
+/// <summary>
+/// Класс, описывающий снаряд "Frostball" с эффектом заморозки.
+/// </summary>
 public class Frostball : Missile
 {
-    /**
-     * <summary>
-     * ������������� �������� ����
-     * </summary>
-     * **/
+    /// <summary>
+    /// Инициализация компонента Rigidbody2D и установка радиуса урона.
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         damageRadius = 0.01f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;

@@ -4,23 +4,34 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-/// <summary>Controller for hall tilemaps with size extension capabilities</summary>
+/// <summary>
+/// Контроллер для управления тайлмапами коридоров с возможностью расширения размера.
+/// </summary>
 public class HallTilemapController : TilemapController, IHallTilemapController
 {
-    /// <summary>Hall orientation axis</summary>
-    [Header("Hall Direction")]
+    [Header("Настройки коридора")]
+    /// <summary>
+    /// Ориентация коридора.
+    /// </summary>
+    [Tooltip("Направление коридора")]
     [SerializeField] HallDirection _direction;
 
-    /// <summary>Tile boundaries in world coordinates</summary>
+    /// <summary>
+    /// Нижняя и верхняя границы тайлов в мировых координатах.
+    /// </summary>
     Vector2Int _lowerBound, _upperBound;
 
-    /// <summary>Container for managed tilemaps</summary>
+    /// <summary>
+    /// Контейнер для управляемых тайлмапов.
+    /// </summary>
     List<Tilemap> _tilemaps;
 
     /// <inheritdoc />
     public Vector2Int Size { get; private set; }
 
-    /// <summary>Calculates current size from tilemap bounds</summary>
+    /// <summary>
+    /// Вычисляет текущий размер на основе границ тайлмапов.
+    /// </summary>
     void UpdateSize()
     {
         var size = new Vector2Int(_upperBound.x - _lowerBound.x + 1,
@@ -30,8 +41,10 @@ public class HallTilemapController : TilemapController, IHallTilemapController
         Size = size;
     }
 
-    /// <summary>Finds extreme coordinates across all managed tilemaps</summary>
-    /// <param name="tilemaps">Tilemaps to analyze (floor + walls)</param>
+    /// <summary>
+    /// Находит экстремальные координаты по всем управляемым тайлмапам.
+    /// </summary>
+    /// <param name="tilemaps">Тайлмапы для анализа (пол + стены)</param>
     void getBounds(List<Tilemap> tilemaps)
     {
         _lowerBound = new Vector2Int(int.MaxValue, int.MaxValue);
@@ -49,7 +62,9 @@ public class HallTilemapController : TilemapController, IHallTilemapController
         }
     }
 
-    /// <summary>Initialization hook for tilemap analysis</summary>
+    /// <summary>
+    /// Инициализация: собирает тайлмапы и вычисляет их границы.
+    /// </summary>
     void Awake()
     {
         _tilemaps = new() { _floor };
@@ -58,10 +73,12 @@ public class HallTilemapController : TilemapController, IHallTilemapController
         UpdateSize();
     }
 
-    /// <summary>Creates a 3D position using axis values based on corridor orientation</summary>
-    /// <param name="main">Primary axis coordinate (X for horizontal, Y for vertical)</param>
-    /// <param name="cross">Perpendicular axis coordinate</param>
-    /// <returns>Vector3Int with configured coordinates and zero Z-axis</returns>
+    /// <summary>
+    /// Создаёт позицию <see cref="Vector3Int"/> по координатам с учётом ориентации коридора.
+    /// </summary>
+    /// <param name="main">Основная координата (X для горизонтального, Y для вертикального)</param>
+    /// <param name="cross">Перекрёстная координата</param>
+    /// <returns>Позиция в виде <see cref="Vector3Int"/> с нулевой осью Z</returns>
     Vector3Int CreatePose(int main, int cross)
     {
         return _direction == HallDirection.Horizontal
@@ -69,13 +86,15 @@ public class HallTilemapController : TilemapController, IHallTilemapController
                 : new Vector3Int(cross, main, 0);
     }
 
-    /// <summary>Updates either X or Y coordinates in positions based on corridor direction</summary>
-    /// <param name="poses">Collection of tile positions to modify</param>
+    /// <summary>
+    /// Обновляет координаты X или Y у позиций в зависимости от направления коридора.
+    /// </summary>
+    /// <param name="poses">Коллекция позиций для обновления</param>
     /// <param name="value">
-    /// Coordinate value to apply: 
+    /// Значение координаты для применения:
     /// <list type="bullet">
-    /// <item><description>Y-axis for horizontal corridors</description></item>
-    /// <item><description>X-axis for vertical corridors</description></item>
+    /// <item><description>Y для горизонтальных коридоров</description></item>
+    /// <item><description>X для вертикальных коридоров</description></item>
     /// </list>
     /// </param>
     void UpdatePoses(List<Vector3Int> poses, int value)

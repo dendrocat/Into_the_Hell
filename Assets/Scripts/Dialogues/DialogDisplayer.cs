@@ -13,7 +13,7 @@ public class DialogDisplayer : MonoBehaviour
     Coroutine showPhraseCoroutine = null;
 
     /// <summary>
-    /// Возвращает true, если в данный момент отображается фраза с эффектом печати.
+    /// Возвращает <see langword="true"/>, если в данный момент отображается фраза с эффектом печати.
     /// </summary>
     public bool IsShowingPhrase => showPhraseCoroutine != null;
 

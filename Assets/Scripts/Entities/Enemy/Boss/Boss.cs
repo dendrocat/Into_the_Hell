@@ -27,7 +27,7 @@ public class Boss : BaseEnemy
     /// <summary>
     /// Получить имя босса.
     /// </summary>
-    /// <returns>string - Имя босса.</returns>
+    /// <returns><see langword="string"/> - Имя босса.</returns>
     public string GetBossName()
     {
         return bossName;

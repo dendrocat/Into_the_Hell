@@ -19,7 +19,7 @@ public class SaveLoadManager
     /// </summary>
     public static void Load()
     {
-        GameStorage.Instance.GameData = SaveLoadRepository.Load()
+        GameStorage.Instance.CurrentGameData = SaveLoadRepository.Load()
                                         ?? GameStorage.Instance.InitialGameData;
     }
 
@@ -28,7 +28,7 @@ public class SaveLoadManager
     /// </summary>
     public static void Save()
     {
-        SaveLoadRepository.Save(GameStorage.Instance.GameData);
+        SaveLoadRepository.Save(GameStorage.Instance.CurrentGameData);
     }
 
     /// <summary>

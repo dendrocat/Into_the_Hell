@@ -221,7 +221,7 @@ public class Player : Person
     /// <summary>
     /// Метод, показывающий, находится ли <see cref="Potion">зелье</see> на перезарядке
     /// </summary>
-    /// <returns>Находится ли зелье на перезарядке</returns>
+    /// <returns><see langword="bool"/> - находится ли зелье на перезарядке</returns>
     public bool isHealReloading()
     {
         return healReloading;

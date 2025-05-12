@@ -69,7 +69,6 @@ public class Effectable : MonoBehaviour
     /// <param name="effectId">ID эффекта</param>
     /// <param name="diff">Количество добавляемых эффектов</param>
     /// <param name="resetRemainingTime">Сбросить время действия существующего эффекта?</param>
-
     public void AddEffect(int effectId, int diff = 1, bool resetRemainingTime = true)
     {
         if ((effectId < 0) || (effectId > effectCount.Count))
@@ -205,7 +204,7 @@ public class Effectable : MonoBehaviour
     /// <summary>
     /// Определяет, есть ли эффект с заданным ID на сущности.
     /// </summary>
-    /// <returns>bool - имеет ли сущность данный эффект.</returns>
+    /// <returns><see langword="bool"/> - имеет ли сущность данный эффект.</returns>
     public bool hasEffect(int effectId)
     {
         if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return false;
@@ -216,7 +215,7 @@ public class Effectable : MonoBehaviour
     /// Определяет, есть ли эффект с заданным <see cref="EffectNames">названием</see> на сущности.
     /// </summary>
     /// <param name="effect"><see cref="EffectNames">Название</see> эффекта</param>
-    /// <returns>bool - имеет ли сущность данный эффект.</returns>
+    /// <returns><see langword="bool"/> - имеет ли сущность данный эффект.</returns>
     public bool hasEffect(EffectNames effect)
     {
         return hasEffect((int)effect);
@@ -226,7 +225,7 @@ public class Effectable : MonoBehaviour
     /// <summary>
     /// Возвращает количество эффектов с заданным ID на сущности.
     /// </summary>
-    /// <returns>int - количество искомых эффектов на сущности.</returns>
+    /// <returns><see langword="int"/> - количество искомых эффектов на сущности.</returns>
     public int getEffectCount(int effectId)
     {
         if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return 0;
@@ -238,7 +237,7 @@ public class Effectable : MonoBehaviour
     /// Возвращает количество эффектов с заданным <see cref="EffectNames">названием</see> на сущности.
     /// </summary>
     /// <param name="effect"><see cref="EffectNames">Название</see> эффекта</param>
-    /// <returns>int - количество искомых эффектов на сущности.</returns>
+    /// <returns><see langword="int"/> - количество искомых эффектов на сущности.</returns>
     public int getEffectCount(EffectNames effect)
     {
         return getEffectCount((int)effect);
@@ -247,7 +246,7 @@ public class Effectable : MonoBehaviour
     /// <summary>
     /// Возвращает длительность эффекта с заданным ID.
     /// </summary>
-    /// <returns>float - длительность эффекта.</returns>
+    /// <returns><see langword="float"/> - длительность эффекта.</returns>
     public float getEffectDuration(int effectId)
     {
         if ((effectId < 0) || (effectId >= EFFECT_COUNT)) return 0;
@@ -258,7 +257,7 @@ public class Effectable : MonoBehaviour
     /// Возвращает длительность эффекта с заданным <see cref="EffectNames">названием</see>.
     /// </summary>
     /// <param name="effect"><see cref="EffectNames">Название</see> эффекта</param>
-    /// <returns>float - длительность эффекта.</returns>
+    /// <returns><see langword="float"/> - длительность эффекта.</returns>
     public float getEffectDuration(EffectNames effect)
     {
         return getEffectDuration((int)effect);

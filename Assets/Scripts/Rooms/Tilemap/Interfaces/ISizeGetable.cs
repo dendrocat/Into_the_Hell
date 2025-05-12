@@ -1,8 +1,12 @@
 using UnityEngine;
 
-/// <summary>Interface for objects exposing size as a 2D integer vector</summary>
+/// <summary>
+/// Интерфейс для объектов, предоставляющих размер в виде двумерного вектора целых чисел.
+/// </summary>
 public interface ISizeGetable
 {
-    /// <summary>Object dimensions as width (x) and height (y)</summary>
+    /// <summary>
+    /// Размер объекта в виде ширины (x) и высоты (y).
+    /// </summary>
     public Vector2Int Size { get; }
 }

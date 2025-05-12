@@ -1,19 +1,23 @@
-using System.Collections;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс оружия дальнего боя.
- * </summary>
- * **/
+/// <summary>
+/// Класс оружия дальнего боя.
+/// </summary>
 public class MissileWeapon : AlternateAttackWeapon
 {
+    /// <summary>
+    /// Префаб снаряда для создания при атаке.
+    /// </summary>
+    [Tooltip("Префаб снаряда для создания при атаке")]
     [SerializeField] protected GameObject missilePrefab;
+
+    /// <summary>
+    /// Скорость снаряда.
+    /// </summary>
+    [Tooltip("Скорость снаряда")]
     [SerializeField] protected float missileSpeed;
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack()
     {
         Debug.Log($"{gameObject} Attack");

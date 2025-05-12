@@ -8,7 +8,7 @@ using UnityEngine;
 public class PersonAudio : AudioPlayer
 {
     /// <summary>
-    /// Ключ для звука шагов в <see cref="AudioContainer"/>.
+    /// Ключ для звука шагов в <see cref="AudioContainer">контейнере</see>.
     /// </summary>
     public const string WALK = "Walk";
 

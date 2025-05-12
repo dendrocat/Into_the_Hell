@@ -1,7 +1,11 @@
-/// <summary>Controller interface for hall tilemaps requiring size extension capabilities</summary>
+/// <summary>
+/// Интерфейс контроллера для холловых тайлмапов с возможностью расширения размера.
+/// </summary>
 public interface IHallTilemapController : ITilemapController, ISizeGetable
 {
-    /// <summary>Extends hall structure to specified length</summary>
-    /// <param name="length">Target length in tiles</param>
+    /// <summary>
+    /// Расширяет структуру холла до указанной длины (в тайлах).
+    /// </summary>
+    /// <param name="length">Цклевая длина в тайлах.</param>
     public void ExtendToLength(int length);
 }

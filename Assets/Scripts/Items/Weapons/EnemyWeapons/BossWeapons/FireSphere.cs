@@ -1,27 +1,30 @@
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий огненную сферу.
- * </summary>
- * **/
+/// <summary>
+/// Класс, описывающий огненную сферу.
+/// </summary>
 public class FireSphere : Missile
 {
+    // <summary>
+    /// Связанная огненная сфера, с которой взаимодействует текущая.
+    /// </summary>
+    [Tooltip("Связанная огненная сфера")]
     public FireSphere linkedSphere;
-    /**
-     * <summary>
-     * Инициализация огненной сферы
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Инициализация огненной сферы
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         damageRadius = 0.01f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <summary>
+    /// Обработка столкновения с объектом.
+    /// Наносит урон и накладывает эффект оглушения, затем уничтожает связанную и текущую сферу.
+    /// </summary>
+    /// <param name="collision">Информация о столкновении.</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;

@@ -28,7 +28,7 @@ public class UpgradableItem : MonoBehaviour
     /// <summary>
     /// Возвращает стоимость улучшения на следующий уровень. Если предмет уже максимально улучшен, возвращает -1.
     /// </summary>
-    /// <returns>Стоимость улучшения или -1.</returns>
+    /// <returns><see langword="int"/> - Стоимость улучшения или -1.</returns>
     public int GetUpgradeCost()
     {
         if (level < maxLevel) return 100 * level;
@@ -39,7 +39,7 @@ public class UpgradableItem : MonoBehaviour
     /// Возвращает значение scalable, умноженное согласно текущему уровню предмета.
     /// </summary>
     /// <param name="scalable">Значение, которое необходимо масштабировать.</param>
-    /// <returns>Масштабированное значение.</returns>
+    /// <returns><see langword="float"/> - Масштабированное значение.</returns>
     public float CalcScale(float scalable)
     {
         //Debug.Log(gameObject.name + ": initial=" + scalable + ", calculated=" + (scalable * (1f + (level - 1) * scaleCoeff)));
@@ -50,7 +50,7 @@ public class UpgradableItem : MonoBehaviour
     /// Возвращает значение scalable, уменьшенное согласно текущему уровню предмета.
     /// </summary>
     /// <param name="scalable">Значение, которое необходимо уменьшить.</param>
-    /// <returns>Уменьшенное значение.</returns>
+    /// <returns><see langword="float"/> - уменьшенное значение.</returns>
     public float CalcScaleDescending(float scalable)
     {
         if (level == 1) return scalable;

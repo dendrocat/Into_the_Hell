@@ -8,28 +8,25 @@ using UnityEngine.Tilemaps;
 public interface IRoomTilemapController : ITilemapController, ISizeGetable
 {
     /// <summary>
-    /// Gets the controller for managing the door tilemap within the room.
+    /// Получает контроллер для управления тайлмапом дверей внутри комнаты.
     /// </summary>
-    /// <value>
-    /// An <see cref="IDoorTilemapController"/> instance responsible for door-related tilemap operations.
-    /// </value>
     public IDoorTilemapController DoorTilemap { get; }
 
     /// <summary>
-    /// Removes additional tilemap.
+    /// Удаляет дополнительные тайлы из дополнительного тайлмапа.
     /// </summary>
     public void RemoveAdditional();
 
     /// <summary>
-    /// Retrieves all free positions on the additional tilemap.
+    /// Получает все свободные позиции на дополнительном тайлмапе.
     /// </summary>
-    /// <returns>A list of free positions as <see cref="Vector2Int"/> coordinates. Returns an empty list if the additional tilemap is not enabled.</returns>
+    /// <returns>Список свободных позиций в виде координат <see cref="Vector2Int"/>. Возвращает пустой список, если дополнительный тайлмап не активен.</returns>
     public List<Vector2Int> GetFreePositions();
 
     /// <summary>
-    /// Places an additional tile at the specified position on the tilemap.
+    /// Устанавливает дополнительный тайл в указанной позиции на тайлмапе.
     /// </summary>
-    /// <param name="tile">The tile to be placed.</param>
-    /// <param name="position">The position where the tile will be placed.</param>
+    /// <param name="tile">Тайл, который будет установлен.</param>
+    /// <param name="position">Позиция для установки тайла.</param>
     public void SetAdditionalTile(TileBase tile, Vector2Int position);
 }

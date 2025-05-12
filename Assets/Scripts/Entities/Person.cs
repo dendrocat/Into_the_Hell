@@ -107,7 +107,7 @@ public class Person : Effectable, IDamagable
     /// <summary>
     /// Метод, возвращающий текущее здоровье персонажа
     /// </summary>
-    /// <returns>float - текущий запас здоровья персонажа.</returns>
+    /// <returns><see langword="float"/> - текущий запас здоровья персонажа.</returns>
     public float getHP()
     {
         return health;
@@ -117,7 +117,7 @@ public class Person : Effectable, IDamagable
     /// <summary>
     /// Метод, определяющий, двигается ли персонаж.
     /// </summary>
-    /// <returns>bool - двигается ли персонаж.</returns>
+    /// <returns><see langword="bool"/> - двигается ли персонаж.</returns>
     public bool isMoving()
     {
         return moving;
@@ -141,7 +141,7 @@ public class Person : Effectable, IDamagable
     /// <summary>
     /// Метод, устанавливающий, жив ли персонаж.
     /// </summary>
-    /// <returns>bool - жив ли персонаж.</returns>
+    /// <returns><see langword="bool"/> - жив ли персонаж.</returns>
     public bool isAlive()
     {
         return alive;
@@ -291,7 +291,7 @@ public class Person : Effectable, IDamagable
     /// <summary>
     /// Определяет текущую скорость персонажа с учетом эффектов.
     /// </summary>
-    /// <returns>Текущая скорость персонажа.</returns>
+    /// <returns><see langword="float"/> - текущая скорость персонажа.</returns>
     public float getSpeed()
     {
         float currentSpeed = speed;

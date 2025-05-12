@@ -10,36 +10,79 @@ using UnityEngine;
  * **/
 public class BossWeapon : BaseWeapon
 {
+    /// <summary>
+    /// Урон второй атаки.
+    /// </summary>
+    [Tooltip("Урон второй атаки")]
     [SerializeField] protected float attack2Damage;
+
+    /// <summary>
+    /// Базовое время перезарядки второй атаки.
+    /// </summary>
+    [Tooltip("Базовое время перезарядки второй атаки")]
     [SerializeField] protected float baseAttack2ReloadTime;
+
+    /// <summary>
+    /// Базовое время подготовки второй атаки.
+    /// </summary>
+    [Tooltip("Базовое время подготовки второй атаки")]
     [SerializeField] protected float baseAttack2PrepareAttackTime;
+
+    /// <summary>
+    /// Базовое время завершения второй атаки.
+    /// </summary>
+    [Tooltip("Базовое время завершения второй атаки")]
     [SerializeField] protected float baseAttack2EndAttackTime;
+
+    /// <summary>
+    /// Флаг, указывающий, что вторая атака перезаряжается.
+    /// </summary>
     bool attack2Reloading = false;
 
+    /// <summary>
+    /// Урон третьей атаки.
+    /// </summary>
+    [Tooltip("Урон третьей атаки")]
     [SerializeField] protected float attack3Damage;
+
+    /// <summary>
+    /// Базовое время перезарядки третьей атаки.
+    /// </summary>
+    [Tooltip("Базовое время перезарядки третьей атаки")]
     [SerializeField] protected float baseAttack3ReloadTime;
+
+    /// <summary>
+    /// Базовое время подготовки третьей атаки.
+    /// </summary>
+    [Tooltip("Базовое время подготовки третьей атаки")]
     [SerializeField] protected float baseAttack3PrepareAttackTime;
+
+    /// <summary>
+    /// Базовое время завершения третьей атаки.
+    /// </summary>
+    [Tooltip("Базовое время завершения третьей атаки")]
     [SerializeField] protected float baseAttack3EndAttackTime;
+
+    /// <summary>
+    /// Флаг, указывающий, что третья атака перезаряжается.
+    /// </summary>
     bool attack3Reloading = false;
 
-    /**
-     * <summary>
-     * Определяет, перезаряжается ли атака 2.
-     * </summary>
-     * <returns>Перезаряжается ли атака 2.</returns>
-     * **/
+
+    /// <summary>
+    /// Определяет, перезаряжается ли атака 2.
+    /// </summary>
+    /// <returns><see langword="bool"/> - перезаряжается ли атака 2.</returns>
     public bool Attack2IsReloading()
     {
         return attack2Reloading;
     }
 
-    /**
-     * <summary>
-     * Определяет, можно ли сейчас использовать атаку.
-     * </summary>
-     * <param name="number">Номер атаки - 1 (0, 1 или 2).</param>
-     * <returns>Результат соответствующей функции CheckAttackConditions</returns>
-     * **/
+    /// <summary>
+    /// Определяет, можно ли сейчас использовать атаку.
+    // </summary>
+    /// <param name="number">Номер атаки - 1 (0, 1 или 2).</param>
+    /// <returns><see langword="bool"/> - результат соответствующей функции CheckAttackConditions</returns>
     public bool CanUseAttack(int number)
     {
         switch (number)
@@ -55,12 +98,11 @@ public class BossWeapon : BaseWeapon
         }
     }
 
-    /**
-     * <summary>
-     * Запускает атаку с заданным номером.
-     * </summary>
-     * <param name="number">Номер атаки - 1 (0, 1 или 2).</param>
-     * **/
+
+    /// <summary>
+    /// Запускает атаку с заданным номером.
+    /// </summary>
+    /// <param name="number">Номер атаки - 1 (0, 1 или 2).</param>
     public void LaunchAttackByNumber(int number)
     {
         switch (number)
@@ -93,12 +135,11 @@ public class BossWeapon : BaseWeapon
         owner.setMoving(true);
     }
 
-    /**
-     * <summary>
-     * Определяет, перезаряжается ли атака 3.
-     * </summary>
-     * <returns>Перезаряжается ли атака 3.</returns>
-     * **/
+
+    /// <summary>
+    /// Определяет, перезаряжается ли атака 3.
+    /// </summary>
+    /// <returns><see langword="bool"/> - перезаряжается ли атака 3.</returns>
     public bool Attack3IsReloading()
     {
         return attack3Reloading;
@@ -135,7 +176,7 @@ public class BossWeapon : BaseWeapon
     /// <summary>
     /// Проверяет условия, позволяющие выполнить атаку 2. Метод для переопределения в классах-наследниках.
     /// </summary>
-    /// <returns>True, если атака 2 возможна, иначе false.</returns>
+    /// <returns><see langword="true"/>, если атака 2 возможна, иначе <see langword="false"/>.</returns>
     protected virtual bool CheckAttack2Conditions()
     {
         return true;
@@ -224,7 +265,7 @@ public class BossWeapon : BaseWeapon
     /// <summary>
     /// Проверяет условия, позволяющие выполнить атаку 3. Метод для переопределения в классах-наследниках.
     /// </summary>
-    /// <returns>True, если атака 3 возможна, иначе false.</returns>
+    /// <returns><see langword="true"/>, если атака 3 возможна, иначе <see langword="false"/>.</returns>
     protected virtual bool CheckAttack3Conditions()
     {
         return true;

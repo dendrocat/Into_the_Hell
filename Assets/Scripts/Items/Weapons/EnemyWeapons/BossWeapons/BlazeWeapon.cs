@@ -1,34 +1,71 @@
 using System.Collections;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, реализующий оружие исчадия ада.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, реализующий оружие исчадия ада.
+/// </summary>
 public class BlazeWeapon : BossWeapon
 {
+    /// <summary>
+    /// Префаб огненного шара для первой атаки.
+    /// </summary>
+    [Tooltip("Префаб огненного шара для первой атаки")]
     [SerializeField] GameObject missilePrefab;
+
+    /// <summary>
+    /// Скорость огненного шара для первой атаки.
+    /// </summary>
+    [Tooltip("Скорость огненного шара для первой атаки")]
     [SerializeField] float missileSpeed = 8f;
 
+    /// <summary>
+    /// Префаб для первого огненного шара второй атаки.
+    /// </summary>
+    [Tooltip("Префаб для первого огненного шара второй атаки")]
     [SerializeField] GameObject attack2MissilePrefab1;
+
+    /// <summary>
+    /// Префаб для второго огненного шара второй атаки.
+    /// </summary>
+    [Tooltip("Префаб для второго огненного шара второй атаки")]
     [SerializeField] GameObject attack2MissilePrefab2;
+
+    /// <summary>
+    /// Скорость огненного шара для второй атаки.
+    /// </summary>
+    [Tooltip("Скорость огненного шара для второй атаки")]
     [SerializeField] float attack2MissileSpeed = 8f;
 
+    /// <summary>
+    /// Количество огненных шаров для третьей атаки.
+    /// </summary>
+    [Tooltip("Количество огненных шаров для третьей атаки")]
     [SerializeField] int attack3FireballCount = 16;
+
+    /// <summary>
+    /// Префаб огненного шара для третьей атаки.
+    /// </summary>
+    [Tooltip("Префаб огненного шара для третьей атаки")]
     [SerializeField] GameObject attack3MissilePrefab;
+
+    /// <summary>
+    /// Скорость огненного шара для третьей атаки.
+    /// </summary>
+    [Tooltip("Скорость огненного шара для третьей атаки")]
     [SerializeField] float attack3MissileSpeed = 8f;
 
-    /**
-     * <summary>
-     * Инициализация оружия.
-     * </summary>
-     * **/
+    /// <summary>
+    /// Инициализация оружия.
+    /// </summary>
     void Start()
     {
         FindOwner();
     }
 
+    /// <summary>
+    /// Конструктор, инициализирующий параметры оружия исчадия ада.
+    /// </summary>
     public BlazeWeapon()
     {
         level = 1;
@@ -54,9 +91,7 @@ public class BlazeWeapon : BossWeapon
         baseAttack3EndAttackTime = 2f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack()
     {
         GameObject missile = GameObject.Instantiate(missilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
@@ -66,9 +101,7 @@ public class BlazeWeapon : BossWeapon
         missileComponent.direction = owner.weaponObject.localPosition;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack2()
     {
         GameObject sphere1 = GameObject.Instantiate(attack2MissilePrefab1, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
@@ -90,20 +123,17 @@ public class BlazeWeapon : BossWeapon
         fireSphere2.linkedSphere = fireSphere1;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack3()
     {
         StartCoroutine(SpawnFireball(attack3FireballCount - 1));
     }
 
-    /**
-     * <summary>
-     * Корутина, управляющая спавном огненных шаров.
-     * </summary>
-     * <param name="number">Номер очередного огненного шара.</param>
-     * **/
+    
+    /// <summary>
+    /// Корутина, управляющая спавном огненных шаров.
+    /// </summary>
+    /// <param name="number">Номер очередного огненного шара.</param>
     IEnumerator SpawnFireball(int number)
     {
         Debug.Log("Start Spawning");
