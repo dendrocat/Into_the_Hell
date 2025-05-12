@@ -7,7 +7,7 @@ using UnityEngine;
 public interface IDoorTilemapController : ITilemapController
 {
     /// <summary>
-    /// Получает список активных <see cref="GameObject"/> дверей в комнате.
+    /// Список активных <see cref="GameObject"/> дверей в комнате.
     /// Данное свойство предоставляет доступ ко всем активным экземплярам дверей,
     /// позволяя выполнять их дальнейшее управление или отслеживание состояний во время игры.
     /// </summary>

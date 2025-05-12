@@ -248,7 +248,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     // <summary>
-    /// Получает данные игрока для сохранения.
+    /// Собирает и выдает данные игрока для сохранения.
     /// </summary>
     /// <returns>Структура <see cref="PlayerData"/> с текущими данными игрока.</returns>
     public PlayerData GetPlayerData()

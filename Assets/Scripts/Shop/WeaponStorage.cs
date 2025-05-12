@@ -43,7 +43,7 @@ public class WeaponStorage : MonoBehaviour
     }
 
     /// <summary>
-    /// Получает префаб оружия по типу.
+    /// Выдает префаб оружия по типу.
     /// </summary>
     /// <param name="type">Тип оружия.</param>
     /// <returns>Префаб оружия.</returns>
@@ -53,7 +53,7 @@ public class WeaponStorage : MonoBehaviour
     }
 
     /// <summary>
-    /// Получает список уровней улучшений всех оружий.
+    /// Выдает список уровней улучшений всех оружий.
     /// </summary>
     /// <returns>Список уровней оружия в порядке перечисления <see cref="WeaponType"/>.</returns>
     public List<byte> GetWeaponLevels()
@@ -79,7 +79,7 @@ public class WeaponStorage : MonoBehaviour
     }
 
     /// <summary>
-    /// Получает стоимость улучшения оружия указанного типа.
+    /// Выдает стоимость улучшения оружия указанного типа.
     /// </summary>
     /// <param name="type">Тип оружия.</param>
     /// <returns><see langword="int"/> - cтоимость улучшения.</returns>

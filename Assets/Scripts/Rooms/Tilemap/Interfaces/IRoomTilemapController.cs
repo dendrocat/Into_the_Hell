@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public interface IRoomTilemapController : ITilemapController, ISizeGetable
 {
     /// <summary>
-    /// Получает контроллер для управления тайлмапом дверей внутри комнаты.
+    /// Контроллер для управления тайлмапом дверей внутри комнаты.
     /// </summary>
     public IDoorTilemapController DoorTilemap { get; }
 
@@ -18,7 +18,7 @@ public interface IRoomTilemapController : ITilemapController, ISizeGetable
     public void RemoveAdditional();
 
     /// <summary>
-    /// Получает все свободные позиции на дополнительном тайлмапе.
+    /// Вычисляет и возращает все свободные позиции на дополнительном тайлмапе.
     /// </summary>
     /// <returns>Список свободных позиций в виде координат <see cref="Vector2Int"/>. Возвращает пустой список, если дополнительный тайлмап не активен.</returns>
     public List<Vector2Int> GetFreePositions();

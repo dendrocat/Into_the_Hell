@@ -19,7 +19,7 @@ public class ResetDeviceBindings : MonoBehaviour
     [Tooltip("Имя целевой схемы управления для сброса привязок")]
     [SerializeField] private string _targetControlScheme;
 
-       /// <summary>
+    /// <summary>
     /// Инициализация: получает действия ввода из InputManager.
     /// </summary>
     void Start()

@@ -93,7 +93,7 @@ public abstract class AbstractLevelManager : MonoBehaviour
     public abstract void Generate();
 
     /// <summary>
-    /// Получает контейнер врагов для текущей локации.
+    /// Выдает контейнер врагов для текущей локации.
     /// </summary>
     /// <returns><see cref="EnemyContainer">Контейнер врагов</see>.</returns>
     public EnemyContainer GetEnemies()
@@ -124,7 +124,7 @@ public abstract class AbstractLevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Получает текущие данные уровня.
+    /// Выдает текущие данные уровня.
     /// </summary>
     /// <returns>Кортеж с локацией и уровнем (<see cref="Location"/>, <see cref="int"/>).</returns>
     public (Location, int) GetLevelData()
