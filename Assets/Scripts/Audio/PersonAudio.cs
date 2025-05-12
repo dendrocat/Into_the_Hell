@@ -13,7 +13,7 @@ public class PersonAudio : AudioPlayer
     public const string WALK = "Walk";
 
     /// <summary>
-    /// Контейнер <see cref="AudioContainer"/> с звуками персонажа.
+    /// <see cref="AudioContainer">Контейнер</see> с звуками персонажа.
     /// </summary>
     [Tooltip("Контейнер с звуками персонажа")]
     [SerializeField] AudioContainer audioContainer;
@@ -24,7 +24,7 @@ public class PersonAudio : AudioPlayer
     Dictionary<string, AudioClip> _clips;
 
     /// <summary>
-    /// Ссылка на компонент Person
+    /// Ссылка на компонент <see cref="Person"/>
     /// </summary>
     Person _person;
 

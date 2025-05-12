@@ -1,45 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-/**
- * <summary>
- * Класс игрока.<br/>
- * Важно! Вместо weapon используется inventory
- * </summary>
- * **/
+/// <summary>
+/// Класс игрока.<br/>
+/// Важно! Вместо weapon используется inventory
+/// </summary>
 [RequireComponent(typeof(PlayerAudio))]
 public class Player : Person
 {
-    [HideInInspector]
-    public UnityEvent<float> PotionUsed = new();
-    [HideInInspector]
-    public UnityEvent ShiftPerformed = new();
+    /// <summary>
+    /// Событие, вызываемое при использовании зелья. Передаёт время перезарядки.
+    /// </summary>
+    [HideInInspector] public UnityEvent<float> PotionUsed = new();
+    
+    /// <summary>
+    /// Событие, вызываемое при выполнении рывка игроком.
+    /// </summary>
+    [HideInInspector] public UnityEvent ShiftPerformed = new();
+
+    /// <summary>
+    /// Событие, вызываемое при начале перезарядки рывка. Передаёт время перезарядки.
+    /// </summary>
     [HideInInspector]
     public UnityEvent<float> ShiftReloadStarted = new();
 
+    /// <summary>
+    /// Базовое максимальное здоровье игрока (до учёта бонусов брони).
+    /// </summary>
+    [Tooltip("Базовое максимальное здоровье игрока (до учёта бонусов брони)")]
     float baseMaxHealth = 100f;
+
+    /// <summary>
+    /// <see cref="PlayerInventory">Инвентарь</see> игрока.
+    /// </summary>
+    [Tooltip("Инвентарь игрока")]
     public PlayerInventory inventory;
+
+    /// <summary>
+    /// Количество доступных рывков.
+    /// </summary>
+    [Tooltip("Количество доступных рывков")]
     public int ShiftCount = 3;
+
+    /// <summary>
+    /// Флаг: атаковать ли в направлении движения (true) или в сторону ближайшего врага (false).
+    /// </summary>
+    [Tooltip("Атаковать ли в направлении движения (true) или в сторону ближайшего врага (false)")]
     public bool AttackToFacingDirection = false;
+
+    /// <summary>
+    /// Флаг, находится ли зелье на перезарядке.
+    /// </summary>
     bool healReloading = false;
 
+    /// <summary>
+    /// Корутины для управления таймерами рывка.
+    /// </summary>
     Coroutine timer1Coroutine, timer2Coroutine;
 
-    /**
-     * <summary>
-     * Обновляет здоровье в соответствии с уровнем брони.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Обновляет здоровье в соответствии с уровнем брони.
+    /// </summary>
     public void RecalculateHealth()
     {
         maxHealth = baseMaxHealth + inventory.GetPlayerArmor().getHealthBonus();
         health = maxHealth;
     }
 
+    /// <summary>
+    /// Инициализация игрока.
+    /// </summary>
     void Start()
     {
         InitializePerson();
@@ -48,9 +82,7 @@ public class Player : Person
         destructionDelay = 3f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void ChangeWeaponPosition()
     {
         if (AttackToFacingDirection)
@@ -96,11 +128,10 @@ public class Player : Person
         weaponObject.localRotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.right, normalizedDirection));
     }
 
-    /**
-     * <summary>
-     * Метод, вызывающий обычную атаку игрока.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Метод, вызывающий обычную атаку игрока.
+    /// </summary>
     new public void Attack()
     {
         var weapon = inventory.GetPlayerWeapon();
@@ -112,11 +143,10 @@ public class Player : Person
         else _audioPlayer.Play("Bow");
     }
 
-    /**
-     * <summary>
-     * Метод, вызвающий альтернативную атаку игрока.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Метод, вызвающий альтернативную атаку игрока.
+    /// </summary>
     public void AltAttack()
     {
         var weapon = inventory.GetPlayerWeapon();
@@ -128,11 +158,9 @@ public class Player : Person
         else _audioPlayer.Play("Bow");
     }
 
-    /**
-     * <summary>
-     * Метод, запускающий рывок игрока.
-     * </summary>
-     * **/
+    /// <summary>
+    /// Метод, запускающий рывок игрока.
+    /// </summary>
     public void PerformShift()
     {
         if (!hasEffect(EffectNames.Shift) && (ShiftCount > 0) && isMoving())
@@ -147,11 +175,10 @@ public class Player : Person
         }
     }
 
-    /**
-     * <summary>
-     * Метод, обрабатывающий использование зелья игроком.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Метод, обрабатывающий использование <see cref="Potion">зелья</see> игроком.
+    /// </summary>
     public void UsePotion()
     {
         if ((health < maxHealth) && !healReloading)
@@ -178,11 +205,10 @@ public class Player : Person
         }
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая перезарядку зелья
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая перезарядку <see cref="Potion">зелья</see>
+    /// </summary>
     private IEnumerator HealReload(float reloadTime)
     {
         Debug.Log(gameObject.name + ": started to reload heal (" + reloadTime + " sec)");
@@ -191,20 +217,18 @@ public class Player : Person
         Debug.Log(gameObject.name + ": heal reload complete");
     }
 
-    /**
-     * <summary>
-     * Метод, показывающий, находится ли зелье на перезарядке
-     * </summary>
-     * <returns>Находится ли зелье на перезарядке</returns>
-     * **/
+
+    /// <summary>
+    /// Метод, показывающий, находится ли <see cref="Potion">зелье</see> на перезарядке
+    /// </summary>
+    /// <returns>Находится ли зелье на перезарядке</returns>
     public bool isHealReloading()
     {
         return healReloading;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    /// <inheritdoc />
     public override void TakeDamage(float damage, DamageType type)
     {
         if (isAlive())
@@ -263,11 +287,10 @@ public class Player : Person
         }
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая перезарядку рывка (родительская)
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая перезарядку рывка (родительская)
+    /// </summary>
     private IEnumerator ShiftCoroutine()
     {
         AddEffect(EffectNames.Shift);
@@ -280,22 +303,20 @@ public class Player : Person
         timer1Coroutine = StartCoroutine(Timer1Coroutine());
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая перезарядку рывка (таймер 1)
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая перезарядку рывка (таймер 1)
+    /// </summary>
     private IEnumerator Timer1Coroutine()
     {
         yield return new WaitForSeconds(1f);
         timer2Coroutine = StartCoroutine(Timer2Coroutine());
     }
 
-    /**
-     * <summary>
-     * Корутина, обрабатывающая перезарядку рывка (таймер 2)
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Корутина, обрабатывающая перезарядку рывка (таймер 2)
+    /// </summary>
     private IEnumerator Timer2Coroutine()
     {
         if (ShiftCount < 3)
@@ -308,9 +329,8 @@ public class Player : Person
         }
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    ///<inheritdoc />
     protected override void OnDeath()
     {
         Debug.Log("You died. Game over!");

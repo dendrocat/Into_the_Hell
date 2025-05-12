@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(PanelNPC))]
 public class TraderAnimatorController : MonoBehaviour
 {
+    /// <summary>Компонет аниматор</summary>
     Animator _anim;
 
     /// <summary>
@@ -27,7 +28,7 @@ public class TraderAnimatorController : MonoBehaviour
     int currentIdle;
 
     /// <summary>
-    /// Компонент <see cref="DialogableNPC"/> для отслеживания начала диалога
+    /// <see cref="DialogableNPC">NPC</see> для отслеживания начала диалога
     /// </summary>
     DialogableNPC npc;
 
