@@ -11,12 +11,10 @@ public class MainMenuController : MonoBehaviour
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private float defaultVolume = 1.0f;
 
     [Header("Graphics Settings")]
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
-    [SerializeField] private float defaultBrightness = 1.0f;
 
     [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -81,34 +79,34 @@ public class MainMenuController : MonoBehaviour
 
     void Load()
     {
-        var prefs = SettingsManager.Instance.Load();
+        SettingsManager.Instance.Load();
 
-        var volume = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Volume, defaultVolume));
+        var volume = Convert.ToSingle(SettingsManager.Instance.GetSetting(SettingsKeys.Volume));
         SetVolume(volume);
         volumeSlider.value = volume;
 
-        var brightness = Convert.ToSingle(prefs.GetValueOrDefault(SettingsKeys.Brightness, defaultBrightness));
+        var brightness = Convert.ToSingle(SettingsManager.Instance.GetSetting(SettingsKeys.Brightness));
         SetBrightness(brightness);
         brightnessSlider.value = _brightnessLevel;
 
-        var fullscreen = Convert.ToBoolean(prefs.GetValueOrDefault(SettingsKeys.FullScreen, true));
+        var fullscreen = Convert.ToBoolean(SettingsManager.Instance.GetSetting(SettingsKeys.FullScreen));
         SetFullScreen(fullscreen);
         fullscreenToggle.isOn = _isFullScreen;
         Screen.fullScreen = _isFullScreen;
 
-        var qualityLevel = Convert.ToInt32(prefs.GetValueOrDefault(SettingsKeys.Quality, 0));
+        var qualityLevel = Convert.ToInt32(SettingsManager.Instance.GetSetting(SettingsKeys.Quality));
         SetQuality(qualityLevel);
         qualityDropdown.value = _qualityLevel;
         QualitySettings.SetQualityLevel(_qualityLevel);
 
-        var resolutionIndex = Convert.ToInt32(prefs.GetValueOrDefault(SettingsKeys.Resolution, resolutions.Length - 1));
+        var resolutionIndex = Convert.ToInt32(SettingsManager.Instance.GetSetting(SettingsKeys.Resolution));
         SetResolution(resolutionIndex);
         resolutionDropdown.value = _resolutionIndex;
         resolutionDropdown.RefreshShownValue();
         var res = resolutions[_resolutionIndex];
         Screen.SetResolution(res.width, res.height, _isFullScreen);
 
-        var rebinds = Convert.ToString(prefs.GetValueOrDefault(SettingsKeys.Rebinds, ""));
+        var rebinds = Convert.ToString(SettingsManager.Instance.GetSetting(SettingsKeys.Rebinds));
         if (!string.IsNullOrEmpty(rebinds))
             _inputActions.LoadBindingOverridesFromJson(rebinds);
     }
@@ -206,26 +204,26 @@ public class MainMenuController : MonoBehaviour
     {
         if (MenuType == "Graphics")
         {
-            _brightnessLevel = defaultBrightness;
+            _brightnessLevel = (float)SettingsManager.Instance.GetDefaultSetting(SettingsKeys.Brightness);
             brightnessSlider.value = _brightnessLevel;
             brightnessTextValue.text = _brightnessLevel.ToString("0.0");
 
-            _qualityLevel = 1;
+            _qualityLevel = (int)SettingsManager.Instance.GetDefaultSetting(SettingsKeys.Quality);
             qualityDropdown.value = _qualityLevel;
 
-            _isFullScreen = false;
+            _isFullScreen = (bool)SettingsManager.Instance.GetDefaultSetting(SettingsKeys.FullScreen);
             fullscreenToggle.isOn = _isFullScreen;
 
-            _resolutionIndex = resolutions.Length - 1;
+            _resolutionIndex = (int)SettingsManager.Instance.GetDefaultSetting(SettingsKeys.Resolution);
             resolutionDropdown.value = _resolutionIndex;
             GraphicsApply();
         }
 
         if (MenuType == "Audio")
         {
-            AudioListener.volume = defaultVolume;
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
+            AudioListener.volume = (float)SettingsManager.Instance.GetDefaultSetting(SettingsKeys.Volume);
+            volumeSlider.value = AudioListener.volume;
+            volumeTextValue.text = AudioListener.volume.ToString("0.0");
             VolumeApply();
         }
 

@@ -6878,6 +6878,7 @@ GameObject:
   - component: {fileID: 8043431969195310294}
   - component: {fileID: 2061504100580238864}
   - component: {fileID: 5089741120755780703}
+  - component: {fileID: 1939611624509622759}
   m_Layer: 2
   m_Name: RoomSquadDestroyHoleTraps
   m_TagString: Untagged
@@ -6987,9 +6988,6 @@ MonoBehaviour:
   _additional:
     _enabled: 1
     _value: {fileID: 58586515196908271}
-  _hole:
-    _enabled: 1
-    _value: {fileID: 0}
   TrapSpawns:
     _enabled: 1
     _value: {fileID: 704318543596819864}
@@ -7015,6 +7013,18 @@ MonoBehaviour:
     _enabled: 1
     _value: {fileID: 107959807262055202}
   _isEndRoom: 0
+--- !u!114 &1939611624509622759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540601050289998544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d61d1bbfec0ed4f863e363a73b5ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &61021852651789804
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4428,10 +4428,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeTextValue: {fileID: 1213405999}
   volumeSlider: {fileID: 1533662269}
-  defaultVolume: 1
   brightnessSlider: {fileID: 803097925}
   brightnessTextValue: {fileID: 1101377403}
-  defaultBrightness: 1
   qualityDropdown: {fileID: 1652194379}
   fullscreenToggle: {fileID: 1662177388}
   confirmationPromt: {fileID: 2925007139393405626}
@@ -12858,7 +12856,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -14193,27 +14191,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -14253,11 +14251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -910.02
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -484.29
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2639227280193365597, guid: 7cd11c643eebb074887639b3155a9af2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

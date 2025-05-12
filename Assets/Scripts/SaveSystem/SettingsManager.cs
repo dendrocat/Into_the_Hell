@@ -11,6 +11,14 @@ using UnityEngine;
 /// </remarks>
 public class SettingsManager : MonoBehaviour
 {
+    [Header("Default settings")]
+    [SerializeField, Range(0f, 1f)] float defaultVolume = 1.0f;
+    [SerializeField, Range(0.5f, 1.5f)] float defaultBrightness = 1.0f;
+    [SerializeField, Range(0, 3)] int defaultQualityLevel = 1;
+    [SerializeField] bool defaultFullScreen = true;
+    int resolutionIndex;
+    string rebinds = "";
+
     static public SettingsManager Instance { get; private set; } = null;
 
     void Awake()
@@ -20,6 +28,10 @@ public class SettingsManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        resolutionIndex = Screen.resolutions.Length - 1;
+        
+        Application.targetFrameRate = 60;
+
         Instance = this;
         settings = new();
         Load();
@@ -27,9 +39,29 @@ public class SettingsManager : MonoBehaviour
 
     Dictionary<SettingsKeys, object> settings;
 
+    public object GetDefaultSetting(SettingsKeys key) {
+        switch (key) {
+            case SettingsKeys.Brightness:
+                return defaultBrightness;
+            case SettingsKeys.FullScreen:
+                return defaultFullScreen;
+            case SettingsKeys.Quality:
+                return defaultQualityLevel;
+            case SettingsKeys.Rebinds:
+                return rebinds;
+            case SettingsKeys.Resolution:
+                return resolutionIndex;
+            case SettingsKeys.Volume:
+                return defaultVolume;
+        }
+        return null;
+    }
+
     public object GetSetting(SettingsKeys key)
     {
-        return settings.GetValueOrDefault(key, null);
+        var val = settings.GetValueOrDefault(key, null);
+        if (val != null) return val;
+        return GetDefaultSetting(key);
     }
     public void SetSetting(SettingsKeys key, object val) { settings[key] = val; }
     public bool RemoveSetting(SettingsKeys key)
