@@ -1,22 +1,31 @@
 using UnityEngine;
 
+/// <summary>
+/// Контроллер настроек камеры, управляющий яркостью и уровнем звука.
+/// </summary>
 [RequireComponent(typeof(ShaderController))]
 public class CameraSettingsController : MonoBehaviour
 {
+    /// <summary>
+    /// Singleton-экземпляр контроллера.
+    /// </summary>
     public static CameraSettingsController Instance { get; private set; } = null;
 
     ShaderController _shader;
 
+    /// <summary>
+    /// Яркость, управляемая через ShaderController.
+    /// </summary>
     public float Brightness { get => _shader.Brightness; set => _shader.Brightness = value; }
 
-    [SerializeField]
-    [Range(0f, 1f)] float volume;
+    /// <summary>
+    /// Громкость звука, синхронизированная с AudioListener.
+    /// </summary>
     public float Volume
     {
         get => AudioListener.volume;
         set
         {
-            volume = value;
             AudioListener.volume = value;
         }
     }
@@ -32,10 +41,4 @@ public class CameraSettingsController : MonoBehaviour
         Brightness = (float)SettingsManager.Instance.GetSetting(SettingsKeys.Brightness);
         Volume = (float)SettingsManager.Instance.GetSetting(SettingsKeys.Volume);
     }
-
-    // //TODO: remove this after debug
-    // void Update()
-    // {
-    //     Volume = volume;
-    // }
 }

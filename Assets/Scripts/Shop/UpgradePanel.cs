@@ -1,8 +1,15 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// Панель улучшений, наследует <see cref="ShopPanel"/>.
+/// Управляет улучшением оружия, брони и зелий.
+/// </summary>
 public class UpgradePanel : ShopPanel
 {
+    /// <summary>
+    /// Инициализирует панель, устанавливая стоимость улучшений для всех типов оружия, брони и зелий.
+    /// </summary>
     protected override void InitPanel()
     {
         foreach (var type in Enum.GetValues(typeof(WeaponType)))
@@ -23,6 +30,10 @@ public class UpgradePanel : ShopPanel
         CalcActiveItems();
     }
 
+    /// <summary>
+    /// Улучшает оружие указанного типа, если хватает денег.
+    /// </summary>
+    /// <param name="type">Имя типа оружия.</param>
     public void UpgradeWeapon(string type)
     {
         if (!Enum.TryParse<WeaponType>(type, out var weaponType))
@@ -46,6 +57,9 @@ public class UpgradePanel : ShopPanel
         CalcActiveItems();
     }
 
+    /// <summary>
+    /// Улучшает броню игрока, если хватает денег.
+    /// </summary>
     public void UpgradeArmor()
     {
         var armor = _inventory.GetPlayerArmor();
@@ -61,6 +75,9 @@ public class UpgradePanel : ShopPanel
         CalcActiveItems();
     }
 
+    /// <summary>
+    /// Улучшает зелье игрока, если хватает денег.
+    /// </summary>
     public void UpgradePotion()
     {
         var potion = _inventory.GetPotion();

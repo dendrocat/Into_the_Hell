@@ -1,12 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Панель для отображения и управления набором предметов с их стоимостью, количеством и состоянием.
+/// </summary>
 public class ItemsPanel : MonoBehaviour
 {
+    /// <summary>
+    /// Структура для хранения UI-элементов предмета.
+    /// </summary>
     protected struct Item
     {
         public TextMeshProUGUI cost;
@@ -33,17 +38,31 @@ public class ItemsPanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Устанавливает отображаемое количество предмета по ключу.
+    /// </summary>
+    /// <param name="key">Ключ предмета.</param>
+    /// <param name="count">Количество для отображения.</param>
     public void SetItemCount(string key, int count)
     {
         if (_items[key].count == null) return;
         _items[key].count.text = count.ToString();
     }
 
+    /// <summary>
+    /// Устанавливает отображаемую стоимость предмета по ключу.
+    /// </summary>
+    /// <param name="key">Ключ предмета.</param>
+    /// <param name="cost">Стоимость для отображения.</param>
     public void SetItemCost(string key, int cost)
     {
         _items[key].cost.text = cost.ToString();
     }
 
+    /// <summary>
+    /// Вычисляет состояние доступности предметов, используя переданный предикат.
+    /// </summary>
+    /// <param name="predicate">Функция, принимающая стоимость и ключ, возвращающая true, если предмет доступен.</param>
     public void CalcItemsState(Func<int, string, bool> predicate)
     {
         foreach (var p in _items)
@@ -53,6 +72,10 @@ public class ItemsPanel : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Удаляет предмет из панели, делая кнопку неактивной и показывая текст "Максимум".
+    /// </summary>
+    /// <param name="key">Ключ предмета для удаления.</param>
     public void RemoveItem(string key)
     {
         _items[key].button.interactable = false;
@@ -61,7 +84,11 @@ public class ItemsPanel : MonoBehaviour
         _items.Remove(key);
     }
 
-    internal void DeactivateItem(string key)
+    /// <summary>
+    /// Деактивирует предмет, делая кнопку неактивной, но не удаляет UI-элементы.
+    /// </summary>
+    /// <param name="key">Ключ предмета для деактивации.</param>
+    public void DeactivateItem(string key)
     {
         _items[key].button.interactable = false;
         _items.Remove(key);

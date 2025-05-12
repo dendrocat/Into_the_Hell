@@ -56,9 +56,9 @@ public class Room {
 	}
 
   /// <summary> Статический метод, который используется для создания коридора </summary>
-  /// <param name="start"> Стратовая позиция коридора <see cref="  Vector2"></param>
-  /// <param name="fin"> Конечная позиция коридора <see cref=" Vector2"></param>
-    /// <param name="prefab"> Префаб коридора <see cref=" GameObject"></param>
+  /// <param name="start"> Стратовая позиция коридора <see cref="Vector2"></param>
+  /// <param name="fin"> Конечная позиция коридора <see cref="Vector2"></param>
+    /// <param name="prefab"> Префаб коридора <see cref="GameObject"></param>
   /// <param name="level"> Уровень, на котором генерируется коридор <see cref=" Level"></param>
 	public static void GenerateHall(Vector2 start, Vector2 fin, GameObject prefab, Level level) {
 		GameObject hall = GameObject.Instantiate(prefab, level.transform);
@@ -68,13 +68,13 @@ public class Room {
 		level.halls.Add(hall);
 	}
 
-  /// <summary> Метод, протаскивающий IRoomTilemapController из комнаты </summary>
+  /// <summary> Метод, протаскивающий <see cref="RoomTilemapController"> из комнаты </summary>
   /// <returns> Контроллер <see cref="RoomTilemapController"></returns>
 	public IRoomTilemapController GetRoomTilemapController() {
 		return room.GetComponent<IRoomTilemapController>();
 	}
 
-  /// <summary> Метод, протаскивающий IRoomController из комнаты </summary>
+  /// <summary> Метод, протаскивающий <see cref="RoomController"> из комнаты </summary>
   /// <returns> Контроллер <see cref="RoomController"></returns>
 	public IRoomController GetRoomController() {
 		return room.GetComponent<IRoomController>();

@@ -1,17 +1,32 @@
 using UnityEngine;
+
+/// <summary>
+/// Панель покупки расходуемых предметов, наследует <see cref="ShopPanel"/>.
+/// Управляет покупкой стрел и зелий с динамическим расчётом стоимости и ограничениями по количеству.
+/// </summary>
 public class ConsumePanel : ShopPanel
 {
-    [Header("The cost of consumables")]
+    [Header("Стоимость расходников")]
+
+    [Tooltip("Стоимость взрывной стрелы")]
     [SerializeField] int explosiveArrowCost;
 
+    [Tooltip("Базовая стоимость зелий")]
     [SerializeField] int basePotionCost;
 
+    /// <summary>
+    /// Рассчитывает текущую стоимость зелья с учётом уровня.
+    /// </summary>
+    /// <returns><see langword="int"> - cтоимость зелья.</returns>
     int CalcPotionCost()
     {
         var potion = _inventory.GetPotion();
         return basePotionCost + (potion.level - 1) * 10;
     }
 
+    /// <summary>
+    /// Инициализирует панель, устанавливая стоимость и количество стрел и зелий.
+    /// </summary>
     protected override void InitPanel()
     {
         SetItemCost("Potion", CalcPotionCost());
@@ -21,6 +36,9 @@ public class ConsumePanel : ShopPanel
         CalcActiveItems();
     }
 
+    /// <summary>
+    /// Покупает взрывную стрелу, если хватает денег и не превышен максимум.
+    /// </summary>
     public void BuyArrow()
     {
         if (!base.CheckBuy(explosiveArrowCost)) return;
@@ -33,6 +51,9 @@ public class ConsumePanel : ShopPanel
         CalcActiveItems();
     }
 
+    /// <summary>
+    /// Покупает зелье, если хватает денег и не превышен максимум.
+    /// </summary>
     public void BuyPotion()
     {
         var cost = CalcPotionCost();
