@@ -6,27 +6,54 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// Менеджер диалогов, управляющий процессом отображения и взаимодействия с Ink-историями.
+/// </summary>
+/// <remarks>
+/// Реализует паттерн Singleton для глобального доступа.
+/// Обеспечивает загрузку истории, отображение текста, обработку тегов, вариантов выбора и завершение диалога.
+/// </remarks>
 public class DialogManager : MonoBehaviour, IDialogManager
 {
-    public static UnityEvent Awaked = new UnityEvent();
+    /// <summary>
+    /// Событие, вызываемое при инициализации экземпляра <see cref="DialogManager"/>.
+    /// </summary>
+    public static UnityEvent Awaked = new();
 
+    /// <summary>
+    /// Событие, вызываемое при создании новой Ink-истории.
+    /// </summary>
     [HideInInspector]
-    public UnityEvent<Story> StoryCreated = new UnityEvent<Story>();
+    public UnityEvent<Story> StoryCreated = new();
 
+    /// <summary>
+    /// Событие, вызываемое при окончании Ink-истории.
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent StoryEnded = new();
 
-    [SerializeField] DialogDisplayer displayer;
-
+    // <summary>
+    /// Единственный экземпляр <see cref="DialogManager"/> (Singleton).
+    /// </summary>
     public static DialogManager Instance { get; private set; }
 
+    [Tooltip("Компонент для отображения диалогов")]
+    [SerializeField] DialogDisplayer displayer;
+
+    /// <summary>
+    /// Текущая активная Ink-история.
+    /// </summary>
     public Story CurrentStory { get; private set; }
 
-    bool _storyEnded;
-
+    /// <summary>
+    /// Инициализация Singleton и скрытие UI диалогов.
+    /// </summary>
     void Awake()
     {
         if (Instance)
         {
             Debug.LogError($"{gameObject}: Instance уже существует");
+            Destroy(gameObject);
             return;
         }
         Instance = this;
@@ -34,18 +61,29 @@ public class DialogManager : MonoBehaviour, IDialogManager
         Awaked?.Invoke();
     }
 
+    /// <summary>
+    /// Устанавливает новую Ink-историю из JSON-файла.
+    /// </summary>
+    /// <param name="inkJSONfile">JSON-файл с историей Ink.</param>
     public void SetStory(TextAsset inkJSONfile)
     {
         CurrentStory = new Story(inkJSONfile.text);
         StoryCreated?.Invoke(CurrentStory);
-        _storyEnded = false;
     }
 
+    /// <summary>
+    /// Привязывает внешнюю функцию к Ink-истории для вызова из скрипта.
+    /// </summary>
+    /// <param name="inkFuncName">Имя функции в Ink.</param>
+    /// <param name="innerFunc">Делегат с реализацией функции.</param>
     public void BindFunction(string inkFuncName, Action innerFunc)
     {
         CurrentStory.BindExternalFunction(inkFuncName, innerFunc);
     }
 
+    /// <summary>
+    /// Запускает диалог, переключая управление на UI и показывая первую фразу.
+    /// </summary>
     public void StartStory()
     {
         InputManager.Instance.PushInputMap(InputMap.UI);
@@ -55,9 +93,11 @@ public class DialogManager : MonoBehaviour, IDialogManager
         ContinueStory();
     }
 
+    /// <summary>
+    /// Продолжает диалог, показывая следующую фразу или варианты выбора.
+    /// </summary>
     void ContinueStory()
     {
-        if (_storyEnded) return;
         if (displayer.IsShowingPhrase)
         {
             displayer.ShowWholePhrase();
@@ -83,6 +123,9 @@ public class DialogManager : MonoBehaviour, IDialogManager
             StartCoroutine(WaitShowPhrase());
     }
 
+    /// <summary>
+    /// Корутина, ожидающая завершения показа фразы, затем отображающая варианты выбора.
+    /// </summary>
     IEnumerator WaitShowPhrase()
     {
         yield return new WaitUntil(() => !displayer.IsShowingPhrase);
@@ -91,6 +134,10 @@ public class DialogManager : MonoBehaviour, IDialogManager
         InputManager.Instance.SubmitPressed.RemoveListener(ContinueStory);
     }
 
+    /// <summary>
+    /// Назначает обработчики нажатий для кнопок выбора.
+    /// </summary>
+    /// <param name="buttons">Список кнопок выбора.</param>
     void SetChoiceListeners(List<Button> buttons)
     {
         for (int i = 0; i < buttons.Count; ++i)
@@ -106,8 +153,9 @@ public class DialogManager : MonoBehaviour, IDialogManager
         }
     }
 
-
-
+    /// <summary>
+    /// Завершает диалог, скрывая UI и возвращая управление игроку.
+    /// </summary>
     void EndDialog()
     {
         InputManager.Instance.PopInputMap();
@@ -115,7 +163,7 @@ public class DialogManager : MonoBehaviour, IDialogManager
 
         displayer.gameObject.SetActive(false);
 
-        _storyEnded = true;
+        StoryEnded.Invoke();
     }
 
 }

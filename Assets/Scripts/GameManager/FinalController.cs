@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,12 @@ public class FinalController : MonoBehaviour
 
     [SerializeField] Scrollbar _scroll;
 
+    [SerializeField] List<LayoutElement> fullHeightElements;
 
     IEnumerator Start()
     {
+        fullHeightElements.ForEach(e => e.preferredHeight = Screen.height);
+
         _scroll.value = 1;
         yield return new WaitForSecondsRealtime(delayStartCredits);
         yield return StartCoroutine(LoadInitScene());

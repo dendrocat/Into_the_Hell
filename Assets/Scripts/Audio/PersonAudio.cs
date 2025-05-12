@@ -13,8 +13,9 @@ public class PersonAudio : AudioPlayer
     public const string WALK = "Walk";
 
     /// <summary>
-    /// Контейнер <see cref="AudioContainer"/>  аудиоклипами персонажа.
+    /// Контейнер <see cref="AudioContainer"/> с звуками персонажа.
     /// </summary>
+    [Tooltip("Контейнер с звуками персонажа")]
     [SerializeField] AudioContainer audioContainer;
 
     /// <summary>

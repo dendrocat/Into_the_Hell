@@ -89,9 +89,6 @@ MonoBehaviour:
       m_Calls: []
   _interactImage: {fileID: 4430710254316405905, guid: 320ce8f34a0b17d4b833070c0aa84b11, type: 3}
   inkJSONFile: {fileID: 4900000, guid: 52ecd6c3832598643b537023cffc7c50, type: 3}
-  PanelOpened:
-    m_PersistentCalls:
-      m_Calls: []
   _funcPanels:
   - inkFuncName: open_upgrade
     panel: {fileID: 0}
@@ -209,7 +206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 3939021402768748548, guid: eb5c8bd9770c98245b2c7dd0db92b2e8, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: e29a6f71c9a304642ac640499827a632, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

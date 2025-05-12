@@ -8,11 +8,13 @@ public class MissilesAudio : MonoBehaviour
     /// <summary>
     /// Звук запуска снаряда (необязательный).
     /// </summary>
+    [Tooltip("Звук запуска снаряда")]
     [SerializeField] Optional<AudioClip> _missileStart;
 
     /// <summary>
     /// Звук попадания снаряда (необязательный).
     /// </summary>
+    [Tooltip("Звук попадания снаряда")]
     [SerializeField] Optional<AudioClip> _missileHit;
 
     /// <summary>

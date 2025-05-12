@@ -17,17 +17,20 @@ public class AudioContainer : ScriptableObject
         /// <summary>
         /// Имя аудио.
         /// </summary>
+        [Tooltip("Имя аудиоклипа для идентификации")]
         public string name;
 
         /// <summary>
         /// Аудио.
         /// </summary>
+        [Tooltip("Аудиоклип, связанный с этим именем")]
         public AudioClip clip;
     }
 
     /// <summary>
     /// Список пар "имя - аудио", хранящихся в контейнере.
     /// </summary>
+    [Tooltip("Список аудиоклипов с их уникальными именами")]
     [SerializeField] List<NameClip> _nameClips;
 
     /// <summary>
