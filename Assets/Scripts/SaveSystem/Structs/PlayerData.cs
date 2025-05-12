@@ -2,47 +2,48 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Contains player-specific progress data for serialization
+/// Содержит данные прогресса игрока для сериализации.
 /// </summary>
 /// <remarks>
-/// Tracks combat equipment, consumables, and economy state. 
-/// Used with <see cref="GameData"/> through <see cref="SaveLoadRepository"/>.
+/// Отслеживает экипировку, расходуемые предметы и состояние экономики.
+/// Используется совместно с <see cref="GameData"/> через <see cref="SaveLoadRepository"/>.
 /// </remarks>
 [Serializable]
 public struct PlayerData
 {
     /// <summary>
-    /// Currently equipped weapon type
+    /// Текущий <see cref="WeaponType">тип</see> экипированного оружия.
     /// </summary>
-    /// <seealso cref="WeaponType"/>
+    [Tooltip("Текущий тип экипированного оружия.")]
     public WeaponType weapon;
 
     /// <summary>
-    /// Player's currency amount
+    /// Количество валюты у игрока.
     /// </summary>
-    [Range(0, 9999)]
-    public int money;
+    [Tooltip("Количество валюты у игрока.")]
+    [Range(0, 9999)] public int money;
 
     /// <summary>
-    /// Potion effectiveness tier
+    /// Уровень зелий.
     /// </summary>
-    [Range(1, 3)]
-    public byte potionLevel;
-    /// <summary>
-    /// Quantity of health potions
-    /// </summary>
-    [Range(0, 12)]
-    public byte potionCount;
+    [Tooltip("Уровень зелий.")]
+    [Range(1, 3)] public byte potionLevel;
 
     /// <summary>
-    /// Quantity of arrows for bows
+    /// Количество зелий.
     /// </summary>
-    [Range(0, 99)]
-    public byte arrowCount;
+    [Tooltip("Количество зелий.")]
+    [Range(0, 12)] public byte potionCount;
 
     /// <summary>
-    /// Damage reduction level
+    /// Количество стрел для лука.
     /// </summary>
-    [Range(1, 5)]
-    public byte armorLevel;
+    [Tooltip("Количество стрел для лука.")]
+    [Range(0, 99)] public byte arrowCount;
+
+    /// <summary>
+    /// Уровень брони.
+    /// </summary>
+    [Tooltip("Уровень брони.")]
+    [Range(1, 5)] public byte armorLevel;
 }

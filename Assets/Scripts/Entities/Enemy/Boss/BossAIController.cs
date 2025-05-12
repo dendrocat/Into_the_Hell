@@ -2,17 +2,21 @@ using System.Collections;
 using Pathfinding;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс для описания базового ИИ босса.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс для описания базового ИИ босса.
+/// </summary>
 public class BossAIController : BaseAIController
 {
-    protected Boss Boss;
     /// <summary>
-    /// Время между двумя атаками босса.
+    /// Ссылка на <see cref="Boss">босса</see>, которым управляет ИИ.
     /// </summary>
+    protected Boss Boss;
+    
+    /// <summary>
+    /// Время между двумя атаками босса (в секундах).
+    /// </summary>
+    [Tooltip("Время между двумя атаками босса (в секундах)")]
     [SerializeField] protected float attackDelay = 2f;
 
     /// <summary>
@@ -21,6 +25,9 @@ public class BossAIController : BaseAIController
     /// </summary>
     protected bool attacked = false;
 
+    /// <summary>
+    /// Инициализация ИИ босса: получение необходимых компонентов.
+    /// </summary>
     private void Start()
     {
         if (!gameObject.TryGetComponent<Boss>(out Boss))
@@ -36,6 +43,10 @@ public class BossAIController : BaseAIController
             Debug.LogError(gameObject.name + ": missing AIDestinationSetter component");
         }
     }
+
+    /// <summary>
+    /// Обновление логики ИИ босса каждый кадр.
+    /// </summary>
     void Update()
     {
         aipath.maxSpeed = Boss.getSpeed();
@@ -56,6 +67,11 @@ public class BossAIController : BaseAIController
         }
     }
 
+    /// <summary>
+    /// Корутина, сбрасывающая флаг атаки после задержки.
+    /// </summary>
+    /// <param name="delay">Задержка в секундах.</param>
+    /// <returns>IEnumerator для корутины.</returns>
     protected IEnumerator UpdateAttackStatus(float delay)
     {
         yield return new WaitForSeconds(delay);

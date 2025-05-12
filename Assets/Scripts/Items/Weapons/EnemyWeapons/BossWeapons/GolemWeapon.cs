@@ -3,24 +3,53 @@ using UnityEngine;
 
 public class GolemWeapon : BossWeapon
 {
+    /// <summary>
+    /// Радиус первой атаки.
+    /// </summary>
+    [Tooltip("Радиус первой атаки")]
     [SerializeField] float attack1Range = 2f;
+
+    /// <summary>
+    /// Угол первой атаки.
+    /// </summary>
+    [Tooltip("Угол первой атаки")]
     [SerializeField] float attack1Angle = 30f;
 
+    /// <summary>
+    /// Префаб булыжника для второй атаки.
+    /// </summary>
+    [Tooltip("Префаб булыжника для второй атаки")]
     [SerializeField] GameObject attack2MissilePrefab;
+
+    /// <summary>
+    /// Скорость булыжника для второй атаки.
+    /// </summary>
+    [Tooltip("Скорость булыжника для второй атаки")]
     [SerializeField] float attack2MissileSpeed = 8f;
 
+    /// <summary>
+    /// Радиус третьей атаки.
+    /// </summary>
+    [Tooltip("Радиус третьей атаки")]
     [SerializeField] float attack3Range = 4f;
+
+    /// <summary>
+    /// Угол третьей атаки.
+    /// </summary>
+    [Tooltip("Угол третьей атаки")]
     [SerializeField] float attack3Angle = 360f;
-    /**
-     * <summary>
-     * Инициализация оружия.
-     * </summary>
-     * **/
+    
+    /// <summary>
+    /// Инициализация оружия.
+    /// </summary>
     void Start()
     {
         FindOwner();
     }
 
+    /// <summary>
+    /// Конструктор, инициализирующий параметры оружия Голема.
+    /// </summary>
     public GolemWeapon()
     {
         level = 1;
@@ -43,9 +72,7 @@ public class GolemWeapon : BossWeapon
         baseAttack3EndAttackTime = 1f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack()
     {
         List<IDamagable> targets = FindTargetsForAttack(attack1Range, attack1Angle);
@@ -56,9 +83,7 @@ public class GolemWeapon : BossWeapon
         }
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack2()
     {
         GameObject missile = GameObject.Instantiate(attack2MissilePrefab, owner.transform.position + owner.weaponObject.localPosition, owner.weaponObject.rotation);
@@ -68,9 +93,7 @@ public class GolemWeapon : BossWeapon
         missileComponent.direction = owner.weaponObject.localPosition;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void Attack3()
     {
         List<IDamagable> targets = FindTargetsForAttack(attack3Range, attack3Angle);

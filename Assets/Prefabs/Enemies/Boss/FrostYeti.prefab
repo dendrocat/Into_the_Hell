@@ -566,12 +566,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrostYetiWeapon
       objectReference: {fileID: 0}
-    - target: {fileID: 4846546345997671439, guid: b6f6487ef4871ed4e989ee756b6a7dd8, type: 3}
-      propertyPath: weaponSprites.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7500689888440061837, guid: b6f6487ef4871ed4e989ee756b6a7dd8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -2,27 +2,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Interface for controlling doors.
+/// Интерфейс для управления дверями.
 /// </summary>
 public interface IDoorController
 {
     /// <summary>
-    /// Set all doors of this room.
+    /// Устанавливает список всех дверей данной комнаты для управления.
     /// </summary>
-    /// <param name="doors">A list of <see cref="GameObject"/> instances representing the doors to be managed.</param>
+    /// <param name="doors">Список объектов, представляющих двери для управления.</param>
     public void SetDoors(List<GameObject> doors);
 
     /// <summary>
-    /// Opens all doors managed by this controller.
+    /// Открывает все двери, управляемые этим контроллером.
     /// </summary>
     public void OpenDoors();
 
     /// <summary>
-    /// Closes all doors managed by this controller.
+    /// Закрывает все двери, управляемые этим контроллером.
     /// </summary>
     public void CloseDoors();
+    
     /// <summary>
-    /// Removes all doors managed by this controller.
+    /// Удаляет все двери, управляемые этим контроллером.
     /// </summary>
     public void RemoveDoors();
 }

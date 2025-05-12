@@ -1,14 +1,12 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// Controller for managing additional effects like lava and ice.
-/// Handles interactions with entities that enter areas affected by these effects.
+/// Контроллер для управления дополнительными эффектами, такими как лава и лёд.
+/// Обрабатывает взаимодействия с сущностями, входящими в зоны действия этих эффектов.
 /// </summary>
 public class AdditionalController : MonoBehaviour, IAdditionalController
 {
-    //TODO: add some field for effect
+    /// <inheritdoc />
     public void SetAdditionalEffect(TrapContainer trapContainer)
     {
         var trap = gameObject.AddComponent(trapContainer.TrapType);

@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// Controller for managing doors in the scene. Implements the <see cref="IDoorController"/> interface.
-/// Handles door detection, opening, and closing logic.
+/// Контроллер для управления дверями в сцене. Реализует интерфейс <see cref="IDoorController"/>.
+/// Отвечает за обнаружение дверей, их открытие и закрытие.
 /// </summary>
 public class DoorController : MonoBehaviour, IDoorController
 {
     /// <summary>
-    /// List of door GameObjects found in the scene.
+    /// Список компонентов <see cref="DoorMover"/>, представляющих двери в комнате.
     /// </summary>
     List<DoorMover> _doors;
 
-    // <summary>
-    /// Called when the game starts. Initiates a coroutine to check the doors.
+    /// <summary>
+    /// Вызывается при старте игры.
+    /// Запускает корутину проверки наличия дверей.
     /// </summary>
     void Start()
     {
@@ -23,9 +23,10 @@ public class DoorController : MonoBehaviour, IDoorController
     }
 
     /// <summary>
-    /// <see cref="Coroutine"/> to verify the presence and validity of the door list.
+    /// Корутина для проверки корректности списка дверей.
+    /// Выводит ошибки, если список не установлен или пуст.
     /// </summary>
-    /// <returns><see cref="IEnumerator"/> for use in coroutines.</returns>
+    /// <returns>IEnumerator для использования в корутине.</returns>
     IEnumerator CheckDoors()
     {
         yield return null;

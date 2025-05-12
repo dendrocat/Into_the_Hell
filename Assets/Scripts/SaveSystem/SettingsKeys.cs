@@ -1,35 +1,39 @@
 /// <summary>
-/// Defines standard game setting identifiers for use with <see cref="SettingsRepository"/>.
+/// Определяет стандартные идентификаторы настроек игры для использования с <see cref="SettingsRepository"/>.
 /// </summary>
 /// <remarks>
-/// Represents common game configuration parameters managed by <see cref="SettingsManager"/>.
-/// Use with <see cref="SettingsRepository.Save"/> and <see cref="SettingsRepository.Load"/>.
+/// Представляет общие параметры конфигурации игры, управляемые <see cref="SettingsManager"/>.
+/// Используется с методами <see cref="SettingsRepository.Save"/> и <see cref="SettingsRepository.Load"/>.
 /// </remarks>
 public enum SettingsKeys
 {
     /// <summary>
-    /// Audio volume level (float 0.0-1.0)
+    /// Уровень громкости звука (<see langword="float"/> от 0.0 до 1.0).
     /// </summary>
     Volume,
 
-
     /// <summary>
-    /// Screen brightness level (float 0.0-1.0)
+    /// Уровень яркости экрана (<see langword="float"/> от 0.0 до 1.0).
     /// </summary>
     Brightness,
+
     /// <summary>
-    /// Graphics quality preset (int)
+    /// Предустановка качества графики (<see langword="int"/>).
     /// </summary>
     Quality,
+
     /// <summary>
-    /// Fullscreen mode toggle (bool)
+    /// Полноэкранный режимм (<see langword="bool"/>).
     /// </summary>
     FullScreen,
 
     /// <summary>
-    /// Display resolution
+    /// Разрешение экрана (<see langword="int"/>).
     /// </summary>
     Resolution,
 
+    /// <summary>
+    /// Настройки переназначения клавиш (<see langword="string"/>).
+    /// </summary>
     Rebinds
 }

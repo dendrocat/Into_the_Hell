@@ -1,20 +1,25 @@
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, отвечающий за управление персонажем
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, отвечающий за управление персонажем
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
+    /// <summary>
+    /// Ссылка на компонент игрока, которым управляет контроллер.
+    /// </summary>
+    [Tooltip("Ссылка на компонент игрока")]
     [SerializeField] Player player;
+
+    /// <summary>
+    /// Ссылка на синглтон <see cref="InputManager"/> для получения данных ввода.
+    /// </summary>
     InputManager inputManager;
     
-    /**
-     * <summary>
-     * Инициализация контроллера
-     * </summary>
-     * **/
+    /// <summary>
+    /// Инициализация контроллера
+    /// </summary>
     void Start()
     {
         inputManager = InputManager.Instance;
@@ -24,11 +29,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /**
-     * <summary>
-     * Обработка ввода игрока
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Обработка ввода игрока
+    /// </summary>
     void Update()
     {
         if (inputManager != null)

@@ -1,26 +1,21 @@
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий булыжник, кидаемый боссами.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий булыжник, кидаемый боссами.
+/// </summary>
 public class StoneMissile : Missile
 {
-    /**
-     * <summary>
-     * Инициализация булыжника
-     * </summary>
-     * **/
+    /// <summary>
+    /// Инициализация булыжника
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         damageRadius = 0.01f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;

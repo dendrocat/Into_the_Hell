@@ -3,26 +3,30 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Controller for managing a room's tilemap. Implements the <see cref="IRoomTilemapController"/> interface.
-/// This component must be removed from the game object after level generation via <see cref="Destroy"/>.
-/// Also, it destroys the associated <see cref="IDoorTilemapController"/> instance.
+/// Контроллер для управления тайлмапами комнаты. Реализует интерфейс <see cref="IRoomTilemapController"/>.
+/// Этот компонент должен быть удалён с игрового объекта после генерации уровня через <see cref="Destroy"/>.
+/// Также уничтожает связанный экземпляр <see cref="IDoorTilemapController"/>.
 /// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class RoomTilemapController : TilemapController, IRoomTilemapController
 {
+     [Header("Настройки комнаты")]
     /// <summary>
-    /// The tilemap for additional elements. This is an optional parameter.
+    /// Тайлмап для дополнительных ловушек.
     /// </summary>
+    [Tooltip("Тайлмап для дополнительных ловушек")]
     [SerializeField] Optional<Tilemap> _additional;
 
     /// <summary>
-    /// The transform containing spawn points for traps. This is an optional parameter.
+    /// Точки спавна ловушек (опционально).
     /// </summary>
+    [Tooltip("Контейнер точек спавна ловушек")]
     [SerializeField] Optional<Transform> TrapSpawns;
 
     /// <summary>
-    /// The transform containing spawn points for destroyable objects. This is an optional parameter.
+    /// Точки спавна разрушаемых объектов (опционально).
     /// </summary>
+    [Tooltip("Контейнер точек спавна разрушаемых объектов")]
     [SerializeField] Optional<Transform> DestroySpawns;
 
     /// <inheritdoc />
@@ -32,7 +36,7 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     public Vector2Int Size { get; private set; }
 
     /// <summary>
-    /// Initializes the door tilemap controller by finding it in the children of this component.
+    /// Инициализирует контроллер дверей и вычисляет размер комнаты.
     /// </summary>
     void Awake()
     {
@@ -42,11 +46,7 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
         Size += Vector2Int.up * 5 + Vector2Int.right * 3;
     }
 
-    /// <summary>
-    /// Replaces all tiles in the tilemap with the tiles specified in the provided container.
-    /// Also updates the door tilemap and optional tilemaps (e.g., traps, destroyable objects).
-    /// </summary>
-    /// <param name="container">The container holding the tiles and prefabs for replacement.</param>
+    /// <inheritdoc />
     public override void SwapTiles(TilesContainer container)
     {
         base.SwapTiles(container);
@@ -64,11 +64,10 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
     }
 
     /// <summary>
-    /// Instantiates game objects at the positions of child transforms of the specified parent.
-    /// The new objects are parented to the same transform.
+    /// Создаёт интерактивные объекты на основе префабов в указанных точках спавна.
     /// </summary>
-    /// <param name="parent">The parent transform containing the spawn points. It also becomes the parent of the new objects.</param>
-    /// <param name="prefab">The prefab to instantiate at each spawn point.</param>
+    /// <param name="parent">Родительский трансформ с точками спавна</param>
+    /// <param name="prefab">Префаб для создания</param>
     void CreateInteractable(Transform parent, GameObject prefab)
     {
         Transform[] childs = parent.GetComponentsInChildren<Transform>();
@@ -114,7 +113,7 @@ public class RoomTilemapController : TilemapController, IRoomTilemapController
 
 
     /// <summary>
-    /// Destroys the door tilemap controller when this component is destroyed.
+    /// Уничтожает контроллер дверей при удалении компонента.
     /// </summary>
     void OnDestroy()
     {

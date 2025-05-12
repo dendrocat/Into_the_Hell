@@ -13,7 +13,7 @@ public class DialogDisplayer : MonoBehaviour
     Coroutine showPhraseCoroutine = null;
 
     /// <summary>
-    /// Возвращает true, если в данный момент отображается фраза с эффектом печати.
+    /// Возвращает <see langword="true"/>, если в данный момент отображается фраза с эффектом печати.
     /// </summary>
     public bool IsShowingPhrase => showPhraseCoroutine != null;
 
@@ -46,13 +46,13 @@ public class DialogDisplayer : MonoBehaviour
     [Tooltip("Задержка между отображением символов для эффекте печати (в секундах).")]
     [SerializeField, Range(0.01f, 1f)] float _symbolDelayTime;
 
-
+    /// <summary>Текущая фраза диалога</summary>
     private string _phrase;
 
     /// <summary>
     /// Устанавливает имя говорящего.
     /// </summary>
-    /// <param name="name">Имя персонажа.</param>
+    /// <param name="name">Имя говорящего.</param>
     public void SetName(string name)
     {
         _nameText.text = name;

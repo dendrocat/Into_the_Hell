@@ -1,26 +1,21 @@
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий стрелу.
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий стрелу.
+/// </summary>
 public class Arrow : Missile
 {
-    /**
-     * <summary>
-     * Инициализация стрелы
-     * </summary>
-     * **/
+    /// <summary>
+    /// Инициализация стрелы
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         damageRadius = 0.01f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;

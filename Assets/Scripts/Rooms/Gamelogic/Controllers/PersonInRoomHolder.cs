@@ -1,24 +1,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Компонент, удерживающий и корректирующий положение персонажей внутри зоны комнаты.
+/// Требует наличие компонента <see cref="Collider2D"/> для определения границ комнаты.
+/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class PersonInRoomHolder : MonoBehaviour
 {
+    /// <summary>
+    /// Список персонажей, находящихся внутри комнаты.
+    /// </summary>
     List<Person> _persons;
 
+    /// <summary>
+    /// Коллайдер, определяющий границы комнаты.
+    /// </summary>
     Collider2D _collider;
 
+    /// <summary>
+    /// Инициализация компонентов и списка персонажей.
+    /// </summary>
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _persons = new();
     }
 
+    /// <summary>
+    /// Добавляет персонажа в список отслеживаемых.
+    /// </summary>
+    /// <param name="person">Персонаж для добавления.</param>
     public void AddPerson(Person person)
     {
         _persons.Add(person);
     }
 
+    /// <summary>
+    /// Корректирует позицию персонажа, чтобы он оставался внутри границ комнаты.
+    /// Удаляет персонажа из списка, если он мёртв.
+    /// </summary>
+    /// <param name="person">Персонаж, позицию которого нужно исправить.</param>
     void FixPersonIn(Person person)
     {
         if (!person.isAlive()) _persons.Remove(person);
@@ -46,6 +68,10 @@ public class PersonInRoomHolder : MonoBehaviour
         person.transform.position += dt;
     }
 
+    /// <summary>
+    /// Вызывается с фиксированным шагом физики.
+    /// Корректирует позиции всех отслеживаемых персонажей.
+    /// </summary>
     void FixedUpdate()
     {
         if (_persons.Count > 0)

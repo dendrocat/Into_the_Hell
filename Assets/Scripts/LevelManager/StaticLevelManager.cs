@@ -2,16 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Менеджер статического уровня, наследующийся от <see cref="AbstractLevelManager"/>.
+/// Отвечает за генерацию и настройку статических комнат и коридоров.
+/// </summary>
 public class StaticLevelManager : AbstractLevelManager
 {
+    /// <summary>
+    /// Список тайлмап контроллеров комнат.
+    /// </summary>
+    [Tooltip("Список тайлмап контроллеров комнат")]
     [SerializeField] List<RoomTilemapController> _rooms;
 
+    /// <summary>
+    /// Список тайлмап контроллеров коридоров.
+    /// </summary>
+    [Tooltip("Список тайлмпа контроллеров коридоров")]
     [SerializeField] List<HallTilemapController> _halls;
 
-    void GenerateAdditional(
-        IRoomTilemapController room,
-        TileBase tile
-    )
+    /// <summary>
+    /// Генерирует дополнительные тайлы (например, декор) в случайных свободных позициях комнаты.
+    /// </summary>
+    /// <param name="room">Комната, в которой генерируются дополнительные тайлы.</param>
+    /// <param name="tile">Тайл для размещения.</param>
+    void GenerateAdditional(IRoomTilemapController room, TileBase tile)
     {
         var free = room.GetFreePositions();
         int cnt = 0;
@@ -24,6 +38,10 @@ public class StaticLevelManager : AbstractLevelManager
         }
     }
 
+    /// <summary>
+    /// Устанавливает дополнительные эффекты (например, ловушки) для комнаты, если они доступны.
+    /// </summary>
+    /// <param name="room">Комната, для которой устанавливаются эффекты.</param>
     void SetAdditionalEffect(IRoomController room)
     {
         var additionalController = room.AdditionalController;
@@ -33,6 +51,9 @@ public class StaticLevelManager : AbstractLevelManager
         additionalController.SetAdditionalEffect(trapContainer);
     }
 
+    /// <summary>
+    /// Генерирует уровень, активируя двери, расширяя коридоры, меняя тайлы и устанавливая эффекты.
+    /// </summary>
     public override void Generate()
     {
         if (_halls.Count > 0)

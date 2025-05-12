@@ -1,16 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-/**
- * <summary>
- * Класс, описывающий оружие игрока "Лук".
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий оружие игрока "Лук".
+/// </summary>
 public class Bow : MissileWeapon
 {
+    /// <summary>
+    /// Префаб альтернативного снаряда (взрывная стрела).
+    /// </summary>
+    [Tooltip("Префаб альтернативного снаряда (взрывная стрела)")]
     [SerializeField] GameObject altMissilePrefab;
+
+    /// <summary>
+    /// Скорость альтернативного снаряда.
+    /// </summary>
+    [Tooltip("Скорость альтернативного снаряда")]
     [SerializeField] float altMissileSpeed;
 
+    /// <summary>
+    /// Конструктор, инициализирующий параметры оружия.
+    /// </summary>
     public Bow()
     {
         scaleCoeff = 1f;
@@ -25,9 +36,7 @@ public class Bow : MissileWeapon
         baseAltReloadTime = 5f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override bool CheckAltAttackConditions()
     {
         if (owner is Player player)
@@ -37,6 +46,7 @@ public class Bow : MissileWeapon
         else return false;
     }
 
+    /// <inheritdoc />
     protected override IEnumerator PerformAttack()
     {
         OnPrepareAttackStart();
@@ -49,6 +59,7 @@ public class Bow : MissileWeapon
         StartCoroutine(ReloadWeapon(CalcScaleDescending(baseReloadTime)));
     }
 
+    /// <inheritdoc />
     protected override IEnumerator PerformAltAttack()
     {
         OnPrepareAltAttackStart();
@@ -61,9 +72,7 @@ public class Bow : MissileWeapon
         StartCoroutine(ReloadAltWeapon(CalcScaleDescending(baseAltReloadTime)));
     }
 
-    /** 
-     * <inheritdoc/>
-     * **/
+    /// <inheritdoc />
     protected override void AltAttack()
     {
         if (owner is Player player)

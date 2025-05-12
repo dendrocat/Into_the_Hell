@@ -61,21 +61,14 @@ public class DialogManager : MonoBehaviour, IDialogManager
         Awaked?.Invoke();
     }
 
-    /// <summary>
-    /// Устанавливает новую Ink-историю из JSON-файла.
-    /// </summary>
-    /// <param name="inkJSONfile">JSON-файл с историей Ink.</param>
+    /// <inheritdoc />
     public void SetStory(TextAsset inkJSONfile)
     {
         CurrentStory = new Story(inkJSONfile.text);
         StoryCreated?.Invoke(CurrentStory);
     }
 
-    /// <summary>
-    /// Привязывает внешнюю функцию к Ink-истории для вызова из скрипта.
-    /// </summary>
-    /// <param name="inkFuncName">Имя функции в Ink.</param>
-    /// <param name="innerFunc">Делегат с реализацией функции.</param>
+    /// <inheritdoc />
     public void BindFunction(string inkFuncName, Action innerFunc)
     {
         CurrentStory.BindExternalFunction(inkFuncName, innerFunc);

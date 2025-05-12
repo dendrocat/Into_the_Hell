@@ -1,25 +1,25 @@
 /// <summary>
-/// Interface for controlling a room, providing access to additional effects and door management.
+/// Интерфейс для управления комнатой, предоставляющий доступ к дополнительным эффектам и управлению дверями.
 /// </summary>
 public interface IRoomController
 {
     /// <summary>
-    /// Gets the controller for managing additional effects or modifications within the room.
+    /// Выдает контроллер для управления дополнительными эффектами или модификациями внутри комнаты.
     /// </summary>
-    /// <value>
-    /// An <see cref="IAdditionalController"/> instance responsible for applying additional effects.
-    /// </value>
     public IAdditionalController AdditionalController { get; }
 
     /// <summary>
-    /// Gets the controller for managing doors within the room.
+    /// Выдает контроллер для управления дверями внутри комнаты.
     /// </summary>
-    /// <value>
-    /// An <see cref="IDoorController"/> instance responsible for finding, opening, and closing doors.
-    /// </value>
     public IDoorController DoorController { get; }
 
+    // <summary>
+    /// Помечает комнату как конечную (например, комнату босса или выход).
+    /// </summary>
     public void MarkAsEndRoom();
 
+    /// <summary>
+    /// Активирует комнату, выполняя необходимые действия для её включения в игру.
+    /// </summary>
     public void ActivateRoom();
 }

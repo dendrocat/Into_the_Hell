@@ -3,25 +3,30 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Base controller for managing tilemaps. Implements the <see cref="ITilemapController"/> interface.
-/// This component must be removed from the game object after level generation via <see cref="Destroy"/>.
+/// Базовый контроллер для управления тайлмапами. Реализует интерфейс <see cref="ITilemapController"/>.
+/// Данный компонент должен быть удалён с игрового объекта после генерации уровня с помощью <see cref="Destroy"/>.
+/// </summary>
 /// </summary>
 public class TilemapController : MonoBehaviour, ITilemapController
 {
+    [Header("Тайлы для замены")]
     /// <summary>
-    /// Container holding the template tiles used for swapping.
+    /// Контейнер, содержащий шаблонные тайлы, используемые для замены.
     /// </summary>
-    [Header("Tiles swapping")]
+    [Tooltip("Контейнер с шаблонными тайлами для замены")]
     [SerializeField] protected TilesContainer _templateContainer;
 
+    [Header("Тайлмапы")]
     /// <summary>
-    /// List of tilemaps representing the walls of the object.
+    /// Список тайлмапов, представляющих стены объекта.
     /// </summary>
+    [Tooltip("Список тайлмапов, представляющих стены объекта")]
     [SerializeField] protected List<Tilemap> _walls;
 
     /// <summary>
-    /// Tilemap representing the floor of the object.
+    /// Тайлмап, представляющий пол объекта.
     /// </summary>
+    [Tooltip("Тайлмап, представляющий пол объекта")]
     [SerializeField] protected Tilemap _floor;
 
     /// <inheritdoc />
@@ -32,9 +37,9 @@ public class TilemapController : MonoBehaviour, ITilemapController
     }
 
     /// <summary>
-    /// Replaces wall tiles in the tilemaps with those specified in the provided container.
+    /// Заменяет тайлы стен в тайлмапах на тайлы, указанные в переданном контейнере.
     /// </summary>
-    /// <param name="container">The container holding the wall tiles for replacement.</param>
+    /// <param name="container">Контейнер, содержащий тайлы стен для замены.</param>
     protected void SwapWallTiles(TilesContainer container)
     {
         foreach (var wall in _walls)
@@ -46,9 +51,9 @@ public class TilemapController : MonoBehaviour, ITilemapController
     }
 
     /// <summary>
-    /// Replaces floor tiles in the tilemap with those specified in the provided container.
+    /// Заменяет тайлы пола в тайлмапе на тайлы, указанные в переданном контейнере.
     /// </summary>
-    /// <param name="container">The container holding the floor tiles for replacement.</param>
+    /// <param name="container">Контейнер, содержащий тайлы пола для замены.</param>
     protected void SwapFloorTiles(TilesContainer container)
     {
         _floor.SwapTile(_templateContainer.Floor, container.Floor);

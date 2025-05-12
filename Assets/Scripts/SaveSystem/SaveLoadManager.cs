@@ -1,41 +1,42 @@
-using System;
-using UnityEngine;
-
 /// <summary>
-/// Manages game state persistence between scenes and sessions
+/// Управляет сохранением и загрузкой состояния игры между сценами и сессиями.
 /// </summary>
 /// <remarks>
-/// Bridges between game objects and <see cref="SaveLoadRepository"/> for loaded serialization.
+/// Является связующим звеном между игровыми объектами и <see cref="SaveLoadRepository"/> для сериализации и десериализации данных.
 /// </remarks>
 public class SaveLoadManager
 {
+    /// <summary>
+    /// Проверяет наличие файла сохранения.
+    /// </summary>
+    /// <returns><see langword="true">, если файл сохранения существует.</returns>
     public static bool HasSave()
     {
         return SaveLoadRepository.HasSave();
     }
 
     /// <summary>
-    /// Restores game state from persistent storage
+    /// Восстанавливает состояние игры из постоянного хранилища.
     /// </summary>
     public static void Load()
     {
-        GameStorage.Instance.GameData = SaveLoadRepository.Load()
+        GameStorage.Instance.CurrentGameData = SaveLoadRepository.Load()
                                         ?? GameStorage.Instance.InitialGameData;
     }
 
     /// <summary>
-    /// Captures current game state and persists it
+    /// Сохраняет текущее состояние игры в постоянное хранилище.
     /// </summary>
     public static void Save()
     {
-        SaveLoadRepository.Save(GameStorage.Instance.GameData);
+        SaveLoadRepository.Save(GameStorage.Instance.CurrentGameData);
     }
 
     /// <summary>
-    /// Deletes persistent save file
+    /// Удаляет файл сохранения.
     /// </summary>
     /// <remarks>
-    /// Use for implementing "New Game" functionality or save reset
+    /// Используется для реализации функции "Новая игра" или сброса сохранений.
     /// </remarks>
     public static void RemoveSave()
     {

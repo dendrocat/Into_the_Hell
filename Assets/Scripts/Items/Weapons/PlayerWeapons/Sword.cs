@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 
-/**
- * <summary>
- * Класс, описывающий оружие игрока "Меч"
- * </summary>
- * **/
+
+/// <summary>
+/// Класс, описывающий оружие игрока "Меч"
+/// </summary>
 public class Sword : RangedWeapon
 {
     bool altAttackActive = false;
 
+    /// <summary>
+    /// Конструктор, инициализирующий параметры меча.
+    /// </summary>
     public Sword()
     {
         damage = 7f;
@@ -25,9 +27,8 @@ public class Sword : RangedWeapon
         angle = 60f;
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    /// <inheritdoc />
     protected override void Attack()
     {
         List<IDamagable> targets = FindTargetsForAttack();
@@ -43,11 +44,10 @@ public class Sword : RangedWeapon
         }
     }
 
-    /**
-     * <summary>
-     * Активирует или деактивирует альтернативную атаку.
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Активирует или деактивирует альтернативную атаку.
+    /// </summary>
     public override void LaunchAltAttack()
     {
         altAttackActive = !altAttackActive;
@@ -58,9 +58,8 @@ public class Sword : RangedWeapon
         }
     }
 
-    /**
-     * <inheritdoc/>
-     * **/
+
+    /// <inheritdoc />
     protected override void AltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, level);
@@ -68,11 +67,10 @@ public class Sword : RangedWeapon
         _animator.Play("AltAttack");
     }
 
-    /**
-     * <summary>
-     * Метод, выполняющий действия по завершению альтернативной атаки оружия
-     * </summary>
-     * **/
+
+    /// <summary>
+    /// Метод, выполняющий действия по завершению альтернативной атаки оружия
+    /// </summary>
     protected void EndAltAttack()
     {
         owner.SetEffect(EffectNames.ShieldBlock, 0);
@@ -80,17 +78,16 @@ public class Sword : RangedWeapon
         _animator.Play("Nothing");
     }
 
-    /**
-     * <summary>
-     * Возвращает, активна ли альтернативная атака.
-     * </summary>
-     * <returns>true, если альтернативная атака сейчас активна.</returns>
-     * **/
+    /// <summary>
+    /// Возвращает, активна ли альтернативная атака.
+    /// </summary>
+    /// <returns><see langword="true"/>, если альтернативная атака сейчас активна.</returns>
     public bool altAttackIsActive()
     {
         return altAttackActive;
     }
 
+    /// <inheritdoc />
     protected override void Update()
     {
         base.Update();
