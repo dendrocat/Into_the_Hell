@@ -5,10 +5,6 @@ using UnityEngine;
 /// <summary>
 /// Скриптовый объект, предназначенный для хранения коллекции аудиоклипов с их именами.
 /// </summary>
-/// <remarks>
-/// Позволяет удобно организовывать и использовать наборы аудиоклипов в проекте Unity.
-/// Используется в качестве контейнера для пар "имя - аудио".
-/// </remarks>
 [CreateAssetMenu(fileName = "AudioContainer", menuName = "Audio Objects/Audio Container")]
 public class AudioContainer : ScriptableObject
 {

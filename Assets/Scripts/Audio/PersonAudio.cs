@@ -1,20 +1,38 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-
+/// <summary>
+/// Класс для управления аудио объекта класса <see cref="Person"/>, наследующий функциональность <see cref="AudioPlayer"/>.
+/// </summary>
 [RequireComponent(typeof(Person))]
 public class PersonAudio : AudioPlayer
 {
+    /// <summary>
+    /// Ключ для звука шагов в <see cref="AudioContainer"/>.
+    /// </summary>
     public const string WALK = "Walk";
+
+    /// <summary>
+    /// Контейнер <see cref="AudioContainer"/>  аудиоклипами персонажа.
+    /// </summary>
     [SerializeField] AudioContainer audioContainer;
 
+    /// <summary>
+    /// Словарь для быстрого доступа к аудиоклипам по именам
+    /// </summary>
     Dictionary<string, AudioClip> _clips;
 
+    /// <summary>
+    /// Ссылка на компонент Person
+    /// </summary>
     Person _person;
 
+    /// <summary>
+    /// Отдельный источник звука для шагов
+    /// </summary>
     AudioSource _walk;
 
+    /// <inheritdoc />
     protected override void InitAudio()
     {
         _clips = new();
@@ -39,11 +57,18 @@ public class PersonAudio : AudioPlayer
         _walk.Pause();
     }
 
+    /// <summary>
+    /// Воспроизведение звука по имени из контейнера.
+    /// </summary>
+    /// <param name="audioName">Имя аудиоклипа.</param>
     public void Play(string audioName)
     {
         Play(_clips.GetValueOrDefault(audioName, null));
     }
 
+    /// <summary>
+    /// Обновление состояния звука шагов в зависимости от движения персонажа.
+    /// </summary>
     void Update()
     {
         if (_person.isMoving() && _person.isAlive())
