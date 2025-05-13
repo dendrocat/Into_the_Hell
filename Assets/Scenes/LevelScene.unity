@@ -1065,30 +1065,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2071150912}
     m_Modifications:
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 53.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 51.577606
-      objectReference: {fileID: 0}
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 545981031662476109, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30.788803
-      objectReference: {fileID: 0}
     - target: {fileID: 3278450238809621214, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1172,14 +1148,6 @@ PrefabInstance:
     - target: {fileID: 6276326472329920555, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
       propertyPath: m_Name
       value: DialogPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6276326472329920555, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7976853876789161790, guid: 2d2e502253ed77f448f9aaac3e4fd8b6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
